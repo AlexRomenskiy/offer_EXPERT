@@ -1,0 +1,1262 @@
+<html lang="uk"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система продажів для експертів</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+        }
+
+        iconify-icon {
+            stroke-width: 1.5;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .glass-pill {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .dark-glass {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+        }
+
+        .btn-glow {
+            background: radial-gradient(circle at 20% 0%, #fed7aa 0%, #fb923c 100%);
+            box-shadow: 0 15px 30px -10px rgba(248, 113, 22, 0.6), 
+                        inset 0 2px 4px rgba(255, 255, 255, 0.4), 
+                        inset 0 -4px 8px rgba(234, 88, 12, 0.8);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float-card-elements {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .animate-float {
+            animation: float-card-elements 6s ease-in-out infinite;
+        }
+
+        /* Custom Range Slider Styles */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #f97316;
+            cursor: pointer;
+            margin-top: -7px;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 2px 6px rgba(249,115,22,0.3);
+            transition: transform 0.1s;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e4e4e7;
+            border-radius: 2px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+    </style>
+    
+</head>
+<body class="text-zinc-900 antialiased selection:bg-orange-200 selection:text-orange-900 flex flex-col min-h-screen">
+
+    <!-- БЛОК 1: Головний екран (Two-Column Desktop Layout) -->
+    <div class="md:px-8 lg:pt-28 lg:pb-24 flex-grow z-10 w-full max-w-7xl mr-auto ml-auto pt-20 pr-6 pb-16 pl-6 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 gap-x-12 gap-y-12 items-center">
+            
+            <!-- Left Column: Text Content -->
+            <div class="flex flex-col items-start text-left w-full">
+                <!-- Social Proof Pill -->
+                <div class="inline-flex glass-pill w-max rounded-full mb-8 pt-1.5 pr-5 pb-1.5 pl-1.5 items-center border border-zinc-200/50">
+                    <div class="flex -space-x-2 mr-3">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/578a5bc5-2c9f-4285-8ae6-0d7dafefba84_320w.webp" alt="User" class="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1a99aa12-9c50-44fe-bb7d-5dfef28b7d59_320w.webp" alt="User" class="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/2e91b8c7-be64-41b5-8bd8-75efab28bdbe_320w.webp" alt="User" class="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm">
+                        <div class="w-7 h-7 rounded-full border-2 border-white bg-zinc-800 text-white flex items-center justify-center text-xs font-normal tracking-tight shadow-sm">
+                            50+
+                        </div>
+                    </div>
+                    <span class="text-xs font-light text-zinc-600 tracking-wide uppercase">
+                        <span class="text-zinc-900 font-normal">експертів</span> вже автоматизували продажі
+                    </span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="lg:text-[4.5rem] leading-[1.05] text-5xl font-normal text-zinc-900 tracking-tighter max-w-2xl mb-8">
+                    Збираю систему продажів <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-zinc-400 to-zinc-600 font-light">для експертів</span>
+                </h1>
+
+                <!-- Action Area -->
+                <div class="flex flex-col items-start gap-5 mb-10 lg:mb-14 max-w-md w-full">
+                    <button class="btn-glow hover:bg-orange-500 transition-all duration-300 flex group hover:-translate-y-0.5 text-base font-normal text-zinc-900 rounded-full py-3.5 px-6 items-center w-full sm:w-auto">
+                        <span class="text-base font-normal tracking-tight text-zinc-900 pr-8">
+                            Записатися на розбір
+                        </span>
+                        <span class="flex items-center justify-center rounded-full bg-white/30 backdrop-blur-sm w-8 h-8 shrink-0 ml-auto">
+                            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-zinc-900"></iconify-icon>
+                        </span>
+                    </button>
+                    
+                    <div class="flex items-center justify-start gap-3 text-zinc-500">
+                        <iconify-icon icon="solar:info-circle-linear" class="text-xl text-zinc-400 shrink-0 opacity-70"></iconify-icon>
+                        <p class="text-base font-light leading-relaxed tracking-wide text-left">
+                            <span class="text-zinc-700 font-normal">20-30 хвилин.</span> Без тиску, без зобов'язань.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer Stats -->
+                <div class="flex flex-wrap justify-start gap-8 lg:gap-12 items-center pt-8 border-t border-zinc-200/60 w-full max-w-2xl">
+                    <div class="flex flex-col items-start gap-1 group cursor-default">
+                        <p class="text-xs font-normal text-zinc-400 uppercase tracking-widest group-hover:text-zinc-600 transition-colors">Запуск</p>
+                        <p class="text-base text-zinc-900 font-normal tracking-tight">від 7 днів</p>
+                    </div>
+                    <div class="w-px h-8 bg-zinc-200 hidden sm:block"></div>
+                    <div class="flex flex-col items-start gap-1 group cursor-default">
+                        <p class="text-xs font-normal text-zinc-400 uppercase tracking-widest group-hover:text-zinc-600 transition-colors">Платформи</p>
+                        <p class="text-base text-zinc-900 font-normal tracking-tight">Telegram / Insta</p>
+                    </div>
+                    <div class="w-px h-8 bg-zinc-200 hidden sm:block"></div>
+                    <div class="flex flex-col items-start gap-1 group cursor-default hidden sm:flex">
+                        <p class="text-xs font-normal text-zinc-400 uppercase tracking-widest group-hover:text-zinc-600 transition-colors">Оплати</p>
+                        <p class="text-base text-zinc-900 font-normal tracking-tight">Будь-які системи</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Visual Card (Interactive Phone Mockup) -->
+            <div class="w-full max-w-md mx-auto lg:max-w-none lg:ml-auto h-[550px] lg:h-[650px] relative group perspective-1000">
+                <div class="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-zinc-900/10 transition-all duration-700 ease-out border border-white">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/abe6309a-283e-40d6-9cb0-b1ccf86a9f2b_1600w.jpg" alt="Smartphone with vibrant gradient screen in hand" class="transition-transform duration-[2s] ease-in-out group-hover:scale-105 filter w-full h-full object-cover absolute top-0 right-0 bottom-0 left-0 saturate-50">
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-zinc-900/50"></div>
+
+                    <div class="flex flex-col sm:px-6 pt-6 pr-4 pb-6 pl-4 absolute top-0 right-0 bottom-0 left-0">
+                        <div class="flex p-1 dark-glass rounded-full w-max mx-auto z-10 shadow-lg mb-8">
+                            <button id="btn-manual" onclick="setMode('manual')" class="px-5 py-2 rounded-full text-xs font-normal text-white/60 hover:text-white transition-all duration-300">
+                                Вручну
+                            </button>
+                            <button id="btn-auto" onclick="setMode('auto')" class="px-5 py-2 rounded-full text-xs font-normal text-white bg-white/20 shadow-sm transition-all duration-300">
+                                З автоматизацією
+                            </button>
+                        </div>
+
+                        <div class="flex-grow flex items-center justify-center relative w-full h-full">
+                            <!-- Auto Views -->
+                            <div id="view-auto-message" class="dark-glass w-full max-w-[320px] rounded-2xl p-5 shadow-2xl shadow-black/50 fade-in absolute text-left">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                        <iconify-icon icon="solar:user-linear" class="text-base"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm text-white font-normal tracking-tight">Новий лід</span>
+                                        <span class="text-xs text-white/50 tracking-wide">Через Telegram Бот</span>
+                                    </div>
+                                </div>
+                                <div class="bg-white/5 rounded-xl p-3 border border-white/5">
+                                    <p class="text-sm text-white/70 leading-relaxed font-light">
+                                        <span class="text-emerald-400 font-normal">@alex_new</span> запустив воронку та переглядає перший відео-урок.
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="view-auto-response" class="hidden dark-glass w-full max-w-[320px] rounded-2xl p-5 shadow-2xl shadow-black/50 fade-in absolute text-left">
+                                <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-4">
+                                    <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                        <iconify-icon icon="solar:bolt-linear" class="text-base"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-white font-normal tracking-tight">Автовідповідь</span>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <div class="bg-blue-500/10 rounded-xl rounded-tr-sm p-4 border border-blue-500/20 self-end w-[90%]">
+                                        <p class="text-sm text-white/80 font-light">Ось посилання на матеріали курсу! Доступ відкрито на 30 днів. 🚀</p>
+                                    </div>
+                                    <span class="text-xs text-white/40 font-mono text-right pr-1">Миттєво</span>
+                                </div>
+                            </div>
+                            <div id="view-auto-payment" class="hidden dark-glass w-full max-w-[320px] rounded-2xl p-5 shadow-2xl shadow-black/50 fade-in absolute text-left">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                                            <iconify-icon icon="solar:wallet-linear" class="text-base"></iconify-icon>
+                                        </div>
+                                        <span class="text-sm text-white font-normal tracking-tight">Нова оплата</span>
+                                    </div>
+                                    <span class="text-xs text-emerald-400 font-normal bg-emerald-500/10 px-2 py-1 rounded-md">Успішно</span>
+                                </div>
+                                <div class="flex flex-col gap-1 mb-4 border-b border-white/10 pb-4">
+                                    <span class="text-3xl text-white font-normal tracking-tighter">₴ 15,000</span>
+                                    <span class="text-sm text-white/50 tracking-wide font-light">Курс: "Продажі в Instagram"</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-2">
+                                    <div class="flex items-center gap-2">
+                                        <iconify-icon icon="solar:user-linear" class="text-sm text-white/40"></iconify-icon>
+                                        <span class="text-xs text-white/60 font-light">Клієнт з воронки</span>
+                                    </div>
+                                    <span class="text-xs text-white/40 font-mono">14:23</span>
+                                </div>
+                            </div>
+
+                            <!-- Manual Views -->
+                            <div id="view-manual-message" class="hidden dark-glass w-full max-w-[320px] rounded-2xl p-5 shadow-2xl shadow-black/50 fade-in absolute text-left">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="relative w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400">
+                                        <span class="absolute top-0 right-0 flex h-2.5 w-2.5">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
+                                        </span>
+                                        <iconify-icon icon="solar:chat-round-line-linear" class="text-base"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm text-white font-normal tracking-tight">Instagram Direct</span>
+                                    </div>
+                                </div>
+                                <div class="bg-orange-500/5 rounded-xl p-4 border border-orange-500/20">
+                                    <p class="text-sm text-white/70 leading-relaxed font-normal">
+                                        У вас <span class="text-orange-400">12 невідповідей</span> запитів. Клієнти очікують на інформацію про ціни.
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="view-manual-response" class="hidden dark-glass w-full max-w-[320px] rounded-2xl p-5 shadow-2xl shadow-black/50 fade-in absolute text-left">
+                                <div class="flex flex-col gap-3">
+                                    <div class="bg-white/5 rounded-xl rounded-tl-sm p-4 border border-white/5 self-start w-[85%]">
+                                        <p class="text-sm text-white/60 font-light">А можна детальніше про формат? Які є модулі? І куди платити?</p>
+                                    </div>
+                                    <div class="flex items-center gap-2 bg-white/10 rounded-xl rounded-tr-sm p-3 border border-white/20 self-end w-[85%] mt-2">
+                                        <div class="flex gap-1 items-center px-1">
+                                            <div class="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
+                                            <div class="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
+                                            <div class="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+                                        </div>
+                                        <p class="text-sm text-white/60 ml-2 font-light">Ви друкуєте...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="view-manual-payment" class="hidden dark-glass w-full max-w-[320px] rounded-2xl p-6 shadow-2xl shadow-black/50 fade-in absolute text-center">
+                                <div class="flex flex-col items-center justify-center gap-4">
+                                    <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/30 bg-white/5">
+                                        <iconify-icon icon="solar:gallery-linear" class="text-2xl"></iconify-icon>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <span class="text-sm text-white font-normal tracking-tight">Очікування скріншоту</span>
+                                        <p class="text-sm text-white/50 leading-relaxed font-light">
+                                            Ви скинули реквізити карти. Тепер чекаєте скрін про оплату, щоб вручну видати доступ.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 sm:gap-3 z-10 w-full mt-auto pt-8 max-w-xl mx-auto">
+                            <button id="tab-message" onclick="setScenario('message')" class="dark-glass bg-white/10 border-white/20 text-white flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-300">
+                                <iconify-icon icon="solar:chat-square-linear" class="text-xl"></iconify-icon>
+                                <span class="text-xs font-normal tracking-tight truncate w-full text-center">Повідомлення</span>
+                            </button>
+                            <button id="tab-response" onclick="setScenario('response')" class="dark-glass border-transparent text-white/50 hover:text-white/80 flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-300">
+                                <iconify-icon icon="solar:reply-outline" class="text-xl"></iconify-icon>
+                                <span class="text-xs font-normal tracking-tight truncate w-full text-center">Відповідь</span>
+                            </button>
+                            <button id="tab-payment" onclick="setScenario('payment')" class="dark-glass border-transparent text-white/50 hover:text-white/80 flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-300">
+                                <iconify-icon icon="solar:card-linear" class="text-xl"></iconify-icon>
+                                <span class="text-xs font-normal tracking-tight truncate w-full text-center">Оплата</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК 2: Болі експерта -->
+    <section class="overflow-hidden bg-[#FAFAFA] border-neutral-200/60 border-t pt-20 pb-24 relative w-full">
+        <!-- ... existing content ... -->
+        <div class="[mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_100%)] pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-60"></div>
+
+        <div class="container mx-auto px-6 lg:px-8 relative z-10 max-w-7xl">
+            <div class="flex flex-col items-center text-center mb-16 lg:mb-20">
+                <span class="text-xs font-normal text-zinc-500 uppercase tracking-widest mb-4 block bg-white px-3 py-1 rounded-full border border-neutral-200 shadow-sm">Блок 2: Болі</span>
+                <h2 class="text-4xl md:text-5xl font-medium text-zinc-900 tracking-tight leading-tight max-w-3xl mb-5">
+                    Досить бути менеджером з продажу свого продукту.
+                </h2>
+                <p class="text-xl text-zinc-600 font-light tracking-tight max-w-2xl">
+                    Ти — експерт. Але замість того, щоб робити те, в чому ти найкращий:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+                <!-- Card 1 -->
+                <div class="lg:col-span-5 bg-white border-neutral-200 border rounded-[32px] p-8 lg:p-10 relative shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] flex flex-col min-h-[380px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500">
+                    <div class="flex justify-between items-start w-full relative z-20 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-neutral-50 border border-neutral-200 flex items-center justify-center text-neutral-900">
+                            <iconify-icon icon="solar:users-group-rounded-linear" class="text-xl"></iconify-icon>
+                        </div>
+                        <span class="text-xs font-normal text-neutral-400 uppercase tracking-widest mt-2">Охоплення</span>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center relative z-10 w-full mb-8">
+                        <div class="relative w-32 h-32 flex items-center justify-center">
+                            <div class="absolute inset-0 rounded-full border border-dashed border-neutral-200 group-hover:rotate-12 transition-transform duration-1000"></div>
+                            <div class="absolute inset-4 rounded-full border border-dashed border-neutral-100 group-hover:-rotate-12 transition-transform duration-1000"></div>
+                            <div class="w-10 h-10 bg-white border border-neutral-200 shadow-sm rounded-full z-10 flex items-center justify-center relative">
+                                <div class="absolute inset-0 rounded-full border border-orange-400 animate-ping opacity-20"></div>
+                                <iconify-icon icon="solar:user-circle-linear" class="text-xl text-orange-500"></iconify-icon>
+                            </div>
+                            <div class="w-2 h-2 bg-neutral-200 rounded-full absolute top-2 right-4"></div>
+                            <div class="w-1.5 h-1.5 bg-neutral-200 rounded-full absolute bottom-4 left-2"></div>
+                            <div class="w-2 h-2 bg-neutral-200 rounded-full absolute top-10 -left-2"></div>
+                        </div>
+                    </div>
+                    <div class="relative z-20 mt-auto">
+                        <h3 class="text-xl font-normal tracking-tight text-neutral-900 mb-2">Про тебе мало знають</h3>
+                        <p class="text-base text-neutral-500 leading-relaxed font-light">Маєш потужний досвід, але через відсутність системи про це знає лише вузьке коло людей.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="lg:col-span-7 bg-white border-neutral-200 border rounded-[32px] p-8 lg:p-10 relative shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] flex flex-col min-h-[380px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500">
+                    <div class="flex justify-between items-start w-full relative z-20 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-neutral-50 border border-neutral-200 flex items-center justify-center text-neutral-900">
+                            <iconify-icon icon="solar:battery-charge-linear" class="text-xl"></iconify-icon>
+                        </div>
+                        <span class="text-xs font-normal text-neutral-400 uppercase tracking-widest mt-2">Ресурс</span>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center relative z-10 mb-8 w-full">
+                        <div class="w-full max-w-sm h-24 flex items-end gap-3 justify-between relative px-4">
+                            <div class="w-full bg-neutral-100 rounded-t-lg h-[80%] group-hover:bg-neutral-200 transition-colors duration-500"></div>
+                            <div class="w-full bg-neutral-100 rounded-t-lg h-[60%] group-hover:bg-neutral-200 transition-colors duration-500"></div>
+                            <div class="w-full bg-neutral-100 rounded-t-lg h-[40%] group-hover:bg-neutral-200 transition-colors duration-500"></div>
+                            <div class="w-full bg-orange-100 border-t-2 border-orange-400 rounded-t-lg h-[15%] relative">
+                                <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-tight">Тиша</div>
+                            </div>
+                            <div class="w-full bg-neutral-50 border border-neutral-100 rounded-t-lg h-[5%]"></div>
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none">
+                                <path d="M20,20 Q120,30 200,60 T320,80 T380,90" fill="none" stroke="#f97316" stroke-width="2" stroke-dasharray="4 4" class="opacity-50"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="relative z-20 mt-auto max-w-md">
+                        <h3 class="text-xl font-normal tracking-tight text-neutral-900 mb-2">Дохід залежить від енергії</h3>
+                        <p class="text-base text-neutral-500 leading-relaxed font-light">Не було сил сьогодні — значить, не було продажів. Не зняв контент, не відповів у Direct, не провів ефір — и тиша. Без системи ти заробляєш тільки коли є ресурс працювати.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="lg:col-span-7 bg-white border-neutral-200 border rounded-[32px] p-8 lg:p-10 relative shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] flex flex-col min-h-[380px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500">
+                    <div class="flex justify-between items-start w-full relative z-20 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-neutral-50 border border-neutral-200 flex items-center justify-center text-neutral-900">
+                            <iconify-icon icon="solar:notes-linear" class="text-xl"></iconify-icon>
+                        </div>
+                        <span class="text-xs font-normal text-neutral-400 uppercase tracking-widest mt-2">Монетизація</span>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center relative z-10 mb-8 w-full">
+                        <div class="w-full max-w-[300px] flex flex-col gap-3 relative">
+                            <div class="bg-neutral-50 border border-neutral-100 rounded-2xl p-4 flex items-center gap-4 opacity-40 blur-[2px]">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                                    <iconify-icon icon="solar:wad-of-money-linear" class="text-xl"></iconify-icon>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="h-2.5 w-16 bg-neutral-200 rounded mb-2"></div>
+                                    <div class="h-2 w-24 bg-neutral-200 rounded"></div>
+                                </div>
+                            </div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur border border-neutral-200 shadow-xl rounded-full px-5 py-2.5 flex items-center gap-2 z-10 w-max group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                                <span class="text-xs font-normal tracking-tight text-neutral-800">Ви не в мережі - продажів немає</span>
+                            </div>
+                            <div class="bg-neutral-50 border border-neutral-100 rounded-2xl p-4 flex items-center gap-4 opacity-30 blur-[2px]">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                                    <iconify-icon icon="solar:wad-of-money-linear" class="text-xl"></iconify-icon>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="h-2.5 w-16 bg-neutral-200 rounded mb-2"></div>
+                                    <div class="h-2 w-24 bg-neutral-200 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative z-20 mt-auto max-w-md">
+                        <h3 class="text-xl font-normal tracking-tight text-neutral-900 mb-2">Відсутність пасивного доходу</h3>
+                        <p class="text-base text-neutral-500 leading-relaxed font-light">Немає продуктів, які продаються самі. Заробіток іде лише тоді, коли ти на зв'язку.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="lg:col-span-5 bg-white border-neutral-200 border rounded-[32px] p-8 lg:p-10 relative shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] flex flex-col min-h-[380px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500">
+                    <div class="flex justify-between items-start w-full relative z-20 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-neutral-50 border border-neutral-200 flex items-center justify-center text-neutral-900">
+                            <iconify-icon icon="solar:server-linear" class="text-xl"></iconify-icon>
+                        </div>
+                        <span class="text-xs font-normal text-neutral-400 uppercase tracking-widest mt-2">Рутина</span>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center relative z-10 mb-8 w-full">
+                        <div class="relative w-full h-32 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-white border border-neutral-200 absolute top-2 left-8 flex items-center justify-center text-neutral-400 shadow-sm z-10">
+                                <iconify-icon icon="solar:chat-square-linear" class="text-xl"></iconify-icon>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-white border border-neutral-200 absolute bottom-2 right-12 flex items-center justify-center text-neutral-400 shadow-sm z-10">
+                                <iconify-icon icon="solar:folder-open-linear" class="text-xl"></iconify-icon>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-white border border-neutral-200 absolute top-6 right-8 flex items-center justify-center text-neutral-400 shadow-sm z-10">
+                                <iconify-icon icon="solar:card-linear" class="text-xl"></iconify-icon>
+                            </div>
+                            <div class="w-12 h-12 rounded-full bg-neutral-100 border border-neutral-200 text-neutral-500 flex items-center justify-center z-20 shadow-sm relative group-hover:rotate-45 transition-transform duration-700">
+                                <iconify-icon icon="solar:settings-linear" class="text-2xl"></iconify-icon>
+                                <div class="w-3 h-3 bg-red-400 rounded-full absolute -top-1 -right-1 border-2 border-white shadow-sm"></div>
+                            </div>
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40 z-0" preserveAspectRatio="none">
+                                <path d="M60,40 Q100,20 160,64 T220,50" fill="none" stroke="#a3a3a3" stroke-width="1.5" stroke-dasharray="4 4"></path>
+                                <path d="M160,64 Q140,100 200,90" fill="none" stroke="#a3a3a3" stroke-width="1.5" stroke-dasharray="4 4"></path>
+                                <path d="M60,40 Q100,100 200,90" fill="none" stroke="#ef4444" stroke-width="1.5"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="relative z-20 mt-auto">
+                        <h3 class="text-xl font-normal tracking-tight text-neutral-900 mb-2">Технічний хаос</h3>
+                        <p class="text-base text-neutral-500 leading-relaxed font-light">Ти класний фахівець, але не розумієш, як усе це втілити технічно. Витрачаєш час на рутину замість того, щоб робити те, що любиш.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 3: Кейс на практиці -->
+    <section class="bg-zinc-950 text-white py-20 lg:py-28 relative overflow-hidden w-full border-t border-zinc-900/50 flex-grow selection:bg-orange-500/30 selection:text-orange-200">
+        <!-- ... existing content ... -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-orange-600/10 blur-[120px] rounded-full pointer-events-none opacity-40"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col items-start max-w-2xl mb-12 lg:mb-16">
+                <div class="inline-flex items-center gap-2 mb-6">
+                    <div class="w-2 h-2 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></div>
+                    <span class="text-xs font-light text-orange-400 uppercase tracking-widest">Кейс</span>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-light tracking-tighter text-white mb-6">
+                    Як це працює <span class="text-white/40">на практиці</span>
+                </h2>
+                <p class="text-xl font-thin text-zinc-400 leading-relaxed tracking-tight">
+                    Таня Лав — експерт з Reels. Мала досвід і аудиторію, але не мала системи продажів.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
+                <div class="lg:col-span-5 relative rounded-3xl bg-zinc-900 border border-white/5 overflow-hidden flex flex-col group min-h-[450px] cursor-pointer shadow-2xl">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/a0598941-97b9-43d5-8007-56fa92437c3c_1600w.webp" alt="Відео-відгук Тані" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white shadow-xl group-hover:bg-orange-500/20 group-hover:border-orange-500/50 group-hover:text-orange-400 transition-all duration-500 group-hover:scale-110">
+                            <iconify-icon icon="solar:play-linear" class="w-6 h-6 ml-1 text-2xl"></iconify-icon>
+                        </div>
+                    </div>
+
+                    <div class="relative mt-auto p-6 flex flex-col gap-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                            </span>
+                            <span class="text-xs font-light text-white/70 uppercase tracking-widest">Відео-відгук</span>
+                        </div>
+                        <h3 class="text-xl font-light text-white tracking-tight">Історія Тані</h3>
+                        <p class="text-base text-zinc-400 font-thin mt-1">Місце для відео-відгуку · 04:12</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 flex flex-col gap-5 lg:gap-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-zinc-900/50 border border-white/5 rounded-[20px] p-4 w-full gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="relative w-10 h-10 shrink-0">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&amp;w=150&amp;auto=format&amp;fit=crop" alt="Таня Лав" class="w-full h-full object-cover rounded-full shadow-sm border border-white/10">
+                            </div>
+                            <div class="flex flex-col justify-center gap-0.5">
+                                <h3 class="text-sm font-normal text-white tracking-tight leading-none">Таня Лав</h3>
+                                <p class="text-xs font-light text-zinc-400 leading-none">Експерт з Reels</p>
+                            </div>
+                        </div>
+                        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 border border-white/5 bg-transparent shrink-0">
+                            <iconify-icon icon="solar:target-linear" class="w-3.5 h-3.5 text-sm text-orange-500/80"></iconify-icon>
+                            <span class="text-xs font-light text-zinc-400">Точка А: досвід без системи</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 flex-grow">
+                        <div class="bg-white/[0.02] border border-white/5 rounded-3xl p-6 flex flex-col backdrop-blur-md">
+                            <h4 class="text-xs uppercase tracking-widest font-light text-zinc-500 mb-6 flex items-center gap-2">
+                                <iconify-icon icon="solar:clock-circle-linear" class="w-4 h-4 text-base text-zinc-400"></iconify-icon>
+                                Що зроблено за 5 днів
+                            </h4>
+                            
+                            <div class="flex flex-col gap-3 z-10">
+                                <div class="flex items-center gap-3 bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-300 rounded-xl p-3 border border-white/5">
+                                    <div class="w-6 h-6 rounded-full bg-orange-500/10 text-orange-400 flex items-center justify-center shrink-0 border border-orange-500/20">
+                                        <iconify-icon icon="solar:check-circle-linear" class="w-4 h-4 text-base"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-white/90 font-thin">Стратегія та позиціонування</span>
+                                </div>
+                                <div class="flex items-center gap-3 bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-300 rounded-xl p-3 border border-white/5">
+                                    <div class="w-6 h-6 rounded-full bg-orange-500/10 text-orange-400 flex items-center justify-center shrink-0 border border-orange-500/20">
+                                        <iconify-icon icon="solar:check-circle-linear" class="w-4 h-4 text-base"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-white/90 font-thin">Посадкова сторінка</span>
+                                </div>
+                                <div class="flex items-center gap-3 bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-300 rounded-xl p-3 border border-white/5">
+                                    <div class="w-6 h-6 rounded-full bg-orange-500/10 text-orange-400 flex items-center justify-center shrink-0 border border-orange-500/20">
+                                        <iconify-icon icon="solar:check-circle-linear" class="w-4 h-4 text-base"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-white/90 font-thin">Чат-бот воронка</span>
+                                </div>
+                                <div class="flex items-center gap-3 bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-300 rounded-xl p-3 border border-white/5">
+                                    <div class="w-6 h-6 rounded-full bg-orange-500/10 text-orange-400 flex items-center justify-center shrink-0 border border-orange-500/20">
+                                        <iconify-icon icon="solar:check-circle-linear" class="w-4 h-4 text-base"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-white/90 font-thin">Автоматичний прийом оплат</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-3xl p-6 flex flex-col backdrop-blur-md justify-between relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50 pointer-events-none"></div>
+
+                            <h4 class="text-xs uppercase tracking-widest font-light text-zinc-500 mb-8 flex items-center gap-2 relative z-10">
+                                <iconify-icon icon="solar:chart-square-linear" class="w-4 h-4 text-base text-zinc-400"></iconify-icon>
+                                За перші 2-3 тижні
+                            </h4>
+                            
+                            <div class="flex flex-col gap-6 relative z-10">
+                                <div class="flex flex-col">
+                                    <span class="text-5xl font-light tracking-tighter text-white mb-1">12</span>
+                                    <span class="text-sm text-zinc-400 font-thin">клієнтів на інтенсив</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-5xl font-light tracking-tighter text-white mb-1">3</span>
+                                    <span class="text-sm text-zinc-400 font-thin">клієнти на інд. роботу</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 pt-5 border-t border-white/5 flex items-center gap-2 relative z-10 text-emerald-400/90">
+                                <iconify-icon icon="solar:verified-check-linear" class="w-5 h-5 text-xl"></iconify-icon>
+                                <span class="text-xs font-light tracking-wide">Система повністю окупилась</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-orange-500/90 to-orange-700/90 rounded-3xl p-6 lg:p-8 relative overflow-hidden shadow-[0_0_30px_rgba(249,115,22,0.15)] flex flex-col gap-3 group border border-orange-400/30">
+                        <div class="absolute -right-6 -bottom-6 text-black/10 transition-transform duration-700 group-hover:scale-110">
+                            <iconify-icon icon="solar:quote-right-bold" class="w-32 h-32 text-8xl opacity-20 text-orange-950"></iconify-icon>
+                        </div>
+                        
+                        <p class="text-lg lg:text-xl font-light text-white tracking-tight leading-relaxed max-w-[90%] relative z-10">
+                            "Тепер я можу просто робити контент і не переживати, що забула комусь відповісти або відправити посилання. Система працює за мене."
+                        </p>
+                        
+                        <div class="flex items-center gap-3 mt-4 relative z-10 border-t border-white/20 pt-4">
+                            <span class="text-xs font-light text-white/70 uppercase tracking-widest">
+                                З відгуку клієнта
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 3.5: До / Після -->
+    <section class="flex overflow-hidden text-zinc-900 font-sans bg-white w-full pt-20 pb-24 relative items-center justify-center border-t border-zinc-200/60">
+        <!-- ... existing content ... -->
+        <div class="max-w-7xl w-full mx-auto px-6 lg:px-8">
+            <div class="mb-14 max-w-2xl text-left">
+                <h5 class="text-orange-500 font-normal mb-4 tracking-widest text-xs uppercase bg-orange-50 inline-flex px-3 py-1 rounded-full border border-orange-100 shadow-sm">Трансформація</h5>
+                <h2 class="text-3xl lg:text-4xl font-medium tracking-tight text-zinc-900 leading-tight">Від хаосу до системи</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+                <!-- Card 1: До -->
+                <div class="flex flex-col group transition-all duration-700 ease-out hover:-translate-y-2 w-full h-[450px] rounded-[2rem] relative overflow-hidden" style="background: linear-gradient(145deg, #ffffff 0%, #fff1f2 100%); box-shadow: 2px 4px 8px rgba(0,0,0,0.02), 8px 16px 24px rgba(0,0,0,0.03), 32px 48px 64px rgba(0,0,0,0.04), 80px 120px 160px rgba(244, 63, 94, 0.05), inset 0 1px 1px rgba(255,255,255,1), 0 0 0 1px rgba(0,0,0,0.04);">
+                    
+                    <div class="p-8 relative z-20">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-medium text-zinc-900 tracking-tight">До</h3>
+                            <div class="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 border border-rose-100 shadow-sm">
+                                <iconify-icon icon="solar:danger-triangle-linear" class="text-xl"></iconify-icon>
+                            </div>
+                        </div>
+                        <p class="text-lg text-zinc-600 font-light leading-relaxed max-w-sm">
+                            Ручні продажі, головний біль та нерозуміння наступного кроку.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 flex-1 flex flex-col gap-4 items-center justify-end p-8 pb-10">
+                        <div class="w-[85%] bg-white/60 backdrop-blur-md border border-rose-100/50 rounded-2xl p-5 shadow-sm transform -rotate-2 group-hover:-rotate-3 transition-transform duration-500 translate-y-4 group-hover:translate-y-2">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-rose-100/50 flex items-center justify-center text-rose-400">
+                                    <iconify-icon icon="solar:close-circle-linear" class="text-sm"></iconify-icon>
+                                </div>
+                                <div class="h-2 w-24 bg-rose-100 rounded-full"></div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <div class="h-1.5 w-full bg-zinc-100 rounded-full"></div>
+                                <div class="h-1.5 w-4/5 bg-zinc-100 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="w-[90%] bg-white/80 backdrop-blur-md border border-rose-100/80 rounded-2xl p-5 shadow-md transform rotate-1 group-hover:rotate-2 transition-transform duration-500 z-10 animate-float">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-400">
+                                    <iconify-icon icon="solar:chat-round-line-linear" class="text-sm"></iconify-icon>
+                                </div>
+                                <div class="h-2 w-32 bg-zinc-100 rounded-full"></div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <div class="h-1.5 w-full bg-zinc-100 rounded-full"></div>
+                                <div class="h-1.5 w-2/3 bg-zinc-100 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Після -->
+                <div class="flex flex-col group transition-all duration-700 ease-out hover:-translate-y-2 w-full h-[450px] rounded-[2rem] relative overflow-hidden" style="background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%); box-shadow: 2px 4px 8px rgba(0,0,0,0.02), 8px 16px 24px rgba(0,0,0,0.03), 32px 48px 64px rgba(0,0,0,0.04), 80px 120px 160px rgba(16, 185, 129, 0.05), inset 0 1px 1px rgba(255,255,255,1), 0 0 0 1px rgba(0,0,0,0.04);">
+                    
+                    <!-- Glow effect -->
+                    <div class="absolute bottom-[-10%] right-[-10%] w-[70%] h-[70%] bg-emerald-300/20 rounded-full blur-[80px] group-hover:bg-emerald-300/30 transition-colors duration-700 animate-pulse" style="animation-duration: 4s;"></div>
+
+                    <div class="p-8 relative z-20">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-medium text-zinc-900 tracking-tight">Після</h3>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 border border-emerald-100 shadow-sm">
+                                <iconify-icon icon="solar:rocket-linear" class="text-xl"></iconify-icon>
+                            </div>
+                        </div>
+                        <p class="text-lg text-zinc-600 font-light leading-relaxed max-w-md">
+                            Зрозумілі смисли, чіткий напрямок розвитку, автоматична видача продуктів та стабільний дохід.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 flex-1 flex flex-col items-center justify-end p-8 pb-10">
+                        <div class="w-full bg-white/90 backdrop-blur-md border border-emerald-100/80 rounded-2xl p-6 shadow-lg transform group-hover:-translate-y-2 transition-transform duration-700 animate-float" style="animation-delay: -3s;">
+                            <div class="flex items-center justify-between mb-5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 border border-emerald-100/50">
+                                        <iconify-icon icon="solar:chart-square-linear" class="text-lg"></iconify-icon>
+                                    </div>
+                                    <div>
+                                        <div class="text-[11px] text-zinc-400 uppercase tracking-widest font-normal mb-1">Статус</div>
+                                        <div class="text-sm text-zinc-900 font-medium tracking-tight">Стабільний дохід</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2.5 py-1.5 rounded-lg border border-emerald-100 flex items-center gap-1.5 shadow-sm">
+                                    <iconify-icon icon="solar:bolt-linear" class="text-emerald-500"></iconify-icon> Автоматизовано
+                                </span>
+                            </div>
+                            <div class="h-px w-full bg-zinc-100 mb-5"></div>
+                            <div class="flex flex-col gap-3">
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-sm"></iconify-icon>
+                                    <div class="h-1.5 w-3/4 bg-emerald-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-emerald-400 w-full rounded-full"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-sm"></iconify-icon>
+                                    <div class="h-1.5 w-2/3 bg-emerald-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-emerald-400 w-full rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 4: Тарифи -->
+    <section class="bg-[#FAFAFA] text-zinc-900 py-24 relative overflow-hidden w-full border-t border-neutral-200/60 flex-grow">
+        <!-- ... existing content ... -->
+        <div class="[mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_100%)] pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-60"></div>
+        
+        <div class="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-orange-400/20 blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-orange-200/40 blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <!-- Header Area with Typewriter -->
+            <div class="flex flex-col items-center text-center mb-16 relative z-10">
+                <div class="flex items-center justify-center gap-5 mb-8">
+                    <div class="flex gap-1.5 opacity-60">
+                        <div class="pricing-dot-light w-1 h-1 rounded-full bg-orange-600 opacity-20 transition-all duration-300"></div>
+                        <div class="pricing-dot-light w-1 h-1 rounded-full bg-orange-600 opacity-20 transition-all duration-300"></div>
+                        <div class="pricing-dot-light w-1 h-1 rounded-full bg-orange-600 opacity-20 transition-all duration-300"></div>
+                    </div>
+                    <div class="w-14 h-14 bg-gradient-to-b from-white to-orange-50 rounded-2xl flex items-center justify-center relative overflow-hidden border border-orange-100 shadow-[inset_0_2px_5px_rgba(249,115,22,0.02),0_10px_15px_-3px_rgba(249,115,22,0.05)]">
+                        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, #f97316 1px, transparent 0); background-size: 4px 4px;"></div>
+                        <iconify-icon icon="solar:layers-linear" class="text-2xl text-orange-500 relative z-10" style="filter: drop-shadow(0 0 6px rgba(249,115,22,0.4));"></iconify-icon>
+                    </div>
+                    <div class="flex gap-1.5 opacity-60">
+                        <div class="pricing-dot-light w-1 h-1 rounded-full bg-orange-600 opacity-20 transition-all duration-300"></div>
+                        <div class="pricing-dot-light w-1 h-1 rounded-full bg-orange-600 opacity-20 transition-all duration-300"></div>
+                        <div class="pricing-dot-light w-1 h-1 rounded-full bg-orange-600 opacity-20 transition-all duration-300"></div>
+                    </div>
+                </div>
+                <div class="text-center h-28 sm:h-24">
+                    <h2 class="text-4xl md:text-5xl tracking-tight text-zinc-900 font-medium mb-4" style="text-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                        Обери свій <span class="block sm:inline mt-1 sm:mt-0"><span id="pricing-typewriter" class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 font-light"></span><span class="animate-pulse text-orange-500">_</span></span>
+                    </h2>
+                    <div class="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/80 px-4 py-2 mt-2 backdrop-blur-sm">
+                        <iconify-icon icon="solar:bolt-linear" class="text-orange-500 text-base"></iconify-icon>
+                        <span class="text-sm text-orange-700 font-normal tracking-wide">Я працюю одночасно лише з 4-5 клієнтами.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="grid gap-6 lg:grid-cols-3 items-stretch max-w-6xl mx-auto">
+                <!-- Plan 0 -->
+                <div class="relative p-8 rounded-3xl bg-gradient-to-b from-white to-[#f8f8f8] flex flex-col transition-all duration-500 ease-out hover:-translate-y-2 shadow-[inset_0_1px_0_rgba(255,255,255,1),inset_0_0_0_1px_rgba(0,0,0,0.04),0_10px_30px_-10px_rgba(0,0,0,0.1)] group">
+                    <div class="flex items-center gap-3 mb-4 border-b border-zinc-200/60 pb-5">
+                        <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center shrink-0 border border-zinc-200/50 group-hover:bg-white group-hover:border-zinc-300 transition-colors">
+                            <iconify-icon icon="solar:pen-linear" class="text-xl text-zinc-500"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg tracking-tight text-zinc-900 font-normal">Пакет 0: Стратегія</h3>
+                    </div>
+                    <p class="text-sm text-zinc-500 font-light mb-6 min-h-[44px]">Глибокий аналіз точки «А», розробка позиціонування та план масштабування.</p>
+                    <div class="mb-8 flex flex-col gap-1">
+                        <div class="text-4xl tracking-tighter text-zinc-900 font-light">$150</div>
+                        <div class="text-sm text-transparent opacity-0 font-light">Спейсер</div>
+                    </div>
+                    <button class="w-full bg-gradient-to-b from-white to-zinc-50 border border-zinc-200 rounded-xl py-3 text-sm font-normal transition-all active:scale-[0.98] text-zinc-700 hover:text-zinc-900 mb-8 shadow-sm">
+                        Обрати пакет
+                    </button>
+                    <div class="h-px w-full mb-6" style="background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent);"></div>
+                    <ul class="space-y-4 flex-1 text-sm font-light text-zinc-600">
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-lg text-zinc-400 shrink-0 mt-0.5"></iconify-icon> 
+                            <span><strong class="text-zinc-900 font-normal">Результат:</strong> Чітка дорожня карта розвитку на 3 місяці.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Plan 1 -->
+                <div class="relative p-8 rounded-3xl bg-gradient-to-b from-white to-[#f8f8f8] flex flex-col transition-all duration-500 ease-out hover:-translate-y-2 shadow-[inset_0_1px_0_rgba(255,255,255,1),inset_0_0_0_1px_rgba(0,0,0,0.04),0_10px_30px_-10px_rgba(0,0,0,0.1)] group">
+                    <div class="flex items-center gap-3 mb-4 border-b border-zinc-200/60 pb-5">
+                        <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center shrink-0 border border-zinc-200/50 group-hover:bg-white group-hover:border-zinc-300 transition-colors">
+                            <iconify-icon icon="solar:rocket-linear" class="text-xl text-zinc-500"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg tracking-tight text-zinc-900 font-normal">Пакет 1: Фундамент</h3>
+                    </div>
+                    <p class="text-sm text-zinc-500 font-light mb-6 min-h-[44px]">Стратегія + посадкова сторінка + бот для видачі безкоштовного матеріалу.</p>
+                    <div class="mb-8 flex flex-col gap-1">
+                        <div class="text-4xl tracking-tighter text-zinc-900 font-light">$495</div>
+                        <div class="text-sm text-zinc-500 font-light">5–7 робочих днів</div>
+                    </div>
+                    <button class="w-full bg-gradient-to-b from-white to-zinc-50 border border-zinc-200 rounded-xl py-3 text-sm font-normal transition-all active:scale-[0.98] text-zinc-700 hover:text-zinc-900 mb-8 shadow-sm">
+                        Обрати пакет
+                    </button>
+                    <div class="h-px w-full mb-6" style="background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent);"></div>
+                    <ul class="space-y-4 flex-1 text-sm font-light text-zinc-600">
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-lg text-zinc-400 shrink-0 mt-0.5"></iconify-icon> 
+                            <span><strong class="text-zinc-900 font-normal">ROI:</strong> Зрозуміла точка входу, збір контактів потенційних клієнтів.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="solar:star-linear" class="text-lg text-orange-400 shrink-0 mt-0.5"></iconify-icon> 
+                            <span><strong class="text-zinc-900 font-normal">Бонус:</strong> 14 днів технічного супроводу.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Plan 2 -->
+                <div class="relative p-8 rounded-3xl bg-gradient-to-b from-white to-[#fff8f4] flex flex-col md:-translate-y-4 transition-all duration-500 ease-out hover:-translate-y-6 shadow-[inset_0_1px_0_rgba(255,255,255,1),inset_0_0_0_1px_rgba(249,115,22,0.3),0_20px_40px_-15px_rgba(234,88,12,0.15)] z-10 border border-transparent">
+                    <div class="absolute top-4 left-4 w-1.5 h-1.5 rounded-full bg-orange-500/50 animate-pulse"></div>
+                    <div class="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-orange-500/50 animate-pulse" style="animation-delay: 0.5s"></div>
+                    
+                    <div class="flex items-center justify-between mb-4 border-b border-orange-200/50 pb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center shrink-0 border border-orange-200">
+                                <iconify-icon icon="solar:crown-linear" class="text-xl text-orange-500"></iconify-icon>
+                            </div>
+                            <h3 class="text-lg tracking-tight text-zinc-900 font-normal">Пакет 2: Генератор</h3>
+                        </div>
+                        <span class="inline-flex items-center gap-1 rounded-md bg-orange-100/80 px-2 py-1 text-[10px] font-normal tracking-wider uppercase text-orange-700 border border-orange-200/60 shadow-sm shrink-0">
+                            Популярний
+                        </span>
+                    </div>
+
+                    <p class="text-sm text-zinc-600 font-light mb-6 min-h-[44px]">Стратегія + комплекс сторінок + бот + автоматичний прийом оплат + повна воронка.</p>
+                    
+                    <div class="mb-8 flex items-baseline gap-2">
+                        <span class="text-xl text-zinc-500 font-light">від</span>
+                        <span class="text-4xl tracking-tighter text-zinc-900 font-light">$990</span>
+                        <span class="text-sm text-zinc-500 font-light ml-1">/ 14 днів</span>
+                    </div>
+
+                    <div class="flex flex-col gap-3 mb-8">
+                        <button class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-b from-orange-400 to-orange-500 text-white rounded-xl py-3.5 px-4 text-sm font-normal transition-all active:scale-[0.98] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_10px_20px_-5px_rgba(234,88,12,0.3),0_0_0_1px_#c2410c]">
+                            <iconify-icon icon="solar:users-group-rounded-linear" class="text-base opacity-90"></iconify-icon>
+                            <span>Обрати пакет</span>
+                        </button>
+                        <button class="w-full inline-flex items-center justify-center gap-2 bg-white/60 border border-orange-200/80 hover:bg-white text-zinc-700 rounded-xl py-3 px-4 text-sm font-normal transition-all active:scale-[0.98] backdrop-blur-sm shadow-sm">
+                            <iconify-icon icon="solar:chat-round-line-linear" class="text-base opacity-70"></iconify-icon>
+                            <span>Обговорити проєкт</span>
+                        </button>
+                    </div>
+
+                    <div class="h-px w-full mb-6" style="background: linear-gradient(90deg, transparent, rgba(249,115,22,0.2), transparent);"></div>
+                    
+                    <ul class="space-y-4 flex-1 text-sm font-light text-zinc-600">
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-lg text-orange-500 shrink-0 mt-0.5"></iconify-icon> 
+                            <span><strong class="text-zinc-900 font-normal">ROI:</strong> Пасивний дохід. Система окупається з 2-3 продажів.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <iconify-icon icon="solar:star-linear" class="text-lg text-orange-500 shrink-0 mt-0.5"></iconify-icon> 
+                            <span><strong class="text-zinc-900 font-normal">Бонус:</strong> 14 днів технічного супроводу.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bonus Banner -->
+            <div class="max-w-6xl mx-auto mt-12 z-10 relative">
+                <div class="bg-gradient-to-r from-orange-50 to-white border border-orange-200 shadow-[0_4px_20px_-10px_rgba(249,115,22,0.15)] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-5 justify-between relative overflow-hidden group hover:border-orange-300 transition-colors">
+                    <div class="flex items-center gap-5 relative z-10">
+                        <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-orange-500 shrink-0 border border-orange-200 group-hover:scale-105 transition-transform">
+                            <iconify-icon icon="solar:gift-linear" class="text-3xl"></iconify-icon>
+                        </div>
+                        <div>
+                            <h4 class="text-zinc-900 text-lg font-normal tracking-tight mb-1">🎁 Бонус до 8 квітня</h4>
+                            <p class="text-sm text-zinc-600 font-light leading-relaxed">При замовленні Пакету 1 або 2 — стратегічна сесія (Пакет 0, вартістю $150) у подарунок.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 5: Калькулятор (НОВИЙ БЛОК) -->
+    <section class="bg-white text-zinc-900 py-24 relative overflow-hidden w-full border-t border-zinc-200/60">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <!-- Header Text and Maintenance Costs -->
+            <div class="mb-14 max-w-3xl">
+                <h5 class="text-orange-500 font-normal mb-4 tracking-widest text-xs uppercase bg-orange-50 inline-flex px-3 py-1 rounded-full border border-orange-100 shadow-sm">Прогноз</h5>
+                <h2 class="text-3xl lg:text-4xl font-medium tracking-tight text-zinc-900 leading-tight mb-8">Розрахунок окупності</h2>
+                
+                <div class="bg-zinc-50 border border-zinc-200 rounded-[20px] p-6 sm:p-8 relative overflow-hidden shadow-sm">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-orange-400"></div>
+                    <h3 class="text-xs font-normal text-zinc-500 uppercase tracking-widest mb-5">Вартість утримання</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white border border-zinc-200 flex items-center justify-center text-orange-500 shrink-0 shadow-sm">
+                                <iconify-icon icon="solar:server-square-linear" class="text-lg"></iconify-icon>
+                            </div>
+                            <span class="text-base font-light text-zinc-600 mt-1 leading-relaxed"><strong class="font-normal text-zinc-900">Сервіси:</strong> Оплата платформ (бот, конструктор, домен) — від $30 до $60/міс.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white border border-zinc-200 flex items-center justify-center text-orange-500 shrink-0 shadow-sm">
+                                <iconify-icon icon="solar:user-hands-linear" class="text-lg"></iconify-icon>
+                            </div>
+                            <span class="text-base font-light text-zinc-600 mt-1 leading-relaxed"><strong class="font-normal text-zinc-900">Технічна опора:</strong> $150/міс (Пакет 1) або $250/міс (Пакет 2) — це вартість одного продажу твого продукту.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Calculator Area -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                <!-- Left: Inputs -->
+                <div class="lg:col-span-5 bg-[#FAFAFA] border border-zinc-200 p-6 sm:p-8 rounded-[2rem] shadow-sm flex flex-col gap-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <label class="text-sm font-medium text-zinc-900">Твоя ніша</label>
+                        </div>
+                        <div class="relative">
+                            <select id="calc-niche" class="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3.5 text-sm font-light text-zinc-900 appearance-none outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition-shadow cursor-pointer shadow-sm">
+                                <option value="coaching">Коучинг / Психологія</option>
+                                <option value="fitness">Фітнес / Здоров'я</option>
+                                <option value="education">Освіта / Курси</option>
+                                <option value="beauty">Б'юті / Послуги</option>
+                                <option value="handmade">Хендмейд / Товари</option>
+                                <option value="consulting">Консалтинг / B2B</option>
+                                <option value="other">Інше</option>
+                            </select>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none text-lg"></iconify-icon>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="text-sm font-medium text-zinc-900">Підписників в Insta/TG</label>
+                            <span id="calc-followers-val" class="text-sm font-medium text-orange-500 bg-orange-50 px-2.5 py-1 rounded-md border border-orange-100">5000</span>
+                        </div>
+                        <input type="range" id="calc-followers" min="500" max="100000" step="500" value="5000" class="mt-2">
+                        <div class="flex justify-between mt-2 text-[10px] text-zinc-400 uppercase tracking-widest">
+                            <span>500</span>
+                            <span>100K+</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="text-sm font-medium text-zinc-900">Повідомлень в Direct (міс)</label>
+                            <span id="calc-messages-val" class="text-sm font-medium text-orange-500 bg-orange-50 px-2.5 py-1 rounded-md border border-orange-100">100</span>
+                        </div>
+                        <input type="range" id="calc-messages" min="10" max="2000" step="10" value="100" class="mt-2">
+                        <div class="flex justify-between mt-2 text-[10px] text-zinc-400 uppercase tracking-widest">
+                            <span>10</span>
+                            <span>2000+</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <label class="text-sm font-medium text-zinc-900">Бажаний дохід ($)</label>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400">$</span>
+                            <input type="number" id="calc-income" value="2000" min="100" max="50000" class="w-full bg-white border border-zinc-200 rounded-xl pl-8 pr-4 py-3.5 text-sm font-normal text-zinc-900 outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition-shadow shadow-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Results -->
+                <div class="lg:col-span-7 bg-white border border-zinc-200 p-6 sm:p-8 rounded-[2rem] shadow-sm flex flex-col">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                        <div>
+                            <h3 class="text-xs font-normal text-zinc-500 uppercase tracking-widest mb-1">Прогнозований дохід</h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-4xl sm:text-5xl tracking-tighter text-zinc-900 font-light" id="res-total-income">$0</span>
+                                <span class="text-sm text-zinc-400 font-light">/ міс</span>
+                            </div>
+                        </div>
+                        <div class="inline-flex flex-col items-end gap-1 text-right">
+                            <span class="text-xs font-normal text-zinc-400 uppercase tracking-widest">Рекомендований пакет</span>
+                            <div class="inline-flex items-center gap-1.5 rounded-full bg-orange-50 border border-orange-200/60 px-3 py-1.5 shadow-sm">
+                                <iconify-icon icon="solar:star-linear" class="text-orange-500"></iconify-icon>
+                                <span class="text-sm text-orange-700 font-medium" id="res-package">Пакет 1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 flex-grow">
+                        <!-- Flagship Info -->
+                        <div class="bg-[#FAFAFA] border border-zinc-200 rounded-2xl p-5 flex flex-col justify-between">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-500 border border-zinc-200">
+                                    <iconify-icon icon="solar:case-round-linear" class="text-base"></iconify-icon>
+                                </div>
+                                <span class="text-sm font-medium text-zinc-900">Основний продукт</span>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-end mb-1">
+                                    <span class="text-xs text-zinc-500 font-light tracking-wide uppercase">Ціна</span>
+                                    <span class="text-lg font-medium text-zinc-900 tracking-tight" id="res-flag-price">$0</span>
+                                </div>
+                                <div class="h-px w-full bg-zinc-200 my-2"></div>
+                                <div class="flex justify-between items-end">
+                                    <span class="text-xs text-zinc-500 font-light tracking-wide uppercase">Продажів</span>
+                                    <span class="text-base font-normal text-zinc-900" id="res-flag-sales">0 / міс</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tripwire Info (Dynamic) -->
+                        <div id="tripwire-card" class="bg-orange-50/50 border border-orange-100 rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden transition-opacity">
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-orange-100/50 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                            <div class="flex items-center gap-3 mb-4 relative z-10">
+                                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-500 border border-orange-200">
+                                    <iconify-icon icon="solar:bolt-linear" class="text-base"></iconify-icon>
+                                </div>
+                                <span class="text-sm font-medium text-zinc-900">Стартер (Tripwire)</span>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="flex justify-between items-end mb-1">
+                                    <span class="text-xs text-zinc-500 font-light tracking-wide uppercase">Ціна</span>
+                                    <span class="text-lg font-medium text-zinc-900 tracking-tight" id="res-trip-price">$0</span>
+                                </div>
+                                <div class="h-px w-full bg-orange-200/50 my-2"></div>
+                                <div class="flex justify-between items-end">
+                                    <span class="text-xs text-zinc-500 font-light tracking-wide uppercase">Продажів</span>
+                                    <span class="text-base font-normal text-zinc-900" id="res-trip-sales">0 / міс</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insights & Suggestions -->
+                    <div class="bg-zinc-900 rounded-2xl p-5 sm:p-6 text-white relative overflow-hidden shadow-lg mt-auto">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+                        <div class="flex items-start gap-4 relative z-10">
+                            <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-orange-400 shrink-0 mt-1">
+                                <iconify-icon icon="solar:info-circle-linear" class="text-xl"></iconify-icon>
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <p class="text-sm text-white/90 font-light leading-relaxed" id="res-suggestion">З твоїми повідомленнями досяжно...</p>
+                                <div class="h-px w-full bg-white/10"></div>
+                                <p class="text-xs text-zinc-400 font-light leading-relaxed" id="res-growth-tip">Порада по зростанню...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JS For Typewriter and Interactive Blocks -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typewriter logic for Block 4
+            const phrases = ["формат роботи", "шлях до масштабу", "рівень системи"];
+            let pIdx = 0, cIdx = 0, isDeleting = false;
+            const tw = document.getElementById('pricing-typewriter');
+            
+            function type() {
+                const current = phrases[pIdx];
+                tw.textContent = isDeleting ? current.substring(0, cIdx - 1) : current.substring(0, cIdx + 1);
+                cIdx = isDeleting ? cIdx - 1 : cIdx + 1;
+                let speed = isDeleting ? 40 : 80;
+                
+                if (!isDeleting && cIdx === current.length) { 
+                    speed = 2500; 
+                    isDeleting = true; 
+                } else if (isDeleting && cIdx === 0) { 
+                    isDeleting = false; 
+                    pIdx = (pIdx + 1) % phrases.length; 
+                    speed = 500; 
+                }
+                setTimeout(type, speed);
+            }
+            
+            if(tw) {
+                type();
+            }
+
+            const dots = document.querySelectorAll('.pricing-dot-light');
+            let dotIdx = 0;
+            if(dots.length > 0) {
+                setInterval(() => {
+                    dots.forEach(d => { 
+                        d.style.opacity = '0.2'; 
+                        d.style.boxShadow = 'none'; 
+                    });
+                    if(dots[dotIdx]) { 
+                        dots[dotIdx].style.opacity = '0.8'; 
+                        dots[dotIdx].style.boxShadow = '0 0 6px rgba(249,115,22,0.5)'; 
+                    }
+                    if(dots[5 - dotIdx]) { 
+                        dots[5 - dotIdx].style.opacity = '0.8'; 
+                        dots[5 - dotIdx].style.boxShadow = '0 0 6px rgba(249,115,22,0.5)'; 
+                    }
+                    dotIdx = (dotIdx + 1) % 3;
+                }, 300);
+            }
+
+            // --- CALCULATOR LOGIC ---
+            const nicheData = {
+                coaching: { dmToSaleRate: 0.15, tripwireToFlagship: 0.25, suggestedTripwire: 37, suggestedFlagship: 297, insight: "Instagram Direct: 90% відкривають, 15% купують." },
+                fitness: { dmToSaleRate: 0.18, tripwireToFlagship: 0.28, suggestedTripwire: 27, suggestedFlagship: 197, insight: "Фітнес-ніша: 60% відповідають на DM. Візуальні результати підвищують конверсію до 18%." },
+                education: { dmToSaleRate: 0.12, tripwireToFlagship: 0.22, suggestedTripwire: 27, suggestedFlagship: 247, insight: "Освітні продукти: 12% конверсія через Instagram + Telegram воронку." },
+                beauty: { dmToSaleRate: 0.14, tripwireToFlagship: 0.20, suggestedTripwire: 17, suggestedFlagship: 147, insight: "76% клієнтів знаходять б'юті-майстрів через Instagram. 61% бронюють через Direct." },
+                handmade: { dmToSaleRate: 0.10, tripwireToFlagship: 0.18, suggestedTripwire: 15, suggestedFlagship: 97, insight: "Персоналізовані товари: 10% конверсія. Воронки підвищують довіру." },
+                consulting: { dmToSaleRate: 0.12, tripwireToFlagship: 0.30, suggestedTripwire: 47, suggestedFlagship: 497, insight: "Експерти: 12% конверсія. Після tripwire-аудиту 30% купують повний пакет." },
+                other: { dmToSaleRate: 0.10, tripwireToFlagship: 0.20, suggestedTripwire: 27, suggestedFlagship: 197, insight: "Telegram воронки: 80%+ відкривають, 10% конверсія після оптимізації." },
+            };
+
+            const inNiche = document.getElementById('calc-niche');
+            const inFollowers = document.getElementById('calc-followers');
+            const inFollowersVal = document.getElementById('calc-followers-val');
+            const inMessages = document.getElementById('calc-messages');
+            const inMessagesVal = document.getElementById('calc-messages-val');
+            const inIncome = document.getElementById('calc-income');
+
+            const outIncome = document.getElementById('res-total-income');
+            const outPackage = document.getElementById('res-package');
+            const outFlagPrice = document.getElementById('res-flag-price');
+            const outFlagSales = document.getElementById('res-flag-sales');
+            const outTripPrice = document.getElementById('res-trip-price');
+            const outTripSales = document.getElementById('res-trip-sales');
+            const tripwireCard = document.getElementById('tripwire-card');
+            const outSuggestion = document.getElementById('res-suggestion');
+            const outGrowthTip = document.getElementById('res-growth-tip');
+
+            function formatNum(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            function updateCalculator() {
+                const niche = inNiche.value;
+                const followers = parseInt(inFollowers.value);
+                const messages = parseInt(inMessages.value);
+                const desiredIncome = parseInt(inIncome.value) || 0;
+
+                inFollowersVal.textContent = formatNum(followers);
+                inMessagesVal.textContent = formatNum(messages);
+
+                const data = nicheData[niche];
+                const warmLeads = Math.round(messages * 0.7);
+                const flagshipOnlySales = Math.max(1, Math.round(warmLeads * data.dmToSaleRate));
+                const tripwireSales = Math.max(1, Math.round(warmLeads * data.dmToSaleRate));
+                const flagshipFromTripwire = Math.max(1, Math.round(tripwireSales * data.tripwireToFlagship));
+
+                const package1Income = flagshipOnlySales * data.suggestedFlagship;
+                const package2Income = (tripwireSales * data.suggestedTripwire) + (flagshipFromTripwire * data.suggestedFlagship);
+
+                let recommendedPackage;
+                let tripwirePrice = data.suggestedTripwire;
+                let flagshipPrice = data.suggestedFlagship;
+                let finalTripwireSales = tripwireSales;
+                let finalFlagshipSales = flagshipOnlySales;
+                let expectedIncome;
+
+                if (desiredIncome <= package1Income * 1.1) {
+                    recommendedPackage = 1;
+                    flagshipPrice = Math.max(100, Math.min(1000, Math.round(desiredIncome / flagshipOnlySales)));
+                    finalFlagshipSales = flagshipOnlySales;
+                    expectedIncome = finalFlagshipSales * flagshipPrice;
+                } else {
+                    recommendedPackage = 2;
+                    finalTripwireSales = tripwireSales;
+                    finalFlagshipSales = flagshipFromTripwire;
+                    tripwirePrice = Math.max(10, Math.min(50, Math.round((desiredIncome * 0.25) / finalTripwireSales)));
+                    flagshipPrice = Math.max(200, Math.min(1000, Math.round((desiredIncome * 0.75) / finalFlagshipSales)));
+                    expectedIncome = (finalTripwireSales * tripwirePrice) + (finalFlagshipSales * flagshipPrice);
+                }
+
+                const gap = Math.max(0, desiredIncome - expectedIncome);
+                const currentEngagementRate = (messages / followers) * 100;
+                let neededMessages = messages;
+                let suggestion = "";
+                let growthTip = "";
+
+                if (gap > 0) {
+                    const incomePerMessage = expectedIncome / messages;
+                    neededMessages = Math.ceil(desiredIncome / incomePerMessage);
+                    suggestion = `З поточним трафіком досяжно ~$${formatNum(expectedIncome)}/міс. Для цілі $${formatNum(desiredIncome)} потрібно ~${formatNum(neededMessages)} повідомлень.`;
+
+                    if (currentEngagementRate < 1.0) {
+                        const potentialMessages = Math.round(followers * 0.01);
+                        growthTip = `Зараз пишуть ${currentEngagementRate.toFixed(1)}% підписників. Збільш активність до 1% — отримаєш ~${formatNum(potentialMessages)} повідомлень.`;
+                    } else {
+                        const followersNeeded = Math.ceil(neededMessages / (currentEngagementRate / 100));
+                        growthTip = `Аудиторія активна (${currentEngagementRate.toFixed(1)}%). Для потрібних повідомлень потрібно ~${formatNum(followersNeeded)} підписників.`;
+                    }
+                } else {
+                    suggestion = `Ціль $${formatNum(desiredIncome)}/міс легко досяжна з поточним трафіком!`;
+                    growthTip = data.insight;
+                }
+
+                // Render Results
+                outIncome.textContent = `$${formatNum(expectedIncome)}`;
+                outPackage.textContent = `Пакет ${recommendedPackage}`;
+                outFlagPrice.textContent = `$${flagshipPrice}`;
+                outFlagSales.textContent = `${finalFlagshipSales} / міс`;
+
+                if (recommendedPackage === 2) {
+                    tripwireCard.style.opacity = '1';
+                    outTripPrice.textContent = `$${tripwirePrice}`;
+                    outTripSales.textContent = `${finalTripwireSales} / міс`;
+                } else {
+                    tripwireCard.style.opacity = '0.4';
+                    outTripPrice.textContent = `-`;
+                    outTripSales.textContent = `не потр.`;
+                }
+
+                outSuggestion.textContent = suggestion;
+                outGrowthTip.textContent = growthTip;
+            }
+
+            // Attach Listeners
+            [inNiche, inFollowers, inMessages, inIncome].forEach(el => {
+                el.addEventListener('input', updateCalculator);
+            });
+
+            // Initial calc
+            updateCalculator();
+        });
+    </script>
+
+    <!-- Logic Script for the Interactive Section (Block 1) -->
+    <script>
+        let currentMode = 'auto';
+        let currentScenario = 'message';
+
+        function setMode(mode) {
+            currentMode = mode;
+            updateUI();
+        }
+
+        function setScenario(scenario) {
+            currentScenario = scenario;
+            updateUI();
+        }
+
+        function updateUI() {
+            const btnManual = document.getElementById('btn-manual');
+            const btnAuto = document.getElementById('btn-auto');
+            
+            if (currentMode === 'manual') {
+                btnManual.className = "px-5 py-2 rounded-full text-xs font-normal text-white bg-white/20 shadow-sm transition-all duration-300";
+                btnAuto.className = "px-5 py-2 rounded-full text-xs font-normal text-white/60 hover:text-white transition-all duration-300";
+            } else {
+                btnManual.className = "px-5 py-2 rounded-full text-xs font-normal text-white/60 hover:text-white transition-all duration-300";
+                btnAuto.className = "px-5 py-2 rounded-full text-xs font-normal text-white bg-white/20 shadow-sm transition-all duration-300";
+            }
+
+            const tabs = ['message', 'response', 'payment'];
+            tabs.forEach(tab => {
+                const btn = document.getElementById(`tab-${tab}`);
+                if (tab === currentScenario) {
+                    btn.className = "dark-glass bg-white/10 border-white/20 text-white flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-300";
+                } else {
+                    btn.className = "dark-glass border-transparent text-white/50 hover:text-white/80 flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-300";
+                }
+            });
+
+            const views = [
+                'auto-message', 'auto-response', 'auto-payment',
+                'manual-message', 'manual-response', 'manual-payment'
+            ];
+            
+            views.forEach(view => {
+                const el = document.getElementById(`view-${view}`);
+                if (view === `${currentMode}-${currentScenario}`) {
+                    el.classList.remove('hidden');
+                    el.classList.remove('fade-in');
+                    void el.offsetWidth;
+                    el.classList.add('fade-in');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+
+</body></html>
