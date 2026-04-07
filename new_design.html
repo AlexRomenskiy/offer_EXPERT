@@ -1,0 +1,603 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenLabs - Learning Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Light mode curve separators */
+        .curve-separator {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='60' viewBox='0 0 20 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 1C18 1 1 15 1 30C1 45 18 59 18 59' stroke='%23e2e8f0' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 20px;
+            height: 40px;
+        }
+        
+        /* Light Glass effects */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        
+        /* Border gradient mask */
+        [style*="--border-gradient"]::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: var(--border-radius-before, inherit);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            background: var(--border-gradient);
+            pointer-events: none;
+        }
+
+        /* Animations */
+        .animate-on-scroll { opacity: 0; }
+        .animate { animation-fill-mode: both; }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 3D Perspective */
+        .perspective-1000 { perspective: 1000px; }
+
+        /* Light Theme Active Step */
+        .step-item { transition: all 0.3s ease; }
+        .step-item.active {
+            background-color: rgba(0, 0, 0, 0.02);
+            transform: translateX(-10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {}
+            }
+        };
+
+        // Light Theme Stack Script
+        function activateStep(step) {
+            // Reset all steps
+            document.querySelectorAll('.step-item').forEach((el) => {
+                el.classList.remove('active');
+                el.style.transform = 'translateX(0)';
+                el.style.backgroundColor = 'transparent';
+                el.style.borderColor = 'transparent';
+                
+                const icon = el.querySelector('.step-icon');
+                icon.style.opacity = '0';
+                icon.style.color = '#94a3b8'; // slate-400
+                icon.classList.replace('opacity-100', 'opacity-0');
+                
+                const badge = el.querySelector('.step-badge');
+                badge.style.backgroundColor = 'transparent';
+                badge.style.color = '#94a3b8'; // slate-400
+                
+                const text = el.querySelector('.step-text');
+                text.style.color = '#64748b'; // slate-500
+            });
+
+            // Activate clicked step
+            const activeEl = document.getElementById('step-' + step);
+            activeEl.classList.add('active');
+            activeEl.style.borderColor = 'rgba(0, 0, 0, 0.05)';
+
+            const activeIcon = activeEl.querySelector('.step-icon');
+            activeIcon.style.opacity = '1';
+            activeIcon.style.color = '#f97316';
+            activeIcon.classList.replace('opacity-0', 'opacity-100');
+
+            const activeBadge = activeEl.querySelector('.step-badge');
+            activeBadge.style.backgroundColor = '#f97316';
+            activeBadge.style.color = '#fff';
+
+            const activeText = activeEl.querySelector('.step-text');
+            activeText.style.color = '#0f172a'; // slate-900
+
+            // Animate card stack
+            const cards = [document.getElementById('card-1'), document.getElementById('card-2'), document.getElementById('card-3')];
+            cards.forEach((card, index) => {
+                 if(index === step - 1) {
+                     card.style.transform = 'translateY(0px) scale(1)';
+                     card.style.zIndex = '30';
+                     card.style.opacity = '1';
+                 } else if (index > step - 1) {
+                     card.style.transform = `translateY(${(index - step + 1) * 12}px) scale(${1 - (index - step + 1) * 0.05})`;
+                     card.style.zIndex = `${30 - (index - step + 1) * 10}`;
+                     card.style.opacity = `${1 - (index - step + 1) * 0.1}`;
+                 } else {
+                     card.style.transform = `translateY(24px) scale(0.9)`;
+                     card.style.zIndex = '10';
+                     card.style.opacity = '0';
+                 }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            activateStep(1);
+        });
+    </script>
+
+<style id="border-gradient-shared-style">
+  [style*="--border-gradient"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: var(--border-radius-before, inherit);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    background: var(--border-gradient);
+    pointer-events: none;
+  }</style></head>
+<body class="flex justify-center items-center min-h-screen bg-slate-50 selection:bg-orange-500/20 xl:p-8 text-slate-600 px-0 py-0 relative overflow-x-hidden">
+    
+    <!-- Light Mesh Background -->
+    <div class="absolute inset-0 z-0 opacity-60 pointer-events-none" style="background-image: radial-gradient(circle at 50% 0%, #cbd5e1 0%, transparent 70%);"></div>
+
+    <!-- Main Frame Container -->
+    <main class="glass-panel overflow-hidden flex flex-col xl:max-w-[1300px] xl:border-slate-200 border-none xl:border xl:rounded-[2.5rem] md:p-10 xl:p-12 xl:shadow-2xl shadow-slate-200/50 min-h-screen xl:min-h-[700px] w-full z-10 rounded-none pt-6 pr-6 pb-6 pl-6 relative">
+
+        <!-- Vertical Grid Lines (Light) -->
+        <div class="absolute inset-0 flex justify-between pointer-events-none z-0 px-6 md:px-10 xl:px-12 w-full h-full">
+            <div class="h-full w-[1px] bg-black/[0.03]"></div>
+            <div class="h-full w-[1px] bg-black/[0.03] hidden md:block"></div>
+            <div class="h-full w-[1px] bg-black/[0.03] hidden lg:block"></div>
+            <div class="h-full w-[1px] bg-black/[0.03] hidden xl:block"></div>
+            <div class="h-full w-[1px] bg-black/[0.03]"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="flex md:mb-16 md:gap-0 z-10 mb-16 relative gap-x-6 gap-y-6 items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 text-slate-900">
+                <div class="flex text-slate-900 bg-gradient-to-b from-black/5 to-transparent w-8 h-8 rounded-full items-center justify-center" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)); --border-radius-before: 9999px">
+                    <iconify-icon icon="solar:layers-linear" width="16" height="16" stroke-width="1.5"></iconify-icon>
+                </div>
+                <span class="text-lg font-medium tracking-tight">GEN<span class="text-slate-400">LABS</span></span>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="hidden md:flex uppercase text-xs font-medium text-slate-500 tracking-widest bg-white/60 border-slate-200 border rounded-full py-2 px-6 shadow-sm backdrop-blur-md gap-x-8 items-center">
+                <a href="#" class="hover:text-slate-900 transition-colors duration-300">Curriculum</a>
+                <a href="#" class="hover:text-slate-900 transition-colors duration-300">Pricing</a>
+                <a href="#" class="hover:text-slate-900 transition-colors duration-300">Mentors</a>
+                <a href="#" class="hover:text-slate-900 transition-colors duration-300 hidden lg:block">Community</a>
+            </nav>
+
+            <!-- CTA -->
+            <a href="#" class="flex items-center gap-2 group hover:bg-black/5 text-xs font-medium text-slate-900 tracking-wide bg-gradient-to-b from-black/[0.02] to-transparent rounded-lg py-2.5 px-5 border border-slate-200 shadow-sm" style="position: relative;">
+                <span class="text-[11px] uppercase font-medium text-slate-600 group-hover:text-slate-900 transition-colors tracking-tight">Join waitlist</span>
+                <iconify-icon icon="solar:arrow-right-linear" width="14" height="14" stroke-width="1.5" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+            </a>
+        </header>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 h-full flex-grow relative z-10 pb-8 lg:pb-0">
+
+            <!-- Left Column: Text Content -->
+            <div class="lg:col-span-7 flex flex-col pt-4 relative justify-center">
+
+                <!-- Social Proof Pill -->
+                <div class="inline-flex bg-white border border-slate-200 w-max rounded-full mb-8 p-1.5 shadow-sm items-center">
+                    <div class="flex -space-x-2 mr-3">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="User" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                        <img src="https://i.pravatar.cc/100?img=2" alt="User" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                        <img src="https://i.pravatar.cc/100?img=3" alt="User" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-100 text-slate-700 flex items-center justify-center text-[9px] font-semibold tracking-tighter">
+                            2k+
+                        </div>
+                    </div>
+                    <span class="text-xs font-medium text-slate-500 tracking-wide pr-3">
+                        <span class="text-slate-900">New Cohort</span> starts in 3 days
+                    </span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="leading-[0.95] lg:text-[5rem] text-5xl font-normal text-slate-900 tracking-tight mb-8 animate-on-scroll [animation:fadeSlideIn_1s_cubic-bezier(0.2,0.8,0.2,1)_0.2s_both] animate">
+                    Web3 Finance
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-600 font-light">Mastery Lab</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-sm text-slate-500 font-normal max-w-md mb-10 leading-relaxed tracking-wide border-l-2 border-slate-200 pl-6 animate-on-scroll [animation:fadeSlideIn_1s_cubic-bezier(0.2,0.8,0.2,1)_0.35s_both] animate">
+                    Unlock the potential of decentralized markets. A comprehensive curriculum designed meticulously for the
+                    next generation of digital asset investors.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 lg:mb-24 mb-16 animate-on-scroll [animation:fadeSlideIn_1s_cubic-bezier(0.2,0.8,0.2,1)_0.5s_both] animate">
+                    <button class="hover:bg-slate-900 transition-all flex group shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 text-sm font-medium text-slate-900 rounded-full py-3 px-6 shadow-md gap-3 items-center justify-between" style="background: radial-gradient(circle at 10% 0%, #fed7aa 0%, #fb923c 100%); box-shadow: 0 10px 20px -10px rgba(248, 113, 22, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.5)">
+                        <span class="text-sm font-medium tracking-tight bg-gradient-to-l from-black/100 to-black/50 xl:bg-clip-text xl:text-transparent">Start free trial</span>
+                        <span class="flex items-center justify-center rounded-full bg-black/10 text-white px-3 py-1">
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="16" height="16" stroke-width="1.5" class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
+                        </span>
+                    </button>
+                    <button class="hover:bg-slate-50 hover:text-slate-900 transition-all flex text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-full py-3 px-6 shadow-sm gap-2 items-center">
+                        <span class="text-sm font-medium tracking-tight">Demo Lesson</span>
+                        <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" stroke-width="1.5"></iconify-icon>
+                    </button>
+                </div>
+
+                <!-- Footer Stats with Curved Lines -->
+                <div class="flex flex-wrap gap-2 md:gap-6 mt-auto items-center animate-on-scroll [animation:fadeSlideIn_1s_cubic-bezier(0.2,0.8,0.2,1)_0.6s_both] animate">
+                    <div class="flex items-center group cursor-default">
+                        <div class="px-1 text-center">
+                            <p class="text-[10px] font-medium text-slate-400 uppercase tracking-widest mb-1 group-hover:text-slate-500 transition-colors">Duration</p>
+                            <p class="text-sm text-slate-900 font-medium">8 weeks</p>
+                        </div>
+                        <div class="curve-separator ml-4 md:ml-8"></div>
+                    </div>
+                    <div class="flex items-center group cursor-default">
+                        <div class="px-1 text-center">
+                            <p class="text-[10px] font-medium text-slate-400 uppercase tracking-widest mb-1 group-hover:text-slate-500 transition-colors">Level</p>
+                            <p class="text-sm text-slate-900 font-medium">Intermediate</p>
+                        </div>
+                        <div class="curve-separator md:ml-8 ml-4"></div>
+                    </div>
+                    <div class="flex items-center group cursor-default">
+                        <div class="px-1 text-center">
+                            <p class="text-[10px] font-medium text-slate-400 uppercase tracking-widest mb-1 group-hover:text-slate-500 transition-colors">Format</p>
+                            <p class="text-sm text-slate-900 font-medium">Hybrid</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Stack & Steps -->
+            <div class="lg:col-span-5 flex flex-col items-center lg:items-end lg:pt-16 h-full pt-10 lg:pr-6 justify-center w-full">
+                
+                <!-- Stacked Cards Preview -->
+                <div class="relative mb-12 w-full max-w-[280px] sm:max-w-[320px] aspect-[4/3] group perspective-1000 animate-on-scroll [animation:fadeSlideIn_1.2s_cubic-bezier(0.2,0.8,0.2,1)_0.4s_both] animate">
+                    <div class="absolute -inset-8 bg-orange-500/10 blur-3xl -z-10 opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
+
+                    <!-- Card Stack Container -->
+                    <div class="relative w-full h-full">
+                        <!-- Card 3 (Bottom) -->
+                        <div id="card-3" class="absolute inset-0 rounded-2xl overflow-hidden shadow-xl origin-bottom bg-white border border-slate-200 transition-all duration-500" style="transform: translateY(24px) scale(0.9); z-index: 10; opacity: 0.4;">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="w-full h-full object-cover opacity-60 mix-blend-multiply" alt="Export">
+                            <div class="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent"></div>
+                            <div class="absolute top-4 right-4 px-2 py-1 bg-orange-50 border border-orange-200 text-orange-500 text-[10px] font-semibold rounded uppercase tracking-wider">Live</div>
+                        </div>
+
+                        <!-- Card 2 (Middle) -->
+                        <div id="card-2" class="absolute inset-0 rounded-2xl overflow-hidden shadow-xl origin-bottom bg-white border border-slate-200 transition-all duration-500" style="transform: translateY(12px) scale(0.95); z-index: 20; opacity: 0.6;">
+                            <img src="https://images.unsplash.com/photo-1642104704074-907c0698cbd9?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-40 mix-blend-multiply" alt="Processing">
+                            <div class="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 flex items-center gap-2">
+                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.4)]"></div>
+                                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Validating...</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 1 (Top - Active) -->
+                        <div id="card-1" class="absolute inset-0 rounded-2xl overflow-hidden shadow-xl origin-bottom bg-white border border-slate-200 transition-all duration-500" style="transform: translateY(0px) scale(1); z-index: 30; opacity: 1;">
+                            <img src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-30 mix-blend-multiply" alt="Import">
+                            <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-white/50 to-transparent"></div>
+                            <div class="flex absolute top-0 right-0 bottom-0 left-0 items-center justify-center">
+                                <div class="flex transition-transform hover:scale-110 bg-white/80 w-14 h-14 rounded-full shadow-lg backdrop-blur-md items-center justify-center border border-slate-200">
+                                    <iconify-icon icon="solar:wallet-linear" class="text-slate-700" width="24" height="24" stroke-width="1.5"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Steps -->
+                <div class="flex flex-col gap-3 w-full max-w-[320px]">
+                    <div onclick="activateStep(1)" class="step-item flex cursor-pointer rounded-xl p-3 items-center border border-transparent hover:bg-black/[0.02] active" id="step-1" style=" background-color: transparent; border-color: rgba(0, 0, 0, 0.05);">
+                        <div class="step-badge w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium transition-colors duration-300" style="background-color: rgb(249, 115, 22); color: rgb(255, 255, 255);">01</div>
+                        <span class="step-text text-sm font-medium transition-colors duration-300 ml-4" style="color: rgb(15, 23, 42);">Connect Wallet</span>
+                        <iconify-icon icon="solar:wallet-money-linear" width="16" height="16" stroke-width="1.5" class="step-icon transition-all duration-300 ml-auto" style=" color: rgb(249, 115, 22);"></iconify-icon>
+                    </div>
+
+                    <div onclick="activateStep(2)" class="step-item flex cursor-pointer rounded-xl p-3 items-center border border-transparent hover:bg-black/[0.02] group" id="step-2" style=" background-color: transparent; border-color: transparent;">
+                        <div class="step-badge w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium transition-colors duration-300" style="background-color: transparent; color: rgb(148, 163, 184);">02</div>
+                        <span class="step-text text-sm font-medium transition-colors duration-300 ml-4 group-hover:text-slate-900" style="color: rgb(100, 116, 139);">Analyze Yield</span>
+                        <iconify-icon icon="solar:chart-square-linear" width="16" height="16" stroke-width="1.5" class="step-icon transition-all duration-300 ml-auto opacity-0 group-hover:opacity-50 text-slate-400" style=" color: rgb(148, 163, 184);"></iconify-icon>
+                    </div>
+
+                    <div id="step-3" onclick="activateStep(3)" class="step-item flex cursor-pointer rounded-xl p-3 items-center border border-transparent hover:bg-black/[0.02] group" style=" background-color: transparent; border-color: transparent;">
+                        <div class="step-badge w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium transition-colors duration-300" style="background-color: transparent; color: rgb(148, 163, 184);">03</div>
+                        <span class="step-text text-sm font-medium transition-colors duration-300 ml-4 group-hover:text-slate-900" style="color: rgb(100, 116, 139);">Deploy Capital</span>
+                        <iconify-icon icon="solar:rocket-linear" width="16" height="16" stroke-width="1.5" class="step-icon transition-all duration-300 ml-auto opacity-0 group-hover:opacity-50 text-slate-400" style=" color: rgb(148, 163, 184);"></iconify-icon>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bridging Section (Orange Card + Text) -->
+        <div class="mt-16 lg:mt-24 mb-8 lg:mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end relative z-10">
+                <!-- Orange Card -->
+                <div class="col-span-1 lg:col-span-4 relative group animate-on-scroll [animation:fadeSlideIn_1s_cubic-bezier(0.2,0.8,0.2,1)_0.2s_both] animate">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-orange-400 to-amber-400 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="flex flex-col min-h-[180px] transition-transform hover:-translate-y-1 duration-300 text-black bg-gradient-to-b from-orange-300 to-orange-400 rounded-xl p-8 relative shadow-lg justify-between" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0)); --border-radius-before: 12px">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex -space-x-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-orange-300 opacity-90" src="https://i.pravatar.cc/100?img=12" alt="User">
+                                <img class="w-8 h-8 rounded-full border-2 border-orange-300 opacity-90" src="https://i.pravatar.cc/100?img=32" alt="User">
+                                <div class="w-8 h-8 rounded-full border-2 border-orange-300 bg-white text-orange-600 flex items-center justify-center text-[10px] font-semibold">+2k</div>
+                            </div>
+                            <iconify-icon icon="solar:quote-right-linear" width="24" height="24" stroke-width="1.5" class="text-black/30"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="text-lg font-medium leading-snug tracking-tight max-w-[90%]">
+                                "GenLabs changed my entire workflow."
+                            </p>
+                            <div class="mt-4 pt-4 border-t border-black/10 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest opacity-80">
+                                <span>Verified Architect</span>
+                                <span class="w-1 h-1 bg-black rounded-full"></span>
+                                <span>5.0 Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden lg:block col-span-2"></div>
+
+                <!-- Right Text -->
+                <div class="col-span-1 lg:col-span-6 flex flex-col justify-end text-left lg:pb-4">
+                    <div class="flex items-center gap-2 mb-3 text-orange-500 text-xs font-medium uppercase tracking-wider animate-on-scroll [animation:fadeSlideIn_1s_cubic-bezier(0.2,0.8,0.2,1)_0.2s_both] animate">
+                        <iconify-icon icon="solar:stars-linear" width="14" height="14" stroke-width="1.5"></iconify-icon>
+                        <span>Version 2.0 Available</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-normal tracking-tight text-slate-900 animate-on-scroll [animation:fadeSlideIn_1s_cubic-bezier(0.2,0.8,0.2,1)_0.2s_both] animate">
+                        Next generation
+                        <span class="text-slate-400">learning suite.</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent mb-16 lg:mb-24 opacity-80"></div>
+
+        <!-- Bento Grid -->
+        <div class="flex flex-col gap-10 z-10 w-full relative">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 px-1">
+                <div class="max-w-2xl">
+                    <h2 class="md:text-5xl text-3xl font-normal text-slate-900 tracking-tight mb-4">
+                        Master the
+                        <span class="bg-clip-text text-transparent bg-gradient-to-b from-slate-400 to-slate-600">DeFi Stack</span>
+                    </h2>
+                    <p class="leading-relaxed text-base font-normal text-slate-500">
+                        From consensus mechanisms to advanced yield strategies. A complete toolkit designed for the modern
+                        financial architect.
+                    </p>
+                </div>
+                <a href="#" class="group flex items-center gap-2 hover:text-orange-500 transition-colors text-sm font-medium text-slate-900 pb-1">
+                    View full syllabus
+                    <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" stroke-width="1.5" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                </a>
+            </div>
+
+            <!-- Bento Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden shadow-xl shadow-slate-200/50 bg-slate-100 rounded-[2rem] gap-px border border-slate-200">
+
+                <!-- Card 1: Governance -->
+                <div class="group hover:bg-slate-50/80 transition-colors flex flex-col min-h-[340px] bg-white h-full p-8 relative justify-between">
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-3 text-slate-400">
+                            <iconify-icon icon="solar:users-group-rounded-linear" width="24" height="24" stroke-width="1.5"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg font-medium text-slate-900 mb-2 tracking-tight">DAO Governance</h3>
+                        <p class="text-sm text-slate-500 font-normal leading-relaxed">Structure decentralized organizations,
+                            manage proposals, and implement voting mechanics.</p>
+                    </div>
+
+                    <!-- Visual: Governance Flow -->
+                    <div class="flex flex-col flex-grow mt-8 py-4 relative items-center justify-center">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] w-32 h-12 border-b border-r border-l border-slate-200 rounded-b-2xl pointer-events-none"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20%] h-6 w-px bg-slate-200 pointer-events-none"></div>
+
+                        <div class="flex gap-4 mb-6 relative z-10">
+                            <img src="https://i.pravatar.cc/100?img=1" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="User">
+                            <img src="https://i.pravatar.cc/100?img=2" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="User">
+                            <img src="https://i.pravatar.cc/100?img=3" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="User">
+                        </div>
+
+                        <div class="flex text-[10px] uppercase group-hover:scale-105 transition-transform font-semibold text-slate-900 tracking-wider bg-white border border-slate-200 rounded-full mt-2 px-4 py-2 shadow-sm gap-2 items-center">
+                            <iconify-icon icon="solar:check-circle-linear" width="14" height="14" stroke-width="1.5" class="text-slate-400"></iconify-icon>
+                            <span>Cast Vote</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Tokenomics (Span 2) -->
+                <div class="group relative bg-white hover:bg-slate-50/80 transition-colors p-8 flex flex-col justify-between h-full min-h-[340px] md:col-span-2 overflow-hidden">
+                    <div class="relative z-10 max-w-md">
+                        <div class="flex items-center gap-2 mb-3 text-slate-400">
+                            <iconify-icon icon="solar:chart-square-linear" width="24" height="24" stroke-width="1.5"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg font-medium text-slate-900 mb-2 tracking-tight">Tokenomics &amp; Incentives</h3>
+                        <p class="text-sm text-slate-500 font-normal leading-relaxed">Design sustainable economic models,
+                            calculate APY curves, and engineer liquidity mining programs that align stakeholder interests.
+                        </p>
+                    </div>
+
+                    <!-- Visual: Floating Assets -->
+                    <div class="absolute right-0 bottom-0 top-0 w-full md:w-2/3 pointer-events-none">
+                        <div class="absolute inset-0 bg-gradient-to-l from-white via-white/80 to-transparent z-10"></div>
+                        <!-- Floating Card 1 -->
+                        <div class="absolute top-[20%] right-12 w-48 h-32 bg-white border border-slate-200 rounded-xl shadow-xl shadow-slate-200/50 rotate-6 flex flex-col p-4 group-hover:rotate-3 group-hover:scale-105 transition-all duration-700 ease-out z-0">
+                            <div class="flex items-center gap-2 mb-3">
+                                <iconify-icon icon="solar:wallet-money-linear" width="20" height="20" stroke-width="1.5" class="text-slate-400"></iconify-icon>
+                                <span class="text-xs font-semibold text-slate-600">Liquidity Pool</span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full w-3/4 bg-orange-400 rounded-full"></div>
+                                </div>
+                                <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full w-1/2 bg-slate-300 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="mt-auto flex justify-between items-end">
+                                <span class="text-[10px] text-slate-400 font-medium">APR</span>
+                                <span class="text-sm font-semibold text-slate-900">12.4%</span>
+                            </div>
+                        </div>
+                        <!-- Floating Card 2 -->
+                        <div class="absolute bottom-[15%] right-32 w-16 h-16 bg-white border border-slate-200 rounded-2xl shadow-lg shadow-slate-200/50 -rotate-12 flex items-center justify-center group-hover:-rotate-6 group-hover:translate-y-2 transition-all duration-700 delay-100 z-20">
+                            <iconify-icon icon="solar:dollar-minimalistic-linear" width="32" height="32" stroke-width="1.5" class="text-emerald-500"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Smart Contracts -->
+                <div class="group relative bg-white hover:bg-slate-50/80 transition-colors p-8 flex flex-col justify-between h-full min-h-[340px]">
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-3 text-slate-400">
+                            <iconify-icon icon="solar:code-square-linear" width="24" height="24" stroke-width="1.5"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg font-medium text-slate-900 mb-2 tracking-tight">Smart Contract Logic</h3>
+                        <p class="leading-relaxed text-sm font-normal text-slate-500">Write secure, gas-efficient Solidity
+                            primitives for AMMs, lending pools, and NFT marketplaces.</p>
+                    </div>
+
+                    <div class="mt-8 flex items-center justify-center py-4 relative flex-grow">
+                        <div class="group-hover:opacity-100 transition-opacity opacity-60 w-48 h-32 relative">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-slate-50 rounded-full flex items-center justify-center z-10 shadow-sm ring-4 ring-white border border-slate-200">
+                                <iconify-icon icon="solar:programming-linear" width="20" height="20" stroke-width="1.5" class="text-slate-500"></iconify-icon>
+                            </div>
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center">
+                                <div class="w-3 h-3 bg-slate-300 rounded-full"></div>
+                            </div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center">
+                                <div class="w-3 h-3 bg-slate-400 rounded-full"></div>
+                            </div>
+                            <div class="absolute top-1/2 left-0 -translate-y-1/2 w-8 h-8 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center">
+                                <div class="w-3 h-3 bg-slate-300 rounded-full"></div>
+                            </div>
+                            <div class="absolute top-1/2 right-0 -translate-y-1/2 w-8 h-8 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center">
+                                <div class="w-3 h-3 bg-slate-400 rounded-full"></div>
+                            </div>
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none text-slate-200" style="z-index: 0;">
+                                <line x1="96" y1="64" x2="96" y2="16" stroke="currentColor" stroke-width="1.5"></line>
+                                <line x1="96" y1="64" x2="96" y2="112" stroke="currentColor" stroke-width="1.5"></line>
+                                <line x1="96" y1="64" x2="16" y2="64" stroke="currentColor" stroke-width="1.5"></line>
+                                <line x1="96" y1="64" x2="176" y2="64" stroke="currentColor" stroke-width="1.5"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Analytics -->
+                <div class="group relative bg-white hover:bg-slate-50/80 transition-colors p-8 flex flex-col justify-between h-full min-h-[340px] overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-3 text-slate-400">
+                            <iconify-icon icon="solar:graph-up-linear" width="24" height="24" stroke-width="1.5"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg font-medium text-slate-900 mb-2 tracking-tight">On-Chain Analytics</h3>
+                        <p class="text-sm text-slate-500 font-normal leading-relaxed">Query complex blockchain data, track whale
+                            movements, and visualize protocol health.</p>
+                    </div>
+
+                    <div class="mt-8 relative flex flex-col items-center justify-center flex-grow">
+                        <div class="w-full bg-white border border-slate-200 rounded-xl p-3 shadow-sm flex items-center gap-3 relative z-10 group-hover:shadow-md transition-all duration-300">
+                            <iconify-icon icon="solar:magnifer-linear" width="20" height="20" stroke-width="1.5" class="text-slate-400"></iconify-icon>
+                            <div class="h-2 w-20 bg-slate-100 rounded-full"></div>
+                            <div class="ml-auto flex items-center gap-1.5">
+                                <span class="text-[10px] font-semibold text-slate-400">ETH</span>
+                            </div>
+                        </div>
+                        <div class="absolute -left-2 bottom-8 w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center shadow-lg group-hover:rotate-12 transition-all duration-500 delay-100 z-20">
+                            <iconify-icon icon="solar:database-linear" width="20" height="20" stroke-width="1.5" class="text-white"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Security -->
+                <div class="group hover:bg-slate-50/80 transition-colors flex flex-col min-h-[340px] bg-white h-full p-8 relative justify-between">
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-3 text-slate-400">
+                            <iconify-icon icon="solar:shield-check-linear" width="24" height="24" stroke-width="1.5"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg font-medium text-slate-900 mb-2 tracking-tight">Protocol Security</h3>
+                        <p class="leading-relaxed text-sm font-normal text-slate-500">Identify re-entrancy attacks,
+                            front-running risks, and implement defensive architecture.</p>
+                    </div>
+
+                    <div class="mt-8 flex items-end justify-center relative flex-grow">
+                        <div class="flex overflow-hidden group-hover:shadow-[0_0_30px_rgba(0,0,0,0.05)] transition-shadow duration-500 bg-gradient-to-b from-slate-50 to-slate-100 w-24 h-24 border-slate-200 border rounded-full relative scale-50 items-center justify-center">
+                            <iconify-icon icon="solar:lock-password-unlocked-linear" width="40" height="40" stroke-width="1.5" class="text-slate-400"></iconify-icon>
+                        </div>
+                        <div class="absolute top-0 right-4 flex items-center gap-1.5 bg-white border border-slate-200 px-2 py-1 rounded-full shadow-sm">
+                            <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_6px_rgba(52,211,153,0.4)]"></div>
+                            <span class="text-[9px] font-semibold text-slate-500 uppercase tracking-wide">Audited</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent mt-16 lg:mt-24 mb-16 lg:mb-24 opacity-80"></div>
+
+        <!-- Bottom CTA -->
+        <div class="flex flex-col gap-16 z-10 w-full relative">
+            <div class="overflow-hidden min-h-[400px] lg:min-h-[500px] shadow-xl shadow-slate-200/50 border border-slate-200 bg-white rounded-[2rem] relative">
+                <div class="absolute inset-0 opacity-40" style="background-image: linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px); background-size: 40px 40px;"></div>
+                <div class="grid grid-cols-1 relative h-full">
+                    <div class="flex flex-col p-12 lg:p-16 justify-center max-w-4xl mx-auto text-center h-full">
+                        <h2 class="text-3xl lg:text-4xl leading-tight font-normal text-slate-900 tracking-tight mb-8">
+                            We unify your missions, telemetry, and crew insights into one adaptive command console that evolves as you explore deeper.
+                        </h2>
+                        <button class="mx-auto group flex items-center gap-3 bg-slate-900 hover:bg-slate-800 transition-all text-white text-sm font-medium rounded-full px-6 py-3 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                            <span>Try For Free</span>
+                            <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" stroke-width="1.5" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent mt-16 lg:mt-24 mb-16 lg:mb-24 opacity-80"></div>
+
+        <footer class="z-10 w-full relative">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-12">
+                <div class="flex flex-col gap-4">
+                    <a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors font-normal">Home</a>
+                    <a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors font-normal">Curriculum</a>
+                    <a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors font-normal">Pricing</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors font-normal">Privacy Policy</a>
+                    <a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors font-normal">Terms of Service</a>
+                </div>
+                <div class="flex flex-col gap-4 col-span-1 lg:col-span-2 text-right">
+                    <p class="text-sm text-slate-500 font-normal">
+                        Receive mission logs, orbital updates, and new module drops.
+                    </p>
+                    <div class="flex items-center justify-end border-b border-slate-200 pb-2 mt-2 max-w-xs ml-auto">
+                        <input type="email" placeholder="Your email address" class="text-slate-900 placeholder:text-slate-400 outline-none flex-1 text-sm font-medium bg-transparent text-right pr-4">
+                        <button class="text-orange-500 hover:text-orange-400 transition-colors">
+                            <iconify-icon icon="solar:arrow-right-linear" width="20" height="20" stroke-width="1.5"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row border-slate-200 border-t pt-8 gap-4 items-center justify-between">
+                <p class="text-slate-400 text-xs font-normal">© 2024 GenLabs. All rights reserved.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-900 transition-colors"><iconify-icon icon="solar:letter-linear" width="18" height="18" stroke-width="1.5"></iconify-icon></a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+</body></html>

@@ -2,7 +2,7 @@ import Calculator from '../components/Calculator';
 
 export default function CalculatorSection() {
   return (
-    <section className="overflow-hidden bg-white w-full border-neutral-200/60 border-t pt-16 pb-24 relative">
+    <section id="calculator" className="max-w-[1400px] mx-auto px-6 pb-32 scroll-mt-24">
       <Calculator />
     </section>
   );
