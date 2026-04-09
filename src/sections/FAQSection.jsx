@@ -30,43 +30,46 @@ export default function FAQSection() {
   useRevealOnScroll(sectionRef);
 
   return (
-    <section id="faq" className="max-w-[900px] mx-auto px-6 pb-32 scroll-mt-24" ref={sectionRef}>
-      <div className="text-center mb-16 reveal-on-scroll">
-        <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-slate-200 bg-white/70 text-[11px] tracking-[0.2em] uppercase text-slate-500 mb-5">
-          FAQ
-        </span>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-medium text-slate-900 tracking-tight mb-4">
-          Питання, які задають найчастіше
+    <section id="faq" className="w-full max-w-[900px] mx-auto scroll-mt-24" ref={sectionRef}>
+      <div className="text-center mb-12 reveal-on-scroll">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <iconify-icon icon="solar:chat-round-dots-linear" width="14" height="14" className="text-orange-500" />
+          <span className="text-xs font-medium text-orange-500 uppercase tracking-wider">FAQ</span>
+        </div>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-slate-900 tracking-tight mb-4">
+          Питання, які задають
+          <span className="bg-clip-text text-transparent bg-gradient-to-b from-slate-400 to-slate-600"> найчастіше</span>
         </h2>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xl shadow-slate-200/50">
         {ITEMS.map((item, i) => {
           const open = openIndex === i;
           return (
             <div
               key={item.q}
-              className="glass-panel-static rounded-2xl overflow-hidden reveal-on-scroll hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-shadow"
+              className="bg-white reveal-on-scroll"
             >
               <button
                 type="button"
                 onClick={() => setOpenIndex(open ? null : i)}
-                className="w-full flex items-center justify-between gap-4 text-left px-6 py-5"
+                className="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:bg-slate-50/50 transition-colors"
                 aria-expanded={open}
               >
-                <span className="font-heading font-medium text-slate-800 text-base lg:text-lg tracking-tight pr-2">
+                <span className="font-medium text-slate-800 text-base lg:text-lg tracking-tight pr-2">
                   {item.q}
                 </span>
                 <span
-                  className={`shrink-0 w-9 h-9 rounded-full flex items-center justify-center border transition-colors ${
+                  className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-colors ${
                     open
-                      ? 'bg-amber-100 border-amber-200 text-amber-900'
-                      : 'bg-slate-50 border-slate-200 text-slate-500'
+                      ? 'bg-orange-50 border-orange-200 text-orange-600'
+                      : 'bg-slate-50 border-slate-200 text-slate-400'
                   }`}
                 >
                   <iconify-icon
                     icon={open ? 'solar:minus-circle-linear' : 'solar:add-circle-linear'}
-                    className="text-xl"
+                    width="18"
+                    height="18"
                   />
                 </span>
               </button>
@@ -76,7 +79,7 @@ export default function FAQSection() {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="px-6 pb-6 pt-0 text-slate-500 font-light leading-relaxed border-t border-slate-100">
+                  <p className="px-6 pb-6 pt-0 text-slate-500 font-normal leading-relaxed border-t border-slate-100">
                     {item.a}
                   </p>
                 </div>

@@ -6,16 +6,11 @@ export default {
   ],
   theme: {
     extend: {
-      spacing: {
-        '13': '3.25rem',
-        '15': '3.75rem',
-        '18': '4.5rem',
-      },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        heading: ['Montserrat', 'sans-serif'],
       },
       borderRadius: {
+        'frame': '2.5rem',
         'section': '2rem',
       },
       boxShadow: {
