@@ -15,7 +15,7 @@ export default function BeforeAfterSection() {
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-slate-400 to-slate-600"> до системи</span>
         </h2>
         <p className="text-base text-slate-500 font-normal leading-relaxed">
-          Подивіться, як виглядає трансформація продажів для експерта. Перемикайте режим, щоб побачити різницю.
+          Один день експерта в двох режимах. Перемкни — і подивись, що змінюється.
         </p>
       </div>
 
@@ -39,7 +39,7 @@ export default function BeforeAfterSection() {
                 <div className="w-2.5 h-2.5 bg-slate-800 rounded-full flex items-center justify-center border border-white/5">
                   <div className="w-1 h-1 bg-blue-500/50 rounded-full blur-[1px]" />
                 </div>
-                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_4px_rgba(16,185,129,0.6)] animate-pulse" />
+                <div className="w-1.5 h-1.5 bg-orange-500 rounded-full shadow-[0_0_4px_rgba(249,115,22,0.6)] animate-pulse" />
               </div>
 
               {/* Status Bar */}
@@ -81,17 +81,17 @@ export default function BeforeAfterSection() {
                   {mode === 'auto' && scenario === 'message' && (
                     <div key={viewKey} className="w-full max-w-[280px] rounded-xl p-4 fade-in absolute text-left bg-white/90 backdrop-blur-md border border-slate-100 shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                        <div className="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
                           <iconify-icon icon="solar:user-linear" width="14" height="14" />
                         </div>
                         <div className="flex flex-col">
                           <span className="text-xs text-slate-800 font-medium tracking-tight">Новий лід</span>
-                          <span className="text-[10px] text-slate-400">Через Telegram Бот</span>
+                          <span className="text-[10px] text-slate-400">Через бот</span>
                         </div>
                       </div>
                       <div className="bg-slate-50 rounded-lg p-2.5 border border-slate-100">
                         <p className="text-xs text-slate-600 leading-relaxed font-light">
-                          <span className="text-emerald-600 font-medium">@alex_new</span> запустив воронку та переглядає перший відео-урок.
+                          <span className="text-orange-600 font-medium">@alex_new</span> запустив воронку та переглядає перший відео-урок.
                         </p>
                       </div>
                     </div>
@@ -100,13 +100,13 @@ export default function BeforeAfterSection() {
                   {mode === 'auto' && scenario === 'response' && (
                     <div key={viewKey} className="w-full max-w-[280px] rounded-xl p-4 fade-in absolute text-left bg-white/90 backdrop-blur-md border border-slate-100 shadow-sm">
                       <div className="flex items-center gap-2 mb-3 border-b border-slate-100 pb-3">
-                        <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                        <div className="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
                           <iconify-icon icon="solar:bolt-linear" width="14" height="14" />
                         </div>
                         <span className="text-xs text-slate-800 font-medium tracking-tight">Автовідповідь</span>
                       </div>
                       <div className="flex flex-col gap-2">
-                        <div className="bg-blue-50 rounded-lg rounded-tr-sm p-3 border border-blue-100 self-end w-[90%]">
+                        <div className="bg-orange-50 rounded-lg rounded-tr-sm p-3 border border-orange-100 self-end w-[90%]">
                           <p className="text-xs text-slate-700 font-light">Ось посилання на матеріали курсу! Доступ відкрито на 30 днів.</p>
                         </div>
                         <span className="text-[10px] text-slate-400 font-mono text-right pr-1">Миттєво</span>
@@ -118,16 +118,16 @@ export default function BeforeAfterSection() {
                     <div key={viewKey} className="w-full max-w-[280px] rounded-xl p-4 fade-in absolute text-left bg-white/90 backdrop-blur-md border border-slate-100 shadow-sm">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
-                          <div className="w-7 h-7 rounded-full bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-600">
+                          <div className="w-7 h-7 rounded-full bg-orange-100 border border-orange-200 flex items-center justify-center text-orange-600">
                             <iconify-icon icon="solar:wallet-linear" width="14" height="14" />
                           </div>
                           <span className="text-xs text-slate-800 font-medium tracking-tight">Нова оплата</span>
                         </div>
-                        <span className="text-[10px] text-emerald-700 font-medium bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100">Успішно</span>
+                        <span className="text-[10px] text-orange-700 font-medium bg-orange-50 px-1.5 py-0.5 rounded border border-orange-100">Успішно</span>
                       </div>
                       <div className="flex flex-col gap-1 mb-3 border-b border-slate-100 pb-3">
-                        <span className="text-2xl text-slate-900 font-medium tracking-tighter">₴ 15,000</span>
-                        <span className="text-[11px] text-slate-400 font-light">Курс: &quot;Продажі в Instagram&quot;</span>
+                        <span className="text-2xl text-slate-900 font-medium tracking-tighter">$ 497</span>
+                        <span className="text-[11px] text-slate-400 font-light">Онлайн-курс експерта</span>
                       </div>
                       <div className="flex items-center justify-between mt-1">
                         <div className="flex items-center gap-1.5">
@@ -142,18 +142,18 @@ export default function BeforeAfterSection() {
                   {mode === 'manual' && scenario === 'message' && (
                     <div key={viewKey} className="w-full max-w-[280px] rounded-xl p-4 fade-in absolute text-left bg-white/90 backdrop-blur-md border border-slate-100 shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="relative w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-orange-500">
+                        <div className="relative w-7 h-7 rounded-full bg-rose-100 flex items-center justify-center text-rose-500">
                           <span className="absolute top-0 right-0 flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500" />
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500" />
                           </span>
                           <iconify-icon icon="solar:chat-round-line-linear" width="14" height="14" />
                         </div>
-                        <span className="text-xs text-slate-800 font-medium tracking-tight">Instagram Direct</span>
+                        <span className="text-xs text-slate-800 font-medium tracking-tight">Direct</span>
                       </div>
-                      <div className="bg-orange-50 rounded-lg p-3 border border-orange-100">
+                      <div className="bg-rose-50 rounded-lg p-3 border border-rose-100">
                         <p className="text-xs text-slate-600 leading-relaxed">
-                          У вас <span className="text-orange-600 font-medium">12 невідповідей</span> запитів. Клієнти очікують на інформацію про ціни.
+                          У тебе <span className="text-rose-600 font-medium">12 невідповідей</span>. Клієнти чекають на інформацію про ціни.
                         </p>
                       </div>
                     </div>
@@ -171,7 +171,7 @@ export default function BeforeAfterSection() {
                             <div className="w-1 h-1 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                             <div className="w-1 h-1 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                           </div>
-                          <p className="text-[11px] text-slate-400 ml-1 font-light">Ви друкуєте...</p>
+                          <p className="text-[11px] text-slate-400 ml-1 font-light">Ти друкуєш...</p>
                         </div>
                       </div>
                     </div>
@@ -186,7 +186,7 @@ export default function BeforeAfterSection() {
                         <div className="flex flex-col gap-1">
                           <span className="text-xs text-slate-800 font-medium tracking-tight">Очікування скріншоту</span>
                           <p className="text-[11px] text-slate-400 leading-relaxed font-light">
-                            Скинули реквізити. Чекаєте скрін оплати, щоб вручну видати доступ.
+                            Скинув реквізити. Чекаєш скрін оплати, щоб вручну видати доступ.
                           </p>
                         </div>
                       </div>
@@ -255,33 +255,33 @@ export default function BeforeAfterSection() {
                   ? 'opacity-100 translate-y-0 pointer-events-auto'
                   : 'opacity-0 translate-y-4 pointer-events-none'
               }`}
-              style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,241,242,0.5) 100%)', borderColor: 'rgba(254,202,202,0.4)' }}
+              style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,241,242,0.5) 100%)', borderColor: 'rgba(254,205,211,0.5)' }}
             >
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-medium text-slate-900 tracking-tight">Вручну</h3>
-                <div className="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center text-red-400 border border-red-100">
+                <div className="w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center text-rose-400 border border-rose-100">
                   <iconify-icon icon="solar:danger-triangle-linear" width="18" height="18" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-3 flex-1">
                 {[
-                  { icon: 'solar:chat-round-line-linear', text: '12+ невідповіданих повідомлень', color: 'text-red-400' },
-                  { icon: 'solar:clock-circle-linear', text: 'Годинни на ручні відповіді', color: 'text-red-400' },
-                  { icon: 'solar:card-linear', text: 'Очікування скріншотів оплат', color: 'text-red-400' },
-                  { icon: 'solar:folder-open-linear', text: 'Ручна видача матеріалів', color: 'text-red-400' },
-                  { icon: 'solar:battery-charge-linear', text: 'Вигорання та втрата мотивації', color: 'text-red-400' },
+                  { icon: 'solar:chat-round-line-linear', text: '12+ невідповіданих повідомлень' },
+                  { icon: 'solar:clock-circle-linear', text: 'Години на ручні відповіді' },
+                  { icon: 'solar:card-linear', text: 'Очікування скріншотів оплат' },
+                  { icon: 'solar:folder-open-linear', text: 'Ручна видача матеріалів' },
+                  { icon: 'solar:battery-charge-linear', text: 'Вигорання та втрата мотивації' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-white/70 backdrop-blur-sm border border-red-100/50 rounded-xl p-3.5 shadow-sm">
-                    <div className="w-7 h-7 rounded-full bg-red-50 flex items-center justify-center shrink-0">
-                      <iconify-icon icon={item.icon} width="16" height="16" className={item.color} />
+                  <div key={i} className="flex items-center gap-3 bg-white/70 backdrop-blur-sm border border-rose-100/50 rounded-xl p-3.5 shadow-sm">
+                    <div className="w-7 h-7 rounded-full bg-rose-50 flex items-center justify-center shrink-0">
+                      <iconify-icon icon={item.icon} width="16" height="16" className="text-rose-400" />
                     </div>
                     <span className="text-sm text-slate-700 font-normal">{item.text}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-red-100/50 flex items-center gap-2 text-red-400">
+              <div className="mt-6 pt-4 border-t border-rose-100/50 flex items-center gap-2 text-rose-400">
                 <iconify-icon icon="solar:close-circle-linear" width="16" height="16" />
                 <span className="text-xs font-medium">Немає системи — немає стабільності</span>
               </div>
@@ -294,35 +294,35 @@ export default function BeforeAfterSection() {
                   ? 'opacity-100 translate-y-0 pointer-events-auto'
                   : 'opacity-0 translate-y-4 pointer-events-none'
               }`}
-              style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(240,253,244,0.5) 100%)', borderColor: 'rgba(187,247,208,0.4)' }}
+              style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,247,237,0.5) 100%)', borderColor: 'rgba(254,215,170,0.5)' }}
             >
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-medium text-slate-900 tracking-tight">Автоматизація</h3>
-                <div className="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-500 border border-emerald-100">
+                <div className="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 border border-orange-100">
                   <iconify-icon icon="solar:rocket-linear" width="18" height="18" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-3 flex-1">
                 {[
-                  { icon: 'solar:chat-round-dots-linear', text: 'Бот відповідає миттєво 24/7', color: 'text-emerald-500' },
-                  { icon: 'solar:bolt-linear', text: 'Автоматична видача матеріалів', color: 'text-emerald-500' },
-                  { icon: 'solar:card-linear', text: 'Автоматичний прийом оплат', color: 'text-emerald-500' },
-                  { icon: 'solar:chart-square-linear', text: 'Стабільний дохід без участі', color: 'text-emerald-500' },
-                  { icon: 'solar:sun-linear', text: 'Час на контент та відпочинок', color: 'text-emerald-500' },
+                  { icon: 'solar:chat-round-dots-linear', text: 'Бот відповідає миттєво 24/7' },
+                  { icon: 'solar:bolt-linear', text: 'Автоматична видача матеріалів' },
+                  { icon: 'solar:card-linear', text: 'Автоматичний прийом оплат' },
+                  { icon: 'solar:chart-square-linear', text: 'Стабільний потік продажів' },
+                  { icon: 'solar:sun-linear', text: 'Час на головне — на експертизу і клієнтів' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-white/70 backdrop-blur-sm border border-emerald-100/50 rounded-xl p-3.5 shadow-sm">
-                    <div className="w-7 h-7 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
-                      <iconify-icon icon={item.icon} width="16" height="16" className={item.color} />
+                  <div key={i} className="flex items-center gap-3 bg-white/70 backdrop-blur-sm border border-orange-100/50 rounded-xl p-3.5 shadow-sm">
+                    <div className="w-7 h-7 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
+                      <iconify-icon icon={item.icon} width="16" height="16" className="text-orange-500" />
                     </div>
                     <span className="text-sm text-slate-700 font-normal">{item.text}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-emerald-100/50 flex items-center gap-2 text-emerald-500">
+              <div className="mt-6 pt-4 border-t border-orange-100/50 flex items-center gap-2 text-orange-500">
                 <iconify-icon icon="solar:verified-check-linear" width="16" height="16" />
-                <span className="text-xs font-medium">Система працює — ви відпочиваєте</span>
+                <span className="text-xs font-medium">Система продає — ти займаєшся експертизою</span>
               </div>
             </div>
           </div>

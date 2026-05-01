@@ -11,12 +11,11 @@ export default function PainPointsSection() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-1 reveal-on-scroll">
         <div className="max-w-2xl">
           <h2 className="md:text-5xl text-3xl font-normal text-slate-900 tracking-tight mb-4">
-            Досить бути
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-slate-400 to-slate-600"> менеджером</span>
+            Скільки з цього
+            <span className="bg-clip-text text-transparent bg-gradient-to-b from-slate-400 to-slate-600"> у тебе зараз?</span>
           </h2>
           <p className="leading-relaxed text-base font-normal text-slate-500">
-            Ти — експерт. Але замість того, щоб робити те, в чому ти найкращий,
-            ти витрачаєш час на рутину.
+            5 типових ситуацій, у яких застрягають експерти, поки продажі тримаються на ручному режимі.
           </p>
         </div>
       </div>
@@ -24,153 +23,175 @@ export default function PainPointsSection() {
       {/* Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden shadow-xl shadow-slate-200/50 bg-slate-100 rounded-[2rem] gap-px border border-slate-200">
 
-        {/* Card 1: Охоплення */}
+        {/* Card 1: Conversion gap — leaky funnel */}
         <div className="group hover:bg-slate-50/80 transition-colors flex flex-col min-h-[340px] bg-white h-full p-8 relative justify-between">
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3 text-slate-400">
-              <iconify-icon icon="solar:users-group-rounded-linear" width="24" height="24" />
+              <iconify-icon icon="solar:filter-linear" width="24" height="24" />
             </div>
-            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Про тебе мало знають</h3>
+            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Аудиторія є — продаж замало</h3>
             <p className="text-sm text-slate-500 font-normal leading-relaxed">
-              Маєш потужний досвід, але через відсутність системи про це знає лише вузьке коло людей.
+              Контент дивляться, заявки пишуть. Але до оплати доходять одиниці — лід губиться десь між DM і чеком.
             </p>
           </div>
 
-          <div className="flex flex-col flex-grow mt-8 py-4 relative items-center justify-center">
-            <div className="flex gap-4 mb-6 relative z-10">
-              <img src="https://i.pravatar.cc/100?img=1" className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="" />
-              <img src="https://i.pravatar.cc/100?img=2" className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="" />
-              <img src="https://i.pravatar.cc/100?img=3" className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="" />
-            </div>
-            <div className="flex text-[10px] uppercase group-hover:scale-105 transition-transform font-semibold text-slate-900 tracking-wider bg-white border border-slate-200 rounded-full mt-2 px-4 py-2 shadow-sm gap-2 items-center">
-              <iconify-icon icon="solar:danger-triangle-linear" width="14" height="14" className="text-slate-400" />
-              <span>Мало охоплення</span>
+          <div className="mt-8 flex flex-col items-center justify-center py-4 relative flex-grow">
+            {/* Leaky funnel visual */}
+            <div className="relative w-full max-w-[200px] h-32 flex flex-col items-center">
+              <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
+                <div className="h-full w-full bg-orange-300 rounded-full" />
+              </div>
+              <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-1 mb-2">100 заявок</div>
+              <div className="w-3/5 h-3 bg-slate-200 rounded-full overflow-hidden">
+                <div className="h-full w-full bg-orange-300/70 rounded-full" />
+              </div>
+              <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-1 mb-2">~40 на дзвінок</div>
+              <div className="w-1/4 h-3 bg-slate-200 rounded-full overflow-hidden">
+                <div className="h-full w-full bg-rose-300 rounded-full" />
+              </div>
+              <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">~5 продажів</div>
             </div>
           </div>
         </div>
 
-        {/* Card 2: Енергія (Span 2) */}
+        {/* Card 2: Manual labor — overflowing inbox (Span 2) */}
         <div className="group relative bg-white hover:bg-slate-50/80 transition-colors p-8 flex flex-col justify-between h-full min-h-[340px] md:col-span-2 overflow-hidden">
           <div className="relative z-10 max-w-md">
             <div className="flex items-center gap-2 mb-3 text-slate-400">
-              <iconify-icon icon="solar:battery-charge-linear" width="24" height="24" />
+              <iconify-icon icon="solar:chat-square-linear" width="24" height="24" />
             </div>
-            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Дохід залежить від енергії</h3>
+            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Кожен клієнт — на твоїх плечах</h3>
             <p className="text-sm text-slate-500 font-normal leading-relaxed">
-              Не було сил сьогодні — значить, не було продажів. Немає системи, яка працює без тебе.
+              Повідомлення, скрипти, рахунки, доступи — усе вручну. Один клієнт забирає години твого часу.
             </p>
           </div>
 
+          {/* Right: chat-bubble stack visual */}
           <div className="absolute right-0 bottom-0 top-0 w-full md:w-2/3 pointer-events-none">
             <div className="absolute inset-0 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
-            <div className="absolute top-[20%] right-12 w-48 h-32 bg-white border border-slate-200 rounded-xl shadow-xl shadow-slate-200/50 rotate-6 flex flex-col p-4 group-hover:rotate-3 group-hover:scale-105 transition-all duration-700 ease-out z-0">
-              <div className="flex items-center gap-2 mb-3">
-                <iconify-icon icon="solar:chart-square-linear" width="20" height="20" className="text-slate-400" />
-                <span className="text-xs font-semibold text-slate-600">Дохід</span>
+
+            {/* Chat bubbles stacking up */}
+            <div className="absolute top-[15%] right-12 z-0 flex flex-col gap-2 items-end group-hover:translate-x-2 transition-transform duration-700 ease-out">
+              <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-br-sm px-3 py-2 max-w-[180px]">
+                <div className="h-1.5 w-24 bg-slate-300 rounded-full mb-1" />
+                <div className="h-1.5 w-32 bg-slate-300 rounded-full" />
               </div>
-              <div className="space-y-2">
-                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full w-3/4 bg-orange-400 rounded-full" />
-                </div>
-                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full w-1/3 bg-slate-300 rounded-full" />
-                </div>
+              <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-br-sm px-3 py-2 max-w-[180px]">
+                <div className="h-1.5 w-28 bg-slate-300 rounded-full mb-1" />
+                <div className="h-1.5 w-20 bg-slate-300 rounded-full" />
               </div>
-              <div className="mt-auto flex justify-between items-end">
-                <span className="text-[10px] text-slate-400 font-medium">Стабільність</span>
-                <span className="text-sm font-semibold text-slate-900">Низька</span>
+              <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-br-sm px-3 py-2 max-w-[180px]">
+                <div className="h-1.5 w-20 bg-slate-300 rounded-full" />
               </div>
             </div>
-            <div className="absolute bottom-[15%] right-32 w-16 h-16 bg-white border border-slate-200 rounded-2xl shadow-lg shadow-slate-200/50 -rotate-12 flex items-center justify-center group-hover:-rotate-6 group-hover:translate-y-2 transition-all duration-700 delay-100 z-20">
-              <iconify-icon icon="solar:battery-charge-linear" width="32" height="32" className="text-red-400" />
+
+            {/* Notification badge */}
+            <div className="absolute top-6 right-6 flex items-center gap-1.5 bg-white border border-slate-200 px-2.5 py-1.5 rounded-full shadow-sm z-20">
+              <div className="w-1.5 h-1.5 bg-rose-400 rounded-full animate-pulse shadow-[0_0_6px_rgba(248,113,113,0.4)]" />
+              <span className="text-[10px] font-semibold text-slate-600 uppercase tracking-wide">12 непрочитаних</span>
             </div>
           </div>
         </div>
 
-        {/* Card 3: Пасивний дохід */}
+        {/* Card 3: Dependence — system off when you're off */}
         <div className="group relative bg-white hover:bg-slate-50/80 transition-colors p-8 flex flex-col justify-between h-full min-h-[340px]">
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3 text-slate-400">
-              <iconify-icon icon="solar:notes-linear" width="24" height="24" />
+              <iconify-icon icon="solar:moon-sleep-linear" width="24" height="24" />
             </div>
-            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Відсутність пасивного доходу</h3>
+            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Без тебе система зупиняється</h3>
             <p className="text-sm text-slate-500 font-normal leading-relaxed">
-              Немає продуктів, які продаються самі. Заробіток іде лише тоді, коли ти на зв'язку.
+              Не вийшов на роботу день — заявки без відповіді. Поїхав у відпустку — продажі стали.
             </p>
           </div>
 
           <div className="mt-8 flex items-center justify-center py-4 relative flex-grow">
-            <div className="group-hover:opacity-100 transition-opacity opacity-60 w-48 h-32 relative">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-slate-50 rounded-full flex items-center justify-center z-10 shadow-sm ring-4 ring-white border border-slate-200">
-                <iconify-icon icon="solar:wallet-money-linear" width="20" height="20" className="text-slate-500" />
+            {/* Clock + offline status */}
+            <div className="relative">
+              <div className="w-24 h-24 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center shadow-sm">
+                <div className="text-center">
+                  <div className="text-2xl font-semibold text-slate-700 tabular-nums leading-none">23:47</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">пятниця</div>
+                </div>
               </div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-red-300 rounded-full" />
+              <div className="absolute -bottom-1 -right-1 bg-white border border-slate-200 rounded-full px-2.5 py-1 flex items-center gap-1.5 shadow-sm">
+                <div className="w-1.5 h-1.5 bg-slate-300 rounded-full" />
+                <span className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide">офлайн</span>
               </div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-slate-300 rounded-full" />
-              </div>
-              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-8 h-8 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-slate-300 rounded-full" />
-              </div>
-              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-8 h-8 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-red-300 rounded-full" />
-              </div>
-              <svg className="absolute inset-0 w-full h-full pointer-events-none text-slate-200" style={{ zIndex: 0 }}>
-                <line x1="96" y1="64" x2="96" y2="16" stroke="currentColor" strokeWidth="1.5" />
-                <line x1="96" y1="64" x2="96" y2="112" stroke="currentColor" strokeWidth="1.5" />
-                <line x1="96" y1="64" x2="16" y2="64" stroke="currentColor" strokeWidth="1.5" />
-                <line x1="96" y1="64" x2="176" y2="64" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
             </div>
           </div>
         </div>
 
-        {/* Card 4: Технічний хаос */}
+        {/* Card 4: Tech chaos */}
         <div className="group hover:bg-slate-50/80 transition-colors flex flex-col min-h-[340px] bg-white h-full p-8 relative justify-between overflow-hidden">
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3 text-slate-400">
-              <iconify-icon icon="solar:server-linear" width="24" height="24" />
+              <iconify-icon icon="solar:settings-linear" width="24" height="24" />
             </div>
-            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Технічний хаос</h3>
+            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Технічно зібрати самому — окрема професія</h3>
             <p className="text-sm text-slate-500 font-normal leading-relaxed">
-              Не розумієш, як втілити усе технічно. Витрачаєш час на рутину замість улюбленої справи.
+              Бот, лендинг, інтеграції оплат, CRM. Тижні вивчення — або підрядники, що тягнуть бюджет і строки.
             </p>
           </div>
 
           <div className="mt-8 relative flex flex-col items-center justify-center flex-grow">
-            <div className="w-full bg-white border border-slate-200 rounded-xl p-3 shadow-sm flex items-center gap-3 relative z-10 group-hover:shadow-md transition-all duration-300">
-              <iconify-icon icon="solar:magnifer-linear" width="20" height="20" className="text-slate-400" />
-              <div className="h-2 w-20 bg-slate-100 rounded-full" />
-              <div className="ml-auto flex items-center gap-1.5">
-                <span className="text-[10px] font-semibold text-slate-400">???</span>
+            {/* Scattered tool tiles */}
+            <div className="relative w-full h-24">
+              <div className="absolute top-0 left-2 w-12 h-12 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center justify-center -rotate-6 group-hover:-rotate-12 transition-transform duration-500">
+                <iconify-icon icon="simple-icons:manychat" width="20" height="20" className="text-slate-500" />
               </div>
-            </div>
-            <div className="absolute -left-2 bottom-8 w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center shadow-lg group-hover:rotate-12 transition-all duration-500 delay-100 z-20">
-              <iconify-icon icon="solar:settings-linear" width="20" height="20" className="text-white" />
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-12 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center justify-center rotate-3 group-hover:rotate-6 transition-transform duration-500 delay-75">
+                <iconify-icon icon="simple-icons:stripe" width="20" height="20" className="text-slate-500" />
+              </div>
+              <div className="absolute top-0 right-2 w-12 h-12 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center justify-center -rotate-3 group-hover:rotate-12 transition-transform duration-500 delay-100">
+                <iconify-icon icon="simple-icons:zapier" width="20" height="20" className="text-slate-500" />
+              </div>
+              <div className="absolute bottom-0 left-8 w-12 h-12 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center justify-center rotate-6 group-hover:-rotate-3 transition-transform duration-500 delay-150">
+                <iconify-icon icon="simple-icons:googleads" width="20" height="20" className="text-slate-500" />
+              </div>
+              <div className="absolute bottom-0 right-8 w-12 h-12 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center justify-center -rotate-6 group-hover:rotate-3 transition-transform duration-500 delay-200">
+                <iconify-icon icon="simple-icons:notion" width="20" height="20" className="text-slate-500" />
+              </div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center justify-center z-10">
+                <span className="text-sm font-bold text-rose-400">?</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Card 5: Рутина */}
+        {/* Card 5: Scale ceiling */}
         <div className="group hover:bg-slate-50/80 transition-colors flex flex-col min-h-[340px] bg-white h-full p-8 relative justify-between">
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3 text-slate-400">
-              <iconify-icon icon="solar:chat-square-linear" width="24" height="24" />
+              <iconify-icon icon="solar:graph-up-linear" width="24" height="24" />
             </div>
-            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Ручна робота з кожним</h3>
+            <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Дохід упирається в стелю</h3>
             <p className="text-sm text-slate-500 font-normal leading-relaxed">
-              Повідомлення, матеріали, оплати — все вручну. Кожен клієнт забирає час.
+              Скільки б заявок не приходило — більше за певну кількість на тиждень не відпрацюєш. Час — обмежений ресурс.
             </p>
           </div>
 
           <div className="mt-8 flex items-end justify-center relative flex-grow">
-            <div className="flex overflow-hidden group-hover:shadow-[0_0_30px_rgba(0,0,0,0.05)] transition-shadow duration-500 bg-gradient-to-b from-slate-50 to-slate-100 w-24 h-24 border-slate-200 border rounded-full relative scale-50 items-center justify-center">
-              <iconify-icon icon="solar:inbox-unread-linear" width="40" height="40" className="text-slate-400" />
-            </div>
-            <div className="absolute top-0 right-4 flex items-center gap-1.5 bg-white border border-slate-200 px-2 py-1 rounded-full shadow-sm">
-              <div className="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse shadow-[0_0_6px_rgba(248,113,113,0.4)]" />
-              <span className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide">12 запитів</span>
+            {/* Growth curve hitting plateau */}
+            <svg viewBox="0 0 200 100" className="w-full max-w-[200px] h-24" preserveAspectRatio="none">
+              <line x1="0" y1="100" x2="200" y2="100" stroke="rgb(226,232,240)" strokeWidth="1" />
+              <line x1="0" y1="0" x2="0" y2="100" stroke="rgb(226,232,240)" strokeWidth="1" />
+              {/* Dashed plateau line */}
+              <line x1="0" y1="35" x2="200" y2="35" stroke="rgb(226,232,240)" strokeWidth="1" strokeDasharray="3 3" />
+              {/* Curve: rises then plateaus */}
+              <path
+                d="M 0 95 Q 40 90 70 60 T 130 35 L 200 33"
+                stroke="rgb(251,146,60)"
+                strokeWidth="2.5"
+                fill="none"
+                strokeLinecap="round"
+              />
+              {/* Plateau dot */}
+              <circle cx="200" cy="33" r="4" fill="rgb(251,146,60)" />
+              <circle cx="200" cy="33" r="8" fill="rgb(251,146,60)" fillOpacity="0.2" />
+            </svg>
+            <div className="absolute top-2 right-2 text-[9px] font-semibold text-slate-400 uppercase tracking-wider bg-white border border-slate-200 px-2 py-1 rounded-full">
+              Плато
             </div>
           </div>
         </div>

@@ -3,6 +3,13 @@ import useRevealOnScroll from '../hooks/useRevealOnScroll';
 
 const STRATEGY_FEATURE = 'Стратегія і позиціонування (повний склад)';
 
+const TRAFFIC_FEATURES = [
+  'Meta Pixel + CAPI',
+  'Цільові аудиторії і look-alike',
+  'Рекламні креативи (3 шт)',
+  'Запуск і ведення кампаній — перший місяць',
+];
+
 const packages = [
   {
     name: 'Фундамент',
@@ -22,6 +29,10 @@ const packages = [
       { text: 'Комплекс продуктових сторінок', included: false },
       { text: 'Автоматизація після покупки', included: false },
       { text: 'Автоматичний прийом оплат', included: false },
+      { text: TRAFFIC_FEATURES[0], included: false },
+      { text: TRAFFIC_FEATURES[1], included: false },
+      { text: TRAFFIC_FEATURES[2], included: false },
+      { text: TRAFFIC_FEATURES[3], included: false },
     ],
   },
   {
@@ -32,9 +43,9 @@ const packages = [
     icon: 'solar:crown-linear',
     cta: 'Забронювати слот на розбір',
     featured: true,
-    badge: 'Запуск під ключ',
-    fit: 'Якщо готові запустити повну воронку під ключ і прибрати ручні процеси.',
-    result: 'Воронка продає продукт без вашої участі — від рекламного кліку до оплати.',
+    badge: 'Оптимальний вибір',
+    fit: 'Якщо готовий запустити повну воронку під ключ і прибрати ручні процеси.',
+    result: 'Воронка продає продукт без твоєї участі — від рекламного кліку до оплати.',
     features: [
       { text: STRATEGY_FEATURE, included: true, group: true },
       { text: 'Посадкова сторінка (цифрова візитка)', included: true },
@@ -43,6 +54,34 @@ const packages = [
       { text: 'Комплекс продуктових сторінок', included: true },
       { text: 'Автоматизація після покупки', included: true },
       { text: 'Автоматичний прийом оплат', included: true },
+      { text: TRAFFIC_FEATURES[0], included: false },
+      { text: TRAFFIC_FEATURES[1], included: false },
+      { text: TRAFFIC_FEATURES[2], included: false },
+      { text: TRAFFIC_FEATURES[3], included: false },
+    ],
+  },
+  {
+    name: 'Преміум',
+    description: 'Повна воронка + рекламний трафік. Запускаю кампанії і веду до перших продажів через рекламу.',
+    price: '$1,690',
+    duration: '14–21 робочих днів',
+    icon: 'solar:diamond-linear',
+    cta: 'Обговорити на безкоштовному розборі',
+    featured: false,
+    fit: 'Якщо хочеш одразу запустити воронку з рекламним трафіком, без двох підрядників.',
+    result: 'Перші продажі через рекламу — без твого занурення в ads-manager.',
+    features: [
+      { text: STRATEGY_FEATURE, included: true, group: true },
+      { text: 'Посадкова сторінка (цифрова візитка)', included: true },
+      { text: 'Чат-бот для збору лідів', included: true },
+      { text: 'Упаковка продукту', included: true },
+      { text: 'Комплекс продуктових сторінок', included: true },
+      { text: 'Автоматизація після покупки', included: true },
+      { text: 'Автоматичний прийом оплат', included: true },
+      { text: TRAFFIC_FEATURES[0], included: true },
+      { text: TRAFFIC_FEATURES[1], included: true },
+      { text: TRAFFIC_FEATURES[2], included: true },
+      { text: TRAFFIC_FEATURES[3], included: true },
     ],
   },
 ];
@@ -51,10 +90,10 @@ const strategyPackage = {
   name: 'Стратегія',
   price: '$150',
   duration: 'до 3 робочих днів',
-  fit: 'Якщо ще не визначилися з продуктом і потрібен напрямок.',
+  fit: 'Якщо ще не визначився з продуктом і потрібен напрямок.',
   format: 'PDF-документ + 30-хв обговорення',
-  refund: 'Вартість $150 повертається знижкою при переході на Фундамент або Генератор протягом 30 днів.',
-  result: 'Розумієте, які кроки і в якому порядку дають продажі — без здогадок.',
+  refund: 'Вартість $150 повертається знижкою при переході на Фундамент, Генератор або Преміум протягом 30 днів.',
+  result: 'Розумієш, які кроки і в якому порядку дають продажі — без здогадок.',
   features: [
     'Аудит точки А — продукт, аудиторія, поточні канали',
     'Аналіз конкурентів і позиціонування',
@@ -123,6 +162,7 @@ export default function PricingSection() {
   const [slots, setSlots] = useState(null);
   const [showStrategy, setShowStrategy] = useState(false);
   const sectionRef = useRef(null);
+  const strategyWrapperRef = useRef(null);
   useRevealOnScroll(sectionRef);
 
   useEffect(() => {
@@ -145,6 +185,22 @@ export default function PricingSection() {
     const id = setTimeout(() => setSlots(getSlotsForToday()), 1100);
     return () => clearTimeout(id);
   }, []);
+
+  useEffect(() => {
+    if (!showStrategy || !strategyWrapperRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setShowStrategy(false);
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(strategyWrapperRef.current);
+    return () => observer.disconnect();
+  }, [showStrategy]);
 
   return (
     <section id="pricing" className="w-full scroll-mt-24" ref={sectionRef}>
@@ -177,7 +233,7 @@ export default function PricingSection() {
                   <span className="text-sm text-orange-700 font-medium tracking-wide">
                     {slots === 1
                       ? 'Залишився лише 1 слот цього тижня'
-                      : `Зараз вільно: ${slots} ${slots === 2 ? 'слоти' : 'слоти'} з 5`}
+                      : `Зараз вільно: ${slots} слоти з 5`}
                   </span>
                 </>
               )}
@@ -186,13 +242,13 @@ export default function PricingSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {packages.map((pkg, i) => (
           <div
             key={i}
             className={`relative rounded-[2rem] p-8 flex flex-col reveal-on-scroll transition-all ${
               pkg.featured
-                ? 'bg-gradient-to-b from-orange-50/60 via-white to-white border-2 border-orange-300 shadow-2xl shadow-orange-200/40 md:scale-[1.02]'
+                ? 'bg-gradient-to-b from-orange-50/60 via-white to-white border-2 border-orange-300 shadow-2xl shadow-orange-200/40 lg:scale-[1.02]'
                 : 'bg-white border border-slate-200 shadow-xl shadow-slate-200/50'
             }`}
           >
@@ -267,7 +323,7 @@ export default function PricingSection() {
         ))}
       </div>
 
-      <div className="mt-8 reveal-on-scroll">
+      <div className="mt-8 reveal-on-scroll" ref={strategyWrapperRef}>
         <button
           type="button"
           onClick={() => setShowStrategy((v) => !v)}
@@ -275,7 +331,7 @@ export default function PricingSection() {
           aria-expanded={showStrategy}
         >
           <span className="border-b border-dashed border-slate-300 group-hover:border-slate-500 transition-colors">
-            Не готові на повний пакет? Є м'якший варіант старту
+            Не готовий на повний пакет? Є м'якший варіант старту
           </span>
           <iconify-icon
             icon="solar:alt-arrow-down-linear"
@@ -322,7 +378,7 @@ export default function PricingSection() {
                 </div>
 
                 <div className="lg:col-span-2 flex flex-col">
-                  <div className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Що ви отримаєте</div>
+                  <div className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Що ти отримаєш</div>
                   <ul className="space-y-3 mb-6">
                     {strategyPackage.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
@@ -371,7 +427,7 @@ export default function PricingSection() {
                 </th>
                 <th className="px-6 py-3 font-medium">
                   <div className="text-slate-700 normal-case tracking-normal">$250 / міс</div>
-                  <div className="text-[11px] text-slate-400 font-normal normal-case">для Генератора</div>
+                  <div className="text-[11px] text-slate-400 font-normal normal-case">для Генератора і Преміума</div>
                 </th>
               </tr>
             </thead>
@@ -404,7 +460,7 @@ export default function PricingSection() {
         </div>
         <div className="px-6 py-3 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500 bg-slate-50/50">
           <iconify-icon icon="solar:server-linear" width="14" height="14" className="text-slate-400" />
-          <span>Окремо: утримання платформ <span className="font-medium text-slate-700">$30–60 / міс</span> (хостинг, домен, сервіси).</span>
+          <span>Окремо: утримання платформ <span className="font-medium text-slate-700">$30–60 / міс</span> (хостинг, домен, сервіси). Подальше ведення реклами після першого місяця обговорюється окремо.</span>
         </div>
       </div>
     </section>

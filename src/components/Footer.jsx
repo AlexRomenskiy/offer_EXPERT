@@ -32,7 +32,12 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col md:flex-row border-slate-200 border-t pt-8 gap-4 items-center justify-between">
-        <p className="text-slate-400 text-xs font-normal">© {year} Усі права захищені.</p>
+        <div className="flex flex-col gap-1">
+          <p className="text-slate-400 text-xs font-normal">© {year} Усі права захищені.</p>
+          <p className="text-slate-300 text-[10px] font-normal">
+            Назви та логотипи Telegram, Instagram, WhatsApp, TikTok, Messenger та ManyChat — торговельні знаки відповідних власників.
+          </p>
+        </div>
         <div className="flex items-center gap-4 text-slate-400">
           <a href="#" className="hover:text-slate-900 transition-colors">
             <iconify-icon icon="solar:letter-linear" width="18" height="18" />

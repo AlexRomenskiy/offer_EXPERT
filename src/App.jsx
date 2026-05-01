@@ -5,7 +5,6 @@ import PainPointsSection from './sections/PainPointsSection';
 import CaseStudySection from './sections/CaseStudySection';
 import BeforeAfterSection from './sections/BeforeAfterSection';
 import PricingSection from './sections/PricingSection';
-import CalculatorSection from './sections/CalculatorSection';
 import AboutSection from './sections/AboutSection';
 import FAQSection from './sections/FAQSection';
 import FinalCTASection from './sections/FinalCTASection';
@@ -41,9 +40,6 @@ export default function App() {
 
           <div className="section-divider my-16 lg:my-24" />
           <PricingSection />
-
-          <div className="section-divider my-16 lg:my-24" />
-          <CalculatorSection />
 
           <div className="section-divider my-16 lg:my-24" />
           <AboutSection />
