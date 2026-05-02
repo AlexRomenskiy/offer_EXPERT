@@ -2,6 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ====== ES Build (Befonts trial — personal use only — replace before prod) ====== */
+@font-face {
+  font-family: 'ES Build';
+  src: url('/fonts/ESBuildTRIAL-Regular-BF6618ac1e2c29f.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ES Build';
+  src: url('/fonts/ESBuildTRIAL-Italic-BF6618ac1d5c512.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ES Build';
+  src: url('/fonts/ESBuildTRIAL-Medium-BF6618ac1e0ca90.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ES Build';
+  src: url('/fonts/ESBuildTRIAL-MediumItalic-BF6618ac1e263f8.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ES Build';
+  src: url('/fonts/ESBuildTRIAL-Semibold-BF6618ac1dd0b22.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ES Build';
+  src: url('/fonts/ESBuildTRIAL-SemiboldItalic-BF6618ac1deefc3.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ES Build';
+  src: url('/fonts/ESBuildTRIAL-Bold-BF6618ac1e17d36.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ES Build';
+  src: url('/fonts/ESBuildTRIAL-BoldItalic-BF6618ac1e10819.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +67,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'ES Build', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #f8fafc;
   min-height: 100vh;
   overflow-x: hidden;
@@ -176,6 +234,103 @@ iconify-icon {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
+}
+
+/* ====== Master-template anim system (lifted from generated-page-01-05.html) ====== */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-wrap {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
+  }
+  .anim-line {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .anim-fade-up {
+    transform: translateY(24px);
+    opacity: 0;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .is-visible .anim-line,
+  .is-visible.anim-line,
+  .is-visible .anim-fade-up,
+  .is-visible.anim-fade-up {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ====== Corner brackets (master-template glass-panel chrome) ====== */
+.corner-tl,
+.corner-tr,
+.corner-bl,
+.corner-br {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  opacity: 0.55;
+}
+.corner-tl { top: 10px;    left: 10px;   border-top: 1px solid currentColor;    border-left: 1px solid currentColor; }
+.corner-tr { top: 10px;    right: 10px;  border-top: 1px solid currentColor;    border-right: 1px solid currentColor; }
+.corner-bl { bottom: 10px; left: 10px;   border-bottom: 1px solid currentColor; border-left: 1px solid currentColor; }
+.corner-br { bottom: 10px; right: 10px;  border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; }
+
+/* ====== Hero dark room — drifting glows ====== */
+@keyframes heroGlowCool {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  50%      { transform: translate3d(6%, 4%, 0) scale(1.08); opacity: 0.75; }
+}
+
+@keyframes heroGlowWarm {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.45; }
+  50%      { transform: translate3d(-5%, -3%, 0) scale(1.1); opacity: 0.7; }
+}
+
+.hero-glow-cool {
+  animation: heroGlowCool 22s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.hero-glow-warm {
+  animation: heroGlowWarm 28s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ====== Hero dot mesh ====== */
+.hero-dot-mesh {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.55) 1px, transparent 0);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(110% 85% at 50% 35%, black 30%, transparent 85%);
+  mask-image: radial-gradient(110% 85% at 50% 35%, black 30%, transparent 85%);
+}
+
+/* ====== Dark glass utilities for Hero ====== */
+.dark-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+}
+
+.dark-glass-strong {
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 8px 30px rgba(0,0,0,0.35);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow-cool,
+  .hero-glow-warm {
+    animation: none;
+  }
 }
 
 .card-floater {
