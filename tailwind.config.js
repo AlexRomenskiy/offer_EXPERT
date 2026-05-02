@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['ES Build', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['ES Build', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'monospace'],
       },
       borderRadius: {
         'frame': '2.5rem',
