@@ -67,7 +67,7 @@ export default function HeroSection() {
                   style={{ fontFamily: fontStack, textWrap: 'balance' }}
                 >
                   <span className="anim-wrap">
-                    <span className="anim-line" style={{ transitionDelay: '0.1s' }}>
+                    <span className="anim-line font-medium" style={{ transitionDelay: '0.1s' }}>
                       Система продажу
                     </span>
                   </span>{' '}
