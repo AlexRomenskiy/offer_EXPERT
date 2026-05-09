@@ -7,7 +7,12 @@
       "Bash(git rm *)",
       "PowerShell(Get-ChildItem -Directory | Where-Object { @\\(\\(Get-ChildItem $_.FullName -Recurse -Force -ErrorAction SilentlyContinue\\)\\).Count -eq 0 } | ForEach-Object { Remove-Item $_.FullName -Recurse -Force; \"removed: $\\($_.Name\\)\" }; if \\(Test-Path 'src/hooks'\\) { if \\(@\\(\\(Get-ChildItem 'src/hooks' -Force -ErrorAction SilentlyContinue\\)\\).Count -eq 0\\) { Remove-Item 'src/hooks' -Force; 'removed: src/hooks' } })",
       "Bash(mkdir -p public/logo)",
-      "Bash(rmdir Logo)"
+      "Bash(rmdir Logo)",
+      "Bash(mv 4.svg stacked-on-light.svg)",
+      "Bash(mv 5.svg horizontal-on-light.svg)",
+      "Bash(mv 6.svg mark-on-light.svg)",
+      "Bash(mv 7.svg stacked-on-dark.svg)",
+      "Bash(mv 8.svg horizontal-on-dark.svg)"
     ]
   }
 }
