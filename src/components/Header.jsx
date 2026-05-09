@@ -20,8 +20,8 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-5 transition-all duration-300 ${
-          scrolled ? 'pt-3' : 'pt-4 sm:pt-5'
+        className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+          scrolled ? 'pt-3' : 'pt-6 sm:pt-7 lg:pt-8'
         }`}
       >
         <div
