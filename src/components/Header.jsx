@@ -1,140 +1,168 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navItems = [
-  { label: 'Для кого', href: '#pain-points' },
+  { label: 'Як працюємо', href: '#methodology' },
+  { label: 'Кейс', href: '#case' },
   { label: 'Тарифи', href: '#pricing' },
-  { label: 'Кейс', href: '#case-study' },
-  { label: 'FAQ', href: '#faq' },
 ];
 
-export default function Header({ theme = 'light' }) {
+export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const dark = theme === 'dark';
+  const [scrolled, setScrolled] = useState(false);
 
-  const handleNav = (e, href) => {
-    e.preventDefault();
-    setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="flex md:mb-12 z-10 mb-10 relative gap-x-6 gap-y-6 items-center justify-between">
-      {/* Logo */}
-      <div className={`flex items-center gap-2 ${dark ? 'text-white' : 'text-slate-900'}`}>
-        <div
-          className={`flex w-9 h-9 rounded-full items-center justify-center relative ${
-            dark
-              ? 'bg-white/[0.06] border border-white/15 backdrop-blur-md'
-              : 'bg-gradient-to-b from-black/5 to-transparent'
-          }`}
-          style={
-            !dark
-              ? {
-                  '--border-gradient': 'linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0))',
-                  '--border-radius-before': '9999px',
-                }
-              : undefined
-          }
-        >
-          <iconify-icon icon="solar:layers-linear" width="16" height="16" className={dark ? 'text-orange-400' : ''} />
-        </div>
-        <span className="text-lg font-medium tracking-tight">LOGO</span>
-      </div>
-
-      {/* Navigation pill */}
-      <nav
-        className={`hidden md:flex uppercase text-xs font-medium tracking-widest rounded-full py-2 px-6 shadow-sm gap-x-8 items-center backdrop-blur-md ${
-          dark
-            ? 'bg-white/[0.05] border border-white/10 text-slate-300'
-            : 'bg-white/60 border border-slate-200 text-slate-500'
-        }`}
-      >
-        {navItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            onClick={(e) => handleNav(e, item.href)}
-            className={`transition-colors duration-300 ${dark ? 'hover:text-white' : 'hover:text-slate-900'}`}
-          >
-            {item.label}
-          </a>
-        ))}
-      </nav>
-
-      {/* CTA + Mobile toggle */}
-      <div className="flex items-center gap-2">
-        <a
-          href="#final-cta"
-          onClick={(e) => handleNav(e, '#final-cta')}
-          className={`hidden sm:flex items-center gap-2 group rounded-lg py-2.5 px-5 border shadow-sm relative transition-colors text-xs font-medium tracking-wide ${
-            dark
-              ? 'bg-white/[0.05] border-white/15 text-white/85 hover:bg-white/[0.1] hover:text-white'
-              : 'bg-gradient-to-b from-black/[0.02] to-transparent border-slate-200 text-slate-900 hover:bg-black/5'
-          }`}
-        >
-          <span
-            className={`text-[11px] uppercase font-medium tracking-tight transition-colors ${
-              dark ? 'text-white/85 group-hover:text-white' : 'text-slate-600 group-hover:text-slate-900'
-            }`}
-          >
-            Записатися
-          </span>
-          <iconify-icon icon="solar:arrow-right-linear" width="14" height="14" className="group-hover:translate-x-1 transition-transform" />
-        </a>
-
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className={`md:hidden w-10 h-10 flex items-center justify-center rounded-full transition-colors focus:outline-none ${
-            dark ? 'text-white/80 hover:bg-white/[0.06]' : 'text-slate-600 hover:bg-white/60'
-          }`}
-          aria-label="Menu"
-        >
-          <iconify-icon icon={mobileOpen ? 'solar:close-circle-linear' : 'solar:hamburger-menu-linear'} width="20" height="20" />
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`absolute top-full left-0 w-full mt-3 origin-top transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-          mobileOpen
-            ? 'transform scale-100 opacity-100 visible'
-            : 'transform scale-95 opacity-0 invisible'
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-5 transition-all duration-300 ${
+          scrolled ? 'pt-3' : 'pt-4 sm:pt-5'
         }`}
       >
         <div
-          className={`backdrop-blur-2xl rounded-2xl p-3 shadow-xl flex flex-col gap-1 ${
-            dark
-              ? 'bg-slate-950/85 border border-white/10'
-              : 'bg-white/80 border border-slate-200'
-          }`}
+          className="max-w-5xl mx-auto rounded-full transition-all duration-300"
+          style={{
+            background: scrolled
+              ? 'linear-gradient(180deg, rgba(15,23,42,0.82), rgba(15,23,42,0.72))'
+              : 'linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06))',
+            border: scrolled
+              ? '1px solid rgba(255, 255, 255, 0.12)'
+              : '1px solid rgba(255, 255, 255, 0.22)',
+            backdropFilter: 'blur(22px) saturate(160%)',
+            WebkitBackdropFilter: 'blur(22px) saturate(160%)',
+            padding: scrolled ? '6px 12px' : '8px 16px',
+            boxShadow: scrolled
+              ? '0 10px 30px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.10)'
+              : '0 10px 30px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.18)',
+          }}
         >
-          {navItems.map((item) => (
+          <div className="flex items-center justify-between">
+            {/* Brand: lion mark (chroma-keyed) + wordmark */}
             <a
-              key={item.href}
-              href={item.href}
-              onClick={(e) => handleNav(e, item.href)}
-              className={`p-4 text-center text-sm font-medium rounded-xl transition-all ${
-                dark
-                  ? 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-              }`}
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setMobileOpen(false);
+              }}
+              className="flex items-center gap-2.5"
             >
-              {item.label}
+              <img
+                src="/logo/mark-on-light.png"
+                alt="CRAFT LIONS"
+                className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
+              />
+              <span className="text-[15px] sm:text-[16px] font-semibold tracking-[0.01em]">
+                <span className="text-white">CRAFT</span>
+                <span className="text-[#60a5fa] ml-1.5">LIONS</span>
+              </span>
             </a>
-          ))}
-          <div className={`h-px mx-6 my-1 ${dark ? 'bg-white/10' : 'bg-slate-200/50'}`} />
-          <a
-            href="#final-cta"
-            onClick={(e) => handleNav(e, '#final-cta')}
-            className={`p-4 text-center text-sm font-medium rounded-xl shadow-lg ${
-              dark ? 'text-slate-900 bg-orange-400 hover:bg-orange-300' : 'text-white bg-slate-900'
-            }`}
-          >
-            Записатися
-          </a>
+
+            {/* Desktop nav */}
+            <ul className="hidden md:flex items-center gap-1 text-[13px] font-medium text-white/65">
+              {navItems.map((it) => (
+                <li key={it.href}>
+                  <a
+                    href={it.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMobileOpen(false);
+                      const el = document.querySelector(it.href);
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    className="hover:text-white transition-colors duration-300 px-3.5 py-2 rounded-full hover:bg-white/[0.06]"
+                  >
+                    {it.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Actions */}
+            <div className="flex items-center gap-1.5 md:gap-2">
+              <a
+                href="#request-access"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileOpen(false);
+                  const el = document.querySelector('#request-access');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="hidden md:inline-flex items-center justify-center px-4 py-1.5 rounded-full text-[13px] font-medium text-slate-950 bg-white/95 hover:bg-white transition-all duration-300 shadow-[0_2px_10px_rgba(255,255,255,0.10)]"
+              >
+                Записатися
+              </a>
+
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="inline-flex md:hidden p-2 rounded-full transition-all duration-300 border border-white/15 bg-white/[0.06] hover:bg-white/[0.12]"
+                aria-label="Меню"
+              >
+                <iconify-icon
+                  icon={mobileOpen ? 'solar:close-circle-linear' : 'solar:hamburger-menu-linear'}
+                  width="20"
+                  height="20"
+                  style={{ color: 'rgba(255,255,255,0.85)' }}
+                />
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </header>
+
+        {/* Mobile menu */}
+        <div
+          className={`md:hidden mx-auto max-w-5xl mt-3 origin-top transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+            mobileOpen
+              ? 'transform scale-100 opacity-100 visible'
+              : 'transform scale-95 opacity-0 invisible'
+          }`}
+        >
+          <div
+            className="rounded-2xl p-3 flex flex-col gap-1 border"
+            style={{
+              background: 'rgba(2, 15, 45, 0.92)',
+              borderColor: 'rgba(255, 255, 255, 0.10)',
+              backdropFilter: 'blur(20px) saturate(140%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(140%)',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
+            }}
+          >
+            {navItems.map((it) => (
+              <a
+                key={it.href}
+                href={it.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileOpen(false);
+                  const el = document.querySelector(it.href);
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="p-4 text-center text-sm font-medium rounded-xl text-slate-300 hover:text-white hover:bg-white/[0.06] transition-all"
+              >
+                {it.label}
+              </a>
+            ))}
+            <div className="h-px mx-6 my-1 bg-white/10" />
+            <a
+              href="#request-access"
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileOpen(false);
+                const el = document.querySelector('#request-access');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              className="p-4 text-center text-sm font-medium rounded-xl text-slate-950 bg-white shadow-lg"
+            >
+              Записатися
+            </a>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }

@@ -12,7 +12,9 @@
       "Bash(mv 5.svg horizontal-on-light.svg)",
       "Bash(mv 6.svg mark-on-light.svg)",
       "Bash(mv 7.svg stacked-on-dark.svg)",
-      "Bash(mv 8.svg horizontal-on-dark.svg)"
+      "Bash(mv 8.svg horizontal-on-dark.svg)",
+      "Bash(curl -s -o /dev/null -w \"HTTP: %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s http://localhost:5173/)"
     ]
   }
 }

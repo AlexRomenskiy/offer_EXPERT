@@ -44,7 +44,27 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 selection:bg-orange-500/20 text-slate-700 relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#f8fafc] selection:bg-[#175ae8]/20 text-slate-700 relative overflow-x-hidden">
+      {/* Atmospheric base background (visible on light sections) */}
+      <div className="fixed inset-0 z-[-1] pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f0f4f8] via-[#f8fafc] to-white" />
+        <svg
+          className="absolute w-full h-full opacity-[0.03]"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{
+            WebkitMaskImage: 'radial-gradient(100% 100% at top left, black, transparent)',
+            maskImage: 'radial-gradient(100% 100% at top left, black, transparent)',
+          }}
+        >
+          <defs>
+            <pattern id="base-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.2" fill="#0f172a" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#base-grid)" />
+        </svg>
+      </div>
+
       <HeroSection />
       <PainPointsSection />
       <BeforeAfterSection />

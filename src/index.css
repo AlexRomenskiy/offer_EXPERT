@@ -67,12 +67,23 @@
 }
 
 body {
-  font-family: 'ES Build', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #f8fafc;
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   color: #475569;
+}
+
+/* ====== Brand gradient (Hero, key CTAs, accent surfaces) ====== */
+.brand-gradient {
+  background: linear-gradient(135deg, #020f2d 0%, #175ae8 100%);
+}
+.brand-gradient-vertical {
+  background: linear-gradient(180deg, #020f2d 0%, #175ae8 100%);
+}
+.brand-gradient-radial {
+  background: radial-gradient(circle at 30% 20%, #175ae8 0%, #020f2d 70%);
 }
 
 iconify-icon {
