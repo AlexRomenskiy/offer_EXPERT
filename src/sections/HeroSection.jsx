@@ -56,14 +56,14 @@ export default function HeroSection() {
         <Header />
 
         {/* Card content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[110px] pb-12 lg:pt-[120px] lg:pb-16 min-h-[inherit] flex flex-col justify-center">
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-8 lg:px-12 pt-[100px] pb-8 lg:pt-[110px] lg:pb-10 min-h-[inherit] flex flex-col justify-center">
           <div className="anim-trigger is-visible">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               {/* Left column */}
               <div className="lg:col-span-7">
                 {/* Headline */}
                 <h1
-                  className="text-[2.5rem] sm:text-[3.2rem] lg:text-[4.2rem] leading-[1.04] tracking-[-0.035em] font-light mb-6 text-white"
+                  className="text-[2.4rem] sm:text-[3rem] lg:text-[3.6rem] leading-[1.04] tracking-[-0.035em] font-light mb-5 text-white"
                   style={{ fontFamily: fontStack, textWrap: 'balance' }}
                 >
                   <span className="anim-wrap">
@@ -78,10 +78,14 @@ export default function HeroSection() {
                   </span>
                 </h1>
 
-                {/* Subtitle */}
+                {/* Subtitle with thin vertical accent line on the LEFT */}
                 <p
-                  className="max-w-[36rem] text-[1rem] sm:text-[1.1rem] leading-[1.65] font-normal mb-7 text-slate-200/85 anim-fade-up"
-                  style={{ transitionDelay: '0.28s', fontFamily: fontStack }}
+                  className="max-w-[34rem] text-[0.95rem] sm:text-[1.05rem] leading-[1.6] font-normal mb-5 text-slate-200/85 anim-fade-up pl-5"
+                  style={{
+                    transitionDelay: '0.28s',
+                    fontFamily: fontStack,
+                    borderLeft: '1px solid rgba(255,255,255,0.20)',
+                  }}
                 >
                   Перетворюю твою експертизу на систему, що працює без тебе:
                   ловить ліди, веде до оплати, видає продукт. Поки система продає —
@@ -90,11 +94,11 @@ export default function HeroSection() {
 
                 {/* Channels */}
                 <div
-                  className="mb-9 anim-fade-up"
+                  className="mb-7 anim-fade-up"
                   style={{ transitionDelay: '0.34s' }}
                 >
                   <p className="text-[0.9rem] text-slate-300/80 mb-3" style={{ fontFamily: fontStack }}>
-                    Один бот працює з усіма твоїми каналами:
+                    Підхоплює ліди звідусіль, де ти є:
                   </p>
                   <div className="flex items-center gap-4">
                     {channels.map((ch) => (
@@ -111,29 +115,60 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Single CTA */}
+                {/* Single CTA — orange spinning beam */}
                 <a
                   href="#request-access"
-                  className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-white/70 bg-gradient-to-r from-white to-slate-100 px-7 text-[14px] font-medium text-slate-950 shadow-[0_10px_30px_rgba(255,255,255,0.15)] transition-all duration-300 hover:shadow-[0_14px_38px_rgba(255,255,255,0.25)] anim-fade-up"
-                  style={{ transitionDelay: '0.42s', fontFamily: fontStack }}
+                  className="group inline-flex overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(234,88,12,0.5)] focus:outline-none text-sm font-medium text-white tracking-wide rounded-full px-10 relative items-center justify-center anim-fade-up"
+                  style={{
+                    transitionDelay: '0.42s',
+                    fontFamily: fontStack,
+                    height: '60px',
+                  }}
                 >
-                  <span className="pointer-events-none absolute inset-0 rounded-full opacity-90 bg-[radial-gradient(circle_at_25%_20%,rgba(0,0,0,0.10),transparent_28%)]" />
-                  <span className="relative z-10 inline-flex items-center gap-2">
-                    Записатися на безкоштовний розбір
-                    <iconify-icon
-                      icon="solar:arrow-right-linear"
-                      width="16"
-                      height="16"
-                      class="transition-transform duration-300 group-hover:translate-x-0.5"
+                  {/* Spinning orange beam border */}
+                  <div className="absolute inset-0 -z-20 rounded-full overflow-hidden p-[1px]">
+                    <div
+                      className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_280deg,#fb923c_320deg,#f97316_360deg)]"
+                      style={{ animation: 'beam-spin 3s linear infinite' }}
                     />
+                    <div className="absolute inset-[1px] rounded-full bg-zinc-950" />
+                  </div>
+
+                  {/* Inner orange-tinted bg */}
+                  <div className="-z-10 overflow-hidden rounded-full absolute top-[2px] right-[2px] bottom-[2px] left-[2px] bg-zinc-950">
+                    <div className="absolute inset-0 bg-gradient-to-b from-orange-600/40 via-orange-700/15 to-transparent" />
+                    {/* Animated dots */}
+                    <div
+                      className="opacity-30 mix-blend-overlay absolute inset-0"
+                      style={{
+                        backgroundImage:
+                          'radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)',
+                        backgroundSize: '12px 12px',
+                        animation: 'dots-move 8s linear infinite',
+                      }}
+                    />
+                    {/* Orange glow */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-orange-500/30 blur-2xl rounded-full pointer-events-none transition-colors duration-500 group-hover:bg-orange-400/55" />
+                  </div>
+
+                  {/* Content */}
+                  <span className="relative z-10 text-white/90 transition-colors group-hover:text-white">
+                    Записатися на безкоштовний розбір
                   </span>
+                  <iconify-icon
+                    icon="solar:arrow-right-linear"
+                    width="16"
+                    height="16"
+                    class="relative z-10 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                    style={{ color: '#fff' }}
+                  />
                 </a>
               </div>
 
               {/* Right column — image placeholder (will be replaced by Higgsfield video animation) */}
               <div className="lg:col-span-5 relative">
                 <div
-                  className="relative aspect-[4/5] lg:aspect-[5/6] rounded-[24px] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.45)] overflow-hidden anim-fade-up"
+                  className="relative aspect-[4/5] lg:aspect-[4/3] rounded-[24px] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.45)] overflow-hidden anim-fade-up"
                   style={{ transitionDelay: '0.50s' }}
                 >
                   {/* The hero image (system command center) */}
