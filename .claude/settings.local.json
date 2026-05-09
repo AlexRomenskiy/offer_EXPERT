@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(mkdir landing-copy *)",
+      "Bash(git mv *)",
+      "Bash(git rm *)",
+      "PowerShell(Get-ChildItem -Directory | Where-Object { @\\(\\(Get-ChildItem $_.FullName -Recurse -Force -ErrorAction SilentlyContinue\\)\\).Count -eq 0 } | ForEach-Object { Remove-Item $_.FullName -Recurse -Force; \"removed: $\\($_.Name\\)\" }; if \\(Test-Path 'src/hooks'\\) { if \\(@\\(\\(Get-ChildItem 'src/hooks' -Force -ErrorAction SilentlyContinue\\)\\).Count -eq 0\\) { Remove-Item 'src/hooks' -Force; 'removed: src/hooks' } })"
     ]
   }
 }

@@ -1,6 +1,6 @@
 param(
-    [string]$InputPath = "d:\GitHub\offer_EXPERT\landing-copy.md",
-    [string]$OutputPath = "d:\GitHub\offer_EXPERT\landing-copy.docx"
+    [string]$InputPath = (Join-Path $PSScriptRoot 'landing-copy.md'),
+    [string]$OutputPath = (Join-Path $PSScriptRoot 'landing-copy.docx')
 )
 
 $ErrorActionPreference = 'Stop'

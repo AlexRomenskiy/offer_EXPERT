@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
-$InputPath = "d:\GitHub\offer_EXPERT\landing-clean.txt"
-$OutputPath = "d:\GitHub\offer_EXPERT\landing-text.docx"
+$InputPath = Join-Path $PSScriptRoot 'landing-clean.txt'
+$OutputPath = Join-Path $PSScriptRoot 'landing-text.docx'
 
 $lines = Get-Content -Path $InputPath -Encoding UTF8
 
