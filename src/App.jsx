@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import HeroSection from './sections/HeroSection';
+import SystemIncludesSection from './sections/SystemIncludesSection';
 import PainPointsSection from './sections/PainPointsSection';
 import CaseStudySection from './sections/CaseStudySection';
 import BeforeAfterSection from './sections/BeforeAfterSection';
@@ -66,6 +67,7 @@ export default function App() {
       </div>
 
       <HeroSection />
+      <SystemIncludesSection />
       <PainPointsSection />
       <BeforeAfterSection />
       <CaseStudySection />

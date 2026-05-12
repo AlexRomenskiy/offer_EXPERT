@@ -173,7 +173,7 @@ export default function HeroSection() {
                 >
                   {/* The hero image (system command center) */}
                   <img
-                    src="/Img_for_hero.png"
+                    src="/Img_for_hero_11.png"
                     alt="Командний центр системи продажу"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
