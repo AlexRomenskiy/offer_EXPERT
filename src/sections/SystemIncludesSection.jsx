@@ -14,10 +14,14 @@ export default function SystemIncludesSection() {
   return (
     <section
       id="system-includes"
-      className="relative py-24 lg:py-28 px-6 md:px-8 lg:px-12 overflow-hidden"
+      className="relative py-24 lg:py-28 px-6 md:px-8 lg:px-12 overflow-hidden bg-[#EEF4FA] border-t border-slate-200/50"
     >
       {/* atmospheric section wash */}
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(238,244,250,0.72)_24%,rgba(234,242,248,0.96)_100%)] pointer-events-none" />
+
+      {/* soft blue glow blobs (atmosphere) */}
+      <div className="absolute -top-24 -left-20 w-[420px] h-[420px] rounded-full bg-blue-200/20 blur-[110px] pointer-events-none" />
+      <div className="absolute top-1/3 -right-24 w-[380px] h-[380px] rounded-full bg-blue-300/14 blur-[120px] pointer-events-none" />
 
       {/* structural grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.045]">
@@ -38,7 +42,7 @@ export default function SystemIncludesSection() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Intro */}
         <div className="max-w-3xl mb-14 lg:mb-16 anim-trigger">
           <h2
@@ -72,17 +76,16 @@ export default function SystemIncludesSection() {
           <div className="flex flex-col gap-6 lg:gap-7 min-h-full">
             {/* 1. Лендинг — large visual card */}
             <div
-              className="group relative min-h-[320px] rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-xl border border-white/55 shadow-[0_26px_70px_rgba(148,163,184,0.14),0_8px_24px_rgba(15,23,42,0.05)] anim-fade-up"
+              className="group relative min-h-[320px] rounded-[28px] overflow-hidden bg-white/38 backdrop-blur-2xl border border-white/60 shadow-[0_28px_80px_rgba(148,163,184,0.14),0_8px_24px_rgba(15,23,42,0.05)] anim-fade-up"
               style={{ transitionDelay: '0.04s' }}
             >
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.52))]" />
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_30%,rgba(147,197,253,0.22),transparent_28%),radial-gradient(circle_at_70%_65%,rgba(59,130,246,0.14),transparent_32%)]" />
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.42),transparent_48%)]" />
-              </div>
+              {/* glass highlights */}
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent opacity-80" />
+              <div className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full bg-blue-200/18 blur-[90px]" />
 
               {/* Stylized landing mockup (top portion of card) */}
-              <div className="absolute inset-x-7 top-7 lg:top-8 h-[56%] rounded-[18px] bg-[#0b1530]/95 overflow-hidden border border-white/10 shadow-[0_18px_40px_rgba(2,15,45,0.25)]">
+              <div className="absolute inset-x-7 top-7 lg:top-8 h-[56%] rounded-[18px] bg-[#0b1530]/92 overflow-hidden border border-white/10 shadow-[0_18px_40px_rgba(2,15,45,0.22)]">
                 <div className="flex items-center gap-1.5 px-4 pt-4">
                   <span className="w-2 h-2 rounded-full bg-white/20" />
                   <span className="w-2 h-2 rounded-full bg-white/20" />
@@ -122,12 +125,13 @@ export default function SystemIncludesSection() {
 
             {/* 2. Лід-магніт — metric card */}
             <div
-              className="group relative min-h-[210px] rounded-[28px] overflow-hidden bg-white/36 backdrop-blur-xl border border-white/55 shadow-[0_20px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up"
+              className="group relative min-h-[210px] rounded-[28px] overflow-hidden bg-white/36 backdrop-blur-2xl border border-white/60 shadow-[0_20px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up"
               style={{ transitionDelay: '0.10s' }}
             >
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.50),transparent_52%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
+              <div className="pointer-events-none absolute -bottom-16 -left-12 w-56 h-56 rounded-full bg-blue-200/16 blur-[80px]" />
               <div
-                className="absolute inset-0 opacity-[0.08]"
+                className="pointer-events-none absolute inset-0 opacity-[0.07]"
                 style={{
                   backgroundImage:
                     'radial-gradient(circle at 1px 1px, rgba(15,23,42,0.25) 1px, transparent 0)',
@@ -188,11 +192,12 @@ export default function SystemIncludesSection() {
           <div className="flex flex-col gap-6 lg:gap-7 min-h-full">
             {/* 3. Чат-бот — content card */}
             <div
-              className="group relative min-h-[250px] rounded-[28px] overflow-hidden bg-white/34 backdrop-blur-xl border border-white/55 shadow-[0_20px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up"
+              className="group relative min-h-[250px] rounded-[28px] overflow-hidden bg-white/34 backdrop-blur-2xl border border-white/60 shadow-[0_20px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up"
               style={{ transitionDelay: '0.08s' }}
             >
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#175ae8]/45 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent opacity-80" />
+              <div className="pointer-events-none absolute -top-16 right-0 w-64 h-64 rounded-full bg-blue-200/14 blur-[90px]" />
 
               <div className="relative z-10 p-7 lg:p-8 h-full flex flex-col justify-between">
                 <div className="flex items-center gap-3.5 flex-wrap">
@@ -228,18 +233,19 @@ export default function SystemIncludesSection() {
 
             {/* 4. Прийом оплат + видача — visual flow card */}
             <div
-              className="group relative min-h-[280px] rounded-[28px] overflow-hidden bg-white/38 backdrop-blur-xl border border-white/55 shadow-[0_20px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up"
+              className="group relative min-h-[280px] rounded-[28px] overflow-hidden bg-white/38 backdrop-blur-2xl border border-white/60 shadow-[0_20px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up"
               style={{ transitionDelay: '0.14s' }}
             >
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.42),transparent_55%)]" />
               <div
-                className="absolute inset-0 opacity-[0.08]"
+                className="pointer-events-none absolute inset-0 opacity-[0.07]"
                 style={{
                   backgroundImage:
-                    'radial-gradient(circle at 1px 1px, rgba(59,130,246,0.78) 1px, transparent 0)',
+                    'radial-gradient(circle at 1px 1px, rgba(59,130,246,0.72) 1px, transparent 0)',
                   backgroundSize: '16px 16px',
                 }}
               />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(147,197,253,0.18),transparent_32%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(147,197,253,0.20),transparent_36%)]" />
 
               <div className="relative z-10 p-7 lg:p-8 h-full flex flex-col items-center justify-center text-center">
                 {/* flow: Оплата → Доступ */}
@@ -308,10 +314,11 @@ export default function SystemIncludesSection() {
           <div className="flex flex-col gap-6 lg:gap-7 min-h-full">
             {/* 5. Аналітика — compact card */}
             <div
-              className="group relative min-h-[190px] rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-xl border border-white/55 shadow-[0_20px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up"
+              className="group relative min-h-[190px] rounded-[28px] overflow-hidden bg-white/38 backdrop-blur-2xl border border-white/60 shadow-[0_20px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up"
               style={{ transitionDelay: '0.12s' }}
             >
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.50),transparent_52%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
+              <div className="pointer-events-none absolute -top-12 -right-12 w-56 h-56 rounded-full bg-blue-200/18 blur-[80px]" />
 
               <div className="relative z-10 p-7 lg:p-8 h-full flex flex-col justify-between">
                 <div className="flex items-center justify-between">
@@ -357,38 +364,32 @@ export default function SystemIncludesSection() {
               </div>
             </div>
 
-            {/* 6. Трафік — premium tall dark card */}
+            {/* 6. Трафік — light glass tall card (premium marker via italic text only) */}
             <div
-              className="group relative flex-1 min-h-[340px] rounded-[28px] overflow-hidden brand-gradient shadow-[0_24px_70px_rgba(2,15,45,0.30)] border border-white/15 anim-fade-up"
+              className="group relative flex-1 min-h-[340px] rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_24px_70px_rgba(148,163,184,0.16),0_8px_24px_rgba(15,23,42,0.05)] anim-fade-up"
               style={{ transitionDelay: '0.18s' }}
             >
-              <div
-                className="absolute inset-0 opacity-[0.12]"
-                style={{
-                  backgroundImage:
-                    'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.55) 1px, transparent 0)',
-                  backgroundSize: '20px 20px',
-                }}
-              />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(96,165,250,0.30),transparent_30%)]" />
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent opacity-80" />
+              <div className="pointer-events-none absolute -top-24 -right-20 w-80 h-80 rounded-full bg-blue-300/18 blur-[100px]" />
+              <div className="pointer-events-none absolute bottom-0 -left-16 w-64 h-64 rounded-full bg-blue-200/16 blur-[90px]" />
 
-              <div className="relative z-10 p-7 lg:p-8 h-full flex flex-col justify-between text-white">
-                <div className="flex items-center gap-2 text-slate-200/80">
+              <div className="relative z-10 p-7 lg:p-8 h-full flex flex-col justify-between">
+                <div className="flex items-center gap-2">
                   <iconify-icon
                     icon="simple-icons:meta"
                     width="16"
                     height="16"
-                    style={{ color: 'rgba(255,255,255,0.85)' }}
+                    style={{ color: '#175ae8' }}
                   />
                   <iconify-icon
                     icon="simple-icons:instagram"
                     width="16"
                     height="16"
-                    style={{ color: 'rgba(255,255,255,0.85)' }}
+                    style={{ color: '#175ae8' }}
                   />
                   <span
-                    className="text-[12px] tracking-wide text-slate-300/80 ml-1"
+                    className="text-[12px] text-slate-600 ml-1"
                     style={{ fontFamily: fontStack }}
                   >
                     Платні канали
@@ -397,13 +398,13 @@ export default function SystemIncludesSection() {
 
                 <div>
                   <h3
-                    className="text-[1.8rem] lg:text-[2rem] leading-[1.08] tracking-[-0.03em] text-white mb-4 font-medium"
+                    className="text-[1.8rem] lg:text-[2rem] leading-[1.08] tracking-[-0.03em] text-slate-950 mb-4 font-medium"
                     style={{ fontFamily: fontStack }}
                   >
                     Трафік
                   </h3>
                   <p
-                    className="text-[0.98rem] leading-[1.75] text-slate-300/90 mb-6 max-w-[28ch]"
+                    className="text-[0.98rem] leading-[1.75] text-slate-700 mb-6 max-w-[28ch]"
                     style={{ fontFamily: fontStack }}
                   >
                     Налаштування реклами під твою воронку: Meta Pixel + CAPI,
@@ -412,10 +413,10 @@ export default function SystemIncludesSection() {
                   </p>
 
                   <div
-                    className="flex items-center gap-2 text-[12px] italic text-blue-200/90"
+                    className="flex items-center gap-2 text-[12px] italic text-[#175ae8]/85"
                     style={{ fontFamily: fontStack }}
                   >
-                    <span className="block w-6 h-px bg-blue-300/40" />
+                    <span className="block w-6 h-px bg-[#175ae8]/40" />
                     У пакеті «Преміум»
                   </div>
                 </div>

@@ -25,7 +25,7 @@ export default function Header() {
         scrolled ? 'pt-3' : 'pt-6 sm:pt-7 lg:pt-8'
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         <div
           className="rounded-full transition-all duration-300"
           style={{
@@ -195,7 +195,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden mx-auto max-w-[1440px] px-6 mt-3 origin-top transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`md:hidden mx-auto max-w-7xl px-6 mt-3 origin-top transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           mobileOpen
             ? 'transform scale-100 opacity-100 visible'
             : 'transform scale-95 opacity-0 invisible'

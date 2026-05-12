@@ -20,7 +20,7 @@ export default function HeroSection() {
     >
       {/* Hero card — Header lives INSIDE this card */}
       <div
-        className="relative max-w-[1440px] mx-auto rounded-[28px] sm:rounded-[36px] overflow-hidden"
+        className="relative max-w-7xl mx-auto rounded-[28px] sm:rounded-[36px] overflow-hidden"
         style={{
           minHeight: 'calc(100vh - 32px)',
           boxShadow: '0 30px 80px rgba(2,15,45,0.18)',
@@ -28,7 +28,7 @@ export default function HeroSection() {
       >
         {/* Background image — desktop has dashboard baked into the right side; mobile uses original atmospheric-only bg */}
         <picture>
-          <source media="(min-width: 1024px)" srcSet="/hero-bg_11.png" />
+          <source media="(min-width: 1024px)" srcSet="/hero-bg_12.png" />
           <img
             src="/hero-bg.png"
             alt=""
@@ -59,7 +59,7 @@ export default function HeroSection() {
         <Header />
 
         {/* Card content */}
-        <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-8 lg:px-12 pt-[100px] pb-8 lg:pt-[110px] lg:pb-10 min-h-[inherit] flex flex-col justify-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[100px] pb-8 lg:pt-[110px] lg:pb-10 min-h-[inherit] flex flex-col justify-center">
           <div className="anim-trigger is-visible">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               {/* Left column */}
