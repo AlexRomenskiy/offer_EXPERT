@@ -14,34 +14,8 @@ export default function SystemIncludesSection() {
   return (
     <section
       id="system-includes"
-      className="relative py-24 lg:py-28 px-6 md:px-8 lg:px-12 overflow-hidden bg-[#EEF4FA] border-t border-slate-200/50"
+      className="relative py-24 lg:py-28 px-6 md:px-8 lg:px-12"
     >
-      {/* atmospheric section wash */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(238,244,250,0.72)_24%,rgba(234,242,248,0.96)_100%)] pointer-events-none" />
-
-      {/* soft blue glow blobs (atmosphere) */}
-      <div className="absolute -top-24 -left-20 w-[420px] h-[420px] rounded-full bg-blue-200/20 blur-[110px] pointer-events-none" />
-      <div className="absolute top-1/3 -right-24 w-[380px] h-[380px] rounded-full bg-blue-300/14 blur-[120px] pointer-events-none" />
-
-      {/* structural grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.045]">
-        <svg
-          className="w-full h-full"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{
-            WebkitMaskImage: 'radial-gradient(100% 100% at top left, black, transparent)',
-            maskImage: 'radial-gradient(100% 100% at top left, black, transparent)',
-          }}
-        >
-          <defs>
-            <pattern id="system-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.2" fill="#0f172a" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#system-grid)" />
-        </svg>
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Intro */}
         <div className="max-w-3xl mb-14 lg:mb-16 anim-trigger">
