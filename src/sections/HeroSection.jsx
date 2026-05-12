@@ -26,13 +26,16 @@ export default function HeroSection() {
           boxShadow: '0 30px 80px rgba(2,15,45,0.18)',
         }}
       >
-        {/* Background image — pre-rendered atmospheric composition (orange smoke + dark navy + blue accents) */}
-        <img
-          src="/hero-bg.png"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
+        {/* Background image — desktop has dashboard baked into the right side; mobile uses original atmospheric-only bg */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/hero-bg_11.png" />
+          <img
+            src="/hero-bg.png"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          />
+        </picture>
 
         {/* Subtle dark overlay on left for text readability */}
         <div
@@ -165,8 +168,8 @@ export default function HeroSection() {
                 </a>
               </div>
 
-              {/* Right column — image placeholder (will be replaced by Higgsfield video animation) */}
-              <div className="lg:col-span-5 relative">
+              {/* Right column — embedded dashboard card (mobile/tablet ONLY; on lg+ the dashboard is baked into hero-bg_11.png) */}
+              <div className="lg:col-span-5 relative lg:hidden">
                 <div
                   className="relative aspect-[4/5] lg:aspect-[4/3] rounded-[24px] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.45)] overflow-hidden anim-fade-up"
                   style={{ transitionDelay: '0.50s' }}
