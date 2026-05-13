@@ -59,7 +59,7 @@ export default function HeroSection() {
         <Header />
 
         {/* Card content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[100px] pb-8 lg:pt-[110px] lg:pb-10 min-h-[inherit] flex flex-col justify-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[128px] pb-8 lg:pt-[140px] lg:pb-10 min-h-[inherit] flex flex-col justify-start lg:justify-center">
           <div className="anim-trigger is-visible">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               {/* Left column */}
@@ -76,14 +76,15 @@ export default function HeroSection() {
                   </span>{' '}
                   <span className="anim-wrap">
                     <span className="anim-line" style={{ transitionDelay: '0.18s' }}>
-                      для експертів-підприємців
+                      <span className="sm:hidden">для експертів</span>
+                      <span className="hidden sm:inline">для експертів-підприємців</span>
                     </span>
                   </span>
                 </h1>
 
                 {/* Subtitle with thin vertical accent line on the LEFT */}
                 <p
-                  className="max-w-[34rem] text-[0.9rem] sm:text-[1rem] leading-[1.6] font-normal mb-5 text-slate-200/85 anim-fade-up pl-5"
+                  className="max-w-[34rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-4 sm:mb-5 text-slate-200/75 anim-fade-up pl-5"
                   style={{
                     transitionDelay: '0.28s',
                     fontFamily: fontStack,
@@ -168,7 +169,7 @@ export default function HeroSection() {
                 </a>
               </div>
 
-              {/* Right column — embedded dashboard card (mobile/tablet ONLY; on lg+ the dashboard is baked into hero-bg_11.png) */}
+              {/* Right column — embedded dashboard card. Visible on mobile/tablet (Path B: separate card under text); hidden on lg+ (desktop has dashboard baked into hero-bg_17.png). Eventually replaceable with looping video showing dashboard state cycles. */}
               <div className="lg:col-span-5 relative lg:hidden">
                 <div
                   className="relative aspect-[4/5] lg:aspect-[4/3] rounded-[24px] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.45)] overflow-hidden anim-fade-up"

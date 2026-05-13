@@ -94,7 +94,7 @@ export default function PainSection() {
 
             {/* === Card 1 — Аудиторія є — продаж замало === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.05s' }}
             >
               <div className="pointer-events-none absolute -top-16 -right-16 w-56 h-56 rounded-full bg-blue-200/18 blur-[90px]" />
@@ -146,7 +146,7 @@ export default function PainSection() {
 
             {/* === Card 2 — Кожен клієнт — на твоїх плечах === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.10s' }}
             >
               <div className="pointer-events-none absolute -bottom-20 -left-16 w-60 h-60 rounded-full bg-blue-200/16 blur-[90px]" />
@@ -198,7 +198,7 @@ export default function PainSection() {
 
             {/* === Card 3 — Без тебе система зупиняється === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.15s' }}
             >
               <div className="pointer-events-none absolute -top-16 right-1/4 w-56 h-56 rounded-full bg-blue-200/16 blur-[90px]" />
@@ -250,7 +250,7 @@ export default function PainSection() {
 
             {/* === Card 4 — Технічно зібрати самому === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.20s' }}
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(147,197,253,0.18),transparent_38%)]" />
@@ -311,7 +311,7 @@ export default function PainSection() {
 
             {/* === Card 5 — Дохід упирається в стелю === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.25s' }}
             >
               <div className="pointer-events-none absolute -bottom-16 -right-16 w-56 h-56 rounded-full bg-blue-200/18 blur-[90px]" />
