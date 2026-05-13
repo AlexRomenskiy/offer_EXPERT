@@ -94,10 +94,9 @@ export default function PainSection() {
 
             {/* === Card 1 — Аудиторія є — продаж замало === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.05s' }}
             >
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
               <div className="pointer-events-none absolute -top-16 -right-16 w-56 h-56 rounded-full bg-blue-200/18 blur-[90px]" />
 
               <div className="relative z-10 p-6 lg:p-7 flex flex-col sm:flex-row gap-6 items-center">
@@ -147,10 +146,9 @@ export default function PainSection() {
 
             {/* === Card 2 — Кожен клієнт — на твоїх плечах === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.10s' }}
             >
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
               <div className="pointer-events-none absolute -bottom-20 -left-16 w-60 h-60 rounded-full bg-blue-200/16 blur-[90px]" />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent opacity-80" />
 
@@ -200,10 +198,9 @@ export default function PainSection() {
 
             {/* === Card 3 — Без тебе система зупиняється === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.15s' }}
             >
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
               <div className="pointer-events-none absolute -top-16 right-1/4 w-56 h-56 rounded-full bg-blue-200/16 blur-[90px]" />
 
               <div className="relative z-10 p-6 lg:p-7 flex flex-col sm:flex-row gap-6 items-center">
@@ -253,10 +250,9 @@ export default function PainSection() {
 
             {/* === Card 4 — Технічно зібрати самому === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.20s' }}
             >
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(147,197,253,0.18),transparent_38%)]" />
               <div
                 className="pointer-events-none absolute inset-0 opacity-[0.06]"
@@ -315,10 +311,9 @@ export default function PainSection() {
 
             {/* === Card 5 — Дохід упирається в стелю === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
+              className="group relative rounded-[28px] overflow-hidden border border-white/60 anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.25s' }}
             >
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
               <div className="pointer-events-none absolute -bottom-16 -right-16 w-56 h-56 rounded-full bg-blue-200/18 blur-[90px]" />
 
               <div className="relative z-10 p-6 lg:p-7 flex flex-col sm:flex-row gap-6 items-center">
