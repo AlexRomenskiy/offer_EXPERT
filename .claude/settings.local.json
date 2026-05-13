@@ -16,7 +16,9 @@
       "Bash(curl -s -o /dev/null -w \"HTTP: %{http_code}\\\\n\" http://localhost:5173/)",
       "Bash(curl -s http://localhost:5173/)",
       "PowerShell(Get-NetTCPConnection -State Listen -LocalPort 5173,5174,5175,4173,3000 -ErrorAction SilentlyContinue)",
-      "Bash(npx vite *)"
+      "Bash(npx vite *)",
+      "PowerShell(npm run dev)",
+      "PowerShell(npm.cmd run dev)"
     ]
   }
 }

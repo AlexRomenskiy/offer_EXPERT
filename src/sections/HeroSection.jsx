@@ -28,7 +28,7 @@ export default function HeroSection() {
       >
         {/* Background image — desktop has dashboard baked into the right side; mobile uses original atmospheric-only bg */}
         <picture>
-          <source media="(min-width: 1024px)" srcSet="/hero-bg_16.png" />
+          <source media="(min-width: 1024px)" srcSet="/hero-bg_17.png" />
           <img
             src="/hero-bg.png"
             alt=""
