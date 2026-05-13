@@ -45,7 +45,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen selection:bg-[#175ae8]/20 text-slate-700 relative overflow-x-hidden">
+    <div className="min-h-screen selection:bg-[#175ae8]/20 text-slate-700 relative">
       {/* Atmospheric base background — unified cool-blue across all sections */}
       <div className="fixed inset-0 z-[-1] pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-[#E3ECF5] via-[#EEF4FA] to-[#F4F8FB]" />

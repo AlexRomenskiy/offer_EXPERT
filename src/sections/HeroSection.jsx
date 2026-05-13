@@ -28,7 +28,7 @@ export default function HeroSection() {
       >
         {/* Background image — desktop has dashboard baked into the right side; mobile uses original atmospheric-only bg */}
         <picture>
-          <source media="(min-width: 1024px)" srcSet="/hero-bg_15.png" />
+          <source media="(min-width: 1024px)" srcSet="/hero-bg_16.png" />
           <img
             src="/hero-bg.png"
             alt=""
@@ -66,7 +66,7 @@ export default function HeroSection() {
               <div className="lg:col-span-7">
                 {/* Headline */}
                 <h1
-                  className="text-[2.4rem] sm:text-[3rem] lg:text-[3.6rem] leading-[1.04] tracking-[-0.035em] font-light mb-5 text-white"
+                  className="max-w-[34rem] text-[1.9rem] sm:text-[2.2rem] lg:text-[2.6rem] leading-[1.04] tracking-[-0.04em] font-light mb-5 text-white"
                   style={{ fontFamily: fontStack, textWrap: 'balance' }}
                 >
                   <span className="anim-wrap">
@@ -83,7 +83,7 @@ export default function HeroSection() {
 
                 {/* Subtitle with thin vertical accent line on the LEFT */}
                 <p
-                  className="max-w-[34rem] text-[0.95rem] sm:text-[1.05rem] leading-[1.6] font-normal mb-5 text-slate-200/85 anim-fade-up pl-5"
+                  className="max-w-[34rem] text-[0.9rem] sm:text-[1rem] leading-[1.6] font-normal mb-5 text-slate-200/85 anim-fade-up pl-5"
                   style={{
                     transitionDelay: '0.28s',
                     fontFamily: fontStack,

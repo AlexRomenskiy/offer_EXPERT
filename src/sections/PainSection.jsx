@@ -1,6 +1,40 @@
+import { useEffect, useRef, useState } from 'react';
+
 const fontStack = "'Manrope', sans-serif";
+const CARD_COUNT = 5;
 
 export default function PainSection() {
+  const carouselRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const first = el.firstElementChild;
+      if (!first) return;
+      // step = card width + gap (gap-4 on mobile = 16px)
+      const step = first.offsetWidth + 16;
+      if (step <= 0) return;
+      const idx = Math.round(el.scrollLeft / step);
+      setActiveIndex(Math.max(0, Math.min(idx, CARD_COUNT - 1)));
+    };
+
+    onScroll();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollToIndex = (i) => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const card = el.children[i];
+    if (card) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+  };
+
   return (
     <section
       id="pain"
@@ -51,11 +85,16 @@ export default function PainSection() {
           {/* =====================================================
               RIGHT — vertical stack of 5 cards
               ===================================================== */}
-          <div className="lg:col-span-7 flex flex-col gap-5 lg:gap-6 anim-trigger">
+          <div className="lg:col-span-7">
+            <div
+              ref={carouselRef}
+              className="anim-trigger flex gap-4 overflow-x-auto snap-x snap-mandatory pb-6 lg:flex-col lg:gap-6 lg:overflow-visible lg:snap-none lg:pb-0 [&::-webkit-scrollbar]:hidden"
+              style={{ scrollbarWidth: 'none' }}
+            >
 
             {/* === Card 1 — Аудиторія є — продаж замало === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up"
+              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.05s' }}
             >
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
@@ -108,7 +147,7 @@ export default function PainSection() {
 
             {/* === Card 2 — Кожен клієнт — на твоїх плечах === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up"
+              className="group relative rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.10s' }}
             >
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
@@ -161,7 +200,7 @@ export default function PainSection() {
 
             {/* === Card 3 — Без тебе система зупиняється === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up"
+              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.15s' }}
             >
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
@@ -214,7 +253,7 @@ export default function PainSection() {
 
             {/* === Card 4 — Технічно зібрати самому === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up"
+              className="group relative rounded-[28px] overflow-hidden bg-white/42 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.20s' }}
             >
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
@@ -276,7 +315,7 @@ export default function PainSection() {
 
             {/* === Card 5 — Дохід упирається в стелю === */}
             <div
-              className="group relative rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up"
+              className="group relative rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_22px_60px_rgba(148,163,184,0.14),0_8px_22px_rgba(15,23,42,0.05)] anim-fade-up snap-start shrink-0 w-[82%] sm:w-[68%] lg:w-auto lg:shrink"
               style={{ transitionDelay: '0.25s' }}
             >
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)]" />
@@ -329,6 +368,24 @@ export default function PainSection() {
               </div>
             </div>
 
+            </div>
+
+            {/* Mobile-only dot pagination */}
+            <div className="flex lg:hidden justify-center gap-2 mt-3">
+              {Array.from({ length: CARD_COUNT }).map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => scrollToIndex(i)}
+                  aria-label={`Перейти до картки ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
+                    i === activeIndex
+                      ? 'w-6 bg-[#175ae8]'
+                      : 'w-1.5 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
