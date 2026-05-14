@@ -1,93 +1,277 @@
-const TELEGRAM_PLACEHOLDER = 'https://t.me/your_username';
-const BOOKING_URL = '#';
+const fontStack = "'Manrope', sans-serif";
+
+const TELEGRAM_URL = 'https://t.me/your_username'; // TODO: replace with real handle
+const BOOKING_URL = '#'; // TODO: replace with real booking URL
+const EMAIL = 'alex.romenskii@gmail.com';
+
+const quickLinks = [
+  { label: 'Для кого', href: '#pain' },
+  { label: 'Що входить', href: '#system-includes' },
+  { label: 'Кейс', href: '#case' },
+  { label: 'Тарифи', href: '#pricing' },
+  { label: 'FAQ', href: '#faq' },
+];
+
+const socialLinks = [
+  { label: 'LinkedIn', icon: 'simple-icons:linkedin', url: 'https://www.linkedin.com/in/alex-romenskyi/' },
+  { label: 'Instagram UA', icon: 'simple-icons:instagram', url: 'https://www.instagram.com/romensky.ua/' },
+  { label: 'Instagram EN', icon: 'simple-icons:instagram', url: 'https://www.instagram.com/romensky.pro/' },
+  { label: 'Facebook', icon: 'simple-icons:facebook', url: 'https://www.facebook.com/Alex.Romenskyi' },
+];
 
 const reassurances = [
   { icon: 'solar:clock-circle-linear', text: '30 хвилин' },
-  { icon: 'solar:gift-linear', text: 'безкоштовно' },
-  { icon: 'solar:shield-check-linear', text: 'без зобов’язань' },
+  { icon: 'solar:gift-linear', text: 'Безкоштовно' },
+  { icon: 'solar:shield-check-linear', text: 'Без зобовʼязань' },
 ];
 
 export default function FinalCTASection() {
+  const year = new Date().getFullYear();
+
+  const handleAnchorClick = (e, href) => {
+    e.preventDefault();
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <section
-      id="final-cta"
-      className="relative py-28 lg:py-36 px-6 md:px-8 lg:px-12 border-t border-slate-200/50 overflow-hidden bg-[#EAF2F8] scroll-mt-24"
+      id="request-access"
+      className="relative py-20 lg:py-24 px-6 md:px-8 lg:px-12 scroll-mt-24 overflow-hidden"
     >
-      {/* Atmospheric overlays */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,250,252,0.18)_0%,rgba(234,242,248,0.34)_24%,rgba(234,242,248,0.82)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(254,215,170,0.18),transparent_28%),radial-gradient(circle_at_76%_34%,rgba(249,115,22,0.08),transparent_28%)]" />
-      </div>
+      {/* Atmospheric blue glow behind card */}
+      <div
+        aria-hidden="true"
+        className="absolute -top-20 left-1/4 w-[600px] h-[400px] rounded-full bg-blue-200/[0.20] blur-[120px] pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 right-1/4 w-[500px] h-[350px] rounded-full bg-blue-300/[0.14] blur-[100px] pointer-events-none"
+      />
 
-      <div className="absolute inset-0 z-[1] pointer-events-none opacity-[0.04]">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" style={{ WebkitMaskImage: 'radial-gradient(100% 100% at top left, black, transparent)', maskImage: 'radial-gradient(100% 100% at top left, black, transparent)' }}>
-          <defs>
-            <pattern id="cta-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.2" fill="#0f172a" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#cta-grid)" />
-        </svg>
-      </div>
+      <div className="relative z-10 max-w-7xl mx-auto">
 
-      <div className="absolute -top-32 -right-32 w-[40%] h-[40%] rounded-full bg-orange-300/[0.18] blur-[120px] pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-[40%] h-[40%] rounded-full bg-orange-400/[0.14] blur-[100px] pointer-events-none" />
+        {/* Combined CTA + Footer glass card */}
+        <div
+          className="relative rounded-[30px] bg-white/35 backdrop-blur-2xl border border-white/55 p-7 sm:p-9 lg:p-12 overflow-hidden anim-trigger"
+          style={{ boxShadow: '0 28px 80px rgba(148,163,184,0.14), 0 8px 24px rgba(15,23,42,0.05)' }}
+        >
+          {/* Glass highlights */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)] pointer-events-none"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-blue-200/[0.18] blur-[90px] pointer-events-none"
+          />
 
-      <div className="relative z-10 max-w-3xl mx-auto text-center anim-trigger">
-        <div className="inline-flex items-center gap-2 rounded-full border border-orange-200/70 bg-white/60 backdrop-blur-xl px-4 py-2 shadow-[0_6px_24px_rgba(148,163,184,0.10)] mb-7 anim-fade-up" style={{ transitionDelay: '0s' }}>
-          <iconify-icon icon="solar:bolt-linear" width="14" height="14" className="text-orange-500" />
-          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-orange-700">
-            Розбір · 30 хв
-          </span>
-        </div>
+          {/* Main 2-col grid */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
 
-        <h2 className="font-display text-[2.35rem] sm:text-[2.9rem] lg:text-[3.6rem] leading-[1.02] tracking-[-0.04em] text-slate-950 font-light mb-6">
-          <span className="block sm:inline anim-wrap">
-            <span className="anim-line" style={{ transitionDelay: '0.1s' }}>Поговоримо про</span>
-          </span>{' '}
-          <span className="block anim-wrap">
-            <span className="anim-line text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600" style={{ transitionDelay: '0.22s' }}>твою воронку?</span>
-          </span>
-        </h2>
+            {/* =============== LEFT: heading + email =============== */}
+            <div>
+              <h2
+                className="text-[2.2rem] sm:text-[2.6rem] lg:text-[3.2rem] leading-[1.04] tracking-[-0.04em] text-slate-950 font-light max-w-[14ch]"
+                style={{ fontFamily: fontStack }}
+              >
+                <span className="block anim-wrap">
+                  <span className="anim-line" style={{ transitionDelay: '0.10s' }}>
+                    Поговоримо про
+                  </span>
+                </span>
+                <span className="block anim-wrap">
+                  <span className="anim-line" style={{ transitionDelay: '0.20s' }}>
+                    твою воронку?
+                  </span>
+                </span>
+                <span className="block font-medium text-slate-950 mt-2 anim-wrap">
+                  <span className="anim-line" style={{ transitionDelay: '0.30s' }}>
+                    Без презентацій.
+                  </span>
+                </span>
+              </h2>
 
-        <p className="text-[1.05rem] sm:text-[1.12rem] leading-[1.75] text-slate-600 font-normal mb-10 max-w-xl mx-auto anim-fade-up" style={{ transitionDelay: '0.35s' }}>
-          Подивимось на твій продукт, аудиторію і де зараз «втікають» гроші. Без презентацій — конкретно по твоїй ситуації.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 anim-fade-up" style={{ transitionDelay: '0.45s' }}>
-          {/* Primary white pill (master template) */}
-          <a
-            href={BOOKING_URL}
-            className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full border bg-gradient-to-r px-7 text-[15px] font-medium transition-all duration-300 border-slate-900 from-slate-900 to-slate-800 text-white shadow-[0_14px_38px_rgba(15,23,42,0.30)] hover:shadow-[0_18px_44px_rgba(15,23,42,0.40)] hover:-translate-y-0.5"
-          >
-            <span className="pointer-events-none absolute inset-0 rounded-full bg-[linear-gradient(135deg,rgba(255,255,255,0.10),transparent_55%)]" />
-            <span className="relative z-10 inline-flex items-center gap-3">
-              <span>Записатися на безкоштовний розбір</span>
-              <span className="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white shadow-md group-hover:bg-orange-400 transition-colors">
-                <iconify-icon icon="solar:arrow-right-up-linear" width="16" height="16" className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </span>
-            </span>
-          </a>
-
-          {/* Secondary glass pill */}
-          <a
-            href={TELEGRAM_PLACEHOLDER}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200/80 bg-white/60 backdrop-blur-xl px-5 text-sm font-medium text-slate-700 hover:bg-white/85 hover:text-orange-600 transition-colors shadow-sm"
-          >
-            <iconify-icon icon="solar:chat-round-dots-linear" width="18" height="18" />
-            Або напиши в Telegram
-          </a>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 anim-fade-up" style={{ transitionDelay: '0.55s' }}>
-          {reassurances.map((r) => (
-            <div key={r.text} className="flex items-center gap-1.5">
-              <iconify-icon icon={r.icon} width="14" height="14" className="text-orange-500/85" />
-              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-slate-500">{r.text}</span>
+              <div
+                className="mt-8 lg:mt-10 anim-fade-up"
+                style={{ transitionDelay: '0.40s' }}
+              >
+                <p
+                  className="text-[0.9rem] text-slate-500 mb-3"
+                  style={{ fontFamily: fontStack }}
+                >
+                  Або напиши напряму
+                </p>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex items-center text-[1.45rem] sm:text-[1.7rem] lg:text-[2rem] text-slate-950 font-medium tracking-[-0.03em] hover:text-[#175ae8] transition-colors break-all"
+                  style={{ fontFamily: fontStack }}
+                >
+                  {EMAIL}
+                </a>
+                <p
+                  className="mt-4 text-[12px] text-slate-500 tracking-[0.04em]"
+                  style={{ fontFamily: fontStack }}
+                >
+                  Олександр Роменський · Funnel architect · Розбір 30 хв
+                </p>
+              </div>
             </div>
-          ))}
+
+            {/* =============== RIGHT: CTAs + footer-links =============== */}
+            <div>
+              <h3
+                className="text-[1.6rem] sm:text-[1.9rem] lg:text-[2.2rem] text-slate-950 font-medium tracking-[-0.03em] anim-fade-up"
+                style={{ transitionDelay: '0.40s', fontFamily: fontStack }}
+              >
+                Записатися на розбір
+              </h3>
+
+              {/* CTAs */}
+              <div
+                className="mt-6 flex flex-col sm:flex-row gap-3 anim-fade-up"
+                style={{ transitionDelay: '0.50s' }}
+              >
+                {/* Primary — brand-gradient */}
+                <a
+                  href={BOOKING_URL}
+                  className="group inline-flex h-12 items-center justify-center gap-3 rounded-full px-6 text-[14px] font-medium text-white transition-all duration-300 hover:-translate-y-0.5"
+                  style={{
+                    fontFamily: fontStack,
+                    background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+                    boxShadow: '0 14px 38px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)',
+                  }}
+                >
+                  Безкоштовний розбір
+                  <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center">
+                    <iconify-icon icon="solar:arrow-right-up-linear" width="13" height="13" />
+                  </span>
+                </a>
+
+                {/* Secondary — Telegram glass pill */}
+                <a
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200/70 bg-white/55 backdrop-blur-md px-5 text-[14px] font-medium text-slate-700 hover:bg-white/85 hover:text-[#175ae8] hover:border-[#175ae8]/30 transition-colors"
+                  style={{ fontFamily: fontStack }}
+                >
+                  <iconify-icon icon="simple-icons:telegram" width="16" height="16" />
+                  Telegram
+                </a>
+              </div>
+
+              {/* Reassurance */}
+              <div
+                className="mt-5 flex flex-wrap gap-x-5 gap-y-1.5 anim-fade-up"
+                style={{ transitionDelay: '0.55s' }}
+              >
+                {reassurances.map((r) => (
+                  <div key={r.text} className="flex items-center gap-1.5">
+                    <iconify-icon
+                      icon={r.icon}
+                      width="13"
+                      height="13"
+                      style={{ color: '#175ae8' }}
+                    />
+                    <span
+                      className="text-[12px] text-slate-600"
+                      style={{ fontFamily: fontStack }}
+                    >
+                      {r.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Quick Links + Соцмережі (2-col within right side) */}
+              <div
+                className="grid grid-cols-2 gap-6 lg:gap-8 mt-10 anim-fade-up"
+                style={{ transitionDelay: '0.65s' }}
+              >
+                <div>
+                  <p
+                    className="text-[11px] text-slate-500 tracking-[0.15em] mb-3 uppercase"
+                    style={{ fontFamily: fontStack }}
+                  >
+                    Розділи
+                  </p>
+                  <ul className="space-y-2">
+                    {quickLinks.map((link) => (
+                      <li key={link.label}>
+                        <a
+                          href={link.href}
+                          onClick={(e) => handleAnchorClick(e, link.href)}
+                          className="text-[15px] lg:text-[1rem] font-medium tracking-tight text-slate-900 hover:text-[#175ae8] transition-colors"
+                          style={{ fontFamily: fontStack }}
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <p
+                    className="text-[11px] text-slate-500 tracking-[0.15em] mb-3 uppercase"
+                    style={{ fontFamily: fontStack }}
+                  >
+                    Соцмережі
+                  </p>
+                  <ul className="space-y-2">
+                    {socialLinks.map((link) => (
+                      <li key={link.label}>
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-[15px] lg:text-[1rem] font-medium tracking-tight text-slate-900 hover:text-[#175ae8] transition-colors group"
+                          style={{ fontFamily: fontStack }}
+                        >
+                          <iconify-icon
+                            icon={link.icon}
+                            width="14"
+                            height="14"
+                            style={{ color: '#64748b' }}
+                            class="group-hover:!text-[#175ae8] transition-colors"
+                          />
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom strip — logo + copyright */}
+          <div
+            className="mt-10 pt-6 border-t border-white/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10 anim-fade-up"
+            style={{ transitionDelay: '0.75s' }}
+          >
+            <div className="flex items-center gap-2.5">
+              <img
+                src="/logo/mark-on-light.png"
+                alt="CRAFT LIONS"
+                className="w-8 h-8 object-contain"
+              />
+              <span
+                className="text-[14px] font-semibold tracking-[0.01em]"
+                style={{ fontFamily: fontStack }}
+              >
+                <span className="text-slate-950">CRAFT</span>
+                <span className="text-[#175ae8] ml-1">LIONS</span>
+              </span>
+            </div>
+
+            <p
+              className="text-[12px] text-slate-500"
+              style={{ fontFamily: fontStack }}
+            >
+              © {year} CRAFT LIONS · Усі права захищені
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -8,7 +8,6 @@ import PricingSection from './sections/PricingSection';
 import AboutSection from './sections/AboutSection';
 import FAQSection from './sections/FAQSection';
 import FinalCTASection from './sections/FinalCTASection';
-import Footer from './components/Footer';
 
 export default function App() {
   // Master-template anim system: observe .anim-trigger and add .is-visible
@@ -75,7 +74,6 @@ export default function App() {
       <AboutSection />
       <FAQSection />
       <FinalCTASection />
-      <Footer />
     </div>
   );
 }

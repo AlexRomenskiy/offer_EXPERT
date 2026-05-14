@@ -16,13 +16,13 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative px-3 sm:px-4 pt-3 sm:pt-4 pb-6 sm:pb-8"
+      className="relative p-2 sm:p-5"
     >
-      {/* Hero card — Header lives INSIDE this card */}
+      {/* Hero card — full-width with thin symmetric light-bg frame around it (~8px mobile, ~20px sm+). Header lives INSIDE this card. */}
       <div
-        className="relative max-w-7xl mx-auto rounded-[28px] sm:rounded-[36px] overflow-hidden"
+        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden"
         style={{
-          minHeight: 'calc(100vh - 32px)',
+          minHeight: 'calc(100vh - 40px)',
           boxShadow: '0 30px 80px rgba(2,15,45,0.18)',
         }}
       >
@@ -66,7 +66,7 @@ export default function HeroSection() {
               <div className="lg:col-span-7">
                 {/* Headline */}
                 <h1
-                  className="max-w-[34rem] text-[1.9rem] sm:text-[2.2rem] lg:text-[2.6rem] leading-[1.04] tracking-[-0.04em] font-light mb-5 text-white"
+                  className="max-w-[40rem] text-[2rem] sm:text-[2.4rem] lg:text-[2.8rem] leading-[1.04] tracking-[-0.04em] font-light mb-5 text-white"
                   style={{ fontFamily: fontStack, textWrap: 'balance' }}
                 >
                   <span className="anim-wrap">
@@ -77,14 +77,14 @@ export default function HeroSection() {
                   <span className="anim-wrap">
                     <span className="anim-line" style={{ transitionDelay: '0.18s' }}>
                       <span className="sm:hidden">для експертів</span>
-                      <span className="hidden sm:inline">для експертів-підприємців</span>
+                      <span className="hidden sm:inline">для експертів‑підприємців</span>
                     </span>
                   </span>
                 </h1>
 
                 {/* Subtitle with thin vertical accent line on the LEFT */}
                 <p
-                  className="max-w-[34rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-4 sm:mb-5 text-slate-200/75 anim-fade-up pl-5"
+                  className="max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-4 sm:mb-5 text-slate-200/75 anim-fade-up pl-5"
                   style={{
                     transitionDelay: '0.28s',
                     fontFamily: fontStack,
@@ -92,8 +92,9 @@ export default function HeroSection() {
                   }}
                 >
                   Перетворюю твою експертизу на систему, що працює без тебе:
-                  ловить ліди, веде до оплати, видає продукт. Поки система продає —
-                  ти займаєшся клієнтами.
+                  ловить ліди, веде до оплати, видає продукт.
+                  <br />
+                  Поки система продає — ти займаєшся клієнтами.
                 </p>
 
                 {/* Channels */}
@@ -172,12 +173,12 @@ export default function HeroSection() {
               {/* Right column — embedded dashboard card. Visible on mobile/tablet (Path B: separate card under text); hidden on lg+ (desktop has dashboard baked into hero-bg_17.png). Eventually replaceable with looping video showing dashboard state cycles. */}
               <div className="lg:col-span-5 relative lg:hidden">
                 <div
-                  className="relative aspect-[4/5] lg:aspect-[4/3] rounded-[24px] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.45)] overflow-hidden anim-fade-up"
+                  className="relative aspect-square lg:aspect-[4/3] rounded-[24px] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.45)] overflow-hidden anim-fade-up"
                   style={{ transitionDelay: '0.50s' }}
                 >
                   {/* The hero image (system command center) */}
                   <img
-                    src="/Img_for_hero_11.png"
+                    src="/Img_for_hero_mobile_v2.png"
                     alt="Командний центр системи продажу"
                     className="absolute inset-0 w-full h-full object-cover"
                   />

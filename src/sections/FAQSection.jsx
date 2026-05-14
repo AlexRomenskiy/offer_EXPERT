@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
-const ITEMS = [
+const fontStack = "'Manrope', sans-serif";
+
+const faqs = [
   {
     q: 'Що таке розбір і чи це справді безкоштовно?',
-    a: 'Так, безкоштовно. Це коротка зустріч 20–30 хвилин: дивимось на твій продукт, аудиторію та як зараз проходять продажі. Я підкажу, де «втікають» гроші та що варто автоматизувати в першу чергу. Без зобов’язань — ти вирішуєш, чи рухатись далі.',
+    a: 'Так, безкоштовно. Це коротка зустріч 20–30 хвилин: дивимось на твій продукт, аудиторію та як зараз проходять продажі. Я підкажу, де «втікають» гроші та що варто автоматизувати в першу чергу. Без зобов\'язань — ти вирішуєш, чи рухатись далі.',
   },
   {
     q: 'Я не технар і не розуміюся на ботах. Це проблема?',
@@ -23,7 +25,7 @@ const ITEMS = [
   },
   {
     q: 'А ти запускаєш таргетовану рекламу?',
-    a: 'Так — у пакеті Преміум вже включено налаштування Meta Pixel + CAPI, цільові аудиторії, перші 3 креативи і ведення кампаній перший місяць. Як окрема послуга поза пакетом — теж можливо: setup ~$300–500, ведення від $200/міс або 10–15% від рекламного бюджету. На розборі дивимось, чи варто запускати у твоїй ніші, і який бюджет потрібен.',
+    a: 'Так — у пакеті Преміум вже включено налаштування Meta Pixel + CAPI, цільові аудиторії, перші 3 креативи і ведення кампаній перший місяць. Як окрема послуга поза пакетом — теж можливо: setup ~$300–500, ведення від $200/міс або 10–15% від рекламного бюджету.',
   },
   {
     q: 'Чи пишеш ти великі тексти — курси, книги, контент-плани під ключ?',
@@ -32,95 +34,122 @@ const ITEMS = [
 ];
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openItems, setOpenItems] = useState([]);
+
+  const toggle = (idx) => {
+    setOpenItems((prev) =>
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    );
+  };
 
   return (
     <section
       id="faq"
-      className="relative py-24 lg:py-28 px-6 md:px-8 lg:px-12 border-t border-slate-200/50 overflow-hidden bg-white scroll-mt-24"
+      className="relative py-20 lg:py-24 px-6 md:px-8 lg:px-12 scroll-mt-24"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(237,244,250,0.4),rgba(255,255,255,1)_24%,rgba(255,255,255,1)_100%)] pointer-events-none" />
+      <div className="relative z-10 max-w-4xl mx-auto">
 
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" style={{ WebkitMaskImage: 'radial-gradient(100% 100% at top left, black, transparent)', maskImage: 'radial-gradient(100% 100% at top left, black, transparent)' }}>
-          <defs>
-            <pattern id="faq-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.2" fill="#0f172a" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#faq-grid)" />
-        </svg>
-      </div>
-
-      <div className="relative z-10 max-w-[900px] mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-14 lg:mb-16 anim-trigger">
-          <div className="inline-flex items-center gap-2 rounded-full border border-orange-200/70 bg-white/60 backdrop-blur-xl px-4 py-2 shadow-[0_6px_24px_rgba(148,163,184,0.10)] mb-6 anim-fade-up" style={{ transitionDelay: '0s' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-orange-700">
-              FAQ
-            </span>
-          </div>
-
-          <h2 className="font-display text-[2.35rem] sm:text-[2.9rem] lg:text-[3.45rem] leading-[1.02] tracking-[-0.04em] text-slate-950 font-light">
-            <span className="block sm:inline anim-wrap">
-              <span className="anim-line" style={{ transitionDelay: '0.1s' }}>Питання, які задають</span>
+        {/* Header */}
+        <div className="mb-12 lg:mb-14 anim-trigger">
+          <h2
+            className="text-[2.35rem] sm:text-[2.9rem] lg:text-[3.45rem] leading-[1.02] tracking-[-0.04em] text-slate-950 font-light mb-5"
+            style={{ fontFamily: fontStack, textWrap: 'balance' }}
+          >
+            <span className="anim-wrap">
+              <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
+                Питання, що
+              </span>
             </span>{' '}
-            <span className="block anim-wrap">
-              <span className="anim-line text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-600" style={{ transitionDelay: '0.2s' }}>найчастіше</span>
+            <span className="anim-wrap">
+              <span className="anim-line" style={{ transitionDelay: '0.20s' }}>
+                задають найчастіше
+              </span>
             </span>
           </h2>
+
+          <p
+            className="max-w-2xl text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up"
+            style={{ transitionDelay: '0.30s', fontFamily: fontStack }}
+          >
+            Сім найчастіших — від «це безкоштовно?» до «що з рекламою?».
+          </p>
         </div>
 
         {/* Accordion */}
-        <div className="relative rounded-[28px] overflow-hidden bg-white/40 backdrop-blur-xl border border-white/55 shadow-[0_26px_70px_rgba(148,163,184,0.14),0_8px_24px_rgba(15,23,42,0.05)] anim-trigger">
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.42),transparent_60%)] pointer-events-none" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-300/70 to-transparent opacity-80" />
-
-          <div className="relative z-10 flex flex-col divide-y divide-slate-200/50">
-            {ITEMS.map((item, i) => {
-              const open = openIndex === i;
-              return (
-                <div key={item.q} className="anim-fade-up" style={{ transitionDelay: `${i * 0.05}s` }}>
-                  <button
-                    type="button"
-                    onClick={() => setOpenIndex(open ? null : i)}
-                    className="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:bg-white/50 transition-colors"
-                    aria-expanded={open}
+        <div className="flex flex-col gap-3 anim-trigger">
+          {faqs.map((faq, idx) => {
+            const isOpen = openItems.includes(idx);
+            return (
+              <div
+                key={idx}
+                className="rounded-[24px] bg-white/30 backdrop-blur-xl border border-white/45 overflow-hidden anim-fade-up transition-colors duration-300 hover:bg-white/40"
+                style={{ transitionDelay: `${0.05 + idx * 0.04}s` }}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggle(idx)}
+                  aria-expanded={isOpen}
+                  className="w-full px-6 lg:px-7 py-5 lg:py-6 flex items-center justify-between gap-4 text-left group"
+                >
+                  <span
+                    className="text-[1rem] lg:text-[1.08rem] font-medium text-slate-950 leading-snug tracking-[-0.01em]"
+                    style={{ fontFamily: fontStack }}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className={`font-mono text-[11px] uppercase tracking-[0.18em] shrink-0 ${open ? 'text-orange-600' : 'text-slate-400'}`}>
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span className="font-medium text-slate-900 text-base lg:text-[1.05rem] tracking-tight pr-2">
-                        {item.q}
-                      </span>
-                    </div>
-                    <span
-                      className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-colors ${
-                        open
-                          ? 'bg-orange-50 border-orange-200 text-orange-600'
-                          : 'bg-white/65 border-slate-200 text-slate-400'
-                      }`}
+                    {faq.q}
+                  </span>
+                  <span
+                    className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      isOpen
+                        ? 'bg-[#175ae8] text-white rotate-180'
+                        : 'bg-white/65 border border-slate-200/60 text-slate-700 group-hover:bg-white/85'
+                    }`}
+                  >
+                    <iconify-icon
+                      icon={isOpen ? 'solar:minus-linear' : 'solar:plus-linear'}
+                      width="16"
+                      height="16"
+                    />
+                  </span>
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
+                    isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="px-6 lg:px-7 pb-6 lg:pb-7 pt-1">
+                    <p
+                      className="text-[0.95rem] lg:text-[1rem] leading-[1.65] text-slate-700 max-w-[68ch]"
+                      style={{ fontFamily: fontStack }}
                     >
-                      <iconify-icon
-                        icon={open ? 'solar:minus-circle-linear' : 'solar:add-circle-linear'}
-                        width="18"
-                        height="18"
-                      />
-                    </span>
-                  </button>
-                  <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
-                    <div className="overflow-hidden">
-                      <p className="px-6 pb-6 pt-0 text-slate-600 leading-[1.75] border-t border-slate-200/40 ml-12">
-                        {item.a}
-                      </p>
-                    </div>
+                      {faq.a}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom link */}
+        <div
+          className="mt-10 text-center anim-fade-up"
+          style={{ transitionDelay: `${0.05 + faqs.length * 0.04}s`, fontFamily: fontStack }}
+        >
+          <p className="text-[0.95rem] text-slate-600">
+            Не знайшов відповіді?{' '}
+            <a
+              href="#request-access"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#request-access')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              className="text-[#175ae8] font-medium hover:text-[#0e47c8] transition-colors underline decoration-[#175ae8]/30 underline-offset-4 hover:decoration-[#175ae8]"
+            >
+              Запитай на розборі
+            </a>
+            .
+          </p>
         </div>
       </div>
     </section>
