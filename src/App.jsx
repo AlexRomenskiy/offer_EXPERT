@@ -67,8 +67,8 @@ export default function App() {
 
       <HeroSection />
       <PainSection />
-      <SystemIncludesSection />
       <TransformationSection />
+      <SystemIncludesSection />
       <CaseStudySection />
       <PricingSection />
       <AboutSection />

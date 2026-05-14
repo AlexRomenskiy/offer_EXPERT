@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
 
 const channels = [
@@ -12,7 +13,45 @@ const channels = [
 
 const fontStack = "'Manrope', sans-serif";
 
+const heroTypewriterPhrases = ['експертів', 'підприємців'];
+
 export default function HeroSection() {
+  // ============== Typewriter effect for headline line 2 ==============
+  const [typedWord, setTypedWord] = useState('');
+  const phraseIdxRef = useRef(0);
+  const charIdxRef = useRef(0);
+  const isDeletingRef = useRef(false);
+
+  useEffect(() => {
+    let timeoutId;
+    const tick = () => {
+      const current = heroTypewriterPhrases[phraseIdxRef.current];
+
+      if (isDeletingRef.current) {
+        setTypedWord(current.substring(0, charIdxRef.current - 1));
+        charIdxRef.current -= 1;
+      } else {
+        setTypedWord(current.substring(0, charIdxRef.current + 1));
+        charIdxRef.current += 1;
+      }
+
+      let speed = isDeletingRef.current ? 55 : 95;
+
+      if (!isDeletingRef.current && charIdxRef.current === current.length) {
+        speed = 2000;
+        isDeletingRef.current = true;
+      } else if (isDeletingRef.current && charIdxRef.current === 0) {
+        isDeletingRef.current = false;
+        phraseIdxRef.current = (phraseIdxRef.current + 1) % heroTypewriterPhrases.length;
+        speed = 400;
+      }
+
+      timeoutId = setTimeout(tick, speed);
+    };
+    timeoutId = setTimeout(tick, 800);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -66,18 +105,41 @@ export default function HeroSection() {
               <div className="lg:col-span-7">
                 {/* Headline */}
                 <h1
-                  className="max-w-[40rem] text-[2rem] sm:text-[2.4rem] lg:text-[2.8rem] leading-[1.04] tracking-[-0.04em] font-light mb-5 text-white"
+                  className="max-w-[40rem] leading-[1.04] font-light mb-5 text-white"
                   style={{ fontFamily: fontStack, textWrap: 'balance' }}
                 >
                   <span className="anim-wrap">
-                    <span className="anim-line font-medium" style={{ transitionDelay: '0.1s' }}>
+                    <span
+                      className="anim-line font-medium text-[2rem] sm:text-[3.3rem] lg:text-[4rem] tracking-[0.01em]"
+                      style={{ transitionDelay: '0.1s' }}
+                    >
                       Система продажу
                     </span>
                   </span>{' '}
                   <span className="anim-wrap">
-                    <span className="anim-line" style={{ transitionDelay: '0.18s' }}>
-                      <span className="sm:hidden">для експертів</span>
-                      <span className="hidden sm:inline">для експертів‑підприємців</span>
+                    <span
+                      className="anim-line font-medium text-[2rem] sm:text-[3.3rem] lg:text-[4rem] tracking-[0.01em]"
+                      style={{
+                        transitionDelay: '0.18s',
+                        background: 'linear-gradient(135deg, #ffffff 0%, #60a5fa 70%, #175ae8 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                      }}
+                    >
+                      для{' '}
+                      <span className="inline-flex items-baseline">
+                        {typedWord}
+                        <span
+                          aria-hidden="true"
+                          className="inline-block w-[3px] sm:w-[4px] lg:w-[5px] h-[0.85em] ml-1 align-baseline animate-pulse"
+                          style={{
+                            backgroundColor: '#60a5fa',
+                            transform: 'translateY(2px)',
+                            WebkitTextFillColor: 'initial',
+                          }}
+                        />
+                      </span>
                     </span>
                   </span>
                 </h1>
@@ -93,8 +155,9 @@ export default function HeroSection() {
                 >
                   Перетворюю твою експертизу на систему, що працює без тебе:
                   ловить ліди, веде до оплати, видає продукт.
-                  <br />
-                  Поки система продає — ти займаєшся клієнтами.
+                  <span className="block mt-3 text-slate-300/55">
+                    Поки система продає — ти займаєшся клієнтами.
+                  </span>
                 </p>
 
                 {/* Channels */}
@@ -102,7 +165,7 @@ export default function HeroSection() {
                   className="mb-7 anim-fade-up"
                   style={{ transitionDelay: '0.34s' }}
                 >
-                  <p className="text-[0.9rem] text-slate-300/80 mb-3" style={{ fontFamily: fontStack }}>
+                  <p className="text-[0.78rem] italic text-slate-300/65 mb-3" style={{ fontFamily: fontStack }}>
                     Підхоплює ліди звідусіль, де ти є:
                   </p>
                   <div className="flex items-center gap-4">

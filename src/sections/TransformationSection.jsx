@@ -39,8 +39,8 @@ export default function TransformationSection() {
     >
       <div className="relative z-10 max-w-7xl mx-auto">
 
-        {/* Heading + ultra-short subtitle */}
-        <div className="max-w-3xl mb-10 lg:mb-12 anim-trigger">
+        {/* Heading + ultra-short subtitle — centered */}
+        <div className="max-w-3xl mx-auto mb-10 lg:mb-12 text-center anim-trigger">
           <h2
             className="text-[2.35rem] sm:text-[2.9rem] lg:text-[3.45rem] leading-[1.02] tracking-[-0.04em] text-slate-950 font-light mb-4"
             style={{ fontFamily: fontStack, textWrap: 'balance' }}
@@ -58,7 +58,7 @@ export default function TransformationSection() {
           </h2>
 
           <p
-            className="text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up"
+            className="text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up mx-auto"
             style={{ transitionDelay: '0.30s', fontFamily: fontStack }}
           >
             Один момент — два режими. Перемкни і подивись.
@@ -168,8 +168,8 @@ function IPhoneMockup({ mode, setMode }) {
 function IPadMockup({ mode, setMode }) {
   return (
     <div
-      className="relative w-[600px] lg:w-[760px] xl:w-[860px]"
-      style={{ aspectRatio: '1.4' }}
+      className="relative w-[640px] lg:w-[820px] xl:w-[940px]"
+      style={{ aspectRatio: '16/9' }}
     >
       {/* iPad body */}
       <div className="absolute inset-0 bg-slate-200 rounded-[2rem] shadow-[0_35px_90px_rgba(15,23,42,0.14)] border-[2px] border-slate-100 z-0" />
