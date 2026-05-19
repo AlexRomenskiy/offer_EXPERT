@@ -107,6 +107,156 @@ body {
   100% { background-position: 24px 24px; }
 }
 
+/* Header decorative dot-mesh — premium subtle texture behind section headers.
+   Single universal style (Pricing-derived): sparse 1px dots on 18px grid,
+   masked by a center radial gradient. Used in every section with a header.
+   On mobile the mask shifts upward to cover eyebrow + H2 only (not subtitle). */
+.header-decor-dots {
+  position: absolute;
+  inset: -1rem -1rem -1rem -1rem;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.45) 1px, transparent 1.5px);
+  background-size: 18px 18px;
+  opacity: 0.55;
+}
+
+/* Brand gradient text utility — for decorative blue elements (labels,
+   counters, eyebrows, badges). Matches button-gradient styling.
+   Don't use on hover-actionable links (gradient blocks color transitions). */
+.text-brand-gradient {
+  background: linear-gradient(135deg, #020f2d 0%, #175ae8 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Mobile bio collapsed fade — applies mask-image so text itself dissolves
+   into transparent on the bottom edge, no overlay with specific bg color.
+   Removed on md+ (desktop bio is always fully visible). */
+.bio-mask-collapsed {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 50%, rgba(0,0,0,0.55) 75%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 0%, black 50%, rgba(0,0,0,0.55) 75%, transparent 100%);
+}
+@media (min-width: 768px) {
+  .bio-mask-collapsed {
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+}
+
+.header-decor-dots--center {
+  -webkit-mask-image: radial-gradient(ellipse 60% 75% at 50% 50%, black 0%, rgba(0,0,0,0.5) 40%, transparent 80%);
+          mask-image: radial-gradient(ellipse 60% 75% at 50% 50%, black 0%, rgba(0,0,0,0.5) 40%, transparent 80%);
+}
+
+/* Mobile: dots cover upper zone only — eyebrow + H2 — and fade before subtitle.
+   Mask center shifted to y=30% so the dense area sits above the heading
+   midpoint, leaving the lower half (where subtitle lives) clean. */
+@media (max-width: 767px) {
+  .header-decor-dots,
+  .header-decor-dots--center {
+    -webkit-mask-image: radial-gradient(ellipse 78% 55% at 50% 30%, black 0%, rgba(0,0,0,0.5) 45%, transparent 90%);
+            mask-image: radial-gradient(ellipse 78% 55% at 50% 30%, black 0%, rgba(0,0,0,0.5) 45%, transparent 90%);
+  }
+}
+
+/* Pulse variant — gentle opacity breathing (6s loop). Adds "alive" feel,
+   classic premium-UI trick (Vercel/Linear/Stripe style). Respects
+   prefers-reduced-motion to disable for accessibility. */
+@keyframes header-dots-pulse {
+  0%, 100% { opacity: 0.42; }
+  50%      { opacity: 0.78; }
+}
+.header-decor-dots--pulse {
+  animation: header-dots-pulse 6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-decor-dots--pulse {
+    animation: none;
+  }
+}
+
+/* Section subtitle hairline accent — left-aligned + vertical hairline on all
+   breakpoints. Mobile heading stays centered (parent rule), subtitle forces
+   text-align: left to align with the border-left visual. */
+.subtitle-hairline {
+  padding-left: 1.25rem;
+  border-left: 1px solid rgba(15, 23, 42, 0.15);
+  text-align: left;
+}
+
+/* Same hairline accent, but applied ONLY on mobile (<768px). Used for sections
+   where desktop header is centered — keeps subtitle centered on desktop, but
+   gives it the left-aligned hairline treatment on mobile. */
+@media (max-width: 767px) {
+  .subtitle-hairline-mobile-only {
+    padding-left: 1.25rem;
+    border-left: 1px solid rgba(15, 23, 42, 0.15);
+    text-align: left;
+  }
+}
+
+/* Mobile-stacked heading wrap — block on mobile, inline-block on tablet+.
+   Used in About where name should be one line on desktop, 2 lines on mobile. */
+.heading-wrap-mobile-stack {
+  display: block;
+}
+@media (min-width: 768px) {
+  .heading-wrap-mobile-stack {
+    display: inline-block;
+  }
+}
+
+/* Italic-accent line animation — fade + small rise, NO overflow clip
+   (avoids italic descender getting cut, unlike .anim-wrap > .anim-line). */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-italic {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .is-visible .anim-italic {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Italic accent — Playfair Display Italic gradient text.
+   Full fix for WebkitBackgroundClip:text glyph clipping. Padding on BOTH
+   axes is required because:
+     * padding-top  → covers ascenders that extend ABOVE x-height (e.g. '?' top-curve)
+     * padding-bottom → covers descenders that drop BELOW baseline (e.g. 'р', 'у', 'д', 'p', 'g')
+   Without padding, the gradient fill area (= element box) is shorter than
+   the glyph; with transparent text-fill, the missing gradient appears as
+   "cut-off" parts of letters. Generous padding values give margin for
+   different font sizes (mobile/desktop) and glyph variations. */
+.italic-accent {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  display: inline-block;
+  /* Padding extends the gradient-fill area beyond glyph bounds (covers
+     italic Playfair swashes/ascenders/descenders without clipping).
+     Negative margins COMPENSATE the layout impact so the element occupies
+     its original line-box space — no extra line height, no extra trailing
+     space after the italic word. Inline marginLeft from JSX still controls
+     the leading gap before italic; just keep it at ~0.20em (not 0.35em)
+     because padding-left contributes another 0.15em. */
+  padding: 0.4em 0.2em 0.3em 0.15em;
+  margin-top: -0.4em;
+  margin-bottom: -0.3em;
+  margin-right: -0.2em;
+  line-height: 1;
+  vertical-align: baseline;
+  background: linear-gradient(135deg, #020f2d 0%, #175ae8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* ====== Brand gradient (Hero, key CTAs, accent surfaces) ====== */
 .brand-gradient {
   background: linear-gradient(135deg, #020f2d 0%, #175ae8 100%);

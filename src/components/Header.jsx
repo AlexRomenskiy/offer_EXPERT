@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 
 const navItems = [
-  { label: 'Як працюємо', href: '#methodology' },
+  { label: 'Для кого', href: '#pain' },
   { label: 'Кейс', href: '#case' },
   { label: 'Тарифи', href: '#pricing' },
+  { label: 'Гарантії', href: '#guarantees' },
+  { label: 'FAQ', href: '#faq' },
 ];
 
 const ctaText = 'Записатися';
@@ -20,27 +22,25 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'pt-3' : 'pt-6 sm:pt-7 lg:pt-8'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 pt-6 sm:pt-7 lg:pt-8">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         <div
-          className="rounded-full transition-all duration-300"
+          className="rounded-full"
           style={{
+            padding: '4px 4px',
             background: scrolled
-              ? 'linear-gradient(180deg, rgba(15,23,42,0.82), rgba(15,23,42,0.72))'
+              ? 'linear-gradient(180deg, rgba(20,30,50,0.78), rgba(12,20,38,0.80))'
               : 'transparent',
             border: scrolled
-              ? '1px solid rgba(255, 255, 255, 0.12)'
+              ? '1px solid rgba(255, 255, 255, 0.14)'
               : '1px solid transparent',
-            backdropFilter: scrolled ? 'blur(22px) saturate(160%)' : 'none',
-            WebkitBackdropFilter: scrolled ? 'blur(22px) saturate(160%)' : 'none',
-            padding: scrolled ? '8px 14px' : '4px 4px',
+            backdropFilter: scrolled ? 'blur(20px) saturate(150%)' : 'none',
+            WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(150%)' : 'none',
             boxShadow: scrolled
-              ? '0 10px 30px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.10)'
+              ? '0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.10)'
               : 'none',
+            transition:
+              'background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease',
           }}
         >
           <div className="flex items-center justify-between">
@@ -99,10 +99,10 @@ export default function Header() {
                 className="hidden md:inline-flex transition overflow-hidden group text-sm font-medium text-white rounded-full relative items-center gap-2"
                 style={{
                   background:
-                    'linear-gradient(135deg, rgb(26, 26, 26) 0%, rgb(10, 10, 10) 100%)',
-                  border: '1px solid rgba(255, 255, 255, 0.10)',
+                    'linear-gradient(135deg, rgb(45, 45, 48) 0%, rgb(22, 22, 24) 100%)',
+                  border: '1px solid rgba(255, 255, 255, 0.20)',
                   boxShadow:
-                    '0 8px 32px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.50)',
+                    '0 8px 32px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(0,0,0,0.50), 0 0 0 1px rgba(251,146,60,0.08)',
                   height: '44px',
                   padding: '0 22px',
                   transition:
@@ -111,12 +111,12 @@ export default function Header() {
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
                   e.currentTarget.style.boxShadow =
-                    '0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.6), 0 0 0 2px rgba(251,146,60,0.40)';
+                    '0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.20), inset 0 -1px 0 rgba(0,0,0,0.6), 0 0 0 2px rgba(251,146,60,0.45)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow =
-                    '0 8px 32px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.50)';
+                    '0 8px 32px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(0,0,0,0.50), 0 0 0 1px rgba(251,146,60,0.08)';
                 }}
               >
                 {/* Animated red bar */}

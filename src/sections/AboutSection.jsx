@@ -38,28 +38,44 @@ export default function AboutSection() {
       <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="max-w-3xl mb-12 lg:mb-14 anim-trigger">
-          <h2
-            className="text-[2.35rem] sm:text-[2.9rem] lg:text-[3.45rem] leading-[1.02] tracking-[-0.04em] text-slate-950 font-light mb-5"
-            style={{ fontFamily: fontStack, textWrap: 'balance' }}
+        <div className="relative max-w-3xl mb-12 lg:mb-14 anim-trigger text-center md:text-left">
+          {/* Decorative dot-mesh background — Pricing-style base center */}
+          <span aria-hidden="true" className="header-decor-dots header-decor-dots--center" />
+
+          {/* Mono eyebrow */}
+          <div
+            className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] text-slate-500 mb-6 anim-fade-up"
+            style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0.05s' }}
           >
-            <span className="anim-wrap">
+            <span className="h-px w-6 bg-slate-300" />
+            Автор · Funnel architect
+            <span className="h-px w-6 bg-slate-300" />
+          </div>
+
+          <h2
+            className="text-[1.75rem] sm:text-[2.5rem] lg:text-[3.45rem] tracking-[-0.02em] text-slate-950 font-light mb-5"
+            style={{ fontFamily: fontStack, lineHeight: 1.2 }}
+          >
+            <span className="anim-wrap heading-wrap-mobile-stack">
               <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
                 Олександр
               </span>
             </span>{' '}
-            <span className="anim-wrap">
-              <span className="anim-line" style={{ transitionDelay: '0.20s' }}>
+            <span className="anim-italic heading-wrap-mobile-stack" style={{ transitionDelay: '0.20s' }}>
+              <span className="italic-accent">
                 Роменський
               </span>
             </span>
           </h2>
 
           <p
-            className="max-w-2xl text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up"
-            style={{ transitionDelay: '0.30s', fontFamily: fontStack }}
+            className="max-w-2xl text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up subtitle-hairline"
+            style={{
+              transitionDelay: '0.30s',
+              fontFamily: fontStack,
+            }}
           >
-            7 років збираю воронки продажів. AI робить це точніше і швидше.
+            Зібрав свою систему. Тепер — для експертів, що уперлись у стелю.
           </p>
         </div>
 
@@ -70,7 +86,7 @@ export default function AboutSection() {
               LEFT — Photo card (col-5, h-[540px] on lg)
               =========================================== */}
           <div className="lg:col-span-5 lg:h-[540px] anim-fade-up" style={{ transitionDelay: '0.10s' }}>
-            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full max-h-[540px] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40">
+            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full max-h-[540px] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
 
               {/* PHOTO PLACEHOLDER — swap with <img src="/photos/olexandr.jpg" /> */}
               <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-50">
@@ -123,11 +139,11 @@ export default function AboutSection() {
               =========================================== */}
           <div className="lg:col-span-7 lg:h-[540px] flex flex-col gap-6 lg:gap-7">
 
-            {/* Bio — collapsed-with-fade on mobile, fully visible on desktop */}
+            {/* Bio — collapsed-with-mask-fade on mobile, fully visible on desktop */}
             <div className="relative">
               <div
                 className={`overflow-hidden transition-[max-height] duration-500 ease-out md:!max-h-none ${
-                  bioExpanded ? 'max-h-[1200px]' : 'max-h-[180px]'
+                  bioExpanded ? 'max-h-[1200px]' : 'max-h-[180px] bio-mask-collapsed'
                 }`}
               >
                 <div className="space-y-4 anim-fade-up" style={{ transitionDelay: '0.15s' }}>
@@ -135,36 +151,32 @@ export default function AboutSection() {
                     className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
                     style={{ fontFamily: fontStack }}
                   >
-                    Освіта — актор театру. Сцена цікавила менше, ніж режисура:
+                    Освіта — актор театру. Режисура цікавила більше за сцену:
                     розкладати мотивацію, відчувати аудиторію, бачити, що людині
-                    насправді потрібно. В маркетингу ці навички працюють як ніде.
+                    насправді потрібно. У маркетингу ці навички працюють як ніде.
                   </p>
                   <p
                     className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
                     style={{ fontFamily: fontStack }}
                   >
-                    7 років збираю воронки — лендинги, чат-боти, оплати,
-                    аналітика. AI у мене не замість досвіду, а його підсилювач:
-                    робить кожен крок швидше і точніше.
+                    Можна бути сильним експертом — але без упаковки, реклами,
+                    воронки ти топчешся на місці. Залетні клієнти бувають;
+                    стабільної системи немає. Через це я сам пройшов. Тому
+                    будую так, щоб експерт перестав тримати все на собі —
+                    і вийшов на потік.
                   </p>
                   <p
                     className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
                     style={{ fontFamily: fontStack }}
                   >
-                    Сильні експерти застрягають не на експертизі, а на упаковці.
-                    Знання є, аудиторія є — а системи, що з'єднує з людьми,
-                    нема. Будую цей міст.
+                    7 років збираю воронки — лендинги, боти, оплати, аналітика.
+                    AI у мене не замість досвіду, а підсилювач — кожен крок
+                    швидше і точніше. Сильні експерти застрягають не на
+                    експертизі, а на упаковці. Будую цей міст.
                   </p>
                 </div>
               </div>
 
-              {/* Fade-out gradient at bottom — mobile only, fades to page bg */}
-              <div
-                aria-hidden="true"
-                className={`md:hidden absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#EEF4FA] via-[#EEF4FA]/85 to-transparent pointer-events-none transition-opacity duration-500 ${
-                  bioExpanded ? 'opacity-0' : 'opacity-100'
-                }`}
-              />
             </div>
 
             {/* Mobile-only text link with arrow (NOT a button-pill) */}
@@ -172,7 +184,7 @@ export default function AboutSection() {
               type="button"
               onClick={() => setBioExpanded(!bioExpanded)}
               aria-expanded={bioExpanded}
-              className="md:hidden self-start inline-flex items-center gap-1.5 text-[14px] text-[#175ae8] font-medium hover:text-[#0e47c8] transition-colors -mt-2"
+              className="md:hidden self-center inline-flex items-center gap-1.5 text-[14px] text-[#175ae8] font-medium hover:text-[#0e47c8] transition-colors -mt-2"
               style={{ fontFamily: fontStack }}
             >
               {bioExpanded ? 'Згорнути' : 'Читати далі'}
@@ -185,7 +197,7 @@ export default function AboutSection() {
 
             {/* Stats chips */}
             <div
-              className="flex flex-wrap gap-2 anim-fade-up"
+              className="flex flex-wrap gap-2 justify-center md:justify-start anim-fade-up"
               style={{ transitionDelay: '0.22s' }}
             >
               {stats.map((s) => (
@@ -202,7 +214,7 @@ export default function AboutSection() {
 
             {/* Social links */}
             <div
-              className="flex items-center gap-2 anim-fade-up flex-wrap"
+              className="flex items-center gap-2 anim-fade-up flex-wrap justify-center md:justify-start"
               style={{ transitionDelay: '0.28s' }}
             >
               <span
@@ -218,7 +230,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/55 backdrop-blur-md border border-white/60 hover:bg-[#175ae8] hover:border-[#175ae8] transition-colors group"
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/55 backdrop-blur-md border border-white/60 hover:bg-gradient-to-br hover:from-[#020f2d] hover:to-[#175ae8] hover:border-transparent transition-all group"
                 >
                   <iconify-icon
                     icon={link.icon}
@@ -235,8 +247,13 @@ export default function AboutSection() {
             <a
               href="#request-access"
               onClick={scrollToCTA}
-              className="self-start lg:mt-auto inline-flex items-center gap-2.5 rounded-full bg-[#175ae8] hover:bg-[#0e47c8] text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] shadow-[0_12px_30px_-8px_rgba(23,90,232,0.45)] transition-all duration-300 hover:translate-y-[-1px] anim-fade-up"
-              style={{ transitionDelay: '0.35s', fontFamily: fontStack }}
+              className="self-center lg:self-start lg:mt-auto inline-flex items-center gap-2.5 rounded-full text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] transition-all duration-300 hover:translate-y-[-1px] anim-fade-up"
+              style={{
+                transitionDelay: '0.35s',
+                fontFamily: fontStack,
+                background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+                boxShadow: '0 14px 38px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)',
+              }}
             >
               Записатись на розбір
               <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" />

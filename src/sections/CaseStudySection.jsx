@@ -9,7 +9,14 @@ const fontStack = "'Manrope', sans-serif";
      * Wire play button to open video modal or inline <video> swap
    ============================================================ */
 
-const scope = ['Стратегія', 'Лендинг', 'Чат-бот', 'Прийом оплат', 'Автомат видача'];
+const scope = [
+  'Стратегія',
+  'Упаковка продукту',
+  'Магніт + тріпваер',
+  'Прогрівний бот',
+  'Оплати + видача',
+  'Аналітика',
+];
 
 export default function CaseStudySection() {
   const scrollToCTA = (e) => {
@@ -25,29 +32,41 @@ export default function CaseStudySection() {
       <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="max-w-3xl mb-12 lg:mb-14 anim-trigger">
-          <h2
-            className="text-[2.35rem] sm:text-[2.9rem] lg:text-[3.45rem] leading-[1.02] tracking-[-0.04em] text-slate-950 font-light mb-5"
-            style={{ fontFamily: fontStack, textWrap: 'balance' }}
+        <div className="relative max-w-3xl mb-12 lg:mb-14 anim-trigger text-center md:text-left">
+          {/* Decorative dot-mesh background — Pricing-style base center */}
+          <span aria-hidden="true" className="header-decor-dots header-decor-dots--center" />
+
+          {/* Mono eyebrow */}
+          <div
+            className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] text-slate-500 mb-6 anim-fade-up"
+            style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0.05s' }}
           >
-            <span className="anim-wrap">
-              <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
-                Як це працює
-              </span>
-            </span>{' '}
-            <span className="anim-wrap">
-              <span className="anim-line" style={{ transitionDelay: '0.20s' }}>
-                на практиці
+            <span className="h-px w-6 bg-slate-300" />
+            Кейс · 7 днів
+            <span className="h-px w-6 bg-slate-300" />
+          </div>
+
+          <h2
+            className="text-[1.75rem] sm:text-[2.5rem] lg:text-[3.45rem] tracking-[-0.02em] text-slate-950 font-light mb-5"
+            style={{ fontFamily: fontStack, lineHeight: 1.2 }}
+          >
+            <span className="anim-italic font-medium" style={{ transitionDelay: '0.10s' }}>
+              Як це працює на
+              <span className="italic-accent" style={{ marginLeft: '0.20em' }}>
+                практиці
               </span>
             </span>
           </h2>
 
           <p
-            className="max-w-2xl text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up"
-            style={{ transitionDelay: '0.30s', fontFamily: fontStack }}
+            className="max-w-2xl text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up subtitle-hairline"
+            style={{
+              transitionDelay: '0.30s',
+              fontFamily: fontStack,
+            }}
           >
-            Tania Lav — On-Camera Brand для експертів. 10K+ аудиторія, але без
-            системи продажів. Зібрали воронку за 7 днів.
+            Tania Lav робить on-camera бренди для експертів — тобто наша ж
+            ЦА. 10K+ підписників без воронки. Зібрали за 7 днів.
           </p>
         </div>
 
@@ -58,7 +77,7 @@ export default function CaseStudySection() {
               LEFT — Profile card (5-col)
               ============================================ */}
           <div className="lg:col-span-5 anim-fade-up" style={{ transitionDelay: '0.10s' }}>
-            <div className="relative h-full min-h-[480px] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40">
+            <div className="relative h-full min-h-[480px] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
 
               {/* PHOTO PLACEHOLDER — swap with <img src="/photos/tania-lav.jpg" /> when ready */}
               <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-50">
@@ -128,11 +147,11 @@ export default function CaseStudySection() {
 
             {/* === Combined: scope + stats card === */}
             <div
-              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 p-7 lg:p-8 anim-fade-up"
+              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] p-7 lg:p-8 anim-fade-up"
               style={{ transitionDelay: '0.15s' }}
             >
-              {/* Scope: delivered in 7 days */}
-              <div className="flex items-baseline justify-between flex-wrap gap-3 mb-4">
+              {/* Scope: package + delivered in 7 days */}
+              <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
                 <div className="flex items-baseline gap-2">
                   <span className="text-[1.05rem] text-slate-950 font-medium" style={{ fontFamily: fontStack }}>
                     Зроблено за 7 днів
@@ -141,6 +160,18 @@ export default function CaseStudySection() {
                     · стандарт 14
                   </span>
                 </div>
+                <a
+                  href="#pricing"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#175ae8]/30 bg-[#175ae8]/[0.08] px-3 py-1 text-[10px] uppercase tracking-[0.16em] hover:bg-[#175ae8]/[0.14] transition-colors"
+                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  <span className="text-brand-gradient">Пакет «Генератор»</span>
+                  <iconify-icon icon="solar:arrow-right-up-linear" width="12" height="12" style={{ color: '#175ae8' }} />
+                </a>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-7 lg:mb-8">
@@ -162,7 +193,44 @@ export default function CaseStudySection() {
                 Через 2–3 тижні після запуску
               </div>
 
-              <div className="grid grid-cols-3 gap-4 lg:gap-6">
+              {/* Mobile: stacked rows (number left, label right). sm+: 3-col grid */}
+              <div className="flex flex-col gap-4 sm:hidden">
+                <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-slate-200/50">
+                  <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
+                    18
+                  </span>
+                  <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
+                    клієнтів на інтенсив
+                  </span>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-slate-200/50">
+                  <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
+                    4
+                  </span>
+                  <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
+                    на індивідуальну
+                  </span>
+                </div>
+                <div className="flex items-baseline justify-between gap-4">
+                  <span
+                    className="text-[2.4rem] font-medium tracking-[-0.04em] leading-none"
+                    style={{
+                      fontFamily: fontStack,
+                      background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    $990
+                  </span>
+                  <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
+                    окупився за 1–1.5 місяця
+                  </span>
+                </div>
+              </div>
+
+              <div className="hidden sm:grid sm:grid-cols-3 sm:gap-5 lg:gap-6">
                 <div>
                   <div className="text-[2.4rem] lg:text-[2.8rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
                     18
@@ -180,19 +248,38 @@ export default function CaseStudySection() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-[2.4rem] lg:text-[2.8rem] text-[#175ae8] font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
+                  <div
+                    className="text-[2.4rem] lg:text-[2.8rem] font-medium tracking-[-0.04em] leading-none"
+                    style={{
+                      fontFamily: fontStack,
+                      background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
                     $990
                   </div>
                   <div className="text-[0.85rem] text-slate-600 mt-1.5 leading-tight" style={{ fontFamily: fontStack }}>
-                    окупилось з перших продажів
+                    окупився за 1–1.5 місяця
                   </div>
                 </div>
+              </div>
+
+              {/* Honest caveat — turns 1-case-portfolio into trust */}
+              <div
+                className="mt-8 lg:mt-9 pt-6 border-t border-slate-200/50 text-[0.84rem] text-slate-500 leading-[1.6]"
+                style={{ fontFamily: fontStack }}
+              >
+                <span className="text-slate-700 font-medium">Чесно:</span>{' '}
+                результат не «типовий». У Тетяни 10K+ аудиторії і своя довіра —
+                це драйвер швидкості. У іншого старту — інші цифри.
               </div>
             </div>
 
             {/* === Quote === */}
             <div
-              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 p-7 lg:p-8 anim-fade-up"
+              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] p-7 lg:p-8 anim-fade-up"
               style={{ transitionDelay: '0.20s' }}
             >
               <iconify-icon
@@ -202,22 +289,26 @@ export default function CaseStudySection() {
                 style={{ color: '#175ae8' }}
                 class="opacity-70 mb-3 block"
               />
-              <blockquote className="text-[1.05rem] lg:text-[1.15rem] leading-[1.55] text-slate-800 font-medium tracking-[-0.01em] mb-4" style={{ fontFamily: fontStack }}>
-                «Тепер я можу просто робити контент і не переживати, що забула
-                комусь відповісти або відправити посилання. Система працює за
-                мене.»
+              <blockquote className="text-[1.05rem] lg:text-[1.15rem] leading-[1.55] text-slate-800 font-medium tracking-[-0.01em]" style={{ fontFamily: fontStack }}>
+                «Я люблю, коли гроші мають лік. З підписниками те саме: рада,
+                що система турбується про кожного, а мені видає безпосередньо
+                тих, хто хоче працювати. Для мене, як для дівчини з
+                бізнес-проектом, найкраще оновлення гардеробу — це упаковка
+                продукту.»
               </blockquote>
-              <footer className="text-[0.9rem] text-slate-500" style={{ fontFamily: fontStack }}>
-                — Tania Lav, через 3 тижні після запуску
-              </footer>
             </div>
 
             {/* === CTA === */}
             <a
               href="#request-access"
               onClick={scrollToCTA}
-              className="anim-fade-up self-start inline-flex items-center gap-2.5 rounded-full bg-[#175ae8] hover:bg-[#0e47c8] text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] shadow-[0_12px_30px_-8px_rgba(23,90,232,0.45)] transition-all duration-300 hover:translate-y-[-1px]"
-              style={{ transitionDelay: '0.25s', fontFamily: fontStack }}
+              className="anim-fade-up self-center lg:self-start inline-flex items-center gap-2.5 rounded-full text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] transition-all duration-300 hover:translate-y-[-1px]"
+              style={{
+                transitionDelay: '0.25s',
+                fontFamily: fontStack,
+                background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+                boxShadow: '0 14px 38px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)',
+              }}
             >
               Хочу такий самий результат
               <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" />

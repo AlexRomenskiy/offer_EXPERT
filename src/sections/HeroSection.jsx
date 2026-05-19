@@ -62,7 +62,10 @@ export default function HeroSection() {
         className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden"
         style={{
           minHeight: 'calc(100vh - 40px)',
-          boxShadow: '0 30px 80px rgba(2,15,45,0.18)',
+          boxShadow: [
+            '0 30px 50px rgba(15,23,42,0.35)',
+            '0 70px 120px rgba(15,23,42,0.22)',
+          ].join(', '),
         }}
       >
         {/* Background image — desktop has dashboard baked into the right side; mobile uses original atmospheric-only bg */}
@@ -105,58 +108,77 @@ export default function HeroSection() {
               <div className="lg:col-span-7">
                 {/* Headline */}
                 <h1
-                  className="max-w-[40rem] leading-[1.04] font-light mb-5 text-white"
-                  style={{ fontFamily: fontStack, textWrap: 'balance' }}
+                  className="max-w-[40rem] font-light mb-5 text-white"
+                  style={{ fontFamily: fontStack, lineHeight: 1.18 }}
                 >
-                  <span className="anim-wrap">
+                  <span className="anim-wrap" style={{ display: 'block' }}>
                     <span
                       className="anim-line font-medium text-[2rem] sm:text-[3.3rem] lg:text-[4rem] tracking-[0.01em]"
                       style={{ transitionDelay: '0.1s' }}
                     >
                       Система продажу
                     </span>
-                  </span>{' '}
-                  <span className="anim-wrap">
-                    <span
-                      className="anim-line font-medium text-[2rem] sm:text-[3.3rem] lg:text-[4rem] tracking-[0.01em]"
-                      style={{
-                        transitionDelay: '0.18s',
-                        background: 'linear-gradient(135deg, #ffffff 0%, #60a5fa 70%, #175ae8 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                      }}
-                    >
-                      для{' '}
-                      <span className="inline-flex items-baseline">
-                        {typedWord}
+                  </span>
+                  <span
+                    className="anim-italic font-medium text-[2rem] sm:text-[3.3rem] lg:text-[4rem] tracking-[0.01em] whitespace-nowrap"
+                    style={{
+                      display: 'block',
+                      transitionDelay: '0.18s',
+                      lineHeight: 1.18,
+                    }}
+                  >
+                      <span
+                        style={{
+                          background: 'linear-gradient(135deg, #ffffff 0%, #60a5fa 70%, #175ae8 100%)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                        }}
+                      >
+                        для{' '}
+                      </span>
+                      <span
+                        className="inline-block align-baseline"
+                        style={{ minHeight: '1em', lineHeight: 1.18 }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "'Playfair Display', serif",
+                            fontStyle: 'italic',
+                            fontWeight: 500,
+                            background: 'linear-gradient(135deg, #ffffff 0%, #60a5fa 70%, #175ae8 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                          }}
+                        >
+                          {typedWord || '​'}
+                        </span>
                         <span
                           aria-hidden="true"
                           className="inline-block w-[3px] sm:w-[4px] lg:w-[5px] h-[0.85em] ml-1 align-baseline animate-pulse"
                           style={{
                             backgroundColor: '#60a5fa',
                             transform: 'translateY(2px)',
-                            WebkitTextFillColor: 'initial',
                           }}
                         />
                       </span>
                     </span>
-                  </span>
                 </h1>
 
                 {/* Subtitle with thin vertical accent line on the LEFT */}
                 <p
-                  className="max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-4 sm:mb-5 text-slate-200/75 anim-fade-up pl-5"
+                  className="max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-6 text-slate-200/75 anim-fade-up pl-5"
                   style={{
                     transitionDelay: '0.28s',
                     fontFamily: fontStack,
                     borderLeft: '1px solid rgba(255,255,255,0.20)',
                   }}
                 >
-                  Перетворюю твою експертизу на систему, що працює без тебе:
+                  Перетворюю твою експертизу на систему:
                   ловить ліди, веде до оплати, видає продукт.
                   <span className="block mt-3 text-slate-300/55">
-                    Поки система продає — ти займаєшся клієнтами.
+                    Поки система продає — ти займаєшся експертизою. Без вигорання, без хаосу в DM.
                   </span>
                 </p>
 
@@ -165,7 +187,10 @@ export default function HeroSection() {
                   className="mb-7 anim-fade-up"
                   style={{ transitionDelay: '0.34s' }}
                 >
-                  <p className="text-[0.78rem] italic text-slate-300/65 mb-3" style={{ fontFamily: fontStack }}>
+                  <p
+                    className="text-[0.78rem] text-slate-300/65 mb-2 tracking-[0.02em]"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
                     Підхоплює ліди звідусіль, де ти є:
                   </p>
                   <div className="flex items-center gap-4">
@@ -184,6 +209,7 @@ export default function HeroSection() {
                 </div>
 
                 {/* Single CTA — orange spinning beam */}
+                <div className="flex justify-center lg:justify-start">
                 <a
                   href="#request-access"
                   className="group inline-flex overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(234,88,12,0.5)] focus:outline-none text-sm font-medium text-white tracking-wide rounded-full px-10 relative items-center justify-center anim-fade-up"
@@ -231,6 +257,7 @@ export default function HeroSection() {
                     style={{ color: '#fff' }}
                   />
                 </a>
+                </div>
               </div>
 
               {/* Right column — embedded dashboard card. Visible on mobile/tablet (Path B: separate card under text); hidden on lg+ (desktop has dashboard baked into hero-bg_17.png). Eventually replaceable with looping video showing dashboard state cycles. */}
@@ -256,6 +283,7 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

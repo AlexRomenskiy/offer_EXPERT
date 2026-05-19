@@ -4,8 +4,10 @@ import PainSection from './sections/PainSection';
 import SystemIncludesSection from './sections/SystemIncludesSection';
 import TransformationSection from './sections/TransformationSection';
 import CaseStudySection from './sections/CaseStudySection';
+import TestimonialsSection from './sections/TestimonialsSection';
 import PricingSection from './sections/PricingSection';
 import AboutSection from './sections/AboutSection';
+import GuaranteeSection from './sections/GuaranteeSection';
 import FAQSection from './sections/FAQSection';
 import FinalCTASection from './sections/FinalCTASection';
 
@@ -48,20 +50,19 @@ export default function App() {
       {/* Atmospheric base background — unified cool-blue across all sections */}
       <div className="fixed inset-0 z-[-1] pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-[#E3ECF5] via-[#EEF4FA] to-[#F4F8FB]" />
+        {/* Subtle film-grain noise — fractalNoise turbulence, multiply-blended */}
         <svg
-          className="absolute w-full h-full opacity-[0.03]"
+          className="absolute w-full h-full opacity-[0.35] mix-blend-multiply"
           xmlns="http://www.w3.org/2000/svg"
-          style={{
-            WebkitMaskImage: 'radial-gradient(100% 100% at top left, black, transparent)',
-            maskImage: 'radial-gradient(100% 100% at top left, black, transparent)',
-          }}
         >
-          <defs>
-            <pattern id="base-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.2" fill="#0f172a" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#base-grid)" />
+          <filter id="bg-noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.45" />
+            </feComponentTransfer>
+          </filter>
+          <rect width="100%" height="100%" filter="url(#bg-noise)" />
         </svg>
       </div>
 
@@ -70,8 +71,10 @@ export default function App() {
       <TransformationSection />
       <SystemIncludesSection />
       <CaseStudySection />
+      <TestimonialsSection />
       <PricingSection />
       <AboutSection />
+      <GuaranteeSection />
       <FAQSection />
       <FinalCTASection />
     </div>

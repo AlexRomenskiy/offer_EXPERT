@@ -4,70 +4,147 @@ const fontStack = "'Manrope', sans-serif";
 
 const phrases = ['формат роботи', 'шлях до масштабу', 'рівень системи'];
 
-const pricing = [
+export const pricing = [
   {
     key: 'фундамент',
-    icon: 'solar:home-2-linear',
     title: 'Фундамент',
-    mobileBadge: 'СТАРТ',
+    badge: 'СТАРТ',
     price: '$495',
-    timeline: '5–7 днів · точка входу',
+    timeline: '5–7 днів',
     timelineShort: '5–7 днів',
-    description: 'Цифрова присутність експерта.',
-    mobileDescription: 'Точка входу для реклами і збір контактів. Якщо продукт є, але немає посадки і збору.',
+    supportDays: 30,
+    tagline: 'Перший крок до системи та чіткий оффер.',
+    forWhom:
+      'Якщо у тебе є експертиза, але немає чіткого позиціонування і проф. присутності в online.',
+    metrics: { days: '5–7', ads: '—' },
     features: [
-      'Стратегія і позиціонування',
-      'Посадкова сторінка',
-      'Чат-бот для збору лідів',
+      { label: 'Стратегія і позиціонування', tip: 'Хто ти, кому продаєш та чому саме до тебе. Формулюємо позицію на ринку.' },
+      { label: 'Лендинг-візитка', tip: 'Одна посадкова сторінка про твою послугу або продукт. Mobile-ready.' },
+      { label: 'Лід-магніт', tip: 'Безкоштовний матеріал в обмін на контакт людини. PDF, чек-лист, квіз або відео.' },
+      { label: 'Чат-бот у месенджері', tip: 'Видає магніт у Telegram, Instagram, WhatsApp — там, де клієнту зручно. Людина лишається у твоїй базі підписників.' },
     ],
-    metrics: { days: '5–7', modules: '3', ads: '—' },
-    highlight: false,
+    outcome:
+      'Чіткий оффер та професійна онлайн-присутність — готова база для системи.',
+    note: 'Точка входу в систему',
+    cta: 'Записатись на розбір',
+    testimonials: [
+      {
+        quote:
+          'Алексе, дякую. Я три роки писала пости «для всіх, хто хоче схуднути» і сама в це не вірила. Тепер маю нормальний бриф — і клієнтки кажуть «ой, це наче ви про мене». Дивне нове відчуття.',
+        attribution: 'Олена Кравчук · нутриціологиня',
+      },
+      {
+        quote:
+          'Алекс, ти зміг написати про мою послугу краще за мене. Серйозно — я кожному клієнту по 40 хвилин пояснював, що роблю. Тепер просто скидаю лендинг, і дзвінок починається з суті.',
+        attribution: 'Андрій Левченко · бізнес-коуч для власників',
+      },
+      {
+        quote:
+          'Чесно, я не дуже вірив у ці магніти-боти. Але тепер у мене в Telegram сама збирається база людей, які явно цікавляться темою. У неділю вже не сиджу й не пригадую, кому що обіцяв.',
+        attribution: 'Юрій Палагнюк · експерт із B2B-продажів',
+      },
+      {
+        quote:
+          'Заходила з відчуттям «ну всім же треба психолог». Виходжу з розумінням, кому саме я потрібна — і кому ні. Дивно, але це навіть більше про мене, ніж про маркетинг.',
+        attribution: 'Юлія Шевцова · психотерапевтка',
+      },
+    ],
   },
   {
     key: 'генератор',
-    icon: 'solar:bolt-linear',
     title: 'Генератор',
     badge: 'ОПТИМАЛЬНИЙ',
-    mobileBadge: 'ОПТИМАЛЬНИЙ',
     price: '$990',
-    timeline: '14 днів · під ключ',
+    timeline: '14 днів',
     timelineShort: '14 днів',
-    description: 'Повна воронка — від кліку до оплати.',
-    mobileDescription: 'Повна воронка під ключ — від рекламного кліку до автоматичної видачі продукту.',
+    supportDays: 30,
+    tagline: 'Уся воронка — від першого кроку до повторних продажів.',
+    forWhom:
+      'Якщо хочеш автоматизовану систему продажів, яка замінює роботу великої команди — підігріває лідів і веде їх до продажу продукту без твоєї участі.',
+    metrics: { days: '14', ads: '—' },
     features: [
-      'Все з «Фундамент»',
-      'Упаковка продукту',
-      'Автоматичний прийом оплат',
-      'Автоматична видача',
-      'Підключені інтеграції',
+      { label: 'Усе з «Фундаменту»', tip: null },
+      { label: 'Упаковка всього продукту (структура під курс або інтенсив)', tip: 'Не одна сторінка-візитка, а повна структура: продаж, видача матеріалів, окремі точки збору контактів.' },
+      { label: 'Магніт + тріпваер на вході', tip: 'Магніт ловить контакт безкоштовно. Тріпваер — недорогий платний продукт, який підвищує середній чек і дає перший платний досвід з тобою.' },
+      { label: 'Прогрівний бот з кастомною логікою', tip: 'Цепочка прогріву на основний продукт або тріпваер. Нагадування про події, дедлайни. Логіка проектується під твою воронку.' },
+      { label: 'Оплати, автовидача, аналітика воронки', tip: 'Прийом оплат, миттєвий доступ до продукту після оплати, прозорі цифри по всій воронці.' },
     ],
-    metrics: { days: '14', modules: '7', ads: '—' },
+    outcome:
+      'Автоматизована система продажу, готова до масштабування. Конвертує зацікавлених у клієнтів, піднімає середній чек і працює без тебе.',
+    note: 'Для тих, хто будує системний бізнес',
+    cta: 'Записатись на розбір',
     highlight: true,
+    testimonials: [
+      {
+        quote:
+          'Я люблю, коли гроші мають лік. З підписниками те саме: рада, що система турбується про кожного, а мені видає безпосередньо тих, хто хоче працювати. Для мене, як для дівчини з бізнес-проектом, найкраще оновлення гардеробу — це упаковка продукту.',
+        attribution: 'Tania Lav · On-Camera Brand для експертів',
+      },
+      {
+        quote:
+          'Алексе, вибач, що тоді одразу не подякувала. Перший раз побачила оплату о третій ночі — просто стояла з кавою і дивилась на телефон. Мала перетравити, що це працює без мене.',
+        attribution: 'Марина Сергієнко · психологиня, авторка онлайн-курсу',
+      },
+      {
+        quote:
+          'Ти мене переконав на той тріпваер, хоч я був проти. «Ну хто заплатить $19, давай одразу основне»... Виявилось — багато людей. І ті самі потім беруть основну програму, вже без зайвих питань. Дякую за наполегливість.',
+        attribution: 'Ігор Тарасенко · наставник з продажу нерухомості',
+      },
+      {
+        quote:
+          'Найдивніше — я ні з ким, окрім тебе, не контактувала. Я думала, буде «знайди собі дизайнера, копірайтера, ми тільки координуємо». А вийшло, що я просто відповідала на твої питання — і поступово народжувався цілий продукт.',
+        attribution: 'Катерина Безух · дієтологиня, авторка інтенсиву',
+      },
+    ],
   },
   {
     key: 'преміум',
-    icon: 'solar:rocket-2-linear',
     title: 'Преміум',
-    mobileBadge: 'МАХ',
+    badge: 'З ТРАФІКОМ',
     price: '$1,690',
-    timeline: '14–21 днів · з трафіком',
+    timeline: '14–21 днів',
     timelineShort: '14–21 днів',
-    description: 'Повна воронка + рекламний трафік.',
-    mobileDescription: 'Повна воронка + ведення реклами перший місяць. Без двох підрядників.',
+    supportDays: 30,
+    tagline: 'Воронка + реклама, що приводить клієнтів.',
+    forWhom: 'Якщо хочеш не просто упаковку продукту, а ще й масштабування.',
+    metrics: { days: '14–21', ads: '✓' },
     features: [
-      'Все з «Генератор»',
-      'Meta Pixel + CAPI',
-      'Цільові аудиторії',
-      'Рекламні креативи (3)',
-      'Кампанії — перший місяць',
+      { label: 'Усе з «Генератора»', tip: null },
+      { label: 'Таргетована реклама — повна кампанія (креативи, тексти, запуск)', tip: 'Створення зображень, відео і текстів. Запуск кампаній на каналах під твою аудиторію — Meta, Google, YouTube, TikTok.' },
+      { label: '3 креативи × 3 аудиторії', tip: 'Дев’ять тестових зв’язок одразу — щоб швидко побачити, що працює, і масштабувати робочі зв’язки.' },
+      { label: 'Наскрізна аналітика — від першого кліку до повторних продаж', tip: 'Весь шлях клієнта: перший клік → воронка → оплата → повторна покупка. Розумієш, скільки коштує клієнт і скільки він тобі приносить.' },
     ],
-    metrics: { days: '14–21', modules: '11', ads: '✓' },
-    highlight: false,
+    outcome:
+      'Масштабувана система продажів. Збільшуєш рекламний бюджет — пропорційно ростуть продажі.',
+    note: 'Готове рішення з рекламою — без збору команди',
+    cta: 'Записатись на розбір',
+    testimonials: [
+      {
+        quote:
+          'Алекс, спасибі за гру. Я два роки пробував різну рекламу — то таргетолог, то агенство — бюджет згорав, і я не розумів чому. Виявилось, проблема була не в рекламі, а в тому, куди вона веде. Тепер у мене зібрана воронка плюс трафік на неї — нарешті бачу окупність.',
+        attribution: 'Dmytro Kravtsov · finance advisor',
+      },
+      {
+        quote:
+          'У мене вже була своя програма, але я не уявляла, як її розкручувати. Зараз — лендинг, бот, оплати, аналітика, і зверху ще реклама, яка все це крутить. Я лише раз на тиждень дивлюсь звіт. Уперше за довгий час маю вихідні.',
+        attribution: 'Inna Melnyk · fitness coach, course author',
+      },
+      {
+        quote:
+          'До цього у мене все трималось на сарафанці і моїй активності в LinkedIn. Хаос: то 8 заявок за тиждень, то жодної місяць. Зараз у мене воронка плюс реклама, що крутить її щодня — я нарешті можу планувати рік, а не один місяць.',
+        attribution: 'Олександр Лисак · наставник для IT-експертів',
+      },
+      {
+        quote:
+          'Алексе, найбільше мене вразило, що ми спершу зібрали воронку, а реклама прийшла потім. Я роками лила гроші в Facebook і не розуміла, чому в когось працює, а в мене ні. Тепер у мене обидві частини, і вона нарешті працює.',
+        attribution: 'Софія Маценко · лікарка-косметологиня',
+      },
+    ],
   },
 ];
 
 export default function PricingSection() {
-  // ============== Typewriter effect ==============
+  // ============== Typewriter ==============
   const [displayText, setDisplayText] = useState('');
   const phraseIdxRef = useRef(0);
   const charIdxRef = useRef(0);
@@ -77,7 +154,6 @@ export default function PricingSection() {
     let timeoutId;
     const tick = () => {
       const current = phrases[phraseIdxRef.current];
-
       if (isDeletingRef.current) {
         setDisplayText(current.substring(0, charIdxRef.current - 1));
         charIdxRef.current -= 1;
@@ -85,9 +161,7 @@ export default function PricingSection() {
         setDisplayText(current.substring(0, charIdxRef.current + 1));
         charIdxRef.current += 1;
       }
-
       let speed = isDeletingRef.current ? 40 : 80;
-
       if (!isDeletingRef.current && charIdxRef.current === current.length) {
         speed = 2500;
         isDeletingRef.current = true;
@@ -96,21 +170,22 @@ export default function PricingSection() {
         phraseIdxRef.current = (phraseIdxRef.current + 1) % phrases.length;
         speed = 500;
       }
-
       timeoutId = setTimeout(tick, speed);
     };
     timeoutId = setTimeout(tick, 500);
     return () => clearTimeout(timeoutId);
   }, []);
 
-  // ============== Dot highlight loop (icon cluster) ==============
+  // ============== Dot highlight loop ==============
   const [activeDotIdx, setActiveDotIdx] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => {
-      setActiveDotIdx((prev) => (prev + 1) % 3);
-    }, 300);
+    const id = setInterval(() => setActiveDotIdx((prev) => (prev + 1) % 3), 300);
     return () => clearInterval(id);
   }, []);
+
+  // ============== Active tier ==============
+  const [activeKey, setActiveKey] = useState('генератор');
+  const active = pricing.find((p) => p.key === activeKey);
 
   const scrollToCTA = (e) => {
     e.preventDefault();
@@ -120,27 +195,27 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="relative py-20 lg:py-28 px-6 md:px-8 lg:px-12 scroll-mt-24 overflow-hidden"
+      className="relative py-20 lg:py-24 px-6 md:px-8 lg:px-12 scroll-mt-24 overflow-hidden"
     >
-      {/* === Lamp glow above cards (premium spotlight) === */}
+      {/* === Lamp glow === */}
       <div
         aria-hidden="true"
-        className="absolute top-8 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full pointer-events-none z-0"
+        className="absolute top-8 left-1/2 -translate-x-1/2 w-[900px] h-[560px] rounded-full pointer-events-none z-0"
         style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.55), transparent 60%)' }}
       />
       <div
         aria-hidden="true"
-        className="absolute top-32 left-1/2 -translate-x-1/2 w-[600px] h-[350px] rounded-full pointer-events-none z-0"
+        className="absolute top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full pointer-events-none z-0"
         style={{ background: 'radial-gradient(ellipse at center, rgba(23,90,232,0.10), transparent 65%)' }}
       />
 
-      {/* === Side chips + animated traces (md+ only) === */}
+      {/* === Side chip traces (lg+, with fade-out gradient on inward ends) === */}
       <div
         aria-hidden="true"
-        className="hidden md:block absolute top-[5.5rem] lg:top-[6.5rem] left-1/2 -translate-x-1/2 pointer-events-none z-[1]"
-        style={{ width: '1400px' }}
+        className="hidden lg:block absolute top-[5.5rem] left-1/2 -translate-x-1/2 pointer-events-none z-[1]"
+        style={{ width: '1500px' }}
       >
-        <svg width="1400" height="240" viewBox="0 0 1400 240" fill="none">
+        <svg width="1500" height="240" viewBox="0 0 1500 240" fill="none">
           <defs>
             <linearGradient id="chipGradPricing" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#ffffff" />
@@ -153,95 +228,76 @@ export default function PricingSection() {
               <feGaussianBlur stdDeviation="2" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
+
+            {/* === Line fade-out gradients (solid near chip, transparent at center end) === */}
+            <linearGradient id="leftLineFadeGrey" gradientUnits="userSpaceOnUse" x1="170" y1="60" x2="420" y2="170">
+              <stop offset="0%" stopColor="#d4d4d8" stopOpacity="1" />
+              <stop offset="100%" stopColor="#d4d4d8" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="leftLineFadeBlue" gradientUnits="userSpaceOnUse" x1="170" y1="60" x2="420" y2="170">
+              <stop offset="0%" stopColor="#175ae8" stopOpacity="1" />
+              <stop offset="100%" stopColor="#175ae8" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="rightLineFadeGrey" gradientUnits="userSpaceOnUse" x1="1330" y1="60" x2="1080" y2="170">
+              <stop offset="0%" stopColor="#d4d4d8" stopOpacity="1" />
+              <stop offset="100%" stopColor="#d4d4d8" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="rightLineFadeBlue" gradientUnits="userSpaceOnUse" x1="1330" y1="60" x2="1080" y2="170">
+              <stop offset="0%" stopColor="#175ae8" stopOpacity="1" />
+              <stop offset="100%" stopColor="#175ae8" stopOpacity="0" />
+            </linearGradient>
           </defs>
 
-          {/* === LEFT side: 3 entry lines + chip + animated trace inward === */}
+          {/* LEFT */}
           <g>
-            <line x1="100" y1="50" x2="140" y2="50" stroke="#d4d4d8" strokeWidth="1.5" />
-            <line x1="100" y1="60" x2="140" y2="60" stroke="#d4d4d8" strokeWidth="1.5" />
-            <line x1="100" y1="70" x2="140" y2="70" stroke="#d4d4d8" strokeWidth="1.5" />
-
-            <rect
-              x="140"
-              y="35"
-              width="70"
-              height="50"
-              rx="6"
-              fill="url(#chipGradPricing)"
-              stroke="rgba(0,0,0,0.12)"
-              strokeWidth="1"
-              filter="url(#chipShadowPricing)"
-            />
-            <circle cx="150" cy="45" r="1.5" fill="#a1a1aa">
+            <line x1="60" y1="50" x2="100" y2="50" stroke="#d4d4d8" strokeWidth="1.5" />
+            <line x1="60" y1="60" x2="100" y2="60" stroke="#d4d4d8" strokeWidth="1.5" />
+            <line x1="60" y1="70" x2="100" y2="70" stroke="#d4d4d8" strokeWidth="1.5" />
+            <rect x="100" y="35" width="70" height="50" rx="6" fill="url(#chipGradPricing)" stroke="rgba(0,0,0,0.12)" strokeWidth="1" filter="url(#chipShadowPricing)" />
+            <circle cx="110" cy="45" r="1.5" fill="#a1a1aa">
               <animate attributeName="opacity" values="0.2;1;0.2" dur="1.5s" repeatCount="indefinite" />
             </circle>
-            <circle cx="195" cy="60" r="2.5" fill="#175ae8" filter="url(#dotGlowPricing)">
+            <circle cx="155" cy="60" r="2.5" fill="#175ae8" filter="url(#dotGlowPricing)">
               <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
             </circle>
-
-            <path d="M 210 60 H 400 L 520 170" stroke="#d4d4d8" strokeWidth="1.5" fill="none" />
-            <path
-              d="M 210 60 H 400 L 520 170"
-              stroke="#175ae8"
-              strokeWidth="1.5"
-              fill="none"
-              strokeDasharray="50 400"
-              strokeDashoffset="400"
-            >
+            <path d="M 170 60 H 320 L 420 170" stroke="url(#leftLineFadeGrey)" strokeWidth="1.5" fill="none" />
+            <path d="M 170 60 H 320 L 420 170" stroke="url(#leftLineFadeBlue)" strokeWidth="1.5" fill="none" strokeDasharray="50 400" strokeDashoffset="400">
               <animate attributeName="stroke-dashoffset" values="400;-50" dur="3s" repeatCount="indefinite" />
             </path>
           </g>
 
-          {/* === RIGHT side: mirrored === */}
+          {/* RIGHT */}
           <g>
-            <line x1="1300" y1="50" x2="1260" y2="50" stroke="#d4d4d8" strokeWidth="1.5" />
-            <line x1="1300" y1="60" x2="1260" y2="60" stroke="#d4d4d8" strokeWidth="1.5" />
-            <line x1="1300" y1="70" x2="1260" y2="70" stroke="#d4d4d8" strokeWidth="1.5" />
-
-            <rect
-              x="1190"
-              y="35"
-              width="70"
-              height="50"
-              rx="6"
-              fill="url(#chipGradPricing)"
-              stroke="rgba(0,0,0,0.12)"
-              strokeWidth="1"
-              filter="url(#chipShadowPricing)"
-            />
-            <circle cx="1250" cy="45" r="1.5" fill="#a1a1aa">
+            <line x1="1440" y1="50" x2="1400" y2="50" stroke="#d4d4d8" strokeWidth="1.5" />
+            <line x1="1440" y1="60" x2="1400" y2="60" stroke="#d4d4d8" strokeWidth="1.5" />
+            <line x1="1440" y1="70" x2="1400" y2="70" stroke="#d4d4d8" strokeWidth="1.5" />
+            <rect x="1330" y="35" width="70" height="50" rx="6" fill="url(#chipGradPricing)" stroke="rgba(0,0,0,0.12)" strokeWidth="1" filter="url(#chipShadowPricing)" />
+            <circle cx="1390" cy="45" r="1.5" fill="#a1a1aa">
               <animate attributeName="opacity" values="0.2;1;0.2" dur="1.7s" repeatCount="indefinite" />
             </circle>
-            <circle cx="1205" cy="60" r="2.5" fill="#175ae8" filter="url(#dotGlowPricing)">
+            <circle cx="1345" cy="60" r="2.5" fill="#175ae8" filter="url(#dotGlowPricing)">
               <animate attributeName="opacity" values="0.3;1;0.3" dur="2.3s" repeatCount="indefinite" />
             </circle>
-
-            <path d="M 1190 60 H 1000 L 880 170" stroke="#d4d4d8" strokeWidth="1.5" fill="none" />
-            <path
-              d="M 1190 60 H 1000 L 880 170"
-              stroke="#175ae8"
-              strokeWidth="1.5"
-              fill="none"
-              strokeDasharray="50 400"
-              strokeDashoffset="400"
-            >
+            <path d="M 1330 60 H 1180 L 1080 170" stroke="url(#rightLineFadeGrey)" strokeWidth="1.5" fill="none" />
+            <path d="M 1330 60 H 1180 L 1080 170" stroke="url(#rightLineFadeBlue)" strokeWidth="1.5" fill="none" strokeDasharray="50 400" strokeDashoffset="400">
               <animate attributeName="stroke-dashoffset" values="400;-50" dur="3.5s" repeatCount="indefinite" />
             </path>
           </g>
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-[1280px] mx-auto">
 
-        {/* ============== Header cluster ============== */}
-        <div className="text-center mb-14 lg:mb-16 anim-trigger">
+        {/* ============== HEADER ============== */}
+        <div className="relative text-center mb-12 lg:mb-16 anim-trigger">
+          {/* Decorative dot-mesh background — premium fade texture behind header */}
+          <span aria-hidden="true" className="header-decor-dots header-decor-dots--center" />
 
-          {/* Icon cluster: 3 dots + rounded icon + 3 dots */}
+          {/* Dot cluster + center icon */}
           <div
-            className="flex items-center justify-center gap-5 mb-8 anim-fade-up"
+            className="flex items-center justify-center gap-5 mb-7 anim-fade-up"
             style={{ transitionDelay: '0s' }}
           >
-            {/* Left 3 dots */}
             <div className="flex gap-1.5">
               {[0, 1, 2].map((i) => (
                 <div
@@ -254,8 +310,6 @@ export default function PricingSection() {
                 />
               ))}
             </div>
-
-            {/* Center icon */}
             <div
               className="w-14 h-14 rounded-2xl flex items-center justify-center relative overflow-hidden"
               style={{
@@ -283,8 +337,6 @@ export default function PricingSection() {
                 }}
               />
             </div>
-
-            {/* Right 3 dots (mirrored highlight: outer→inner symmetry) */}
             <div className="flex gap-1.5">
               {[0, 1, 2].map((i) => (
                 <div
@@ -299,180 +351,267 @@ export default function PricingSection() {
             </div>
           </div>
 
-          {/* Heading */}
+          {/* Eyebrow */}
+          <div
+            className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] text-slate-500 mb-5 anim-fade-up"
+            style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0s' }}
+          >
+            <span className="h-px w-6 bg-slate-300" />
+            Пакети · від $495
+            <span className="h-px w-6 bg-slate-300" />
+          </div>
+
+          {/* Heading (subtitle intentionally removed) */}
           <h2
-            className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] leading-[1.1] tracking-[-0.04em] text-slate-950 font-light mb-4 anim-fade-up"
-            style={{ fontFamily: fontStack, transitionDelay: '0.10s' }}
+            className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] tracking-[-0.02em] text-slate-950 font-light anim-fade-up"
+            style={{ fontFamily: fontStack, transitionDelay: '0.10s', lineHeight: 1.18 }}
           >
             <span className="block">Обери свій</span>
-            <span className="block text-[#175ae8] font-medium min-h-[1.15em]">
-              {displayText}
+            <span className="block min-h-[1.2em]" style={{ paddingTop: '0.18em', paddingBottom: '0.45em' }}>
+              <span
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontStyle: 'italic',
+                  fontWeight: 500,
+                  background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                {displayText}
+              </span>
               <span
                 className="inline-block w-[2px] h-[0.8em] bg-[#175ae8] ml-1 animate-pulse align-baseline"
                 style={{ transform: 'translateY(2px)' }}
               />
             </span>
           </h2>
-          <p
-            className="max-w-xl mx-auto text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up"
-            style={{ fontFamily: fontStack, transitionDelay: '0.20s' }}
-          >
-            Три рівні системи продажу. Вище — більше зроблено за тебе.
-          </p>
         </div>
 
-        {/* ============== Mobile: single tab-switching glass card ============== */}
-        <div className="md:hidden anim-trigger">
-          <MobilePricingCard onCTA={scrollToCTA} />
-        </div>
+        {/* ============== DESKTOP (lg+): 2-col with sticky right ============== */}
+        <div className="hidden lg:grid lg:grid-cols-[1fr_1.05fr] lg:gap-16 items-start">
 
-        {/* ============== Desktop: 3 dark cards side-by-side ============== */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8 anim-trigger">
-          {pricing.map((tier, i) => (
-            <PricingCard
-              key={tier.key}
-              tier={tier}
-              delay={`${0.05 + i * 0.08}s`}
-              onCTA={scrollToCTA}
+          {/* LEFT — testimonials, scrolls with page */}
+          <div className="anim-trigger lg:pt-2">
+            <p
+              className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-9 anim-fade-up"
+              style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0s' }}
+            >
+              Що кажуть
+            </p>
+            <div
+              className="flex flex-col gap-14"
+              style={{ fontFamily: fontStack }}
+            >
+              {active.testimonials.map((t, i) => (
+                <blockquote
+                  key={`${active.key}-${i}`}
+                  className="relative pl-6 border-l border-[#175ae8]/30 group"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-[-4px] top-0 w-2 h-2 rounded-full bg-[#175ae8] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ boxShadow: '0 0 8px rgba(23,90,232,0.6)' }}
+                  />
+                  <p
+                    className="text-[1.02rem] lg:text-[1.08rem] leading-[1.75] font-light text-slate-700 italic mb-3 transition-opacity duration-300"
+                  >
+                    «{t.quote}»
+                  </p>
+                  <cite
+                    className="not-italic text-[10px] uppercase tracking-[0.18em] text-slate-500"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    {t.attribution}
+                  </cite>
+                </blockquote>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT — sticky card with tabs INSIDE + tagline UNDER tabs */}
+          <div className="relative anim-trigger lg:sticky lg:top-24 lg:self-start">
+            <div
+              aria-hidden="true"
+              className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-blue-200/25 blur-[90px] pointer-events-none"
             />
-          ))}
+
+            <div
+              className="relative p-6 lg:p-7 rounded-[28px] bg-white/55 backdrop-blur-xl border border-white/60 anim-fade-up"
+              style={{
+                boxShadow: '0 28px 80px rgba(148,163,184,0.14), 0 8px 24px rgba(15,23,42,0.05)',
+                transitionDelay: '0.15s',
+                minHeight: '680px',
+              }}
+            >
+              {/* Glass highlight */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.55),transparent_60%)] pointer-events-none rounded-[28px]"
+              />
+
+              <div className="relative z-10 flex flex-col h-full">
+                {/* Big tab buttons (inside card, on top) */}
+                <div className="grid grid-cols-3 gap-2 mb-5">
+                  {pricing.map((p) => {
+                    const isActive = activeKey === p.key;
+                    return (
+                      <button
+                        key={p.key}
+                        type="button"
+                        onClick={() => setActiveKey(p.key)}
+                        className={`flex items-center justify-center h-12 sm:h-[52px] rounded-full text-[14px] sm:text-[15px] font-semibold tracking-[-0.01em] transition-all duration-300 ${
+                          isActive
+                            ? 'text-white'
+                            : 'text-slate-700 bg-white/65 border border-slate-200/70 hover:bg-white/85 hover:border-slate-300 backdrop-blur-md'
+                        }`}
+                        style={{
+                          fontFamily: fontStack,
+                          background: isActive
+                            ? 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)'
+                            : undefined,
+                          boxShadow: isActive
+                            ? '0 12px 30px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)'
+                            : undefined,
+                        }}
+                      >
+                        {p.title}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Tagline UNDER tabs — eyebrow + body (в ритмі решти блоків) */}
+                <div className="mb-5 min-h-[4em]">
+                  <p
+                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-1.5"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    Про пакет
+                  </p>
+                  <p
+                    className="text-[0.95rem] text-slate-800 leading-[1.55] font-medium"
+                    style={{ fontFamily: fontStack }}
+                  >
+                    {active.tagline}
+                  </p>
+                </div>
+
+                {/* Price + timeline + support */}
+                <div className="mb-5">
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span
+                      className="text-[2.4rem] sm:text-[2.7rem] lg:text-[2.9rem] tracking-[-0.04em] text-slate-950 font-light leading-none"
+                      style={{ fontFamily: fontStack }}
+                    >
+                      {active.price}
+                    </span>
+                  </div>
+                  <div
+                    className="text-[10px] tracking-[0.16em] uppercase text-slate-500"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    {active.timeline} реалізації · {active.supportDays} днів підтримки
+                  </div>
+                </div>
+
+                {/* Для кого */}
+                <div className="mb-5 min-h-[5em]">
+                  <p
+                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-1.5"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    Для кого
+                  </p>
+                  <p
+                    className="text-[0.88rem] text-slate-700 leading-[1.55]"
+                    style={{ fontFamily: fontStack }}
+                  >
+                    {active.forWhom}
+                  </p>
+                </div>
+
+                {/* Features */}
+                <div className="mb-5 min-h-[10em]">
+                  <p
+                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-2.5"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    Що входить
+                  </p>
+                  <ul className="space-y-2">
+                    {active.features.map((f, i) => (
+                      <FeatureItem key={i} feature={f} variant="dot" />
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Outcome */}
+                <div className="mb-5 p-3.5 rounded-2xl border border-[#175ae8]/15 bg-[#175ae8]/[0.05] min-h-[5em]">
+                  <p
+                    className="text-brand-gradient text-[10px] uppercase tracking-[0.22em] mb-1"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    Результат
+                  </p>
+                  <p
+                    className="text-[0.88rem] text-slate-800 leading-[1.5]"
+                    style={{ fontFamily: fontStack }}
+                  >
+                    {active.outcome}
+                  </p>
+                </div>
+
+                {/* CTA pinned bottom */}
+                <div className="mt-auto">
+                  <a
+                    href="#request-access"
+                    onClick={scrollToCTA}
+                    className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-full text-white text-[0.92rem] font-medium transition-all hover:translate-y-[-1px] active:scale-[0.98]"
+                    style={{
+                      fontFamily: fontStack,
+                      background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+                      boxShadow: '0 14px 38px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)',
+                    }}
+                  >
+                    {active.cta}
+                    <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" />
+                  </a>
+                  <p
+                    className="text-center text-[10px] uppercase tracking-[0.16em] text-slate-500 mt-2"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    {active.note}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        {/* ============== MOBILE (< lg): original single tab-switching card ============== */}
+        <div className="lg:hidden anim-trigger">
+          <MobilePricingCard
+            activeKey={activeKey}
+            setActiveKey={setActiveKey}
+            active={active}
+            onCTA={scrollToCTA}
+          />
+        </div>
+
       </div>
     </section>
   );
 }
 
 /* ============================================================================
-   Single pricing card (dark — premium island on light page)
+   Mobile pricing card — single light glass with tab switcher (original variant)
    ============================================================================ */
-function PricingCard({ tier, delay, onCTA }) {
-  const { icon, title, badge, price, timeline, description, features, highlight } = tier;
-
-  return (
-    <div
-      className={`group relative p-7 lg:p-8 rounded-[28px] flex flex-col anim-fade-up transition-all duration-500 ease-out hover:-translate-y-2 ${
-        highlight ? 'md:-translate-y-4 md:hover:-translate-y-6' : ''
-      }`}
-      style={{
-        transitionDelay: delay,
-        background: 'linear-gradient(180deg, #18181b 0%, #09090b 100%)',
-        boxShadow: highlight
-          ? 'inset 0 1px 0 rgba(255,255,255,0.10), inset 0 0 0 1px rgba(23,90,232,0.40), 0 25px 60px -10px rgba(23,90,232,0.20), 0 60px 100px -20px rgba(23,90,232,0.30)'
-          : 'inset 0 1px 0 rgba(255,255,255,0.08), inset 0 0 0 1px rgba(255,255,255,0.05), 0 20px 50px -10px rgba(0,0,0,0.30), 0 40px 80px -20px rgba(0,0,0,0.40)',
-      }}
-    >
-      {/* Corner pulse dots — highlight card only */}
-      {highlight && (
-        <>
-          <div className="absolute top-4 left-4 w-1 h-1 rounded-full bg-[#175ae8]/45 shadow-[0_0_4px_rgba(23,90,232,0.45)] animate-pulse" />
-          <div className="absolute top-4 right-4 w-1 h-1 rounded-full bg-[#175ae8]/45 shadow-[0_0_4px_rgba(23,90,232,0.45)] animate-pulse" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-4 left-4 w-1 h-1 rounded-full bg-[#175ae8]/45 shadow-[0_0_4px_rgba(23,90,232,0.45)] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute bottom-4 right-4 w-1 h-1 rounded-full bg-[#175ae8]/45 shadow-[0_0_4px_rgba(23,90,232,0.45)] animate-pulse" style={{ animationDelay: '1.5s' }} />
-        </>
-      )}
-
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-4">
-        <iconify-icon
-          icon={icon}
-          width="22"
-          height="22"
-          style={{ color: highlight ? '#175ae8' : '#a1a1aa' }}
-        />
-        <h3 className="text-[1.1rem] font-normal text-white" style={{ fontFamily: fontStack }}>
-          {title}
-        </h3>
-        {badge && (
-          <span
-            className="ml-auto px-2.5 py-0.5 rounded-full bg-[#175ae8]/15 text-[#60a5fa] text-[10px] font-medium tracking-wider border border-[#175ae8]/30"
-            style={{ fontFamily: fontStack }}
-          >
-            {badge}
-          </span>
-        )}
-      </div>
-
-      {/* Price */}
-      <div
-        className="text-[2.6rem] lg:text-[2.9rem] tracking-[-0.04em] font-light text-white mb-1.5 leading-none"
-        style={{ fontFamily: fontStack }}
-      >
-        {price}
-      </div>
-      <p className="text-[0.8rem] text-zinc-500 mb-2" style={{ fontFamily: fontStack }}>
-        {timeline}
-      </p>
-      <p
-        className="text-[0.92rem] text-zinc-400 font-light mb-7 lg:mb-8 leading-snug"
-        style={{ fontFamily: fontStack }}
-      >
-        {description}
-      </p>
-
-      {/* CTA */}
-      <a
-        href="#request-access"
-        onClick={onCTA}
-        className={`w-full text-center rounded-xl py-3 text-[0.92rem] font-medium transition-all active:scale-[0.98] mb-7 lg:mb-8 text-white ${
-          highlight
-            ? 'bg-gradient-to-b from-[#175ae8] to-[#0e47c8] hover:from-[#1f6df0] hover:to-[#175ae8]'
-            : 'bg-gradient-to-b from-[#27272a] to-[#18181b] hover:from-[#3f3f46] hover:to-[#27272a]'
-        }`}
-        style={{
-          fontFamily: fontStack,
-          boxShadow: highlight
-            ? 'inset 0 1px 1px rgba(255,255,255,0.25), inset 0 -2px 4px rgba(0,0,0,0.30), 0 10px 25px -5px rgba(23,90,232,0.40), 0 0 0 1px rgba(14,71,200,0.6)'
-            : 'inset 0 1px 1px rgba(255,255,255,0.10), inset 0 -1px 2px rgba(0,0,0,0.20), 0 5px 12px -3px rgba(0,0,0,0.30), 0 0 0 1px rgba(255,255,255,0.05)',
-        }}
-      >
-        Записатись на розбір
-      </a>
-
-      {/* Divider */}
-      <div
-        className={`h-px w-full mb-7 ${
-          highlight
-            ? 'bg-gradient-to-r from-transparent via-[#175ae8]/30 to-transparent'
-            : 'bg-gradient-to-r from-transparent via-white/10 to-transparent'
-        }`}
-      />
-
-      {/* Features list */}
-      <ul className="space-y-3.5 flex-1">
-        {features.map((f, i) => (
-          <li
-            key={i}
-            className="flex items-start gap-3 text-[0.9rem] font-light text-zinc-400"
-            style={{ fontFamily: fontStack }}
-          >
-            <iconify-icon
-              icon={highlight ? 'solar:bolt-linear' : 'solar:alt-arrow-right-linear'}
-              width="16"
-              height="16"
-              style={{
-                color: highlight ? '#175ae8' : '#71717a',
-                marginTop: '3px',
-                flexShrink: 0,
-              }}
-            />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-/* ============================================================================
-   Mobile pricing card with tab switcher (light glass — concept-aligned)
-   ============================================================================ */
-function MobilePricingCard({ onCTA }) {
-  const [activeKey, setActiveKey] = useState('генератор');
-  const active = pricing.find((p) => p.key === activeKey);
-
+function MobilePricingCard({ activeKey, setActiveKey, active, onCTA }) {
   return (
     <div className="relative anim-fade-up">
-      {/* Subtle blue glow blob behind card */}
       <div
         aria-hidden="true"
         className="absolute -top-10 -right-10 w-56 h-56 rounded-full bg-blue-200/25 blur-[80px] pointer-events-none"
@@ -482,34 +621,14 @@ function MobilePricingCard({ onCTA }) {
         className="relative p-6 sm:p-7 rounded-[28px] bg-white/55 backdrop-blur-xl border border-white/60 flex flex-col"
         style={{ boxShadow: '0 28px 80px rgba(148,163,184,0.14), 0 8px 24px rgba(15,23,42,0.05)' }}
       >
-        {/* Glass highlight */}
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.55),transparent_60%)] pointer-events-none rounded-[28px]"
         />
 
         <div className="relative z-10">
-
-          {/* Title + active badge */}
-          <div className="flex justify-between items-center gap-3 mb-5">
-            <h3
-              className="text-[1.35rem] tracking-tight text-slate-950 font-medium"
-              style={{ fontFamily: fontStack }}
-            >
-              Тариф
-            </h3>
-            <span
-              className="px-3 py-1 rounded-full border border-[#175ae8]/30 bg-white/70 text-[10px] tracking-wider text-[#175ae8] font-medium"
-              style={{ fontFamily: fontStack }}
-            >
-              {active.mobileBadge}
-            </span>
-          </div>
-
           {/* Tab switcher */}
-          <div
-            className="inline-flex p-1 rounded-full bg-white/50 border border-white/70 shadow-sm w-full gap-1 backdrop-blur-md mb-7"
-          >
+          <div className="inline-flex p-1 rounded-full bg-white/50 border border-white/70 shadow-sm w-full gap-1 backdrop-blur-md mb-7">
             {pricing.map((p) => (
               <button
                 key={p.key}
@@ -517,10 +636,16 @@ function MobilePricingCard({ onCTA }) {
                 onClick={() => setActiveKey(p.key)}
                 className={`flex-1 px-3 py-2 rounded-full text-[11px] tracking-wide transition-all ${
                   activeKey === p.key
-                    ? 'bg-slate-950 text-white shadow-sm'
+                    ? 'text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
-                style={{ fontFamily: fontStack }}
+                style={{
+                  fontFamily: fontStack,
+                  background:
+                    activeKey === p.key
+                      ? 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)'
+                      : undefined,
+                }}
               >
                 {p.title}
               </button>
@@ -530,7 +655,7 @@ function MobilePricingCard({ onCTA }) {
           {/* Price + timeline */}
           <div className="flex items-baseline gap-2 mb-3">
             <span
-              className="text-[3.4rem] tracking-[-0.04em] text-slate-950 font-light leading-none"
+              className="text-[3.2rem] tracking-[-0.04em] text-slate-950 font-light leading-none"
               style={{ fontFamily: fontStack }}
             >
               {active.price}
@@ -543,42 +668,81 @@ function MobilePricingCard({ onCTA }) {
             </span>
           </div>
 
-          <p
-            className="text-[0.92rem] text-slate-600 leading-[1.6] mb-7"
-            style={{ fontFamily: fontStack }}
-          >
-            {active.mobileDescription}
-          </p>
+          {/* Про пакет — eyebrow + body */}
+          <div className="mb-5">
+            <p
+              className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-1.5"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              Про пакет
+            </p>
+            <p
+              className="text-[0.95rem] text-slate-800 leading-[1.55] font-medium"
+              style={{ fontFamily: fontStack }}
+            >
+              {active.tagline}
+            </p>
+          </div>
 
-          {/* Metrics: Терміни / Модулі / Реклама */}
-          <div className="grid grid-cols-3 gap-2 mb-7">
-            <MetricCell label="Терміни" value={active.metrics.days} />
-            <MetricCell label="Модулі" value={active.metrics.modules} />
-            <MetricCell label="Реклама" value={active.metrics.ads} />
+          {/* Для кого — eyebrow + body */}
+          <div className="mb-6">
+            <p
+              className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-1.5"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              Для кого
+            </p>
+            <p
+              className="text-[0.88rem] text-slate-700 leading-[1.55]"
+              style={{ fontFamily: fontStack }}
+            >
+              {active.forWhom}
+            </p>
           </div>
 
           {/* Features */}
-          <div className="space-y-3 mb-7">
-            {active.features.map((f, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-3 text-[0.93rem] text-slate-700"
-                style={{ fontFamily: fontStack }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#175ae8] shrink-0 mt-[7px]" />
-                <span>{f}</span>
-              </div>
-            ))}
+          <div className="mb-6">
+            <p
+              className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-3"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              Що входить
+            </p>
+            <ul className="space-y-2.5">
+              {active.features.map((f, i) => (
+                <FeatureItem key={i} feature={f} variant="check" />
+              ))}
+            </ul>
+          </div>
+
+          {/* Outcome */}
+          <div className="mb-7 p-4 rounded-2xl border border-[#175ae8]/15 bg-[#175ae8]/[0.05]">
+            <p
+              className="text-brand-gradient text-[10px] uppercase tracking-[0.22em] mb-1.5"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              Результат
+            </p>
+            <p
+              className="text-[0.92rem] text-slate-700 leading-[1.55]"
+              style={{ fontFamily: fontStack }}
+            >
+              {active.outcome}
+            </p>
           </div>
 
           {/* CTA */}
           <a
             href="#request-access"
             onClick={onCTA}
-            className="w-full inline-flex h-12 items-center justify-center rounded-full bg-slate-950 hover:bg-[#175ae8] text-white text-[0.92rem] font-medium transition-colors shadow-[0_10px_30px_rgba(15,23,42,0.14)]"
-            style={{ fontFamily: fontStack }}
+            className="w-full inline-flex h-12 items-center justify-center rounded-full text-white text-[0.92rem] font-medium transition-all hover:translate-y-[-1px]"
+            style={{
+              fontFamily: fontStack,
+              background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+              boxShadow: '0 14px 38px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)',
+            }}
           >
-            Записатись на розбір
+            {active.cta}
           </a>
         </div>
       </div>
@@ -586,23 +750,60 @@ function MobilePricingCard({ onCTA }) {
   );
 }
 
-function MetricCell({ label, value }) {
+/* ============================================================================
+   FeatureItem — feature line with optional hover tooltip (desktop variant only)
+   variant: 'dot' (desktop) | 'check' (mobile)
+   ============================================================================ */
+function FeatureItem({ feature, variant }) {
+  const isDot = variant === 'dot';
+  const hasTip = isDot && !!feature.tip;
+
   return (
-    <div
-      className="rounded-2xl bg-white/60 border border-white/70 p-3 shadow-sm backdrop-blur-md"
-    >
+    <li className={`relative ${hasTip ? 'group' : ''}`}>
       <div
-        className="text-[9px] tracking-wider text-slate-500 mb-1 uppercase"
+        className={`flex items-start gap-3 leading-snug ${
+          isDot ? 'text-[0.9rem] text-slate-800' : 'text-[0.92rem] text-slate-700'
+        }`}
         style={{ fontFamily: fontStack }}
       >
-        {label}
+        {isDot ? (
+          <span
+            className="inline-block w-1.5 h-1.5 rounded-full bg-[#175ae8] shrink-0"
+            style={{ marginTop: '0.55em', boxShadow: '0 0 6px rgba(23,90,232,0.45)' }}
+          />
+        ) : (
+          <iconify-icon
+            icon="solar:check-circle-line-duotone"
+            width="17"
+            height="17"
+            style={{ color: '#175ae8', marginTop: '1px', flexShrink: 0 }}
+          />
+        )}
+        <span
+          className={
+            hasTip
+              ? 'cursor-help border-b border-dashed border-slate-300 group-hover:border-[#175ae8]/60 transition-colors duration-200'
+              : ''
+          }
+        >
+          {feature.label}
+        </span>
       </div>
-      <div
-        className="text-[1.1rem] font-medium text-slate-950 tracking-tight"
-        style={{ fontFamily: fontStack }}
-      >
-        {value}
-      </div>
-    </div>
+
+      {hasTip && (
+        <div
+          className="absolute z-50 left-7 right-0 top-full mt-2 max-w-[300px] p-3 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/70 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none"
+          style={{ boxShadow: '0 20px 50px rgba(15,23,42,0.12), 0 4px 14px rgba(15,23,42,0.06)' }}
+        >
+          <p
+            className="text-[0.82rem] text-slate-700 leading-[1.55]"
+            style={{ fontFamily: fontStack }}
+          >
+            {feature.tip}
+          </p>
+        </div>
+      )}
+    </li>
   );
 }
+

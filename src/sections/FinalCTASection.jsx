@@ -2,7 +2,6 @@ const fontStack = "'Manrope', sans-serif";
 
 const TELEGRAM_URL = 'https://t.me/your_username'; // TODO: replace with real handle
 const BOOKING_URL = '#'; // TODO: replace with real booking URL
-const EMAIL = 'alex.romenskii@gmail.com';
 
 const quickLinks = [
   { label: 'Для кого', href: '#pain' },
@@ -36,7 +35,7 @@ export default function FinalCTASection() {
   return (
     <section
       id="request-access"
-      className="relative py-20 lg:py-24 px-6 md:px-8 lg:px-12 scroll-mt-24 overflow-hidden"
+      className="relative py-20 lg:py-24 px-6 md:px-8 lg:px-12 scroll-mt-24 overflow-x-clip"
     >
       {/* Atmospheric blue glow behind card */}
       <div
@@ -52,7 +51,7 @@ export default function FinalCTASection() {
 
         {/* Combined CTA + Footer glass card */}
         <div
-          className="relative rounded-[30px] bg-white/35 backdrop-blur-2xl border border-white/55 p-7 sm:p-9 lg:p-12 overflow-hidden anim-trigger"
+          className="relative rounded-[32px] bg-white/50 backdrop-blur-xl border border-white/60 p-7 sm:p-9 lg:p-12 overflow-hidden anim-trigger"
           style={{ boxShadow: '0 28px 80px rgba(148,163,184,0.14), 0 8px 24px rgba(15,23,42,0.05)' }}
         >
           {/* Glass highlights */}
@@ -69,58 +68,55 @@ export default function FinalCTASection() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
 
             {/* =============== LEFT: heading + email =============== */}
-            <div>
-              <h2
-                className="text-[2.2rem] sm:text-[2.6rem] lg:text-[3.2rem] leading-[1.04] tracking-[-0.04em] text-slate-950 font-light max-w-[14ch]"
-                style={{ fontFamily: fontStack }}
+            <div className="relative text-center lg:text-left">
+              {/* Decorative dot-mesh background — Pricing-style base center */}
+              <span aria-hidden="true" className="header-decor-dots header-decor-dots--center" />
+
+              {/* Mono eyebrow */}
+              <div
+                className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] text-slate-500 mb-6 anim-fade-up"
+                style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0.05s' }}
               >
-                <span className="block anim-wrap">
-                  <span className="anim-line" style={{ transitionDelay: '0.10s' }}>
-                    Поговоримо про
+                <span className="h-px w-6 bg-slate-300" />
+                Розбір · 30 хв
+                <span className="h-px w-6 bg-slate-300" />
+              </div>
+
+              <h2
+                className="text-[1.65rem] sm:text-[2.3rem] lg:text-[3.2rem] tracking-[-0.02em] text-slate-950 font-light max-w-[16ch] mx-auto lg:mx-0"
+                style={{ fontFamily: fontStack, lineHeight: 1.2 }}
+              >
+                <span className="anim-wrap" style={{ display: 'block' }}>
+                  <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
+                    Скільки ще будеш
                   </span>
                 </span>
-                <span className="block anim-wrap">
-                  <span className="anim-line" style={{ transitionDelay: '0.20s' }}>
-                    твою воронку?
-                  </span>
-                </span>
-                <span className="block font-medium text-slate-950 mt-2 anim-wrap">
-                  <span className="anim-line" style={{ transitionDelay: '0.30s' }}>
-                    Без презентацій.
+                <span
+                  className="anim-italic"
+                  style={{ display: 'block', transitionDelay: '0.20s' }}
+                >
+                  <span className="italic-accent">
+                    продавати руками?
                   </span>
                 </span>
               </h2>
 
-              <div
-                className="mt-8 lg:mt-10 anim-fade-up"
-                style={{ transitionDelay: '0.40s' }}
+              <p
+                className="mt-5 max-w-md text-[0.98rem] sm:text-[1.04rem] leading-[1.6] text-slate-600 anim-fade-up subtitle-hairline"
+                style={{
+                  transitionDelay: '0.25s',
+                  fontFamily: fontStack,
+                }}
               >
-                <p
-                  className="text-[0.9rem] text-slate-500 mb-3"
-                  style={{ fontFamily: fontStack }}
-                >
-                  Або напиши напряму
-                </p>
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="inline-flex items-center text-[1.45rem] sm:text-[1.7rem] lg:text-[2rem] text-slate-950 font-medium tracking-[-0.03em] hover:text-[#175ae8] transition-colors break-all"
-                  style={{ fontFamily: fontStack }}
-                >
-                  {EMAIL}
-                </a>
-                <p
-                  className="mt-4 text-[12px] text-slate-500 tracking-[0.04em]"
-                  style={{ fontFamily: fontStack }}
-                >
-                  Олександр Роменський · Funnel architect · Розбір 30 хв
-                </p>
-              </div>
+                Один безкоштовний розбір — і знаєш наступний крок.
+              </p>
+
             </div>
 
             {/* =============== RIGHT: CTAs + footer-links =============== */}
             <div>
               <h3
-                className="text-[1.6rem] sm:text-[1.9rem] lg:text-[2.2rem] text-slate-950 font-medium tracking-[-0.03em] anim-fade-up"
+                className="text-[1.6rem] sm:text-[1.9rem] lg:text-[2.2rem] text-slate-950 font-medium tracking-[-0.03em] text-center lg:text-left anim-fade-up"
                 style={{ transitionDelay: '0.40s', fontFamily: fontStack }}
               >
                 Записатися на розбір
@@ -128,13 +124,13 @@ export default function FinalCTASection() {
 
               {/* CTAs */}
               <div
-                className="mt-6 flex flex-col sm:flex-row gap-3 anim-fade-up"
+                className="mt-6 flex flex-col items-center sm:items-stretch sm:flex-row gap-3 anim-fade-up"
                 style={{ transitionDelay: '0.50s' }}
               >
-                {/* Primary — brand-gradient */}
+                {/* Primary — brand-gradient. On mobile: full-width (capped at 280px), centered; on sm+: intrinsic */}
                 <a
                   href={BOOKING_URL}
-                  className="group inline-flex h-12 items-center justify-center gap-3 rounded-full px-6 text-[14px] font-medium text-white transition-all duration-300 hover:-translate-y-0.5"
+                  className="group inline-flex h-12 items-center justify-center gap-3 rounded-full px-6 text-[14px] font-medium text-white transition-all duration-300 hover:-translate-y-0.5 w-full max-w-[280px] mx-auto sm:w-auto sm:max-w-none sm:mx-0"
                   style={{
                     fontFamily: fontStack,
                     background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
@@ -147,12 +143,12 @@ export default function FinalCTASection() {
                   </span>
                 </a>
 
-                {/* Secondary — Telegram glass pill */}
+                {/* Secondary — Telegram glass pill. Matches primary width on mobile */}
                 <a
                   href={TELEGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200/70 bg-white/55 backdrop-blur-md px-5 text-[14px] font-medium text-slate-700 hover:bg-white/85 hover:text-[#175ae8] hover:border-[#175ae8]/30 transition-colors"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200/70 bg-white/55 backdrop-blur-md px-5 text-[14px] font-medium text-slate-700 hover:bg-white/85 hover:text-[#175ae8] hover:border-[#175ae8]/30 transition-colors w-full max-w-[280px] mx-auto sm:w-auto sm:max-w-none sm:mx-0"
                   style={{ fontFamily: fontStack }}
                 >
                   <iconify-icon icon="simple-icons:telegram" width="16" height="16" />
@@ -162,7 +158,7 @@ export default function FinalCTASection() {
 
               {/* Reassurance */}
               <div
-                className="mt-5 flex flex-wrap gap-x-5 gap-y-1.5 anim-fade-up"
+                className="mt-5 flex flex-wrap gap-x-5 gap-y-1.5 justify-center lg:justify-start anim-fade-up"
                 style={{ transitionDelay: '0.55s' }}
               >
                 {reassurances.map((r) => (
@@ -261,7 +257,7 @@ export default function FinalCTASection() {
                 style={{ fontFamily: fontStack }}
               >
                 <span className="text-slate-950">CRAFT</span>
-                <span className="text-[#175ae8] ml-1">LIONS</span>
+                <span className="text-brand-gradient ml-1">LIONS</span>
               </span>
             </div>
 

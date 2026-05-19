@@ -23,9 +23,15 @@ const funnelStages = [
 ];
 
 const leadMagnetTypes = [
-  { icon: 'solar:document-text-linear', name: 'PDF · «5 помилок експерта»', downloads: '47', active: true },
-  { icon: 'solar:checklist-linear', name: 'Чек-лист запуску', downloads: '23', active: false },
-  { icon: 'solar:question-circle-linear', name: 'Квіз · «Твій тип»', downloads: '12', active: false },
+  { icon: 'solar:document-text-linear', name: 'PDF · «5 помилок експерта»', meta: 'Магніт', active: true },
+  { icon: 'solar:checklist-linear', name: 'Чек-лист запуску', meta: 'Магніт', active: false },
+  { icon: 'solar:gift-linear', name: 'Mini-курс · $19', meta: 'Тріпваер', active: false },
+];
+
+const strategyBrief = [
+  { q: 'Хто ти?', a: 'Олена · продуктовий маркетинг' },
+  { q: 'Кому продаєш?', a: 'B2B SaaS-маркетологи' },
+  { q: 'Чому саме до тебе?', a: 'Запуски через дані, не інтуїцію' },
 ];
 
 export default function SystemIncludesSection() {
@@ -36,77 +42,85 @@ export default function SystemIncludesSection() {
     >
       <div className="relative z-10 max-w-7xl mx-auto">
 
-        {/* === Section header — heading + subtitle stacked === */}
-        <div className="max-w-3xl mb-12 lg:mb-14 anim-trigger">
-          <h2
-            className="text-[2.35rem] sm:text-[2.9rem] lg:text-[3.45rem] leading-[1.02] tracking-[-0.04em] text-slate-950 font-light max-w-[14ch] mb-5"
-            style={{ fontFamily: fontStack, textWrap: 'balance' }}
+        {/* === Header === */}
+        <div className="relative max-w-3xl mb-14 lg:mb-16 anim-trigger text-center md:text-left">
+          {/* Decorative dot-mesh background — Pricing-style base center */}
+          <span aria-hidden="true" className="header-decor-dots header-decor-dots--center" />
+
+          <div
+            className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] text-slate-500 mb-6 anim-fade-up"
+            style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0.05s' }}
           >
-            <span className="block anim-wrap">
-              <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
-                Що входить
-              </span>
-            </span>
-            <span className="block anim-wrap">
-              <span className="anim-line" style={{ transitionDelay: '0.20s' }}>
-                у систему
+            <span className="h-px w-6 bg-slate-300" />
+            Архітектура · під ключ
+            <span className="h-px w-6 bg-slate-300" />
+          </div>
+
+          <h2
+            className="text-[1.75rem] sm:text-[2.5rem] lg:text-[3.45rem] tracking-[-0.02em] text-slate-950 font-light mb-5"
+            style={{ fontFamily: fontStack, lineHeight: 1.2 }}
+          >
+            <span className="anim-italic font-medium" style={{ transitionDelay: '0.10s' }}>
+              Що входить у
+              <span className="italic-accent" style={{ marginLeft: '0.20em' }}>
+                систему
               </span>
             </span>
           </h2>
 
           <p
-            className="max-w-[42ch] text-[1rem] sm:text-[1.06rem] leading-[1.7] text-slate-600 anim-fade-up"
+            className="max-w-[46ch] text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up subtitle-hairline"
             style={{ transitionDelay: '0.30s', fontFamily: fontStack }}
           >
-            Шість елементів, що працюють як один потік: від першого торкання
-            до оплати і видачі продукту.
+            Шість елементів — один потік: від чіткого позиціонування до
+            повторних продажів.
           </p>
         </div>
 
-        {/* === 6 equal-size panels (3-col grid) === */}
+        {/* === 6 panels === */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 anim-trigger items-stretch">
 
           <Panel
-            icon="solar:document-linear"
-            title="Лендинг"
-            description="Конверсійна сторінка під твою експертизу."
-            pillLabel="Mobile-ready"
-            mockup={<LandingMockup />}
+            icon="solar:target-linear"
+            title="Стратегія і позиціонування"
+            description="Хто ти, кому продаєш та чому саме до тебе."
+            pillLabel="Брифінг"
+            mockup={<StrategyMockup />}
             delay="0.05s"
           />
 
           <Panel
-            icon="solar:document-text-linear"
-            title="Лід-магніт"
-            description="Безкоштовна цінність — перший крок до угоди."
-            pillLabel="3 типи"
-            mockup={<LeadMagnetMockup />}
+            icon="solar:document-linear"
+            title="Лендинг"
+            description="Від однієї сторінки до повної структури під твій продукт."
+            pillLabel="Mobile-ready"
+            mockup={<LandingMockup />}
             delay="0.10s"
+          />
+
+          <Panel
+            icon="solar:magnet-linear"
+            title="Магніт + тріпваер"
+            description="Ловить контакт і підвищує середній чек."
+            pillLabel="Вхід"
+            mockup={<LeadMagnetMockup />}
+            delay="0.15s"
           />
 
           <Panel
             icon="solar:chat-round-dots-linear"
             title="Чат-бот"
-            description="Підхоплює ліди у 7 каналах, відповідає 24/7."
+            description="Єдина база клієнтів, діалог 24/7 та прогрів до покупки."
             pillLabel="Live"
             pillVariant="green"
             mockup={<ChatBotMockup />}
-            delay="0.15s"
-          />
-
-          <Panel
-            icon="solar:card-linear"
-            title="Оплати + видача"
-            description="Один автоматичний потік: оплата → доступ одразу."
-            pillLabel="Авто"
-            mockup={<PaymentsMockup />}
             delay="0.20s"
           />
 
           <Panel
             icon="solar:chart-2-linear"
             title="Аналітика"
-            description="Прозорі цифри по воронці — де ллється, що працює."
+            description="Прозорі цифри від першого кліку до повторних продаж."
             pillLabel="Sync"
             mockup={<AnalyticsMockup />}
             delay="0.25s"
@@ -115,7 +129,7 @@ export default function SystemIncludesSection() {
           <Panel
             icon="solar:rocket-2-linear"
             title="Трафік"
-            description="Налаштування реклами під воронку: Meta Pixel + CAPI."
+            description="Реклама в місцях, де є твоя аудиторія."
             pillLabel="Активна"
             mockup={<TrafficMockup />}
             premium
@@ -144,7 +158,6 @@ function Panel({ icon, title, description, pillLabel, pillVariant = 'blue', mock
         transitionDelay: delay,
       }}
     >
-      {/* Glass highlights */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)] pointer-events-none rounded-[28px]"
@@ -154,7 +167,6 @@ function Panel({ icon, title, description, pillLabel, pillVariant = 'blue', mock
         className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-blue-200/[0.18] blur-[80px] pointer-events-none"
       />
 
-      {/* Header */}
       <div className="relative z-10 flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2.5 mb-2">
@@ -162,7 +174,7 @@ function Panel({ icon, title, description, pillLabel, pillVariant = 'blue', mock
               <iconify-icon icon={icon} width="18" height="18" style={{ color: '#175ae8' }} />
             </div>
             <h3
-              className="text-[1.15rem] lg:text-[1.25rem] tracking-tight text-slate-950 font-medium"
+              className="text-[1.05rem] lg:text-[1.15rem] tracking-tight text-slate-950 font-medium leading-tight"
               style={{ fontFamily: fontStack }}
             >
               {title}
@@ -186,19 +198,17 @@ function Panel({ icon, title, description, pillLabel, pillVariant = 'blue', mock
         )}
       </div>
 
-      {/* Mockup card — flex-1 to fill remaining height */}
       <div className="relative z-10 flex-1 rounded-[18px] overflow-hidden border border-white/55 bg-white/40 backdrop-blur-xl shadow-[0_10px_40px_rgba(148,163,184,0.10)] ring-1 ring-white/40 flex flex-col min-h-[280px]">
         {mockup}
       </div>
 
-      {/* Premium marker */}
       {premium && (
         <div
-          className="relative z-10 flex items-center gap-2 text-[12px] italic text-[#175ae8]/85"
+          className="relative z-10 flex items-center gap-2 text-[12px] italic"
           style={{ fontFamily: fontStack }}
         >
           <span className="block w-6 h-px bg-[#175ae8]/40" />
-          У пакеті «Преміум»
+          <span className="text-brand-gradient">У пакеті «Преміум»</span>
         </div>
       )}
     </div>
@@ -206,7 +216,7 @@ function Panel({ icon, title, description, pillLabel, pillVariant = 'blue', mock
 }
 
 /* ============================================================================
-   Reusable mockup chrome (top + bottom bars)
+   Reusable mockup chrome
    ============================================================================ */
 function TopBar({ left, right }) {
   return (
@@ -238,12 +248,49 @@ function BottomBar({ left, right }) {
    MOCKUPS — 6 unique inner UIs
    ============================================================================ */
 
+function StrategyMockup() {
+  return (
+    <>
+      <TopBar left="Brand brief" right="Готовий" />
+      <div className="px-3 py-3 flex-1 flex flex-col gap-2 bg-white/[0.08]">
+        {strategyBrief.map((b, i) => (
+          <div
+            key={i}
+            className="p-2.5 rounded-xl bg-white/70 border border-slate-200/60"
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <iconify-icon
+                icon="solar:check-circle-line-duotone"
+                width="13"
+                height="13"
+                style={{ color: '#175ae8' }}
+              />
+              <span
+                className="text-[10px] uppercase tracking-[0.16em] text-slate-500"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                {b.q}
+              </span>
+            </div>
+            <div
+              className="text-[11px] text-slate-900 font-medium leading-snug pl-[19px]"
+              style={{ fontFamily: fontStack }}
+            >
+              {b.a}
+            </div>
+          </div>
+        ))}
+      </div>
+      <BottomBar left="Brand canvas" right="v1.0" />
+    </>
+  );
+}
+
 function LandingMockup() {
   return (
     <>
       <TopBar left="Сторінка" right="Конверсійна" />
       <div className="px-4 py-4 flex-1 flex flex-col gap-3 bg-white/[0.08]">
-        {/* Mini browser frame */}
         <div className="rounded-lg bg-white/75 border border-slate-200/70 p-3 shadow-sm">
           <div className="flex items-center gap-1 mb-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
@@ -256,7 +303,6 @@ function LandingMockup() {
           </div>
           <div className="h-3 w-24 rounded-full mt-3" style={{ background: 'linear-gradient(90deg,#175ae8,#60a5fa)' }} />
         </div>
-        {/* Section stripes */}
         <div className="space-y-1.5 px-1">
           <div className="h-1.5 w-full bg-slate-200/60 rounded-sm" />
           <div className="h-1.5 w-5/6 bg-slate-200/50 rounded-sm" />
@@ -271,7 +317,7 @@ function LandingMockup() {
 function LeadMagnetMockup() {
   return (
     <>
-      <TopBar left="Формати входу" right="3 типи" />
+      <TopBar left="Магніт + тріпваер" right="3 типи" />
       <div className="px-3 py-3 flex-1 flex flex-col gap-1.5 bg-white/[0.08]">
         {leadMagnetTypes.map((t, i) => (
           <div
@@ -301,7 +347,7 @@ function LeadMagnetMockup() {
                 {t.name}
               </div>
               <div className="text-[9.5px] text-slate-500" style={{ fontFamily: fontStack }}>
-                {t.downloads} завантажень
+                {t.meta}
               </div>
             </div>
             {t.active && (
@@ -313,7 +359,7 @@ function LeadMagnetMockup() {
           </div>
         ))}
       </div>
-      <BottomBar left="47 нових сьогодні" right="Auto-capture" />
+      <BottomBar left="Контакт + чек" right="Auto" />
     </>
   );
 }
@@ -322,7 +368,6 @@ function ChatBotMockup() {
   return (
     <>
       <TopBar left="7 каналів · інбокс" right="В роботі" />
-      {/* Channel icons */}
       <div className="px-4 py-3 border-b border-white/45 flex items-center justify-between bg-white/[0.10] shrink-0">
         {channels.map((ch) => (
           <div key={ch.name} className="relative" title={ch.name}>
@@ -341,7 +386,6 @@ function ChatBotMockup() {
           </div>
         ))}
       </div>
-      {/* Activity feed */}
       <div className="px-4 py-3 flex-1 flex flex-col gap-2.5">
         {botActivity.map((m, i) => (
           <div key={i} className="flex items-center gap-2.5">
@@ -369,63 +413,10 @@ function ChatBotMockup() {
   );
 }
 
-function PaymentsMockup() {
-  return (
-    <>
-      <TopBar left="Один потік" right="Автомат" />
-      <div className="px-3 py-3 flex-1 flex flex-col gap-2.5 bg-white/[0.08]">
-        {/* Payment card */}
-        <div className="rounded-xl bg-white/80 border border-slate-200/70 p-3 shadow-sm">
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="flex items-center gap-1.5">
-              <div
-                className="w-6 h-4 rounded-sm"
-                style={{ background: 'linear-gradient(135deg,#175ae8,#60a5fa)' }}
-              />
-              <span className="text-[9px] text-slate-500 tabular-nums" style={{ fontFamily: fontStack }}>
-                •••• 4242
-              </span>
-            </div>
-            <span className="text-[9px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-full font-medium" style={{ fontFamily: fontStack }}>
-              Успіх
-            </span>
-          </div>
-          <div
-            className="text-[1.5rem] font-medium text-slate-950 tracking-[-0.03em] leading-none mb-1"
-            style={{ fontFamily: fontStack }}
-          >
-            $497
-          </div>
-          <div className="text-[10px] text-slate-500" style={{ fontFamily: fontStack }}>
-            Курс «Експерт-Системи»
-          </div>
-        </div>
-
-        {/* Arrow + access status */}
-        <div className="flex items-center gap-2.5 px-2 py-2 rounded-lg bg-[#175ae8]/[0.07] border border-[#175ae8]/20">
-          <div className="w-7 h-7 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
-            <iconify-icon icon="solar:check-circle-linear" width="13" height="13" style={{ color: '#10b981' }} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-[11px] font-medium text-slate-900" style={{ fontFamily: fontStack }}>
-              Доступ видано
-            </div>
-            <div className="text-[9.5px] text-slate-500" style={{ fontFamily: fontStack }}>
-              Olena · 0.4с після оплати
-            </div>
-          </div>
-        </div>
-      </div>
-      <BottomBar left="18 за тиждень" right="100% автомат" />
-    </>
-  );
-}
-
 function AnalyticsMockup() {
   return (
     <>
       <TopBar left="Цей тиждень" right="Auto · 2 хв" />
-      {/* Big metric */}
       <div className="px-4 py-3 border-b border-white/45 shrink-0">
         <div className="text-[10px] text-slate-500 mb-0.5" style={{ fontFamily: fontStack }}>
           Дохід
@@ -447,7 +438,6 @@ function AnalyticsMockup() {
         </div>
       </div>
 
-      {/* Funnel breakdown */}
       <div className="px-4 py-3 flex-1 flex flex-col gap-2">
         <div className="text-[9.5px] text-slate-500 uppercase tracking-wider mb-0.5" style={{ fontFamily: fontStack }}>
           Воронка
@@ -483,13 +473,12 @@ function AnalyticsMockup() {
 function TrafficMockup() {
   return (
     <>
-      <TopBar left="Кампанія · Meta" right="Live" />
+      <TopBar left="Кампанія · реклама" right="Live" />
       <div className="px-3 py-3 flex-1 flex flex-col gap-2.5 bg-white/[0.08]">
-        {/* 2 stat cards */}
         <div className="grid grid-cols-2 gap-2">
           <div className="rounded-lg bg-white/70 border border-slate-200/60 p-2.5">
             <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5" style={{ fontFamily: fontStack }}>
-              Reach
+              Охоплення
             </div>
             <div className="text-[1rem] font-medium text-slate-950 tracking-tight" style={{ fontFamily: fontStack }}>
               1.2M
@@ -505,7 +494,6 @@ function TrafficMockup() {
           </div>
         </div>
 
-        {/* Creative slots */}
         <div className="mt-1">
           <div className="text-[9.5px] text-slate-500 uppercase tracking-wider mb-1.5" style={{ fontFamily: fontStack }}>
             Креативи · 3

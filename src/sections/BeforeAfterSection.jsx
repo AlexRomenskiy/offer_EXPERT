@@ -45,7 +45,10 @@ export default function BeforeAfterSection() {
       <div className="relative z-10 max-w-[1360px] mx-auto">
         {/* Section header */}
         <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 md:gap-16 pb-16 items-end anim-trigger">
-          <div className="flex flex-col items-start text-left">
+          <div className="relative flex flex-col items-start text-left">
+            {/* Decorative dot-mesh background — Pricing-style base center */}
+            <span aria-hidden="true" className="header-decor-dots header-decor-dots--center" />
+
             <div className="inline-flex items-center gap-2 mb-6 rounded-full border border-orange-200/70 bg-white/60 backdrop-blur-xl px-4 py-2 shadow-[0_6px_24px_rgba(148,163,184,0.10)] anim-fade-up" style={{ transitionDelay: '0s' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
               <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-orange-700">
@@ -63,7 +66,7 @@ export default function BeforeAfterSection() {
             </h2>
           </div>
 
-          <p className="text-[1rem] sm:text-[1.06rem] leading-[1.75] text-slate-600 text-left md:pb-2 max-w-[40ch] anim-fade-up" style={{ transitionDelay: '0.3s' }}>
+          <p className="text-[1rem] sm:text-[1.06rem] leading-[1.75] text-slate-600 text-left md:pb-2 max-w-[40ch] anim-fade-up subtitle-hairline-mobile-only" style={{ transitionDelay: '0.3s' }}>
             Один день експерта в двох режимах. Перемкни — і подивись, що змінюється.
           </p>
         </div>
