@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -61,6 +61,45 @@ export default function CookieConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [prefs, setPrefs] = useState(DEFAULT_PREFERENCES);
+
+  const { pathname } = useLocation();
+  const isEn = pathname === '/en' || pathname.startsWith('/en/');
+  const cookiesUrl = isEn ? '/en/cookies' : '/cookies';
+  const labels = isEn
+    ? {
+        title: 'Cookies on this site',
+        desc1: 'We use necessary cookies to make the site work. With your consent — also analytics and marketing cookies.',
+        moreLink: 'Details',
+        acceptAll: 'Accept all',
+        rejectAll: 'Necessary only',
+        customize: 'Customize',
+        prefTitle: 'Cookie preferences',
+        prefDesc: 'Choose which cookie categories you allow.',
+        prefCategoriesLink: 'What these categories are',
+        collapse: 'Collapse',
+        save: 'Save choice',
+        catNecessary: { title: 'Necessary', desc: "Basic cookies the site can't work without. Cannot be disabled." },
+        catFunctional: { title: 'Functional', desc: 'Remember your preferences — language, settings, form values.' },
+        catAnalytics: { title: 'Analytics', desc: 'Anonymous visit statistics — so we can see what works and what doesn’t.' },
+        catMarketing: { title: 'Marketing', desc: 'Pixels and tracking for retargeting and ads (Meta, Google).' },
+      }
+    : {
+        title: 'Cookies на цьому сайті',
+        desc1: 'Необхідні cookies — щоб сайт працював. За твоєю згодою — аналітичні та маркетингові.',
+        moreLink: 'Детальніше',
+        acceptAll: 'Прийняти всі',
+        rejectAll: 'Тільки необхідні',
+        customize: 'Налаштувати',
+        prefTitle: 'Налаштування cookies',
+        prefDesc: 'Обери, які категорії cookies ти дозволяєш.',
+        prefCategoriesLink: 'Що це за категорії',
+        collapse: 'Згорнути',
+        save: 'Зберегти вибір',
+        catNecessary: { title: 'Необхідні', desc: 'Базові cookies, без яких сайт не може коректно працювати. Не вимикаються.' },
+        catFunctional: { title: 'Функціональні', desc: "Запам'ятовують твої вподобання — мову, налаштування, форми." },
+        catAnalytics: { title: 'Аналітика', desc: 'Анонімна статистика відвідувань — щоб ми бачили, що працює, а що ні.' },
+        catMarketing: { title: 'Маркетинг', desc: 'Pixels та tracking для ретаргетингу і реклами (Meta, Google).' },
+      };
 
   // Initial mount — check if banner needed
   useEffect(() => {
@@ -155,12 +194,12 @@ export default function CookieConsentBanner() {
                   id="cookie-consent-title"
                   className="text-[14px] font-semibold text-slate-950 tracking-[-0.01em] mb-1"
                 >
-                  Cookies на цьому сайті
+                  {labels.title}
                 </h2>
                 <p id="cookie-consent-desc" className="text-[12.5px] text-slate-600 leading-[1.5]">
-                  Необхідні cookies — щоб сайт працював. За твоєю згодою — аналітичні та маркетингові.{' '}
-                  <Link to="/cookies" className="text-[#175ae8] hover:underline">
-                    Детальніше
+                  {labels.desc1}{' '}
+                  <Link to={cookiesUrl} className="text-[#175ae8] hover:underline">
+                    {labels.moreLink}
                   </Link>
                   .
                 </p>
@@ -176,21 +215,21 @@ export default function CookieConsentBanner() {
                     boxShadow: '0 10px 28px rgba(23,90,232,0.25), inset 0 1px 0 rgba(255,255,255,0.20)',
                   }}
                 >
-                  Прийняти всі
+                  {labels.acceptAll}
                 </button>
                 <button
                   type="button"
                   onClick={handleRejectAll}
                   className="flex-1 inline-flex items-center justify-center h-9 rounded-full text-slate-700 text-[12.5px] font-medium bg-white/70 border border-slate-200 hover:bg-white hover:border-slate-300 transition-all"
                 >
-                  Тільки необхідні
+                  {labels.rejectAll}
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsExpanded(true)}
                   className="flex-1 inline-flex items-center justify-center gap-1 h-9 rounded-full text-slate-700 text-[12.5px] font-medium hover:bg-slate-100/60 transition-all"
                 >
-                  Налаштувати
+                  {labels.customize}
                 </button>
               </div>
             </>
@@ -203,12 +242,12 @@ export default function CookieConsentBanner() {
                     id="cookie-consent-title"
                     className="text-[14px] font-semibold text-slate-950 tracking-[-0.01em] mb-1"
                   >
-                    Налаштування cookies
+                    {labels.prefTitle}
                   </h2>
                   <p className="text-[12px] text-slate-600 leading-[1.5]">
-                    Обери, які категорії cookies ти дозволяєш.{' '}
-                    <Link to="/cookies" className="text-[#175ae8] hover:underline">
-                      Що це за категорії
+                    {labels.prefDesc}{' '}
+                    <Link to={cookiesUrl} className="text-[#175ae8] hover:underline">
+                      {labels.prefCategoriesLink}
                     </Link>
                     .
                   </p>
@@ -217,7 +256,7 @@ export default function CookieConsentBanner() {
                   type="button"
                   onClick={() => setIsExpanded(false)}
                   className="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full hover:bg-slate-100 transition-colors"
-                  aria-label="Згорнути"
+                  aria-label={labels.collapse}
                 >
                   <iconify-icon icon="solar:close-circle-linear" width="18" height="18" style={{ color: '#64748b' }} />
                 </button>
@@ -225,26 +264,26 @@ export default function CookieConsentBanner() {
 
               <div className="space-y-1.5 mb-4">
                 <CategoryToggle
-                  title="Необхідні"
-                  desc="Базові cookies, без яких сайт не може коректно працювати. Не вимикаються."
+                  title={labels.catNecessary.title}
+                  desc={labels.catNecessary.desc}
                   checked={true}
                   disabled={true}
                 />
                 <CategoryToggle
-                  title="Функціональні"
-                  desc="Запам'ятовують твої вподобання — мову, налаштування, форми."
+                  title={labels.catFunctional.title}
+                  desc={labels.catFunctional.desc}
                   checked={prefs.functional}
                   onChange={(v) => setPrefs((p) => ({ ...p, functional: v }))}
                 />
                 <CategoryToggle
-                  title="Аналітика"
-                  desc="Анонімна статистика відвідувань — щоб ми бачили, що працює, а що ні."
+                  title={labels.catAnalytics.title}
+                  desc={labels.catAnalytics.desc}
                   checked={prefs.analytics}
                   onChange={(v) => setPrefs((p) => ({ ...p, analytics: v }))}
                 />
                 <CategoryToggle
-                  title="Маркетинг"
-                  desc="Pixels та tracking для ретаргетингу і реклами (Meta, Google)."
+                  title={labels.catMarketing.title}
+                  desc={labels.catMarketing.desc}
                   checked={prefs.marketing}
                   onChange={(v) => setPrefs((p) => ({ ...p, marketing: v }))}
                 />
@@ -260,14 +299,14 @@ export default function CookieConsentBanner() {
                     boxShadow: '0 10px 28px rgba(23,90,232,0.25), inset 0 1px 0 rgba(255,255,255,0.20)',
                   }}
                 >
-                  Зберегти вибір
+                  {labels.save}
                 </button>
                 <button
                   type="button"
                   onClick={handleAcceptAll}
                   className="flex-1 inline-flex items-center justify-center h-9 rounded-full text-slate-700 text-[12.5px] font-medium bg-white/70 border border-slate-200 hover:bg-white hover:border-slate-300 transition-all"
                 >
-                  Прийняти всі
+                  {labels.acceptAll}
                 </button>
               </div>
             </>

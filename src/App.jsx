@@ -9,6 +9,12 @@ import TermsOfService from './pages/legal/TermsOfService';
 import RefundPolicy from './pages/legal/RefundPolicy';
 import Contacts from './pages/legal/Contacts';
 
+import PrivacyPolicyEN from './pages/legal/en/PrivacyPolicyEN';
+import CookiesPolicyEN from './pages/legal/en/CookiesPolicyEN';
+import TermsOfServiceEN from './pages/legal/en/TermsOfServiceEN';
+import RefundPolicyEN from './pages/legal/en/RefundPolicyEN';
+import ContactsEN from './pages/legal/en/ContactsEN';
+
 import CookieConsentBanner from './components/CookieConsentBanner';
 
 function GlobalBackground() {
@@ -79,17 +85,30 @@ export default function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/en" element={<EnLandingPage />} />
+
+          {/* UA legal */}
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/cookies" element={<CookiesPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/refund" element={<RefundPolicy />} />
           <Route path="/contacts" element={<Contacts />} />
 
+          {/* EN legal */}
+          <Route path="/en/privacy" element={<PrivacyPolicyEN />} />
+          <Route path="/en/cookies" element={<CookiesPolicyEN />} />
+          <Route path="/en/terms" element={<TermsOfServiceEN />} />
+          <Route path="/en/refund" element={<RefundPolicyEN />} />
+          <Route path="/en/contacts" element={<ContactsEN />} />
+
           {/* Backwards-compat / common aliases */}
           <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
           <Route path="/cookie-policy" element={<Navigate to="/cookies" replace />} />
           <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
           <Route path="/refund-policy" element={<Navigate to="/refund" replace />} />
+          <Route path="/en/privacy-policy" element={<Navigate to="/en/privacy" replace />} />
+          <Route path="/en/cookie-policy" element={<Navigate to="/en/cookies" replace />} />
+          <Route path="/en/terms-of-service" element={<Navigate to="/en/terms" replace />} />
+          <Route path="/en/refund-policy" element={<Navigate to="/en/refund" replace />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

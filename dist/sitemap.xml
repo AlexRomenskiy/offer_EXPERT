@@ -24,36 +24,88 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.craftlions.ca/" />
   </url>
 
-  <!-- Legal pages -->
+  <!-- UA legal pages -->
   <url>
     <loc>https://www.craftlions.ca/privacy</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/privacy" />
   </url>
   <url>
     <loc>https://www.craftlions.ca/cookies</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/cookies" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/cookies" />
   </url>
   <url>
     <loc>https://www.craftlions.ca/terms</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/terms" />
   </url>
   <url>
     <loc>https://www.craftlions.ca/refund</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/refund" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/refund" />
   </url>
   <url>
     <loc>https://www.craftlions.ca/contacts</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/contacts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/contacts" />
+  </url>
+
+  <!-- EN legal pages -->
+  <url>
+    <loc>https://www.craftlions.ca/en/privacy</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/privacy" />
+  </url>
+  <url>
+    <loc>https://www.craftlions.ca/en/cookies</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/cookies" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/cookies" />
+  </url>
+  <url>
+    <loc>https://www.craftlions.ca/en/terms</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/terms" />
+  </url>
+  <url>
+    <loc>https://www.craftlions.ca/en/refund</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/refund" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/refund" />
+  </url>
+  <url>
+    <loc>https://www.craftlions.ca/en/contacts</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.craftlions.ca/contacts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.craftlions.ca/en/contacts" />
   </url>
 
 </urlset>

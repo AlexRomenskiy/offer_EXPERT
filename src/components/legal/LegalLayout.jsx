@@ -1,7 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const fontStack = "'Manrope', sans-serif";
+
+const LABELS = {
+  ua: {
+    backToHome: 'На головну',
+    backShort: 'Назад',
+    effective: 'Чинна з',
+    version: 'версія',
+    toc: 'Зміст',
+    ariaHome: 'На головну CRAFT LIONS',
+  },
+  en: {
+    backToHome: 'Back to home',
+    backShort: 'Back',
+    effective: 'Effective from',
+    version: 'version',
+    toc: 'Contents',
+    ariaHome: 'Back to CRAFT LIONS home',
+  },
+};
 
 /**
  * Shared layout for /legal/* pages.
@@ -19,6 +38,11 @@ const fontStack = "'Manrope', sans-serif";
  *   children    — page content (sections with id matching tocItems)
  */
 export default function LegalLayout({ title, eyebrow, effective, version, tocItems = [], children }) {
+  const { pathname } = useLocation();
+  const isEn = pathname.startsWith('/en/') || pathname === '/en';
+  const homeUrl = isEn ? '/en' : '/';
+  const t = isEn ? LABELS.en : LABELS.ua;
+
   // Scroll to top + set document title on route change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -35,9 +59,9 @@ export default function LegalLayout({ title, eyebrow, effective, version, tocIte
       <header className="sticky top-0 z-30 px-6 md:px-8 lg:px-12 py-3 sm:py-4 bg-[#EEF4FA]/75 backdrop-blur-xl border-b border-white/50 shadow-[0_4px_24px_rgba(15,23,42,0.04)]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
-            to="/"
+            to={homeUrl}
             className="inline-flex items-center gap-2.5 group"
-            aria-label="На головну CRAFT LIONS"
+            aria-label={t.ariaHome}
           >
             <img
               src="/logo/mark-on-light.png"
@@ -53,13 +77,13 @@ export default function LegalLayout({ title, eyebrow, effective, version, tocIte
           </Link>
 
           <Link
-            to="/"
+            to={homeUrl}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-slate-200/70 backdrop-blur-md text-[12px] sm:text-[13px] font-medium text-slate-700 hover:bg-white hover:border-[#175ae8]/30 hover:text-[#175ae8] transition-all"
             style={{ fontFamily: fontStack }}
           >
             <iconify-icon icon="solar:arrow-left-linear" width="14" height="14" />
-            <span className="hidden sm:inline">На головну</span>
-            <span className="sm:hidden">Назад</span>
+            <span className="hidden sm:inline">{t.backToHome}</span>
+            <span className="sm:hidden">{t.backShort}</span>
           </Link>
         </div>
       </header>
@@ -90,9 +114,9 @@ export default function LegalLayout({ title, eyebrow, effective, version, tocIte
                 className="text-[12px] uppercase tracking-[0.18em] text-slate-500"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                {effective && <>Чинна з {effective}</>}
+                {effective && <>{t.effective} {effective}</>}
                 {effective && version && <> · </>}
-                {version && <>версія {version}</>}
+                {version && <>{t.version} {version}</>}
               </p>
             )}
           </div>
@@ -107,7 +131,7 @@ export default function LegalLayout({ title, eyebrow, effective, version, tocIte
                     className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-4"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
-                    Зміст
+                    {t.toc}
                   </p>
                   <nav className="flex flex-col gap-2.5">
                     {tocItems.map((item) => (

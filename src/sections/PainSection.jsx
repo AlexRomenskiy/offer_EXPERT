@@ -148,33 +148,31 @@ export default function PainSection() {
               RIGHT — carousel (mobile) / stack (desktop)
               ===================================================== */}
           <div className="lg:col-span-7">
-            <div className="relative">
-              <div
-                ref={carouselRef}
-                className="anim-trigger flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 scroll-pl-6 sm:mx-0 sm:px-0 sm:scroll-pl-0 lg:flex-col lg:gap-6 lg:overflow-visible lg:snap-none [&::-webkit-scrollbar]:hidden"
-                style={{ scrollbarWidth: 'none' }}
-              >
-                {cards.map((card, i) => (
-                  <PainCard key={card.id} card={card} delay={`${0.05 + i * 0.05}s`} />
-                ))}
-              </div>
+            <div
+              ref={carouselRef}
+              className="anim-trigger flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 scroll-pl-6 sm:mx-0 sm:px-0 sm:scroll-pl-0 lg:flex-col lg:gap-6 lg:overflow-visible lg:snap-none [&::-webkit-scrollbar]:hidden"
+              style={{ scrollbarWidth: 'none' }}
+            >
+              {cards.map((card, i) => (
+                <PainCard key={card.id} card={card} delay={`${0.05 + i * 0.05}s`} />
+              ))}
+            </div>
 
-              {/* Mobile-only dot pagination — overlaid on bottom of visible card */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex lg:hidden justify-center gap-2 pointer-events-none">
-                {Array.from({ length: CARD_COUNT }).map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={() => scrollToIndex(i)}
-                    aria-label={`Перейти до картки ${i + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none pointer-events-auto ${
-                      i === activeIndex
-                        ? 'w-6 bg-gradient-to-br from-[#020f2d] to-[#175ae8]'
-                        : 'w-1.5 bg-white/40 hover:bg-white/60'
-                    }`}
-                  />
-                ))}
-              </div>
+            {/* Mobile-only dot pagination — sits below the carousel on light page bg */}
+            <div className="flex lg:hidden justify-center gap-2 mt-4">
+              {Array.from({ length: CARD_COUNT }).map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => scrollToIndex(i)}
+                  aria-label={`Перейти до картки ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
+                    i === activeIndex
+                      ? 'w-6 bg-gradient-to-br from-[#020f2d] to-[#175ae8]'
+                      : 'w-1.5 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -192,7 +190,7 @@ export default function PainSection() {
 function PainCard({ card, delay }) {
   return (
     <div
-      className="group relative rounded-[28px] overflow-hidden bg-slate-950 shadow-[0_6px_20px_rgba(15,23,42,0.07)] lg:shadow-[0_14px_36px_rgba(15,23,42,0.10)] anim-fade-up snap-start shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[4/3] lg:aspect-video"
+      className="group relative rounded-[28px] overflow-hidden bg-slate-950 shadow-none lg:shadow-[0_14px_36px_rgba(15,23,42,0.10)] anim-fade-up snap-start shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[4/3] lg:aspect-video"
       style={{ transitionDelay: delay }}
     >
       {/* Hyperreal background image — full-bleed */}

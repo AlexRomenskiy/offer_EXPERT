@@ -7,11 +7,11 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/alex-romenskyi/';
 const BOOKING_URL = 'https://calendly.com/alexander-romenskii/30min';
 
 const legalLinks = [
-  { label: 'Privacy Policy', to: '/privacy' },
-  { label: 'Cookies', to: '/cookies' },
-  { label: 'Terms of Service', to: '/terms' },
-  { label: 'Refund Policy', to: '/refund' },
-  { label: 'Contacts', to: '/contacts' },
+  { label: 'Privacy Policy', to: '/en/privacy' },
+  { label: 'Cookies', to: '/en/cookies' },
+  { label: 'Terms of Service', to: '/en/terms' },
+  { label: 'Refund Policy', to: '/en/refund' },
+  { label: 'Contacts', to: '/en/contacts' },
 ];
 
 const socialLinks = [
