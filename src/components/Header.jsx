@@ -1,16 +1,33 @@
 import { useState, useEffect } from 'react';
+import { useLocale } from '../hooks/useLocale';
+import LanguageSwitcher from './LanguageSwitcher';
 
-const navItems = [
-  { label: 'Для кого', href: '#pain' },
-  { label: 'Кейс', href: '#case' },
-  { label: 'Тарифи', href: '#pricing' },
-  { label: 'Гарантії', href: '#guarantees' },
-  { label: 'FAQ', href: '#faq' },
-];
+const navItemsByLocale = {
+  ua: [
+    { label: 'Для кого', href: '#pain' },
+    { label: 'Кейс', href: '#case' },
+    { label: 'Тарифи', href: '#pricing' },
+    { label: 'Гарантії', href: '#guarantees' },
+    { label: 'FAQ', href: '#faq' },
+  ],
+  en: [
+    { label: "Who it's for", href: '#pain' },
+    { label: 'Case study', href: '#case' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'Guarantee', href: '#guarantees' },
+    { label: 'FAQ', href: '#faq' },
+  ],
+};
 
-const ctaText = 'Записатися';
+const ctaTextByLocale = {
+  ua: 'Записатися',
+  en: 'Book a call',
+};
 
 export default function Header() {
+  const locale = useLocale();
+  const navItems = navItemsByLocale[locale];
+  const ctaText = ctaTextByLocale[locale];
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -87,6 +104,11 @@ export default function Header() {
 
             {/* Actions — aligned with image card right edge */}
             <div className="flex items-center gap-1.5 md:gap-2">
+              {/* Language switcher — visible across breakpoints */}
+              <div className="hidden sm:block">
+                <LanguageSwitcher variant="dark" />
+              </div>
+
               {/* Animated CTA button */}
               <a
                 href="#request-access"
@@ -227,6 +249,9 @@ export default function Header() {
             </a>
           ))}
           <div className="h-px mx-6 my-1 bg-white/10" />
+          <div className="p-3 flex justify-center">
+            <LanguageSwitcher variant="dark" />
+          </div>
           <a
             href="#request-access"
             onClick={(e) => {
@@ -237,7 +262,7 @@ export default function Header() {
             }}
             className="p-4 text-center text-sm font-medium rounded-xl text-slate-950 bg-white shadow-lg"
           >
-            Записатися
+            {ctaText}
           </a>
         </div>
       </div>

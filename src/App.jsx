@@ -1,17 +1,38 @@
 import { useEffect } from 'react';
-import HeroSection from './sections/HeroSection';
-import PainSection from './sections/PainSection';
-import SystemIncludesSection from './sections/SystemIncludesSection';
-import TransformationSection from './sections/TransformationSection';
-import CaseStudySection from './sections/CaseStudySection';
-import TestimonialsSection from './sections/TestimonialsSection';
-import PricingSection from './sections/PricingSection';
-import AboutSection from './sections/AboutSection';
-import GuaranteeSection from './sections/GuaranteeSection';
-import FAQSection from './sections/FAQSection';
-import FinalCTASection from './sections/FinalCTASection';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-export default function App() {
+import LandingPage from './pages/LandingPage';
+import EnLandingPage from './pages/EnLandingPage';
+import PrivacyPolicy from './pages/legal/PrivacyPolicy';
+import CookiesPolicy from './pages/legal/CookiesPolicy';
+import TermsOfService from './pages/legal/TermsOfService';
+import RefundPolicy from './pages/legal/RefundPolicy';
+import Contacts from './pages/legal/Contacts';
+
+import CookieConsentBanner from './components/CookieConsentBanner';
+
+function GlobalBackground() {
+  return (
+    <div className="fixed inset-0 z-[-1] pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#E3ECF5] via-[#EEF4FA] to-[#F4F8FB]" />
+      <svg
+        className="absolute w-full h-full opacity-[0.35] mix-blend-multiply"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <filter id="bg-noise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.45" />
+          </feComponentTransfer>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#bg-noise)" />
+      </svg>
+    </div>
+  );
+}
+
+function AnimObserver() {
   // Master-template anim system: observe .anim-trigger and add .is-visible
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -45,38 +66,36 @@ export default function App() {
     };
   }, []);
 
-  return (
-    <div className="min-h-screen selection:bg-[#175ae8]/20 text-slate-700 relative">
-      {/* Atmospheric base background — unified cool-blue across all sections */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#E3ECF5] via-[#EEF4FA] to-[#F4F8FB]" />
-        {/* Subtle film-grain noise — fractalNoise turbulence, multiply-blended */}
-        <svg
-          className="absolute w-full h-full opacity-[0.35] mix-blend-multiply"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <filter id="bg-noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" />
-            <feColorMatrix type="saturate" values="0" />
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="0.45" />
-            </feComponentTransfer>
-          </filter>
-          <rect width="100%" height="100%" filter="url(#bg-noise)" />
-        </svg>
-      </div>
+  return null;
+}
 
-      <HeroSection />
-      <PainSection />
-      <TransformationSection />
-      <SystemIncludesSection />
-      <CaseStudySection />
-      <TestimonialsSection />
-      <PricingSection />
-      <AboutSection />
-      <GuaranteeSection />
-      <FAQSection />
-      <FinalCTASection />
-    </div>
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen selection:bg-[#175ae8]/20 text-slate-700 relative">
+        <GlobalBackground />
+        <AnimObserver />
+
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/en" element={<EnLandingPage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/cookies" element={<CookiesPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/refund" element={<RefundPolicy />} />
+          <Route path="/contacts" element={<Contacts />} />
+
+          {/* Backwards-compat / common aliases */}
+          <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
+          <Route path="/cookie-policy" element={<Navigate to="/cookies" replace />} />
+          <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
+          <Route path="/refund-policy" element={<Navigate to="/refund" replace />} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+
+        <CookieConsentBanner />
+      </div>
+    </BrowserRouter>
   );
 }

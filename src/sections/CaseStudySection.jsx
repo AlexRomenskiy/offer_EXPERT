@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 const fontStack = "'Manrope', sans-serif";
 
-// Self-hosted MP4 — drop file at public/tania-testimonial.mp4
+// Self-hosted compressed MP4 — 720p H.264, CRF 24, ~16MB
+// (source: 34MB MOV @ 3Mbps, compressed via ffmpeg slow preset + faststart)
 const TANIA_VIDEO_SRC = '/tania-testimonial.mp4';
 
 const scope = [
@@ -63,22 +64,21 @@ export default function CaseStudySection() {
               fontFamily: fontStack,
             }}
           >
-            Tania Lav робить on-camera бренди для експертів — тобто наша ж
-            ЦА. 10K+ підписників без воронки. Зібрали за 7 днів.
+            Один реальний прогін системи: де ставиться воронка, через
+            скільки починає платити — і що це міняє для експерта.
           </p>
         </div>
 
-        {/* 2-col grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 anim-trigger">
+        {/* 2-col layout: fixed-width 9:16 LEFT (Shorts/Reels canon) + flex RIGHT
+            lg:items-start prevents stretch — LEFT keeps true 9:16, RIGHT takes natural height */}
+        <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-6 lg:gap-10 anim-trigger lg:items-start">
 
           {/* ============================================
-              LEFT — Video card (inline native HTML5 playback)
-              Light glass frame matches page design system.
-              Cover + video both object-cover with crop favoring face+headline,
-              so card fully fills its frame without letterbox/dark bg.
+              LEFT — Video card (true 9:16 on all breakpoints)
+              Light glass frame, cover/video shown in full composition (no crop).
               ============================================ */}
-          <div className="lg:col-span-5 anim-fade-up" style={{ transitionDelay: '0.10s' }}>
-            <div className="relative w-full aspect-[9/16] lg:aspect-auto lg:h-[560px] rounded-[28px] overflow-hidden bg-white/55 backdrop-blur-xl border border-white/60 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
+          <div className="anim-fade-up flex justify-center lg:justify-start" style={{ transitionDelay: '0.10s' }}>
+            <div className="relative w-full max-w-[340px] aspect-[9/16] rounded-[28px] overflow-hidden bg-white/55 backdrop-blur-xl border border-white/60 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
 
               {/* Inner glow highlight — matches glass card canon */}
               <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.55),transparent_60%)] pointer-events-none z-[1]" />
@@ -88,7 +88,7 @@ export default function CaseStudySection() {
                   <img
                     src="/Cover-UA.png"
                     alt="Tania Lav — відеовідгук"
-                    className="absolute inset-0 w-full h-full object-cover object-[center_top] lg:object-[center_18%]"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                     loading="lazy"
                   />
 
@@ -123,7 +123,7 @@ export default function CaseStudySection() {
                   </div>
                 </>
               ) : (
-                /* Playing — native HTML5 video, matches cover crop */
+                /* Playing — native HTML5 video, fills 9:16 frame natively */
                 <video
                   src={TANIA_VIDEO_SRC}
                   poster="/Cover-UA.png"
@@ -132,20 +132,20 @@ export default function CaseStudySection() {
                   playsInline
                   controlsList="nodownload noplaybackrate noremoteplayback"
                   disablePictureInPicture
-                  className="absolute inset-0 w-full h-full object-cover object-[center_top] lg:object-[center_18%] bg-black"
+                  className="absolute inset-0 w-full h-full object-cover object-center bg-black"
                 />
               )}
             </div>
           </div>
 
           {/* ============================================
-              RIGHT — Results stack (7-col)
+              RIGHT — Results stack (1fr column in [340px_1fr] grid)
               ============================================ */}
-          <div className="lg:col-span-7 flex flex-col gap-5 lg:gap-6 lg:justify-between">
+          <div className="flex flex-col gap-5 lg:gap-6">
 
             {/* === Combined: scope + stats card === */}
             <div
-              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] p-7 lg:p-8 anim-fade-up"
+              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] p-6 lg:p-7 anim-fade-up"
               style={{ transitionDelay: '0.15s' }}
             >
               {/* Scope: package + delivered in 7 days */}
@@ -172,7 +172,7 @@ export default function CaseStudySection() {
                 </a>
               </div>
 
-              <div className="flex flex-wrap gap-2 mb-7 lg:mb-8">
+              <div className="flex flex-wrap gap-2 mb-5 lg:mb-6">
                 {scope.map((item) => (
                   <span
                     key={item}
@@ -185,7 +185,7 @@ export default function CaseStudySection() {
               </div>
 
               {/* Stats divider */}
-              <div className="h-px bg-gradient-to-r from-transparent via-slate-300/60 to-transparent mb-6 lg:mb-7" />
+              <div className="h-px bg-gradient-to-r from-transparent via-slate-300/60 to-transparent mb-5 lg:mb-6" />
 
               <div className="text-[0.85rem] text-slate-500 mb-4" style={{ fontFamily: fontStack }}>
                 Через 2–3 тижні після запуску
@@ -266,7 +266,7 @@ export default function CaseStudySection() {
 
               {/* Honest caveat — turns 1-case-portfolio into trust */}
               <div
-                className="mt-8 lg:mt-9 pt-6 border-t border-slate-200/50 text-[0.84rem] text-slate-500 leading-[1.6]"
+                className="mt-6 lg:mt-7 pt-5 border-t border-slate-200/50 text-[0.82rem] text-slate-500 leading-[1.55]"
                 style={{ fontFamily: fontStack }}
               >
                 <span className="text-slate-700 font-medium">Чесно:</span>{' '}
@@ -277,7 +277,7 @@ export default function CaseStudySection() {
 
             {/* === Quote === */}
             <div
-              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] p-7 lg:p-8 anim-fade-up"
+              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] p-6 lg:p-7 anim-fade-up"
               style={{ transitionDelay: '0.20s' }}
             >
               <iconify-icon

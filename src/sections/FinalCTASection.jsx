@@ -1,14 +1,17 @@
+import { Link } from 'react-router-dom';
+import { reopenCookiePreferences } from '../components/CookieConsentBanner';
+
 const fontStack = "'Manrope', sans-serif";
 
 const TELEGRAM_URL = 'https://t.me/your_username'; // TODO: replace with real handle
-const BOOKING_URL = '#'; // TODO: replace with real booking URL
+const BOOKING_URL = 'https://calendly.com/alex-romenskii/craft-lions';
 
-const quickLinks = [
-  { label: 'Для кого', href: '#pain' },
-  { label: 'Що входить', href: '#system-includes' },
-  { label: 'Кейс', href: '#case' },
-  { label: 'Тарифи', href: '#pricing' },
-  { label: 'FAQ', href: '#faq' },
+const legalLinks = [
+  { label: 'Privacy Policy', to: '/privacy' },
+  { label: 'Cookies', to: '/cookies' },
+  { label: 'Terms of Service', to: '/terms' },
+  { label: 'Refund Policy', to: '/refund' },
+  { label: 'Контакти', to: '/contacts' },
 ];
 
 const socialLinks = [
@@ -26,11 +29,6 @@ const reassurances = [
 
 export default function FinalCTASection() {
   const year = new Date().getFullYear();
-
-  const handleAnchorClick = (e, href) => {
-    e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
     <section
@@ -130,6 +128,8 @@ export default function FinalCTASection() {
                 {/* Primary — brand-gradient. On mobile: full-width (capped at 280px), centered; on sm+: intrinsic */}
                 <a
                   href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group inline-flex h-12 items-center justify-center gap-3 rounded-full px-6 text-[14px] font-medium text-white transition-all duration-300 hover:-translate-y-0.5 w-full max-w-[280px] mx-auto sm:w-auto sm:max-w-none sm:mx-0"
                   style={{
                     fontFamily: fontStack,
@@ -189,21 +189,30 @@ export default function FinalCTASection() {
                     className="text-[11px] text-slate-500 tracking-[0.15em] mb-3 uppercase"
                     style={{ fontFamily: fontStack }}
                   >
-                    Розділи
+                    Правова інформація
                   </p>
                   <ul className="space-y-2">
-                    {quickLinks.map((link) => (
-                      <li key={link.label}>
-                        <a
-                          href={link.href}
-                          onClick={(e) => handleAnchorClick(e, link.href)}
+                    {legalLinks.map((link) => (
+                      <li key={link.to}>
+                        <Link
+                          to={link.to}
                           className="text-[15px] lg:text-[1rem] font-medium tracking-tight text-slate-900 hover:text-[#175ae8] transition-colors"
                           style={{ fontFamily: fontStack }}
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       </li>
                     ))}
+                    <li>
+                      <button
+                        type="button"
+                        onClick={reopenCookiePreferences}
+                        className="text-left text-[15px] lg:text-[1rem] font-medium tracking-tight text-slate-900 hover:text-[#175ae8] transition-colors"
+                        style={{ fontFamily: fontStack }}
+                      >
+                        Налаштування cookies
+                      </button>
+                    </li>
                   </ul>
                 </div>
 

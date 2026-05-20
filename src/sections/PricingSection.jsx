@@ -111,7 +111,7 @@ export const pricing = [
     features: [
       { label: 'Усе з «Генератора»', tip: null },
       { label: 'Таргетована реклама — повна кампанія (креативи, тексти, запуск)', tip: 'Створення зображень, відео і текстів. Запуск кампаній на каналах під твою аудиторію — Meta, Google, YouTube, TikTok.' },
-      { label: '3 креативи × 3 аудиторії', tip: 'Дев’ять тестових зв’язок одразу — щоб швидко побачити, що працює, і масштабувати робочі зв’язки.' },
+      { label: 'Точкове націлювання на твою аудиторію', tip: 'Тестуємо вузькі сегменти аудиторії: те, що реагує — масштабуємо; що ні — вимикаємо. Реклама йде на твоїх покупців, не на «всіх, кому може бути цікаво».' },
       { label: 'Наскрізна аналітика — від першого кліку до повторних продаж', tip: 'Весь шлях клієнта: перший клік → воронка → оплата → повторна покупка. Розумієш, скільки коштує клієнт і скільки він тобі приносить.' },
     ],
     outcome:
@@ -401,7 +401,7 @@ export default function PricingSection() {
               Що кажуть
             </p>
             <div
-              className="flex flex-col gap-14"
+              className="flex flex-col gap-8"
               style={{ fontFamily: fontStack }}
             >
               {active.testimonials.map((t, i) => (
@@ -415,7 +415,7 @@ export default function PricingSection() {
                     style={{ boxShadow: '0 0 8px rgba(23,90,232,0.6)' }}
                   />
                   <p
-                    className="text-[1.02rem] lg:text-[1.08rem] leading-[1.75] font-light text-slate-700 italic mb-3 transition-opacity duration-300"
+                    className="text-[0.92rem] lg:text-[0.95rem] leading-[1.6] font-light text-slate-700 italic mb-2 transition-opacity duration-300"
                   >
                     «{t.quote}»
                   </p>
@@ -442,7 +442,7 @@ export default function PricingSection() {
               style={{
                 boxShadow: '0 28px 80px rgba(148,163,184,0.14), 0 8px 24px rgba(15,23,42,0.05)',
                 transitionDelay: '0.15s',
-                minHeight: '680px',
+                minHeight: '540px',
               }}
             >
               {/* Glass highlight */}
@@ -453,7 +453,7 @@ export default function PricingSection() {
 
               <div className="relative z-10 flex flex-col h-full">
                 {/* Big tab buttons (inside card, on top) */}
-                <div className="grid grid-cols-3 gap-2 mb-5">
+                <div className="grid grid-cols-3 gap-2 mb-4">
                   {pricing.map((p) => {
                     const isActive = activeKey === p.key;
                     return (
@@ -461,7 +461,7 @@ export default function PricingSection() {
                         key={p.key}
                         type="button"
                         onClick={() => setActiveKey(p.key)}
-                        className={`flex items-center justify-center h-12 sm:h-[52px] rounded-full text-[14px] sm:text-[15px] font-semibold tracking-[-0.01em] transition-all duration-300 ${
+                        className={`flex items-center justify-center h-11 sm:h-12 rounded-full text-[14px] sm:text-[15px] font-semibold tracking-[-0.01em] transition-all duration-300 ${
                           isActive
                             ? 'text-white'
                             : 'text-slate-700 bg-white/65 border border-slate-200/70 hover:bg-white/85 hover:border-slate-300 backdrop-blur-md'
@@ -483,15 +483,15 @@ export default function PricingSection() {
                 </div>
 
                 {/* Tagline UNDER tabs — eyebrow + body (в ритмі решти блоків) */}
-                <div className="mb-5 min-h-[4em]">
+                <div className="mb-4 min-h-[3em]">
                   <p
-                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-1.5"
+                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-1"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
                     Про пакет
                   </p>
                   <p
-                    className="text-[0.95rem] text-slate-800 leading-[1.55] font-medium"
+                    className="text-[0.95rem] text-slate-800 leading-[1.5] font-medium"
                     style={{ fontFamily: fontStack }}
                   >
                     {active.tagline}
@@ -499,10 +499,10 @@ export default function PricingSection() {
                 </div>
 
                 {/* Price + timeline + support */}
-                <div className="mb-5">
-                  <div className="flex items-baseline gap-3 mb-2">
+                <div className="mb-4">
+                  <div className="flex items-baseline gap-3 mb-1.5">
                     <span
-                      className="text-[2.4rem] sm:text-[2.7rem] lg:text-[2.9rem] tracking-[-0.04em] text-slate-950 font-light leading-none"
+                      className="text-[2.2rem] sm:text-[2.5rem] lg:text-[2.7rem] tracking-[-0.04em] text-slate-950 font-light leading-none"
                       style={{ fontFamily: fontStack }}
                     >
                       {active.price}
@@ -517,15 +517,15 @@ export default function PricingSection() {
                 </div>
 
                 {/* Для кого */}
-                <div className="mb-5 min-h-[5em]">
+                <div className="mb-4 min-h-[4em]">
                   <p
-                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-1.5"
+                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-1"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
                     Для кого
                   </p>
                   <p
-                    className="text-[0.88rem] text-slate-700 leading-[1.55]"
+                    className="text-[0.86rem] text-slate-700 leading-[1.5]"
                     style={{ fontFamily: fontStack }}
                   >
                     {active.forWhom}
@@ -533,14 +533,14 @@ export default function PricingSection() {
                 </div>
 
                 {/* Features */}
-                <div className="mb-5 min-h-[10em]">
+                <div className="mb-4 min-h-[9em]">
                   <p
-                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-2.5"
+                    className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-2"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
                     Що входить
                   </p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {active.features.map((f, i) => (
                       <FeatureItem key={i} feature={f} variant="dot" />
                     ))}
@@ -548,15 +548,15 @@ export default function PricingSection() {
                 </div>
 
                 {/* Outcome */}
-                <div className="mb-5 p-3.5 rounded-2xl border border-[#175ae8]/15 bg-[#175ae8]/[0.05] min-h-[5em]">
+                <div className="mb-4 p-3 rounded-2xl border border-[#175ae8]/15 bg-[#175ae8]/[0.05] min-h-[4em]">
                   <p
-                    className="text-brand-gradient text-[10px] uppercase tracking-[0.22em] mb-1"
+                    className="text-brand-gradient text-[10px] uppercase tracking-[0.22em] mb-0.5"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
                     Результат
                   </p>
                   <p
-                    className="text-[0.88rem] text-slate-800 leading-[1.5]"
+                    className="text-[0.86rem] text-slate-800 leading-[1.5]"
                     style={{ fontFamily: fontStack }}
                   >
                     {active.outcome}

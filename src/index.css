@@ -614,3 +614,71 @@ input[type=range]::-moz-range-track {
   height: 100%;
   border: 0;
 }
+
+
+/* ====== Legal pages — readable prose ====== */
+.legal-prose p {
+  margin-bottom: 0;
+}
+.legal-prose strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+.legal-prose a {
+  color: #175ae8;
+  text-decoration: underline;
+  text-decoration-color: rgba(23, 90, 232, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+.legal-prose a:hover {
+  text-decoration-color: #175ae8;
+}
+.legal-prose ul,
+.legal-prose ol {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.25rem;
+}
+.legal-prose ul li {
+  list-style: disc;
+  margin-bottom: 0.4rem;
+  line-height: 1.65;
+}
+.legal-prose ol li {
+  list-style: decimal;
+  margin-bottom: 0.4rem;
+  line-height: 1.65;
+}
+.legal-prose ul li::marker {
+  color: #175ae8;
+}
+.legal-prose ol li::marker {
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+}
+
+/* Inline definition / placeholder marker */
+.legal-prose .legal-placeholder {
+  display: inline-block;
+  padding: 0 0.4em;
+  background: rgba(249, 115, 22, 0.1);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  color: #c2410c;
+  border: 1px dashed rgba(249, 115, 22, 0.3);
+}
+
+/* Highlighted callout block */
+.legal-prose .legal-callout {
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid #175ae8;
+  background: rgba(23, 90, 232, 0.04);
+  border-radius: 0 12px 12px 0;
+}
+.legal-prose .legal-callout p {
+  font-size: 0.93rem;
+}
+
