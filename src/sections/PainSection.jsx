@@ -31,19 +31,19 @@ const cards = [
   {
     id: 'PNT-03',
     title: 'Без тебе система зупиняється',
-    slogan: 'Не вийшов — продажі стали.',
+    slogan: 'Ти спиш — каса теж.',
     img: '/Images/2. Pain - Time.png',
   },
   {
     id: 'PNT-04',
     title: 'Технічно зібрати — окрема професія',
-    slogan: 'Купа інструментів — і нікого, хто все це зв\'яже.',
+    slogan: 'Інструменти є — інтеграції нема.',
     img: '/Images/2. Pain - Technical stack.png',
   },
   {
     id: 'PNT-05',
     title: 'Дохід упирається в стелю',
-    slogan: 'Більше клієнтів = менше тебе для них.',
+    slogan: 'Більше клієнтів — менше тебе.',
     img: '/Images/2. Pain - Revenue block - UKR.png',
   },
 ];
@@ -148,31 +148,33 @@ export default function PainSection() {
               RIGHT — carousel (mobile) / stack (desktop)
               ===================================================== */}
           <div className="lg:col-span-7">
-            <div
-              ref={carouselRef}
-              className="anim-trigger flex gap-4 overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-pl-6 sm:mx-0 sm:px-0 sm:scroll-pl-0 lg:flex-col lg:gap-6 lg:overflow-visible lg:snap-none lg:pb-0 [&::-webkit-scrollbar]:hidden"
-              style={{ scrollbarWidth: 'none' }}
-            >
-              {cards.map((card, i) => (
-                <PainCard key={card.id} card={card} delay={`${0.05 + i * 0.05}s`} />
-              ))}
-            </div>
+            <div className="relative">
+              <div
+                ref={carouselRef}
+                className="anim-trigger flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 scroll-pl-6 sm:mx-0 sm:px-0 sm:scroll-pl-0 lg:flex-col lg:gap-6 lg:overflow-visible lg:snap-none [&::-webkit-scrollbar]:hidden"
+                style={{ scrollbarWidth: 'none' }}
+              >
+                {cards.map((card, i) => (
+                  <PainCard key={card.id} card={card} delay={`${0.05 + i * 0.05}s`} />
+                ))}
+              </div>
 
-            {/* Mobile-only dot pagination */}
-            <div className="flex lg:hidden justify-center gap-2 mt-3">
-              {Array.from({ length: CARD_COUNT }).map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => scrollToIndex(i)}
-                  aria-label={`Перейти до картки ${i + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
-                    i === activeIndex
-                      ? 'w-6 bg-[#175ae8]'
-                      : 'w-1.5 bg-slate-300 hover:bg-slate-400'
-                  }`}
-                />
-              ))}
+              {/* Mobile-only dot pagination — overlaid on bottom of visible card */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex lg:hidden justify-center gap-2 pointer-events-none">
+                {Array.from({ length: CARD_COUNT }).map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => scrollToIndex(i)}
+                    aria-label={`Перейти до картки ${i + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none pointer-events-auto ${
+                      i === activeIndex
+                        ? 'w-6 bg-gradient-to-br from-[#020f2d] to-[#175ae8]'
+                        : 'w-1.5 bg-white/40 hover:bg-white/60'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -190,7 +192,7 @@ export default function PainSection() {
 function PainCard({ card, delay }) {
   return (
     <div
-      className="group relative rounded-[28px] overflow-hidden bg-slate-950 shadow-[0_28px_60px_rgba(15,23,42,0.18),0_8px_20px_rgba(15,23,42,0.08)] anim-fade-up snap-start shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[3/4] lg:aspect-video"
+      className="group relative rounded-[28px] overflow-hidden bg-slate-950 shadow-[0_6px_20px_rgba(15,23,42,0.07)] lg:shadow-[0_14px_36px_rgba(15,23,42,0.10)] anim-fade-up snap-start shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[4/3] lg:aspect-video"
       style={{ transitionDelay: delay }}
     >
       {/* Hyperreal background image — full-bleed */}
@@ -211,13 +213,13 @@ function PainCard({ card, delay }) {
       <div className="relative z-10 p-6 lg:p-7 h-full flex flex-col justify-end">
         <h3
           className="text-[1.3rem] lg:text-[1.45rem] leading-[1.15] tracking-[-0.02em] text-white mb-2 font-medium"
-          style={{ fontFamily: fontStack }}
+          style={{ fontFamily: fontStack, textWrap: 'balance' }}
         >
           {card.title}
         </h3>
         <p
           className="text-[0.95rem] leading-[1.55] text-slate-200/95 max-w-[32ch]"
-          style={{ fontFamily: fontStack }}
+          style={{ fontFamily: fontStack, textWrap: 'balance' }}
         >
           {card.slogan}
         </p>
