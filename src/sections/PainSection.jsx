@@ -4,19 +4,15 @@ const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
 
 /* ============================================================
-   ASSET PIPELINE (pending — placeholder gradients in use):
-   Each card has a background "image slot" that currently shows an
-   atmospheric blue/violet radial gradient + dot mesh. When real
-   illustrations / product UI mockups arrive, swap the placeholder
-   block with:
-     <img
-       src="/illustrations/pain-XX.png"
-       alt=""
-       aria-hidden="true"
-       className="absolute inset-0 w-full h-full object-cover opacity-55 mix-blend-multiply"
-     />
-   Keep the bottom-vignette gradient — it ensures text legibility
-   regardless of how busy the underlying image becomes.
+   ASSET PIPELINE — hyperreal Pain images wired as full-bleed
+   backgrounds. UA-locale variants used now; EN variants will be
+   threaded once i18n is implemented (roadmap item #3).
+     PNT-01  /Images/2. Pain - Audience - UKR.png (EN: ... - ENG.png)
+     PNT-02  /Images/2. Pain - Client weight - UKR.png (EN: ... .png)
+     PNT-03  /Images/2. Pain - Time.png (universal)
+     PNT-04  /Images/2. Pain - Technical stack.png (universal)
+     PNT-05  /Images/2. Pain - Revenue block - UKR.png (EN pending)
+   Will be swapped for looping videos in a later step.
    ============================================================ */
 
 const cards = [
@@ -24,41 +20,31 @@ const cards = [
     id: 'PNT-01',
     title: 'Аудиторія є — продаж замало',
     slogan: 'Лід губиться між DM і чеком.',
-    pill: { label: 'Conv. 5%', tone: 'blue', dot: true },
-    accent: 'rgba(96,165,250,0.22)',
-    accent2: 'rgba(147,197,253,0.16)',
+    img: '/Images/2. Pain - Audience - UKR.png',
   },
   {
     id: 'PNT-02',
     title: 'Кожен клієнт — на твоїх плечах',
     slogan: 'Один клієнт = години твого часу.',
-    pill: { label: '12 непрочитаних', tone: 'blue', dot: true, pulse: true },
-    accent: 'rgba(125,140,255,0.20)',
-    accent2: 'rgba(96,165,250,0.14)',
+    img: '/Images/2. Pain - Client weight - UKR.png',
   },
   {
     id: 'PNT-03',
     title: 'Без тебе система зупиняється',
     slogan: 'Не вийшов — продажі стали.',
-    pill: { label: '23:47 · Офлайн', tone: 'slate', dot: false },
-    accent: 'rgba(100,116,180,0.22)',
-    accent2: 'rgba(148,163,184,0.14)',
+    img: '/Images/2. Pain - Time.png',
   },
   {
     id: 'PNT-04',
     title: 'Технічно зібрати — окрема професія',
     slogan: 'Купа інструментів — і нікого, хто все це зв\'яже.',
-    pill: { label: 'Stack 5+', tone: 'blue', dot: false },
-    accent: 'rgba(139,92,246,0.18)',
-    accent2: 'rgba(96,165,250,0.14)',
+    img: '/Images/2. Pain - Technical stack.png',
   },
   {
     id: 'PNT-05',
     title: 'Дохід упирається в стелю',
     slogan: 'Більше клієнтів = менше тебе для них.',
-    pill: { label: 'Плато', tone: 'blue', dot: true },
-    accent: 'rgba(96,165,250,0.20)',
-    accent2: 'rgba(147,197,253,0.12)',
+    img: '/Images/2. Pain - Revenue block - UKR.png',
   },
 ];
 
@@ -196,92 +182,45 @@ export default function PainSection() {
 }
 
 /* ============================================================
-   PainCard — glass card with bg-image slot + vignette
+   PainCard — full-bleed hyperreal image + dark bottom vignette
+   for white text legibility. Top metadata (ID + status pill)
+   intentionally removed to keep the image uncluttered; the only
+   on-card content is the slogan group at the bottom.
    ============================================================ */
 function PainCard({ card, delay }) {
-  const pillStyles = {
-    blue: 'border-blue-200/70 bg-white/65 text-blue-700',
-    slate: 'border-slate-200/70 bg-white/65 text-slate-700',
-  };
-  const dotColor = {
-    blue: 'bg-[#175ae8]',
-    slate: 'bg-slate-500',
-  };
-
   return (
     <div
-      className="group relative rounded-[28px] overflow-hidden bg-white/35 backdrop-blur-xl border border-white/55 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up snap-start shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[3/4] lg:aspect-video"
+      className="group relative rounded-[28px] overflow-hidden bg-slate-950 shadow-[0_28px_60px_rgba(15,23,42,0.18),0_8px_20px_rgba(15,23,42,0.08)] anim-fade-up snap-start shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[3/4] lg:aspect-video"
       style={{ transitionDelay: delay }}
     >
-      {/* Atmospheric gradient placeholder (swap with <img/> when assets arrive) */}
-      <div
+      {/* Hyperreal background image — full-bleed */}
+      <img
+        src={card.img}
+        alt=""
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at 72% 28%, ${card.accent}, transparent 48%), radial-gradient(circle at 22% 78%, ${card.accent2}, transparent 45%)`,
-        }}
+        className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Glass highlight */}
+      {/* Bottom dark vignette — guarantees white-text contrast over any image */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)] pointer-events-none"
+        className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-[#020f2d]/95 via-[#020f2d]/55 to-transparent pointer-events-none"
       />
 
-      {/* Subtle dot mesh */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(15,23,42,0.5) 1px, transparent 0)',
-          backgroundSize: '14px 14px',
-        }}
-      />
-
-      {/* Bottom vignette — ensures text contrast over any future image */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/85 via-white/45 to-transparent pointer-events-none"
-      />
-
-      {/* Content */}
-      <div className="relative z-10 p-6 lg:p-7 h-full flex flex-col justify-between">
-        {/* Top row — ID tag + status pill */}
-        <div className="flex items-center justify-between gap-3">
-          <span
-            className="text-[10.5px] uppercase tracking-[0.18em] text-slate-500"
-            style={{ fontFamily: monoStack }}
-          >
-            {card.id}
-          </span>
-          <span
-            className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.16em] ${pillStyles[card.pill.tone]}`}
-            style={{ fontFamily: monoStack }}
-          >
-            {card.pill.dot && (
-              <span
-                className={`w-1.5 h-1.5 rounded-full ${dotColor[card.pill.tone]} ${card.pill.pulse ? 'animate-pulse' : ''}`}
-              />
-            )}
-            {card.pill.label}
-          </span>
-        </div>
-
-        {/* Bottom — heading + slogan */}
-        <div className="mt-auto pt-10">
-          <h3
-            className="text-[1.3rem] lg:text-[1.45rem] leading-[1.15] tracking-[-0.02em] text-slate-950 mb-2 font-medium"
-            style={{ fontFamily: fontStack }}
-          >
-            {card.title}
-          </h3>
-          <p
-            className="text-[0.95rem] leading-[1.55] text-slate-700 max-w-[32ch]"
-            style={{ fontFamily: fontStack }}
-          >
-            {card.slogan}
-          </p>
-        </div>
+      {/* Content — slogan group, bottom-anchored */}
+      <div className="relative z-10 p-6 lg:p-7 h-full flex flex-col justify-end">
+        <h3
+          className="text-[1.3rem] lg:text-[1.45rem] leading-[1.15] tracking-[-0.02em] text-white mb-2 font-medium"
+          style={{ fontFamily: fontStack }}
+        >
+          {card.title}
+        </h3>
+        <p
+          className="text-[0.95rem] leading-[1.55] text-slate-200/95 max-w-[32ch]"
+          style={{ fontFamily: fontStack }}
+        >
+          {card.slogan}
+        </p>
       </div>
     </div>
   );

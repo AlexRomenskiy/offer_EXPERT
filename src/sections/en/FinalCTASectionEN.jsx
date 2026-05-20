@@ -3,8 +3,8 @@ import { reopenCookiePreferences } from '../../components/CookieConsentBanner';
 
 const fontStack = "'Manrope', sans-serif";
 
-const TELEGRAM_URL = 'https://t.me/your_username'; // TODO: replace with real handle
-const BOOKING_URL = 'https://calendly.com/alex-romenskii/craft-lions';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/alex-romenskyi/';
+const BOOKING_URL = 'https://calendly.com/alexander-romenskii/30min';
 
 const legalLinks = [
   { label: 'Privacy Policy', to: '/privacy' },
@@ -133,7 +133,7 @@ export default function FinalCTASectionEN() {
                 </a>
 
                 <a
-                  href={TELEGRAM_URL}
+                  href={LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200/70 bg-white/55 backdrop-blur-md px-5 text-[14px] font-medium text-slate-700 hover:bg-white/85 hover:text-[#175ae8] hover:border-[#175ae8]/30 transition-colors w-full max-w-[280px] mx-auto sm:w-auto sm:max-w-none sm:mx-0"

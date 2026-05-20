@@ -3,7 +3,7 @@ import { reopenCookiePreferences } from '../components/CookieConsentBanner';
 
 const fontStack = "'Manrope', sans-serif";
 
-const TELEGRAM_URL = 'https://t.me/your_username'; // TODO: replace with real handle
+const TELEGRAM_URL = 'https://t.me/alexander_romenskyi';
 const BOOKING_URL = 'https://calendly.com/alex-romenskii/craft-lions';
 
 const legalLinks = [

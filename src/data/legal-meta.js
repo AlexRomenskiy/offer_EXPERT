@@ -41,10 +41,10 @@ export const legalMeta = {
   refundEmail: 'alex.romenskii@gmail.com', // [TODO: refund@craftlions.ca]
 
   // ============================================================================
-  // Calendly (CTA flow) — all CTAs «Записатись на розбір» / «Хочу таку систему»
-  // will eventually redirect here.
+  // Calendly (CTA flow) — UA + EN audiences use separate accounts/events.
   // ============================================================================
-  calendlyUrl: 'https://calendly.com/alex-romenskii/craft-lions',
+  calendlyUrl:   'https://calendly.com/alex-romenskii/craft-lions',   // UA
+  calendlyUrlEn: 'https://calendly.com/alexander-romenskii/30min',    // EN
 
   // Policy effective dates / versions
   policies: {
