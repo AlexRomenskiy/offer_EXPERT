@@ -16,6 +16,7 @@ import RefundPolicyEN from './pages/legal/en/RefundPolicyEN';
 import ContactsEN from './pages/legal/en/ContactsEN';
 
 import CookieConsentBanner from './components/CookieConsentBanner';
+import AnalyticsGate from './components/AnalyticsGate';
 
 function GlobalBackground() {
   return (
@@ -114,6 +115,7 @@ export default function App() {
         </Routes>
 
         <CookieConsentBanner />
+        <AnalyticsGate />
       </div>
     </BrowserRouter>
   );

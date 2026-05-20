@@ -132,11 +132,15 @@ export default function CookiesPolicyEN() {
         <p><strong>Category: Analytics</strong></p>
         <ul>
           <li>
-            <code>_vercel_*</code> — anonymous Vercel Analytics (when active).{' '}
-            <strong>Duration:</strong> session. <strong>Provider:</strong> Vercel Inc.
+            <strong>Vercel Web Analytics</strong> — anonymous visit statistics.{' '}
+            <strong>Does not use cookies</strong> — uses cookie-less anonymized beacons,
+            does not store IP addresses, does not use fingerprinting.{' '}
+            <strong>Provider:</strong> Vercel Inc.
           </li>
           <li>
-            <span className="legal-placeholder">[TODO: if Google Analytics is added — list _ga, _gid, etc.]</span>
+            <strong>Vercel Speed Insights</strong> — anonymous performance metrics
+            (Core Web Vitals: LCP, CLS, INP). <strong>Does not use cookies.</strong>{' '}
+            <strong>Provider:</strong> Vercel Inc.
           </li>
         </ul>
 

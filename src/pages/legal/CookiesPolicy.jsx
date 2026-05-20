@@ -139,11 +139,15 @@ export default function CookiesPolicy() {
         <p><strong>Категорія: Аналітика</strong></p>
         <ul>
           <li>
-            <code>_vercel_*</code> — анонімна аналітика Vercel Analytics (якщо активна).{' '}
-            <strong>Термін:</strong> сесія. <strong>Постачальник:</strong> Vercel Inc.
+            <strong>Vercel Web Analytics</strong> — анонімна статистика відвідувань.{' '}
+            <strong>Не використовує cookies</strong> — застосовує безкукові анонімні beacons,
+            не зберігає IP-адреси, не використовує fingerprinting.{' '}
+            <strong>Постачальник:</strong> Vercel Inc.
           </li>
           <li>
-            <span className="legal-placeholder">[TODO: якщо використовуємо Google Analytics — додати _ga, _gid тощо]</span>
+            <strong>Vercel Speed Insights</strong> — анонімні метрики продуктивності
+            (Core Web Vitals: LCP, CLS, INP). <strong>Не використовує cookies.</strong>{' '}
+            <strong>Постачальник:</strong> Vercel Inc.
           </li>
         </ul>
 

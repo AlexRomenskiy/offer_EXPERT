@@ -76,7 +76,7 @@ export const legalMeta = {
   processors: [
     {
       name: 'Vercel Inc.',
-      purpose: 'Hosting & CDN',
+      purpose: 'Hosting, CDN, Web Analytics & Speed Insights (cookie-less)',
       region: 'US (with global edge network)',
       dpa: 'https://vercel.com/legal/dpa',
       status: 'active',
