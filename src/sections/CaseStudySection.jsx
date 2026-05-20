@@ -1,13 +1,9 @@
+import { useState } from 'react';
+
 const fontStack = "'Manrope', sans-serif";
 
-/* ============================================================
-   ASSET PIPELINE (per user 2026-05-13 — pending):
-   - Tania Lav photo (portrait) — replace placeholder avatar zone
-   - Tania Lav video testimonial — wire to play button overlay
-   When assets arrive:
-     * Swap the photo placeholder div with <img src="/photos/tania-lav.jpg" />
-     * Wire play button to open video modal or inline <video> swap
-   ============================================================ */
+// Self-hosted MP4 — drop file at public/tania-testimonial.mp4
+const TANIA_VIDEO_SRC = '/tania-testimonial.mp4';
 
 const scope = [
   'Стратегія',
@@ -19,6 +15,8 @@ const scope = [
 ];
 
 export default function CaseStudySection() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const scrollToCTA = (e) => {
     e.preventDefault();
     document.querySelector('#request-access')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -74,76 +72,76 @@ export default function CaseStudySection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 anim-trigger">
 
           {/* ============================================
-              LEFT — Profile card (5-col)
+              LEFT — Video card (inline native HTML5 playback)
+              Light glass frame matches page design system.
+              Cover + video both object-cover with crop favoring face+headline,
+              so card fully fills its frame without letterbox/dark bg.
               ============================================ */}
           <div className="lg:col-span-5 anim-fade-up" style={{ transitionDelay: '0.10s' }}>
-            <div className="relative h-full min-h-[480px] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
+            <div className="relative w-full aspect-[9/16] lg:aspect-auto lg:h-[560px] rounded-[28px] overflow-hidden bg-white/55 backdrop-blur-xl border border-white/60 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
 
-              {/* PHOTO PLACEHOLDER — swap with <img src="/photos/tania-lav.jpg" /> when ready */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-50">
-                {/* subtle premium glow */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(23,90,232,0.10),transparent_45%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(96,165,250,0.08),transparent_45%)]" />
+              {/* Inner glow highlight — matches glass card canon */}
+              <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.55),transparent_60%)] pointer-events-none z-[1]" />
 
-                {/* Centered avatar silhouette (until real photo lands) */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-white/60 border border-white/80 backdrop-blur-md flex items-center justify-center shadow-[0_20px_50px_rgba(15,23,42,0.10)]">
-                    <iconify-icon
-                      icon="solar:user-rounded-linear"
-                      width="56"
-                      height="56"
-                      style={{ color: '#94a3b8' }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Top-right subscriber pill */}
-              <div className="absolute top-5 right-5 z-10">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur-md border border-white/80 px-3 py-1.5 shadow-sm">
-                  <iconify-icon icon="solar:users-group-rounded-linear" width="14" height="14" style={{ color: '#175ae8' }} />
-                  <span className="text-[11px] font-medium text-slate-700" style={{ fontFamily: fontStack }}>
-                    10K+ підписників
-                  </span>
-                </div>
-              </div>
-
-              {/* Centered play button — for future video testimonial */}
-              <button
-                type="button"
-                aria-label="Дивитися відеовідгук (скоро)"
-                className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 z-10 group"
-                disabled
-              >
-                <div className="relative w-[68px] h-[68px] rounded-full bg-white/80 backdrop-blur-md border border-white/80 flex items-center justify-center shadow-[0_15px_40px_rgba(23,90,232,0.18)] transition-transform group-hover:scale-105">
-                  <iconify-icon
-                    icon="solar:play-bold"
-                    width="26"
-                    height="26"
-                    style={{ color: '#175ae8' }}
+              {!isPlaying ? (
+                <>
+                  <img
+                    src="/Cover-UA.png"
+                    alt="Tania Lav — відеовідгук"
+                    className="absolute inset-0 w-full h-full object-cover object-[center_top] lg:object-[center_18%]"
+                    loading="lazy"
                   />
-                  <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 whitespace-nowrap" style={{ fontFamily: fontStack }}>
-                    відеовідгук скоро
-                  </span>
-                </div>
-              </button>
 
-              {/* Bottom identity overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-7 bg-gradient-to-t from-white/85 via-white/40 to-transparent backdrop-blur-sm">
-                <div className="text-[1.35rem] lg:text-[1.5rem] text-slate-950 font-medium tracking-[-0.02em] leading-tight" style={{ fontFamily: fontStack }}>
-                  Tania Lav
-                </div>
-                <div className="text-[0.95rem] text-slate-600 mt-0.5" style={{ fontFamily: fontStack }}>
-                  @lav_tania · On-Camera Brand для експертів
-                </div>
-              </div>
+                  {/* Click-to-play */}
+                  <button
+                    type="button"
+                    onClick={() => setIsPlaying(true)}
+                    aria-label="Дивитися відеовідгук Tania Lav"
+                    className="group absolute inset-0 z-10 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#175ae8] focus-visible:ring-inset"
+                  >
+                    <span aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+
+                    <span className="relative w-[76px] h-[76px] rounded-full bg-white/90 backdrop-blur-md border border-white/80 flex items-center justify-center shadow-[0_18px_45px_rgba(23,90,232,0.35)] transition-transform duration-300 group-hover:scale-110">
+                      <span aria-hidden="true" className="absolute inset-0 rounded-full border border-white/60 animate-ping opacity-40" />
+                      <iconify-icon
+                        icon="solar:play-bold"
+                        width="30"
+                        height="30"
+                        style={{ color: '#175ae8', marginLeft: '3px' }}
+                      />
+                    </span>
+                  </button>
+
+                  {/* Top-right subscriber pill */}
+                  <div className="absolute top-5 right-5 z-10 pointer-events-none">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md border border-white/80 px-3 py-1.5 shadow-sm">
+                      <iconify-icon icon="solar:users-group-rounded-linear" width="14" height="14" style={{ color: '#175ae8' }} />
+                      <span className="text-[11px] font-medium text-slate-700" style={{ fontFamily: fontStack }}>
+                        10K+ підписників
+                      </span>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                /* Playing — native HTML5 video, matches cover crop */
+                <video
+                  src={TANIA_VIDEO_SRC}
+                  poster="/Cover-UA.png"
+                  controls
+                  autoPlay
+                  playsInline
+                  controlsList="nodownload noplaybackrate noremoteplayback"
+                  disablePictureInPicture
+                  className="absolute inset-0 w-full h-full object-cover object-[center_top] lg:object-[center_18%] bg-black"
+                />
+              )}
             </div>
           </div>
 
           {/* ============================================
               RIGHT — Results stack (7-col)
               ============================================ */}
-          <div className="lg:col-span-7 flex flex-col gap-5 lg:gap-6">
+          <div className="lg:col-span-7 flex flex-col gap-5 lg:gap-6 lg:justify-between">
 
             {/* === Combined: scope + stats card === */}
             <div
