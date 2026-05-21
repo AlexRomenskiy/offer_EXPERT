@@ -102,8 +102,9 @@ export default function TransformationSection() {
 
           {/* ===================================================
               iPad mockup — tablet + desktop (>= md, >= 768px)
+              pt reserves space for the floating toggle bar above the bezel
               =================================================== */}
-          <div className="hidden md:flex justify-center anim-fade-up" style={{ transitionDelay: '0.10s' }}>
+          <div className="hidden md:flex justify-center anim-fade-up pt-10 lg:pt-12" style={{ transitionDelay: '0.10s' }}>
             <IPadMockup mode={mode} setMode={handleSetMode} />
           </div>
         </div>
@@ -239,13 +240,25 @@ function IPadMockup({ mode, setMode }) {
         {/* Front camera (landscape — long left edge centered) */}
         <div className="absolute left-2.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-700 rounded-full z-50" />
 
-        {/* Toggle — floats over image at top center */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-40">
-          <ToggleTwo mode={mode} setMode={setMode} />
-        </div>
-
         {/* Home indicator */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[3px] bg-slate-950/15 rounded-full z-40" />
+      </div>
+
+      {/* Floating control bar — above iPad bezel, feels like part of the device.
+          Brand-blue downward glow visually anchors it to the tablet below.
+          z-50 ensures it sits above the bezel; pointer-events on inner pill stay active. */}
+      <div className="absolute -top-6 lg:-top-7 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+        <div className="relative pointer-events-auto">
+          {/* Brand-tinted downward halo — ties the bar to the iPad */}
+          <span
+            aria-hidden="true"
+            className="absolute left-1/2 -translate-x-1/2 top-full w-[140%] h-10 rounded-full blur-2xl opacity-70"
+            style={{
+              background: 'radial-gradient(ellipse at center top, rgba(23,90,232,0.30) 0%, rgba(23,90,232,0.12) 45%, transparent 75%)',
+            }}
+          />
+          <ToggleTwo mode={mode} setMode={setMode} variant="floating" />
+        </div>
       </div>
     </div>
   );
@@ -254,10 +267,15 @@ function IPadMockup({ mode, setMode }) {
 /* ============================================================================
    Shared toggle (used in both mockups)
    ============================================================================ */
-function ToggleTwo({ mode, setMode, className = '' }) {
+function ToggleTwo({ mode, setMode, className = '', variant = 'default' }) {
+  const isFloating = variant === 'floating';
+  const shellClass = isFloating
+    ? 'p-1 bg-white/85 backdrop-blur-xl border border-white/80 shadow-[0_14px_38px_rgba(23,90,232,0.22),0_4px_12px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.95)]'
+    : 'p-0.5 bg-slate-100 border border-slate-200';
+
   return (
     <div
-      className={`relative z-30 isolate inline-flex p-0.5 rounded-full bg-slate-100 border border-slate-200 ${className}`}
+      className={`relative z-30 isolate inline-flex rounded-full ${shellClass} ${className}`}
       style={{ pointerEvents: 'auto' }}
     >
       <button
