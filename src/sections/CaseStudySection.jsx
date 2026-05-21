@@ -41,7 +41,7 @@ export default function CaseStudySection() {
             style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0.05s' }}
           >
             <span className="h-px w-6 bg-slate-300" />
-            Кейс · 7 днів
+            Кейс · 5 днів
             <span className="h-px w-6 bg-slate-300" />
           </div>
 

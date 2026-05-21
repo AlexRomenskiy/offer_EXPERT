@@ -16,8 +16,6 @@ const legalLinks = [
 
 const socialLinks = [
   { label: 'LinkedIn', icon: 'simple-icons:linkedin', url: 'https://www.linkedin.com/in/alex-romenskyi/' },
-  { label: 'Instagram UA', icon: 'simple-icons:instagram', url: 'https://www.instagram.com/romensky.ua/' },
-  { label: 'Instagram EN', icon: 'simple-icons:instagram', url: 'https://www.instagram.com/romensky.pro/' },
   { label: 'Facebook', icon: 'simple-icons:facebook', url: 'https://www.facebook.com/Alex.Romenskyi' },
 ];
 
@@ -94,7 +92,7 @@ export default function FinalCTASection() {
                   style={{ display: 'block', transitionDelay: '0.20s' }}
                 >
                   <span className="italic-accent">
-                    рівень продажів.
+                    рівень продажів
                   </span>
                 </span>
               </h2>

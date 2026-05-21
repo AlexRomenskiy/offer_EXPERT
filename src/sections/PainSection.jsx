@@ -215,7 +215,7 @@ function PainCard({ card, delay }) {
           {card.title}
         </h3>
         <p
-          className="text-[0.95rem] leading-[1.55] text-slate-200/95 max-w-[32ch]"
+          className="text-[0.95rem] leading-[1.55] text-slate-200/95 max-w-[55ch]"
           style={{ fontFamily: fontStack, textWrap: 'balance' }}
         >
           {card.slogan}
