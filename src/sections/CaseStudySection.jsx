@@ -152,7 +152,7 @@ export default function CaseStudySection() {
               <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
                 <div className="flex items-baseline gap-2">
                   <span className="text-[1.05rem] text-slate-950 font-medium" style={{ fontFamily: fontStack }}>
-                    Зроблено за 7 днів
+                    Зроблено за 5 днів
                   </span>
                   <span className="text-[0.85rem] text-slate-500" style={{ fontFamily: fontStack }}>
                     · стандарт 14
@@ -188,14 +188,14 @@ export default function CaseStudySection() {
               <div className="h-px bg-gradient-to-r from-transparent via-slate-300/60 to-transparent mb-5 lg:mb-6" />
 
               <div className="text-[0.85rem] text-slate-500 mb-4" style={{ fontFamily: fontStack }}>
-                Через 2–3 тижні після запуску
+                Через 3 тижні після запуску
               </div>
 
               {/* Mobile: stacked rows (number left, label right). sm+: 3-col grid */}
               <div className="flex flex-col gap-4 sm:hidden">
                 <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-slate-200/50">
-                  <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
-                    18
+                  <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none whitespace-nowrap" style={{ fontFamily: fontStack }}>
+                    &gt;&nbsp;50
                   </span>
                   <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
                     клієнтів на інтенсив
@@ -203,7 +203,7 @@ export default function CaseStudySection() {
                 </div>
                 <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-slate-200/50">
                   <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
-                    4
+                    5
                   </span>
                   <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
                     на індивідуальну
@@ -223,15 +223,15 @@ export default function CaseStudySection() {
                     $990
                   </span>
                   <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
-                    окупився за 1–1.5 місяця
+                    інвестиція окупилась<br />за 1 місяць
                   </span>
                 </div>
               </div>
 
               <div className="hidden sm:grid sm:grid-cols-3 sm:gap-5 lg:gap-6">
                 <div>
-                  <div className="text-[2.4rem] lg:text-[2.8rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
-                    18
+                  <div className="text-[2.4rem] lg:text-[2.8rem] text-slate-950 font-medium tracking-[-0.04em] leading-none whitespace-nowrap" style={{ fontFamily: fontStack }}>
+                    &gt;&nbsp;50
                   </div>
                   <div className="text-[0.85rem] text-slate-600 mt-1.5 leading-tight" style={{ fontFamily: fontStack }}>
                     клієнтів на інтенсив
@@ -239,7 +239,7 @@ export default function CaseStudySection() {
                 </div>
                 <div>
                   <div className="text-[2.4rem] lg:text-[2.8rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
-                    4
+                    5
                   </div>
                   <div className="text-[0.85rem] text-slate-600 mt-1.5 leading-tight" style={{ fontFamily: fontStack }}>
                     на індивідуальну
@@ -259,7 +259,7 @@ export default function CaseStudySection() {
                     $990
                   </div>
                   <div className="text-[0.85rem] text-slate-600 mt-1.5 leading-tight" style={{ fontFamily: fontStack }}>
-                    окупився за 1–1.5 місяця
+                    інвестиція окупилась за 1 місяць
                   </div>
                 </div>
               </div>
