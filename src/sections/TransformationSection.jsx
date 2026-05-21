@@ -152,34 +152,10 @@ function IPhoneMockup({ mode, setMode }) {
       <div className="absolute inset-0 bg-slate-200 rounded-[3rem] shadow-[0_18px_45px_rgba(15,23,42,0.08)] border-[3px] border-slate-100 z-0" />
 
       {/* Screen */}
-      <div className="absolute inset-[7px] bg-[#f8fafc] rounded-[2.75rem] overflow-hidden flex flex-col z-10 shadow-[inset_0_0_14px_rgba(15,23,42,0.03)] border border-slate-200/70">
+      <div className="absolute inset-[7px] bg-[#f8fafc] rounded-[2.75rem] overflow-hidden z-10 shadow-[inset_0_0_14px_rgba(15,23,42,0.03)] border border-slate-200/70">
 
-        {/* Dynamic Island */}
-        <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-slate-950 rounded-full z-50 flex items-center justify-between px-2">
-          <div className="w-2 h-2 bg-slate-800 rounded-full" />
-          <div
-            className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${
-              mode === 'auto' ? 'bg-[#60a5fa]' : 'bg-slate-500'
-            }`}
-          />
-        </div>
-
-        {/* Status bar */}
-        <div className="h-11 pt-3 px-5 flex justify-between items-center text-[10px] font-semibold text-slate-800 z-40">
-          <span className="ml-1 tracking-tight" style={{ fontFamily: fontStack }}>9:41</span>
-          <div className="flex gap-1 items-center opacity-75 mr-1">
-            <iconify-icon icon="solar:wifi-minimalistic-linear" width="12" height="12" />
-            <iconify-icon icon="solar:battery-full-minimalistic-linear" width="14" height="14" />
-          </div>
-        </div>
-
-        {/* Toggle pill */}
-        <div className="flex justify-center mt-1 mb-3">
-          <ToggleTwo mode={mode} setMode={setMode} />
-        </div>
-
-        {/* Content area — static frame swap on toggle (videos arrive later) */}
-        <div className="flex-1 relative overflow-hidden">
+        {/* Content area — fills entire screen as background (no crop) */}
+        <div className="absolute inset-0">
           <img
             src={ASSETS.portrait.manual}
             alt="Демонстрація ручного режиму"
@@ -194,6 +170,30 @@ function IPhoneMockup({ mode, setMode }) {
               mode === 'auto' ? 'opacity-100' : 'opacity-0'
             }`}
           />
+        </div>
+
+        {/* Dynamic Island */}
+        <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-slate-950 rounded-full z-50 flex items-center justify-between px-2">
+          <div className="w-2 h-2 bg-slate-800 rounded-full" />
+          <div
+            className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${
+              mode === 'auto' ? 'bg-[#60a5fa]' : 'bg-slate-500'
+            }`}
+          />
+        </div>
+
+        {/* Status bar */}
+        <div className="absolute top-0 inset-x-0 h-11 pt-3 px-5 flex justify-between items-center text-[10px] font-semibold text-slate-800 z-40">
+          <span className="ml-1 tracking-tight" style={{ fontFamily: fontStack }}>9:41</span>
+          <div className="flex gap-1 items-center opacity-75 mr-1">
+            <iconify-icon icon="solar:wifi-minimalistic-linear" width="12" height="12" />
+            <iconify-icon icon="solar:battery-full-minimalistic-linear" width="14" height="14" />
+          </div>
+        </div>
+
+        {/* Toggle pill — floats over image */}
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 z-40">
+          <ToggleTwo mode={mode} setMode={setMode} />
         </div>
 
         {/* Home indicator */}
@@ -216,18 +216,10 @@ function IPadMockup({ mode, setMode }) {
       <div className="absolute inset-0 bg-slate-200 rounded-[2rem] shadow-[0_20px_55px_rgba(15,23,42,0.08)] border-[2px] border-slate-100 z-0" />
 
       {/* Screen */}
-      <div className="absolute inset-[10px] bg-[#f8fafc] rounded-[1.7rem] overflow-hidden flex flex-col z-10 shadow-[inset_0_0_14px_rgba(15,23,42,0.03)] border border-slate-200/70">
+      <div className="absolute inset-[10px] bg-[#f8fafc] rounded-[1.7rem] overflow-hidden z-10 shadow-[inset_0_0_14px_rgba(15,23,42,0.03)] border border-slate-200/70">
 
-        {/* Front camera (landscape — long left edge centered) */}
-        <div className="absolute left-2.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-700 rounded-full z-50" />
-
-        {/* Top toolbar with toggle */}
-        <div className="pt-4 pb-3 px-6 flex items-center justify-center">
-          <ToggleTwo mode={mode} setMode={setMode} />
-        </div>
-
-        {/* Content area — static frame swap on toggle (videos arrive later) */}
-        <div className="flex-1 relative overflow-hidden">
+        {/* Content area — fills entire screen as background (no crop) */}
+        <div className="absolute inset-0">
           <img
             src={ASSETS.landscape.manual}
             alt="Демонстрація ручного режиму"
@@ -242,6 +234,14 @@ function IPadMockup({ mode, setMode }) {
               mode === 'auto' ? 'opacity-100' : 'opacity-0'
             }`}
           />
+        </div>
+
+        {/* Front camera (landscape — long left edge centered) */}
+        <div className="absolute left-2.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-700 rounded-full z-50" />
+
+        {/* Toggle — floats over image at top center */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-40">
+          <ToggleTwo mode={mode} setMode={setMode} />
         </div>
 
         {/* Home indicator */}
