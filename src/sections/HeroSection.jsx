@@ -191,7 +191,7 @@ export default function HeroSection() {
                     className="text-[0.78rem] text-slate-300/65 mb-2 tracking-[0.02em]"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
-                    Підхоплює ліди звідусіль, де ти є:
+                    Підхоплює клієнтів звідусіль, де ти є:
                   </p>
                   <div className="flex items-center gap-4">
                     {channels.map((ch) => (

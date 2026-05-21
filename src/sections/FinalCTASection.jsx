@@ -86,7 +86,7 @@ export default function FinalCTASection() {
               >
                 <span className="anim-wrap" style={{ display: 'block' }}>
                   <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
-                    Скільки ще будеш
+                    Переходь на новий
                   </span>
                 </span>
                 <span
@@ -94,7 +94,7 @@ export default function FinalCTASection() {
                   style={{ display: 'block', transitionDelay: '0.20s' }}
                 >
                   <span className="italic-accent">
-                    продавати руками?
+                    рівень продажів.
                   </span>
                 </span>
               </h2>
@@ -106,7 +106,7 @@ export default function FinalCTASection() {
                   fontFamily: fontStack,
                 }}
               >
-                Один безкоштовний розбір — і знаєш наступний крок.
+                30 хвилин розбору — і ти маєш чіткий план дій.
               </p>
 
             </div>

@@ -9,7 +9,7 @@ const TANIA_VIDEO_SRC = '/tania-testimonial.mp4';
 const scope = [
   'Стратегія',
   'Упаковка продукту',
-  'Магніт + тріпваер',
+  'Лід-магніт + Тріпваєр',
   'Прогрівний бот',
   'Оплати + видача',
   'Аналітика',
@@ -57,21 +57,11 @@ export default function CaseStudySection() {
             </span>
           </h2>
 
-          <p
-            className="max-w-2xl text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up subtitle-hairline"
-            style={{
-              transitionDelay: '0.30s',
-              fontFamily: fontStack,
-            }}
-          >
-            Один реальний прогін системи: де ставиться воронка, через
-            скільки починає платити — і що це міняє для експерта.
-          </p>
         </div>
 
         {/* 2-col layout: fixed-width 9:16 LEFT (Shorts/Reels canon) + flex RIGHT
-            lg:items-start prevents stretch — LEFT keeps true 9:16, RIGHT takes natural height */}
-        <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-6 lg:gap-10 anim-trigger lg:items-start">
+            lg:items-center vertically centers the shorter right column against the tall 9:16 video */}
+        <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-6 lg:gap-10 anim-trigger lg:items-center">
 
           {/* ============================================
               LEFT — Video card (true 9:16 on all breakpoints)
@@ -87,7 +77,7 @@ export default function CaseStudySection() {
                 <>
                   <img
                     src="/Cover-UA.png"
-                    alt="Tania Lav — відеовідгук"
+                    alt="Таня — відеовідгук"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                     loading="lazy"
                   />
@@ -96,7 +86,7 @@ export default function CaseStudySection() {
                   <button
                     type="button"
                     onClick={() => setIsPlaying(true)}
-                    aria-label="Дивитися відеовідгук Tania Lav"
+                    aria-label="Дивитися відеовідгук Тані"
                     className="group absolute inset-0 z-10 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#175ae8] focus-visible:ring-inset"
                   >
                     <span aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
@@ -195,7 +185,7 @@ export default function CaseStudySection() {
               <div className="flex flex-col gap-4 sm:hidden">
                 <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-slate-200/50">
                   <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none whitespace-nowrap" style={{ fontFamily: fontStack }}>
-                    &gt;&nbsp;50
+                    38
                   </span>
                   <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
                     клієнтів на інтенсив
@@ -231,7 +221,7 @@ export default function CaseStudySection() {
               <div className="hidden sm:grid sm:grid-cols-3 sm:gap-5 lg:gap-6">
                 <div>
                   <div className="text-[2.4rem] lg:text-[2.8rem] text-slate-950 font-medium tracking-[-0.04em] leading-none whitespace-nowrap" style={{ fontFamily: fontStack }}>
-                    &gt;&nbsp;50
+                    38
                   </div>
                   <div className="text-[0.85rem] text-slate-600 mt-1.5 leading-tight" style={{ fontFamily: fontStack }}>
                     клієнтів на інтенсив
@@ -264,36 +254,6 @@ export default function CaseStudySection() {
                 </div>
               </div>
 
-              {/* Honest caveat — turns 1-case-portfolio into trust */}
-              <div
-                className="mt-6 lg:mt-7 pt-5 border-t border-slate-200/50 text-[0.82rem] text-slate-500 leading-[1.55]"
-                style={{ fontFamily: fontStack }}
-              >
-                <span className="text-slate-700 font-medium">Чесно:</span>{' '}
-                результат не «типовий». У Тетяни 10K+ аудиторії і своя довіра —
-                це драйвер швидкості. У іншого старту — інші цифри.
-              </div>
-            </div>
-
-            {/* === Quote === */}
-            <div
-              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] p-6 lg:p-7 anim-fade-up"
-              style={{ transitionDelay: '0.20s' }}
-            >
-              <iconify-icon
-                icon="solar:quote-up-square-linear"
-                width="28"
-                height="28"
-                style={{ color: '#175ae8' }}
-                class="opacity-70 mb-3 block"
-              />
-              <blockquote className="text-[1.05rem] lg:text-[1.15rem] leading-[1.55] text-slate-800 font-medium tracking-[-0.01em]" style={{ fontFamily: fontStack }}>
-                «Я люблю, коли гроші мають лік. З підписниками те саме: рада,
-                що система турбується про кожного, а мені видає безпосередньо
-                тих, хто хоче працювати. Для мене, як для дівчини з
-                бізнес-проектом, найкраще оновлення гардеробу — це упаковка
-                продукту.»
-              </blockquote>
             </div>
 
             {/* === CTA === */}

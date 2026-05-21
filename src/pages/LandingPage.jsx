@@ -6,7 +6,6 @@ import CaseStudySection from '../sections/CaseStudySection';
 import TestimonialsSection from '../sections/TestimonialsSection';
 import PricingSection from '../sections/PricingSection';
 import AboutSection from '../sections/AboutSection';
-import GuaranteeSection from '../sections/GuaranteeSection';
 import FAQSection from '../sections/FAQSection';
 import FinalCTASection from '../sections/FinalCTASection';
 
@@ -21,7 +20,6 @@ export default function LandingPage() {
       <TestimonialsSection />
       <PricingSection />
       <AboutSection />
-      <GuaranteeSection />
       <FAQSection />
       <FinalCTASection />
     </>

@@ -18,8 +18,8 @@ const monoStack = "'JetBrains Mono', monospace";
 const cards = [
   {
     id: 'PNT-01',
-    title: 'Аудиторія є — продаж замало',
-    slogan: 'Лід губиться між DM і чеком.',
+    title: 'Аудиторія є — продажів мало',
+    slogan: 'Лід (потенційний клієнт) губиться між DM і чеком.',
     img: '/Images/2. Pain - Audience - UKR.png',
   },
   {
@@ -43,7 +43,7 @@ const cards = [
   {
     id: 'PNT-05',
     title: 'Дохід упирається в стелю',
-    slogan: 'Більше клієнтів — менше тебе.',
+    slogan: 'Твій фізичний ресурс обмежений.',
     img: '/Images/2. Pain - Revenue block - UKR.png',
   },
 ];
@@ -112,13 +112,12 @@ export default function PainSection() {
             >
               <span className="block anim-wrap">
                 <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
-                  Скільки з цього
+                  Де ти зараз
                 </span>
               </span>
               <span className="block anim-italic" style={{ transitionDelay: '0.20s' }}>
-                у тебе
-                <span className="italic-accent" style={{ marginLeft: '0.20em' }}>
-                  зараз?
+                <span className="italic-accent">
+                  втрачаєш час?
                 </span>
               </span>
             </h2>
@@ -130,7 +129,7 @@ export default function PainSection() {
                 fontFamily: fontStack,
               }}
             >
-              5 ситуацій, у яких застрягають експерти на ручному режимі.
+              5 головних пасток, у яких застрягають експерти.
             </p>
 
             {/* progress counter */}

@@ -88,7 +88,7 @@ export default function TransformationSection() {
             className="text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up mx-auto max-w-[42ch] subtitle-hairline-mobile-only"
             style={{ transitionDelay: '0.30s', fontFamily: fontStack }}
           >
-            Один момент — два режими. Перемкни і подивись.
+            Одна ситуація — два режими. Перемкни і подивись.
           </p>
         </div>
 

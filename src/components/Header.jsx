@@ -7,7 +7,6 @@ const navItemsByLocale = {
     { label: 'Для кого', href: '#pain' },
     { label: 'Кейс', href: '#case' },
     { label: 'Тарифи', href: '#pricing' },
-    { label: 'Гарантії', href: '#guarantees' },
     { label: 'FAQ', href: '#faq' },
   ],
   en: [

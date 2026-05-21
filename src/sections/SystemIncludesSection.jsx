@@ -25,7 +25,7 @@ const funnelStages = [
 const leadMagnetTypes = [
   { icon: 'solar:document-text-linear', name: 'PDF · «5 помилок експерта»', meta: 'Магніт', active: true },
   { icon: 'solar:checklist-linear', name: 'Чек-лист запуску', meta: 'Магніт', active: false },
-  { icon: 'solar:gift-linear', name: 'Mini-курс · $19', meta: 'Тріпваер', active: false },
+  { icon: 'solar:gift-linear', name: 'Mini-курс · $19', meta: 'Тріпваєр', active: false },
 ];
 
 const strategyBrief = [
@@ -100,7 +100,7 @@ export default function SystemIncludesSection() {
 
           <Panel
             icon="solar:magnet-linear"
-            title="Магніт + тріпваер"
+            title="Лід-магніт + Тріпваєр"
             description="Ловить контакт і підвищує середній чек."
             pillLabel="Вхід"
             mockup={<LeadMagnetMockup />}
@@ -120,7 +120,7 @@ export default function SystemIncludesSection() {
           <Panel
             icon="solar:chart-2-linear"
             title="Аналітика"
-            description="Прозорі цифри від першого кліку до повторних продаж."
+            description="Прозорі цифри від першого кліку до повторних продажів."
             pillLabel="Sync"
             mockup={<AnalyticsMockup />}
             delay="0.25s"
@@ -317,7 +317,7 @@ function LandingMockup() {
 function LeadMagnetMockup() {
   return (
     <>
-      <TopBar left="Магніт + тріпваер" right="3 типи" />
+      <TopBar left="Лід-магніт + Тріпваєр" right="3 типи" />
       <div className="px-3 py-3 flex-1 flex flex-col gap-1.5 bg-white/[0.08]">
         {leadMagnetTypes.map((t, i) => (
           <div
