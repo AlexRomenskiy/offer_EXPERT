@@ -95,15 +95,17 @@ export default function TransformationSection() {
         <div className="anim-trigger">
           {/* ===================================================
               iPhone mockup — phone only (< md, < 768px)
+              pt reserves space for the tab strip above the bezel
               =================================================== */}
-          <div className="md:hidden flex justify-center anim-fade-up" style={{ transitionDelay: '0.10s' }}>
+          <div className="md:hidden flex justify-center anim-fade-up pt-8" style={{ transitionDelay: '0.10s' }}>
             <IPhoneMockup mode={mode} setMode={handleSetMode} />
           </div>
 
           {/* ===================================================
               iPad mockup — tablet + desktop (>= md, >= 768px)
+              pt reserves space for the tab strip above the bezel
               =================================================== */}
-          <div className="hidden md:flex justify-center anim-fade-up" style={{ transitionDelay: '0.10s' }}>
+          <div className="hidden md:flex justify-center anim-fade-up pt-10 lg:pt-12" style={{ transitionDelay: '0.10s' }}>
             <IPadMockup mode={mode} setMode={handleSetMode} />
           </div>
         </div>
@@ -191,12 +193,12 @@ function IPhoneMockup({ mode, setMode }) {
           </div>
         </div>
 
-        {/* Browser-chrome tab strip — sits below the status bar, inside the on-device app */}
-        <BrowserChromeBar mode={mode} setMode={setMode} compact className="absolute inset-x-0 top-11 z-30" />
-
         {/* Home indicator */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] h-[3px] bg-slate-950/15 rounded-full z-40" />
       </div>
+
+      {/* Tab strip — sits above the iPhone bezel, attached to top edge like browser tabs */}
+      <DeviceTabs mode={mode} setMode={setMode} compact className="absolute bottom-full left-1/2 -translate-x-1/2 z-30" />
     </div>
   );
 }
@@ -237,41 +239,31 @@ function IPadMockup({ mode, setMode }) {
         {/* Front camera (landscape — long left edge centered) */}
         <div className="absolute left-2.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-700 rounded-full z-50" />
 
-        {/* Browser-chrome tab strip — sits at top of screen, makes the toggle
-            feel like Safari tabs inside the on-device app rather than a floating UI element */}
-        <BrowserChromeBar mode={mode} setMode={setMode} className="absolute inset-x-0 top-0 z-30" />
-
         {/* Home indicator */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[3px] bg-slate-950/15 rounded-full z-40" />
       </div>
+
+      {/* Tab strip — sits above the iPad bezel, attached to top edge like browser tabs */}
+      <DeviceTabs mode={mode} setMode={setMode} className="absolute bottom-full left-1/2 -translate-x-1/2 z-30" />
     </div>
   );
 }
 
 /* ============================================================================
-   Browser-chrome tab strip — Safari-style toggle that lives INSIDE the device
-   screen instead of floating outside the bezel. Two rounded-top tabs whose
-   active state visually merges with the screen content below (same #f8fafc bg).
+   Device tab strip — two rounded-top «browser tabs» that sit on the top edge
+   of the device bezel. Active tab uses white bg + brand-gradient top accent +
+   soft shadow — reads as a premium control attached to the device, without
+   covering any screen content.
    ============================================================================ */
-function BrowserChromeBar({ mode, setMode, compact = false, className = '' }) {
+function DeviceTabs({ mode, setMode, compact = false, className = '' }) {
   return (
-    <div
-      className={`${compact ? 'h-9' : 'h-10'} flex items-end justify-center border-b border-slate-200/80 ${className}`}
-      style={{
-        background: 'linear-gradient(180deg, #f1f5f9 0%, #f8fafc 100%)',
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
-        pointerEvents: 'auto',
-      }}
-    >
-      <div className="flex items-end gap-0.5">
-        <ChromeTab active={mode === 'manual'} onClick={() => setMode('manual')} compact={compact}>
-          Вручну
-        </ChromeTab>
-        <ChromeTab active={mode === 'auto'} onClick={() => setMode('auto')} compact={compact}>
-          Автоматизація
-        </ChromeTab>
-      </div>
+    <div className={`flex items-end gap-0.5 ${className}`} style={{ pointerEvents: 'auto' }}>
+      <ChromeTab active={mode === 'manual'} onClick={() => setMode('manual')} compact={compact}>
+        Вручну
+      </ChromeTab>
+      <ChromeTab active={mode === 'auto'} onClick={() => setMode('auto')} compact={compact}>
+        Автоматизація
+      </ChromeTab>
     </div>
   );
 }
@@ -282,17 +274,13 @@ function ChromeTab({ active, onClick, compact, children }) {
       type="button"
       onClick={onClick}
       className={`relative cursor-pointer touch-manipulation rounded-t-[10px] font-medium transition-all duration-300 ${
-        compact ? 'px-3 py-1 text-[10.5px]' : 'px-5 py-1.5 text-[12px]'
+        compact ? 'px-3.5 py-1.5 text-[11px]' : 'px-5 py-2 text-[12px]'
       } ${
         active
-          ? 'text-slate-900'
-          : 'bg-slate-200/60 text-slate-500 hover:text-slate-700 hover:bg-slate-200/80'
+          ? 'bg-white text-slate-900 shadow-[0_-4px_14px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,1)]'
+          : 'bg-slate-100/85 text-slate-500 hover:text-slate-700 hover:bg-slate-100'
       }`}
-      style={{
-        fontFamily: fontStack,
-        background: active ? '#f8fafc' : undefined,
-        boxShadow: active ? 'inset 0 1px 0 rgba(255,255,255,0.9)' : undefined,
-      }}
+      style={{ fontFamily: fontStack }}
     >
       {/* Brand-gradient accent line — top edge of active tab */}
       {active && (
@@ -303,14 +291,6 @@ function ChromeTab({ active, onClick, compact, children }) {
         />
       )}
       {children}
-      {/* Bottom seam eraser — covers chrome-bar border so tab merges with screen content */}
-      {active && (
-        <span
-          aria-hidden="true"
-          className="absolute -bottom-px left-0 right-0 h-px"
-          style={{ background: '#f8fafc' }}
-        />
-      )}
     </button>
   );
 }
