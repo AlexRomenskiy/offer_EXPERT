@@ -102,9 +102,8 @@ export default function TransformationSection() {
 
           {/* ===================================================
               iPad mockup — tablet + desktop (>= md, >= 768px)
-              pt reserves space for the floating toggle bar above the bezel
               =================================================== */}
-          <div className="hidden md:flex justify-center anim-fade-up pt-10 lg:pt-12" style={{ transitionDelay: '0.10s' }}>
+          <div className="hidden md:flex justify-center anim-fade-up" style={{ transitionDelay: '0.10s' }}>
             <IPadMockup mode={mode} setMode={handleSetMode} />
           </div>
         </div>
@@ -192,10 +191,8 @@ function IPhoneMockup({ mode, setMode }) {
           </div>
         </div>
 
-        {/* Toggle pill — floats over image */}
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 z-40">
-          <ToggleTwo mode={mode} setMode={setMode} />
-        </div>
+        {/* Browser-chrome tab strip — sits below the status bar, inside the on-device app */}
+        <BrowserChromeBar mode={mode} setMode={setMode} compact className="absolute inset-x-0 top-11 z-30" />
 
         {/* Home indicator */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] h-[3px] bg-slate-950/15 rounded-full z-40" />
@@ -240,69 +237,81 @@ function IPadMockup({ mode, setMode }) {
         {/* Front camera (landscape — long left edge centered) */}
         <div className="absolute left-2.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-700 rounded-full z-50" />
 
+        {/* Browser-chrome tab strip — sits at top of screen, makes the toggle
+            feel like Safari tabs inside the on-device app rather than a floating UI element */}
+        <BrowserChromeBar mode={mode} setMode={setMode} className="absolute inset-x-0 top-0 z-30" />
+
         {/* Home indicator */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[3px] bg-slate-950/15 rounded-full z-40" />
-      </div>
-
-      {/* Floating control bar — above iPad bezel, feels like part of the device.
-          Brand-blue downward glow visually anchors it to the tablet below.
-          z-50 ensures it sits above the bezel; pointer-events on inner pill stay active. */}
-      <div className="absolute -top-6 lg:-top-7 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
-        <div className="relative pointer-events-auto">
-          {/* Brand-tinted downward halo — ties the bar to the iPad */}
-          <span
-            aria-hidden="true"
-            className="absolute left-1/2 -translate-x-1/2 top-full w-[140%] h-10 rounded-full blur-2xl opacity-70"
-            style={{
-              background: 'radial-gradient(ellipse at center top, rgba(23,90,232,0.30) 0%, rgba(23,90,232,0.12) 45%, transparent 75%)',
-            }}
-          />
-          <ToggleTwo mode={mode} setMode={setMode} variant="floating" />
-        </div>
       </div>
     </div>
   );
 }
 
 /* ============================================================================
-   Shared toggle (used in both mockups)
+   Browser-chrome tab strip — Safari-style toggle that lives INSIDE the device
+   screen instead of floating outside the bezel. Two rounded-top tabs whose
+   active state visually merges with the screen content below (same #f8fafc bg).
    ============================================================================ */
-function ToggleTwo({ mode, setMode, className = '', variant = 'default' }) {
-  const isFloating = variant === 'floating';
-  const shellClass = isFloating
-    ? 'p-1 bg-white/85 backdrop-blur-xl border border-white/80 shadow-[0_14px_38px_rgba(23,90,232,0.22),0_4px_12px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.95)]'
-    : 'p-0.5 bg-slate-100 border border-slate-200';
-
+function BrowserChromeBar({ mode, setMode, compact = false, className = '' }) {
   return (
     <div
-      className={`relative z-30 isolate inline-flex rounded-full ${shellClass} ${className}`}
-      style={{ pointerEvents: 'auto' }}
+      className={`${compact ? 'h-9' : 'h-10'} flex items-end justify-center border-b border-slate-200/80 ${className}`}
+      style={{
+        background: 'linear-gradient(180deg, #f1f5f9 0%, #f8fafc 100%)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+        pointerEvents: 'auto',
+      }}
     >
-      <button
-        type="button"
-        onClick={() => setMode('manual')}
-        className={`cursor-pointer touch-manipulation px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[12px] sm:text-[13px] font-medium transition-all duration-300 ${
-          mode === 'manual'
-            ? 'bg-gradient-to-r from-[#020f2d] to-[#175ae8] text-white shadow-sm'
-            : 'text-slate-500 hover:text-slate-700'
-        }`}
-        style={{ fontFamily: fontStack }}
-      >
-        Вручну
-      </button>
-      <button
-        type="button"
-        onClick={() => setMode('auto')}
-        className={`cursor-pointer touch-manipulation px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[12px] sm:text-[13px] font-medium transition-all duration-300 ${
-          mode === 'auto'
-            ? 'bg-gradient-to-r from-[#020f2d] to-[#175ae8] text-white shadow-sm'
-            : 'text-slate-500 hover:text-slate-700'
-        }`}
-        style={{ fontFamily: fontStack }}
-      >
-        Автоматизація
-      </button>
+      <div className="flex items-end gap-0.5">
+        <ChromeTab active={mode === 'manual'} onClick={() => setMode('manual')} compact={compact}>
+          Вручну
+        </ChromeTab>
+        <ChromeTab active={mode === 'auto'} onClick={() => setMode('auto')} compact={compact}>
+          Автоматизація
+        </ChromeTab>
+      </div>
     </div>
+  );
+}
+
+function ChromeTab({ active, onClick, compact, children }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative cursor-pointer touch-manipulation rounded-t-[10px] font-medium transition-all duration-300 ${
+        compact ? 'px-3 py-1 text-[10.5px]' : 'px-5 py-1.5 text-[12px]'
+      } ${
+        active
+          ? 'text-slate-900'
+          : 'bg-slate-200/60 text-slate-500 hover:text-slate-700 hover:bg-slate-200/80'
+      }`}
+      style={{
+        fontFamily: fontStack,
+        background: active ? '#f8fafc' : undefined,
+        boxShadow: active ? 'inset 0 1px 0 rgba(255,255,255,0.9)' : undefined,
+      }}
+    >
+      {/* Brand-gradient accent line — top edge of active tab */}
+      {active && (
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[10px]"
+          style={{ background: 'linear-gradient(90deg, #020f2d 0%, #175ae8 100%)' }}
+        />
+      )}
+      {children}
+      {/* Bottom seam eraser — covers chrome-bar border so tab merges with screen content */}
+      {active && (
+        <span
+          aria-hidden="true"
+          className="absolute -bottom-px left-0 right-0 h-px"
+          style={{ background: '#f8fafc' }}
+        />
+      )}
+    </button>
   );
 }
 

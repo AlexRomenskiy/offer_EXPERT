@@ -1,12 +1,8 @@
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
 
-/* ============================================================
-   ASSET PIPELINE (pending):
-   - Olexandr Romenskyi portrait photo (4:5 or 1:1) — swap placeholder.
-   When asset arrives, replace the photo placeholder div with:
-     <img src="/photos/olexandr.jpg" className="absolute inset-0 w-full h-full object-cover" />
-   ============================================================ */
+// Portrait: /Alexander Romenskyi.JPG — tight 1:1 close-up, dark turtleneck.
+// object-[center_28%] keeps eyes in the upper third on both 4:5 (mobile) and stretched-taller (desktop) crops.
 
 const stats = [
   { icon: 'solar:globe-linear', text: '5 країн · UA · US · CA · EG · GE' },
@@ -99,22 +95,27 @@ export default function AboutSection() {
           <div className="lg:col-span-5 anim-fade-up" style={{ transitionDelay: '0.10s' }}>
             <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full lg:min-h-[540px] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
 
-              {/* PHOTO PLACEHOLDER — swap with <img src="/photos/olexandr.jpg" /> */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-50">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(23,90,232,0.10),transparent_45%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(96,165,250,0.08),transparent_45%)]" />
+              {/* Portrait */}
+              <img
+                src="/Alexander Romenskyi.JPG"
+                alt="Олександр Роменський — Funnel architect"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-[center_28%] select-none"
+                draggable="false"
+              />
 
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-white/60 border border-white/80 backdrop-blur-md flex items-center justify-center shadow-[0_20px_50px_rgba(15,23,42,0.10)]">
-                    <iconify-icon
-                      icon="solar:user-rounded-linear"
-                      width="56"
-                      height="56"
-                      style={{ color: '#94a3b8' }}
-                    />
-                  </div>
-                </div>
-              </div>
+              {/* Subtle bottom fade — anchors the card and lifts the role pill area on hover with depth */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#020f2d]/35 via-[#020f2d]/10 to-transparent pointer-events-none"
+              />
+
+              {/* Top-left brand wash — keeps the role pill readable against bright window light */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#020f2d]/25 to-transparent pointer-events-none"
+              />
 
               {/* Top-right role pill */}
               <div className="absolute top-5 right-5 z-10">
