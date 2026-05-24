@@ -277,19 +277,17 @@ function ChromeTab({ active, onClick, compact, children }) {
         compact ? 'px-3.5 py-1.5 text-[11px]' : 'px-5 py-2 text-[12px]'
       } ${
         active
-          ? 'bg-white text-slate-900 shadow-[0_-4px_14px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,1)]'
+          ? 'text-white'
           : 'bg-slate-100/85 text-slate-500 hover:text-slate-700 hover:bg-slate-100'
       }`}
-      style={{ fontFamily: fontStack }}
+      style={{
+        fontFamily: fontStack,
+        background: active ? 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)' : undefined,
+        boxShadow: active
+          ? '0 -4px 14px rgba(23,90,232,0.22), inset 0 1px 0 rgba(255,255,255,0.20)'
+          : undefined,
+      }}
     >
-      {/* Brand-gradient accent line — top edge of active tab */}
-      {active && (
-        <span
-          aria-hidden="true"
-          className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[10px]"
-          style={{ background: 'linear-gradient(90deg, #020f2d 0%, #175ae8 100%)' }}
-        />
-      )}
       {children}
     </button>
   );

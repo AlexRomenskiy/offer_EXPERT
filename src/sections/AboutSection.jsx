@@ -150,12 +150,12 @@ export default function AboutSection() {
               />
 
               <div className="relative z-10">
-                {/* Eyebrow — Кредо */}
+                {/* Eyebrow — Спеціалізація */}
                 <p
                   className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-3"
                   style={{ fontFamily: monoStack }}
                 >
-                  Кредо
+                  Спеціалізація
                 </p>
 
                 {/* Bio paragraph */}
@@ -163,10 +163,10 @@ export default function AboutSection() {
                   className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
                   style={{ fontFamily: fontStack }}
                 >
-                  7 років збираю системи — воронки, лендинги, боти, оплати,
-                  аналітика, авторські програми, аплікації, тощо. І за весь
-                  цей досвід зробив висновок, що сильні експерти застрягають
-                  не на експертизі, а на її презентації, яка продає.
+                  За 7 років я побудував десятки екосистем: від лендінгів до
+                  складної аналітики. Головний інсайт — круті експерти втрачають
+                  гроші не через брак знань, а через слабку презентацію та
+                  хаос у процесах.
                 </p>
 
                 {/* Pull-quote — Playfair italic + brand-gradient. Pulled from bio's closing line. */}
@@ -181,7 +181,7 @@ export default function AboutSection() {
                       backgroundClip: 'text',
                     }}
                   >
-                    Моя спеціалізація — зробити тебе видимим і затребуваним.
+                    Моя ціль — щоб ти займався продуктом, а операційку забрала система.
                   </p>
                 </blockquote>
 
