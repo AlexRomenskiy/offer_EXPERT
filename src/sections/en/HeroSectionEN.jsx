@@ -59,9 +59,8 @@ export default function HeroSectionEN() {
       className="relative p-2 sm:p-5"
     >
       <div
-        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden"
+        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden min-h-[88vh] sm:min-h-[calc(100vh-40px)]"
         style={{
-          minHeight: 'calc(100vh - 40px)',
           boxShadow: [
             '0 30px 50px rgba(15,23,42,0.35)',
             '0 70px 120px rgba(15,23,42,0.22)',
@@ -99,9 +98,9 @@ export default function HeroSectionEN() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[112px] pb-10 lg:pt-[140px] lg:pb-10 min-h-[inherit] flex flex-col lg:justify-center">
           <div className="anim-trigger is-visible flex-1 flex flex-col lg:block lg:flex-none">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center flex-1 lg:flex-none">
-              <div className="lg:col-span-7 flex flex-col h-full lg:h-auto lg:block">
+              <div className="lg:col-span-7 flex flex-col h-full lg:h-auto">
                 <h1
-                  className="max-w-[40rem] font-light mb-5 text-white"
+                  className="order-1 max-w-[40rem] font-light mb-5 text-white"
                   style={{ fontFamily: fontStack, lineHeight: 1.18 }}
                 >
                   <span className="anim-wrap" style={{ display: 'block' }}>
@@ -160,7 +159,7 @@ export default function HeroSectionEN() {
                 </h1>
 
                 <p
-                  className="max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-6 text-slate-200/75 anim-fade-up pl-5"
+                  className="order-2 max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-6 text-slate-200/75 anim-fade-up pl-5"
                   style={{
                     transitionDelay: '0.28s',
                     fontFamily: fontStack,
@@ -174,11 +173,12 @@ export default function HeroSectionEN() {
                   </span>
                 </p>
 
-                {/* Mobile-only flex spacer — pushes channels+CTA to bottom. */}
-                <div className="flex-1 lg:hidden" />
+                {/* Mobile spacer — sits between CTA (order-3) and Channels (order-5). */}
+                <div className="order-4 flex-1 lg:hidden" />
 
+                {/* Channels — mobile: rendered LAST (order-5). Desktop: above CTA (lg:order-3). */}
                 <div
-                  className="mb-7 anim-fade-up"
+                  className="order-5 lg:order-3 lg:mb-7 anim-fade-up"
                   style={{ transitionDelay: '0.34s' }}
                 >
                   <p
@@ -202,7 +202,8 @@ export default function HeroSectionEN() {
                   </div>
                 </div>
 
-                <div className="flex justify-center lg:justify-start">
+                {/* CTA — mobile order-3 (right after subtitle); desktop lg:order-4 (after channels). */}
+                <div className="order-3 lg:order-4 flex justify-center lg:justify-start">
                   <a
                     href={BOOKING_URL_EN}
                     target="_blank"

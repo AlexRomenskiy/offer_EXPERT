@@ -58,11 +58,12 @@ export default function HeroSection() {
       id="hero"
       className="relative p-2 sm:p-5"
     >
-      {/* Hero card — full-width with thin symmetric light-bg frame around it (~8px mobile, ~20px sm+). Header lives INSIDE this card. */}
+      {/* Hero card — full-width with thin symmetric light-bg frame around it (~8px mobile, ~20px sm+). Header lives INSIDE this card.
+          Mobile: card caps at 88vh so a sliver of the next section is visible
+          as a scroll cue. From sm+ it returns to (almost) full viewport. */}
       <div
-        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden"
+        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden min-h-[88vh] sm:min-h-[calc(100vh-40px)]"
         style={{
-          minHeight: 'calc(100vh - 40px)',
           boxShadow: [
             '0 30px 50px rgba(15,23,42,0.35)',
             '0 70px 120px rgba(15,23,42,0.22)',
@@ -105,11 +106,13 @@ export default function HeroSection() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[112px] pb-10 lg:pt-[140px] lg:pb-10 min-h-[inherit] flex flex-col lg:justify-center">
           <div className="anim-trigger is-visible flex-1 flex flex-col lg:block lg:flex-none">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center flex-1 lg:flex-none">
-              {/* Left column */}
-              <div className="lg:col-span-7 flex flex-col h-full lg:h-auto lg:block">
+              {/* Left column — flex on all breakpoints so the mobile reorder
+                  (via `order-*`) also works. Desktop visual order is preserved
+                  by `lg:order-*` overrides on the reordered items. */}
+              <div className="lg:col-span-7 flex flex-col h-full lg:h-auto">
                 {/* Headline */}
                 <h1
-                  className="max-w-[40rem] font-light mb-5 text-white"
+                  className="order-1 max-w-[40rem] font-light mb-5 text-white"
                   style={{ fontFamily: fontStack, lineHeight: 1.18 }}
                 >
                   <span className="anim-wrap" style={{ display: 'block' }}>
@@ -169,27 +172,30 @@ export default function HeroSection() {
 
                 {/* Subtitle with thin vertical accent line on the LEFT */}
                 <p
-                  className="max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-6 text-slate-200/75 anim-fade-up pl-5"
+                  className="order-2 max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-6 text-slate-200/75 anim-fade-up pl-5"
                   style={{
                     transitionDelay: '0.28s',
                     fontFamily: fontStack,
                     borderLeft: '1px solid rgba(255,255,255,0.20)',
                   }}
                 >
-                  Перетворюю твою експертизу на систему:
-                  ловить ліди, веде до оплати, видає продукт.
+                  Упаковую твою експертизу та продукт у систему,
+                  яка залучає клієнтів і генерує продажі.
                   <span className="block mt-3 text-slate-300/55">
                     Поки система продає — ти займаєшся експертизою. Без вигорання, без хаосу в DM.
                   </span>
                 </p>
 
-                {/* Mobile-only flex spacer — pushes channels+CTA to bottom of card,
-                    keeping headline+subtitle near the top. Collapses on lg+. */}
-                <div className="flex-1 lg:hidden" />
+                {/* Mobile spacer — sits between CTA (order-3) and Channels (order-5).
+                    `flex-1` eats remaining vertical room so Channels stick to the
+                    bottom of the card. Hidden on lg+ where layout is content-flow. */}
+                <div className="order-4 flex-1 lg:hidden" />
 
-                {/* Channels */}
+                {/* Channels — on mobile rendered LAST (order-5), as a supporting
+                    "we meet you everywhere" footer. On desktop reverts to its
+                    original position above the CTA (lg:order-3). */}
                 <div
-                  className="mb-7 anim-fade-up"
+                  className="order-5 lg:order-3 lg:mb-7 anim-fade-up"
                   style={{ transitionDelay: '0.34s' }}
                 >
                   <p
@@ -213,8 +219,10 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Single CTA — orange spinning beam */}
-                <div className="flex justify-center lg:justify-start">
+                {/* Single CTA — orange spinning beam.
+                    Mobile order-3 (right after subtitle = decision point).
+                    Desktop lg:order-4 (after channels = original layout). */}
+                <div className="order-3 lg:order-4 flex justify-center lg:justify-start">
                 <a
                   href={BOOKING_URL_UA}
                   target="_blank"
