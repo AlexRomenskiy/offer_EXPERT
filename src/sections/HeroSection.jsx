@@ -102,11 +102,11 @@ export default function HeroSection() {
         <Header />
 
         {/* Card content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[128px] pb-10 lg:pt-[140px] lg:pb-10 min-h-[inherit] flex flex-col justify-center">
-          <div className="anim-trigger is-visible">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[112px] pb-10 lg:pt-[140px] lg:pb-10 min-h-[inherit] flex flex-col lg:justify-center">
+          <div className="anim-trigger is-visible flex-1 flex flex-col lg:block lg:flex-none">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center flex-1 lg:flex-none">
               {/* Left column */}
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-7 flex flex-col h-full lg:h-auto lg:block">
                 {/* Headline */}
                 <h1
                   className="max-w-[40rem] font-light mb-5 text-white"
@@ -182,6 +182,10 @@ export default function HeroSection() {
                     Поки система продає — ти займаєшся експертизою. Без вигорання, без хаосу в DM.
                   </span>
                 </p>
+
+                {/* Mobile-only flex spacer — pushes channels+CTA to bottom of card,
+                    keeping headline+subtitle near the top. Collapses on lg+. */}
+                <div className="flex-1 lg:hidden" />
 
                 {/* Channels */}
                 <div
