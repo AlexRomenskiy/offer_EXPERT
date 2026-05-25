@@ -457,28 +457,24 @@ iconify-icon {
     opacity: 1;
   }
 
-  /* ====== Cinematic scroll-focus — sections below viewport read as out-of-focus,
-     snap into focus as they cross into view. Uses only filter+opacity so that
-     `sticky` children (Pain header, Pricing card, FAQ panel) aren't broken by a
-     transform on the wrapper. Pairs with the existing AnimObserver which toggles
-     `.is-visible` on `.anim-trigger`. ====== */
-  .scroll-focus {
-    filter: blur(6px);
-    opacity: 0.5;
-    transition: filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .scroll-focus:not(.is-visible) {
-    will-change: filter, opacity;
-  }
-  .scroll-focus.is-visible {
-    filter: blur(0);
-    opacity: 1;
-  }
-  @media (max-width: 768px) {
+  /* ====== Cinematic scroll-focus — DESKTOP-ONLY.
+     Sections below viewport read as out-of-focus and snap into focus as they
+     cross in. Restricted to fine-pointer + hover-capable + ≥1024px because on
+     Android Chrome the per-section composite layers (one per `filter` wrapper)
+     caused intermittent hit-testing failures — taps after the first would
+     occasionally be swallowed. Touch devices get no filter, no will-change,
+     no composite layers — buttons behave natively. Effect pairs with the
+     existing AnimObserver which toggles `.is-visible` on `.anim-trigger`. ====== */
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
     .scroll-focus {
-      filter: blur(3px);
-      opacity: 0.65;
+      filter: blur(6px);
+      opacity: 0.5;
+      transition: filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .scroll-focus.is-visible {
+      filter: blur(0);
+      opacity: 1;
     }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -488,6 +484,13 @@ iconify-icon {
       opacity: 1;
       transition: none;
     }
+  }
+
+  /* Touch input — kill the 300ms double-tap-zoom delay on iOS/Android for
+     all interactive elements. `manipulation` allows pan + pinch zoom but
+     drops the wait-for-double-tap that swallows quick second taps. */
+  a, button, [role="button"], [role="switch"] {
+    touch-action: manipulation;
   }
 }
 

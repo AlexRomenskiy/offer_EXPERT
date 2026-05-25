@@ -32,19 +32,18 @@ const ASSETS = {
 
 export default function TransformationSection() {
   const [mode, setMode] = useState('manual');
-  const interactedAtRef = useRef(0);
+  const userTookOverRef = useRef(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Pause auto-cycle for 10s after user manually clicks
-      if (Date.now() - interactedAtRef.current < 10000) return;
+      if (userTookOverRef.current) return;
       setMode((prev) => (prev === 'manual' ? 'auto' : 'manual'));
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   const handleSetMode = (newMode) => {
-    interactedAtRef.current = Date.now();
+    userTookOverRef.current = true;
     setMode(newMode);
   };
 

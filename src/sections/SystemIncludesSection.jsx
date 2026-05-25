@@ -28,12 +28,6 @@ const leadMagnetTypes = [
   { icon: 'solar:gift-linear', name: 'Mini-курс · $19', meta: 'Тріпваєр', active: false },
 ];
 
-const strategyBrief = [
-  { q: 'Хто ти?', a: 'Олена · продуктовий маркетинг' },
-  { q: 'Кому продаєш?', a: 'B2B SaaS-маркетологи' },
-  { q: 'Чому саме до тебе?', a: 'Запуски через дані, не інтуїцію' },
-];
-
 export default function SystemIncludesSection() {
   return (
     <section
@@ -85,7 +79,7 @@ export default function SystemIncludesSection() {
             title="Стратегія і позиціонування"
             description="Хто ти, кому продаєш та чому саме до тебе."
             pillLabel="Брифінг"
-            mockup={<StrategyMockup />}
+            mockup={<ImageMockup src="/Images/4. 1 audit.png" alt="Стратегічна сесія: позиціонування експерта" />}
             delay="0.05s"
           />
 
@@ -248,41 +242,17 @@ function BottomBar({ left, right }) {
    MOCKUPS — 6 unique inner UIs
    ============================================================================ */
 
-function StrategyMockup() {
+/* ============================================================================
+   ImageMockup — full-bleed PNG inside a panel slot.
+   Used when a hyperreal-render replaces the JSX mockup entirely.
+   ============================================================================ */
+function ImageMockup({ src, alt }) {
   return (
-    <>
-      <TopBar left="Brand brief" right="Готовий" />
-      <div className="px-3 py-3 flex-1 flex flex-col gap-2 bg-white/[0.08]">
-        {strategyBrief.map((b, i) => (
-          <div
-            key={i}
-            className="p-2.5 rounded-xl bg-white/70 border border-slate-200/60"
-          >
-            <div className="flex items-center gap-2 mb-1">
-              <iconify-icon
-                icon="solar:check-circle-line-duotone"
-                width="13"
-                height="13"
-                style={{ color: '#175ae8' }}
-              />
-              <span
-                className="text-[10px] uppercase tracking-[0.16em] text-slate-500"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                {b.q}
-              </span>
-            </div>
-            <div
-              className="text-[11px] text-slate-900 font-medium leading-snug pl-[19px]"
-              style={{ fontFamily: fontStack }}
-            >
-              {b.a}
-            </div>
-          </div>
-        ))}
-      </div>
-      <BottomBar left="Brand canvas" right="v1.0" />
-    </>
+    <img
+      src={src}
+      alt={alt}
+      className="absolute inset-0 w-full h-full object-cover"
+    />
   );
 }
 

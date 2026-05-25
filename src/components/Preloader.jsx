@@ -26,7 +26,7 @@ export default function Preloader() {
       window.addEventListener('load', finish, { once: true });
     }
 
-    const ceiling = setTimeout(finish, 5000);
+    const ceiling = setTimeout(finish, 3000);
 
     return () => {
       cancelled = true;

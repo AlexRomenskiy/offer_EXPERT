@@ -211,7 +211,7 @@ export default function HeroSectionEN() {
                       height: '60px',
                     }}
                   >
-                    <div className="absolute inset-0 -z-20 rounded-full overflow-hidden p-[1px]">
+                    <div className="absolute inset-0 -z-20 rounded-full overflow-hidden p-[1px] pointer-events-none">
                       <div
                         className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_280deg,#fb923c_320deg,#f97316_360deg)]"
                         style={{ animation: 'beam-spin 3s linear infinite' }}
@@ -219,7 +219,7 @@ export default function HeroSectionEN() {
                       <div className="absolute inset-[1px] rounded-full bg-zinc-950" />
                     </div>
 
-                    <div className="-z-10 overflow-hidden rounded-full absolute top-[2px] right-[2px] bottom-[2px] left-[2px] bg-zinc-950">
+                    <div className="-z-10 overflow-hidden rounded-full absolute top-[2px] right-[2px] bottom-[2px] left-[2px] bg-zinc-950 pointer-events-none">
                       <div className="absolute inset-0 bg-gradient-to-b from-orange-600/40 via-orange-700/15 to-transparent" />
                       <div
                         className="opacity-30 mix-blend-overlay absolute inset-0"
@@ -230,7 +230,7 @@ export default function HeroSectionEN() {
                           animation: 'dots-move 8s linear infinite',
                         }}
                       />
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-orange-500/30 blur-2xl rounded-full pointer-events-none transition-colors duration-500 group-hover:bg-orange-400/55" />
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-orange-500/30 blur-2xl rounded-full transition-colors duration-500 group-hover:bg-orange-400/55" />
                     </div>
 
                     <span className="relative z-10 text-white/90 transition-colors group-hover:text-white">
