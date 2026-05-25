@@ -218,22 +218,6 @@ export default function AboutSection() {
                   />
                 </button>
 
-                {/* Pull-quote — Playfair italic + brand-gradient. Pulled from bio's closing line. */}
-                <blockquote className="relative mt-5 pl-5 border-l-2 border-[#175ae8]/40">
-                  <p
-                    className="text-[1.2rem] lg:text-[1.4rem] italic font-medium leading-[1.3] tracking-[-0.01em]"
-                    style={{
-                      fontFamily: "'Playfair Display', serif",
-                      background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}
-                  >
-                    Моя ціль — щоб ти займався продуктом, а операційку забрала система.
-                  </p>
-                </blockquote>
-
                 {/* Separator — hairline gradient (matches site canon) */}
                 <div className="h-px bg-gradient-to-r from-transparent via-slate-300/60 to-transparent my-6" />
 
