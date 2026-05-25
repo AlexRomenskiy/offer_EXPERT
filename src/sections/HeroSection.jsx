@@ -102,7 +102,7 @@ export default function HeroSection() {
         <Header />
 
         {/* Card content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[128px] pb-8 lg:pt-[140px] lg:pb-10 min-h-[inherit] flex flex-col justify-start lg:justify-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-[128px] pb-10 lg:pt-[140px] lg:pb-10 min-h-[inherit] flex flex-col justify-center">
           <div className="anim-trigger is-visible">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               {/* Left column */}
@@ -264,9 +264,9 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* PREVIEW: bottom mobile image hidden temporarily for design review.
-                  Revert by restoring the <div className="lg:col-span-5 lg:hidden">...</div>
-                  block (was wired to /Img_for_hero_mobile_v2.png). */}
+              {/* Mobile bottom image hidden — Hero is text-only on mobile.
+                  To restore: re-insert the <div className="lg:col-span-5 lg:hidden">...</div>
+                  block wired to /Img_for_hero_mobile_v2.png. */}
             </div>
           </div>
         </div>
