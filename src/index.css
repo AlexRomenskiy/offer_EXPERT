@@ -463,13 +463,38 @@ iconify-icon {
   a, button, [role="button"], [role="switch"] {
     touch-action: manipulation;
   }
-}
 
-/* The earlier `.scroll-focus` wrapper-based cinematic blur was removed
-   because per-section filter+composite layers were intercepting clicks
-   intermittently across viewport positions. Effect can be re-added later
-   via a non-wrapping technique (e.g. per-section CSS or scroll-driven
-   animations) once we can verify it doesn't break hit-testing. */
+  /* ====== Cinematic scroll-focus — restored.
+     Earlier suspected of breaking clicks; the actual culprit was the mobile
+     menu sitting in normal flow inside <header>, which expanded the header's
+     hit-test box to ~400px tall and intercepted everything in the upper half
+     of the viewport. With the menu now `position: absolute`, scroll-focus is
+     safe to re-enable. Pairs with AnimObserver's `.is-visible` toggle. ====== */
+  .scroll-focus {
+    filter: blur(6px);
+    opacity: 0.5;
+    transition: filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .scroll-focus.is-visible {
+    filter: blur(0);
+    opacity: 1;
+  }
+  @media (max-width: 768px) {
+    .scroll-focus {
+      filter: blur(3px);
+      opacity: 0.65;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-focus,
+    .scroll-focus.is-visible {
+      filter: none;
+      opacity: 1;
+      transition: none;
+    }
+  }
+}
 
 /* ====== Corner brackets (master-template glass-panel chrome) ====== */
 .corner-tl,

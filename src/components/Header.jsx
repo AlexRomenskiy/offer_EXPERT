@@ -211,12 +211,15 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — absolute so the closed state doesn't expand <header>'s
+          hit-test box. Was previously in normal flow with `invisible`, which
+          preserved layout height (~400px) and made the whole top half of the
+          viewport intercept clicks before they reached the sections below. */}
       <div
-        className={`md:hidden mx-auto max-w-7xl px-6 mt-3 origin-top transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`md:hidden absolute top-full left-0 right-0 mx-auto max-w-7xl px-6 mt-3 origin-top transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           mobileOpen
-            ? 'transform scale-100 opacity-100 visible'
-            : 'transform scale-95 opacity-0 invisible'
+            ? 'transform scale-100 opacity-100 visible pointer-events-auto'
+            : 'transform scale-95 opacity-0 invisible pointer-events-none'
         }`}
       >
         <div
