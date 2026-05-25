@@ -13,15 +13,15 @@ export default function LandingPage() {
   return (
     <>
       <HeroSection />
-      <PainSection />
-      <TransformationSection />
-      <SystemIncludesSection />
-      <CaseStudySection />
-      <TestimonialsSection />
-      <PricingSection />
-      <AboutSection />
-      <FAQSection />
-      <FinalCTASection />
+      <div className="scroll-focus anim-trigger"><PainSection /></div>
+      <div className="scroll-focus anim-trigger"><TransformationSection /></div>
+      <div className="scroll-focus anim-trigger"><SystemIncludesSection /></div>
+      <div className="scroll-focus anim-trigger"><CaseStudySection /></div>
+      <div className="scroll-focus anim-trigger"><TestimonialsSection /></div>
+      <div className="scroll-focus anim-trigger"><PricingSection /></div>
+      <div className="scroll-focus anim-trigger"><AboutSection /></div>
+      <div className="scroll-focus anim-trigger"><FAQSection /></div>
+      <div className="scroll-focus anim-trigger"><FinalCTASection /></div>
     </>
   );
 }

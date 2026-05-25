@@ -456,6 +456,39 @@ iconify-icon {
     transform: translateY(0);
     opacity: 1;
   }
+
+  /* ====== Cinematic scroll-focus — sections below viewport read as out-of-focus,
+     snap into focus as they cross into view. Uses only filter+opacity so that
+     `sticky` children (Pain header, Pricing card, FAQ panel) aren't broken by a
+     transform on the wrapper. Pairs with the existing AnimObserver which toggles
+     `.is-visible` on `.anim-trigger`. ====== */
+  .scroll-focus {
+    filter: blur(6px);
+    opacity: 0.5;
+    transition: filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .scroll-focus:not(.is-visible) {
+    will-change: filter, opacity;
+  }
+  .scroll-focus.is-visible {
+    filter: blur(0);
+    opacity: 1;
+  }
+  @media (max-width: 768px) {
+    .scroll-focus {
+      filter: blur(3px);
+      opacity: 0.65;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-focus,
+    .scroll-focus.is-visible {
+      filter: none;
+      opacity: 1;
+      transition: none;
+    }
+  }
 }
 
 /* ====== Corner brackets (master-template glass-panel chrome) ====== */
