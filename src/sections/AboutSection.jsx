@@ -4,12 +4,7 @@ const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
 
 // Portrait: /Alexander Romenskyi.JPG — tight 1:1 close-up, dark turtleneck.
-// object-[center_28%] keeps eyes in the upper third on both 4:5 (mobile) and stretched-taller (desktop) crops.
-
-const stats = [
-  { icon: 'solar:globe-linear', text: '5 країн · UA · US · CA · EG · GE' },
-  { icon: 'solar:users-group-rounded-linear', text: 'Коучи · B2B · e-commerce' },
-];
+// object-[center_28%] keeps eyes in the upper third on the locked 4:5 crop.
 
 const socialLinks = [
   { label: 'LinkedIn', icon: 'simple-icons:linkedin', url: 'https://www.linkedin.com/in/alex-romenskyi/' },
@@ -94,10 +89,10 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 anim-trigger">
 
           {/* ===========================================
-              LEFT — Photo card. Stretches to right column height on lg.
+              LEFT — Photo card. Locked 4:5 aspect, sticks to top so it never stretches past one screen.
               =========================================== */}
-          <div className="lg:col-span-5 anim-fade-up" style={{ transitionDelay: '0.10s' }}>
-            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full lg:min-h-[540px] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
+          <div className="lg:col-span-5 lg:self-start lg:sticky lg:top-24 anim-fade-up" style={{ transitionDelay: '0.10s' }}>
+            <div className="relative aspect-[4/5] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
 
               {/* Portrait */}
               <img
@@ -254,23 +249,6 @@ export default function AboutSection() {
                   ))}
                 </ul>
               </div>
-            </div>
-
-            {/* Stats chips */}
-            <div
-              className="flex flex-wrap gap-2 justify-center md:justify-start anim-fade-up"
-              style={{ transitionDelay: '0.22s' }}
-            >
-              {stats.map((s) => (
-                <span
-                  key={s.text}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/55 backdrop-blur-md border border-white/60 px-3.5 py-1.5 text-[12px] text-slate-700"
-                  style={{ fontFamily: fontStack }}
-                >
-                  <iconify-icon icon={s.icon} width="14" height="14" style={{ color: '#175ae8' }} />
-                  {s.text}
-                </span>
-              ))}
             </div>
 
             {/* Social links */}
