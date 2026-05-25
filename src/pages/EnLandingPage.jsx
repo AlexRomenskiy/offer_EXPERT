@@ -19,16 +19,16 @@ export default function EnLandingPage() {
   return (
     <>
       <HeroSectionEN />
-      <div className="scroll-focus anim-trigger"><PainSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><TransformationSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><SystemIncludesSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><CaseStudySectionEN /></div>
-      <div className="scroll-focus anim-trigger"><TestimonialsSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><PricingSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><AboutSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><GuaranteeSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><FAQSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><FinalCTASectionEN /></div>
+      <PainSectionEN />
+      <TransformationSectionEN />
+      <SystemIncludesSectionEN />
+      <CaseStudySectionEN />
+      <TestimonialsSectionEN />
+      <PricingSectionEN />
+      <AboutSectionEN />
+      <GuaranteeSectionEN />
+      <FAQSectionEN />
+      <FinalCTASectionEN />
     </>
   );
 }

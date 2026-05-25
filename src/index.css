@@ -457,35 +457,6 @@ iconify-icon {
     opacity: 1;
   }
 
-  /* ====== Cinematic scroll-focus — DESKTOP-ONLY.
-     Sections below viewport read as out-of-focus and snap into focus as they
-     cross in. Restricted to fine-pointer + hover-capable + ≥1024px because on
-     Android Chrome the per-section composite layers (one per `filter` wrapper)
-     caused intermittent hit-testing failures — taps after the first would
-     occasionally be swallowed. Touch devices get no filter, no will-change,
-     no composite layers — buttons behave natively. Effect pairs with the
-     existing AnimObserver which toggles `.is-visible` on `.anim-trigger`. ====== */
-  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
-    .scroll-focus {
-      filter: blur(6px);
-      opacity: 0.5;
-      transition: filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .scroll-focus.is-visible {
-      filter: blur(0);
-      opacity: 1;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-focus,
-    .scroll-focus.is-visible {
-      filter: none;
-      opacity: 1;
-      transition: none;
-    }
-  }
-
   /* Touch input — kill the 300ms double-tap-zoom delay on iOS/Android for
      all interactive elements. `manipulation` allows pan + pinch zoom but
      drops the wait-for-double-tap that swallows quick second taps. */
@@ -493,6 +464,12 @@ iconify-icon {
     touch-action: manipulation;
   }
 }
+
+/* The earlier `.scroll-focus` wrapper-based cinematic blur was removed
+   because per-section filter+composite layers were intercepting clicks
+   intermittently across viewport positions. Effect can be re-added later
+   via a non-wrapping technique (e.g. per-section CSS or scroll-driven
+   animations) once we can verify it doesn't break hit-testing. */
 
 /* ====== Corner brackets (master-template glass-panel chrome) ====== */
 .corner-tl,
