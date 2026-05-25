@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocale } from '../hooks/useLocale';
 import LanguageSwitcher from './LanguageSwitcher';
+import { BOOKING_URL_UA, BOOKING_URL_EN } from '../config/booking';
 
 const navItemsByLocale = {
   ua: [
@@ -27,6 +28,7 @@ export default function Header() {
   const locale = useLocale();
   const navItems = navItemsByLocale[locale];
   const ctaText = ctaTextByLocale[locale];
+  const bookingUrl = locale === 'en' ? BOOKING_URL_EN : BOOKING_URL_UA;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -103,20 +105,15 @@ export default function Header() {
 
             {/* Actions — aligned with image card right edge */}
             <div className="flex items-center gap-1.5 md:gap-2">
-              {/* Language switcher — visible across breakpoints */}
-              <div className="hidden sm:block">
-                <LanguageSwitcher variant="dark" />
-              </div>
+              {/* Language switcher — visible across ALL breakpoints incl. mobile */}
+              <LanguageSwitcher variant="dark" />
 
               {/* Animated CTA button */}
               <a
-                href="#request-access"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setMobileOpen(false);
-                  const el = document.querySelector('#request-access');
-                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }}
+                href={bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
                 className="hidden md:inline-flex transition overflow-hidden group text-sm font-medium text-white rounded-full relative items-center gap-2"
                 style={{
                   background:
@@ -248,17 +245,11 @@ export default function Header() {
             </a>
           ))}
           <div className="h-px mx-6 my-1 bg-white/10" />
-          <div className="p-3 flex justify-center">
-            <LanguageSwitcher variant="dark" />
-          </div>
           <a
-            href="#request-access"
-            onClick={(e) => {
-              e.preventDefault();
-              setMobileOpen(false);
-              const el = document.querySelector('#request-access');
-              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}
+            href={bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
             className="p-4 text-center text-sm font-medium rounded-xl text-slate-950 bg-white shadow-lg"
           >
             {ctaText}

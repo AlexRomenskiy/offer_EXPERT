@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Header from '../../components/Header';
+import { BOOKING_URL_EN } from '../../config/booking';
 
 // EN channel set — drop Telegram (UA/RU), keep Instagram/WhatsApp/Email/SMS/Messenger/TikTok, add LinkedIn (B2B)
 const channels = [
@@ -200,7 +201,9 @@ export default function HeroSectionEN() {
 
                 <div className="flex justify-center lg:justify-start">
                   <a
-                    href="#request-access"
+                    href={BOOKING_URL_EN}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group inline-flex overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(234,88,12,0.5)] focus:outline-none text-sm font-medium text-white tracking-wide rounded-full px-10 relative items-center justify-center anim-fade-up"
                     style={{
                       transitionDelay: '0.42s',
@@ -244,20 +247,9 @@ export default function HeroSectionEN() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 relative lg:hidden">
-                <div
-                  className="relative aspect-square lg:aspect-[4/3] rounded-[24px] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.45)] overflow-hidden anim-fade-up"
-                  style={{ transitionDelay: '0.50s' }}
-                >
-                  <img
-                    src="/Img_for_hero_mobile_v2.png"
-                    alt="Sales system command center"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent z-10" />
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_45%)] pointer-events-none z-10" />
-                </div>
-              </div>
+              {/* PREVIEW: bottom mobile image hidden temporarily for design review.
+                  Mirror of the UA Hero change. Restore by reinstating the
+                  <div className="lg:col-span-5 lg:hidden">...</div> block. */}
             </div>
           </div>
         </div>

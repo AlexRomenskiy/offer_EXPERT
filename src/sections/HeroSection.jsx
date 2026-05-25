@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
+import { BOOKING_URL_UA } from '../config/booking';
 
 const channels = [
   { name: 'Telegram', icon: 'simple-icons:telegram' },
@@ -211,7 +212,9 @@ export default function HeroSection() {
                 {/* Single CTA — orange spinning beam */}
                 <div className="flex justify-center lg:justify-start">
                 <a
-                  href="#request-access"
+                  href={BOOKING_URL_UA}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group inline-flex overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(234,88,12,0.5)] focus:outline-none text-sm font-medium text-white tracking-wide rounded-full px-10 relative items-center justify-center anim-fade-up"
                   style={{
                     transitionDelay: '0.42s',
@@ -260,26 +263,9 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Right column — embedded dashboard card. Visible on mobile/tablet (Path B: separate card under text); hidden on lg+ (desktop has dashboard baked into hero-bg_17.png). Eventually replaceable with looping video showing dashboard state cycles. */}
-              <div className="lg:col-span-5 relative lg:hidden">
-                <div
-                  className="relative aspect-square lg:aspect-[4/3] rounded-[24px] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.45)] overflow-hidden anim-fade-up"
-                  style={{ transitionDelay: '0.50s' }}
-                >
-                  {/* The hero image (system command center) */}
-                  <img
-                    src="/Img_for_hero_mobile_v2.png"
-                    alt="Командний центр системи продажу"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-
-                  {/* Subtle glass highlight on top edge */}
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent z-10" />
-
-                  {/* Soft inner gradient for premium framing */}
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_45%)] pointer-events-none z-10" />
-                </div>
-              </div>
+              {/* PREVIEW: bottom mobile image hidden temporarily for design review.
+                  Revert by restoring the <div className="lg:col-span-5 lg:hidden">...</div>
+                  block (was wired to /Img_for_hero_mobile_v2.png). */}
             </div>
           </div>
         </div>

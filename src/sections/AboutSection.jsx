@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BOOKING_URL_UA } from '../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
@@ -30,11 +31,6 @@ const principles = [
 
 export default function AboutSection() {
   const [bioExpanded, setBioExpanded] = useState(false);
-
-  const scrollToCTA = (e) => {
-    e.preventDefault();
-    document.querySelector('#request-access')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
     <section
@@ -284,8 +280,9 @@ export default function AboutSection() {
 
             {/* CTA */}
             <a
-              href="#request-access"
-              onClick={scrollToCTA}
+              href={BOOKING_URL_UA}
+              target="_blank"
+              rel="noopener noreferrer"
               className="self-center lg:self-start inline-flex items-center gap-2.5 rounded-full text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] transition-all duration-300 hover:translate-y-[-1px] anim-fade-up"
               style={{
                 transitionDelay: '0.35s',

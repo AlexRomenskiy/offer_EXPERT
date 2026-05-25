@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { reopenCookiePreferences } from '../../components/CookieConsentBanner';
+import { BOOKING_URL_EN as BOOKING_URL } from '../../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/alex-romenskyi/';
-const BOOKING_URL = 'https://calendly.com/alexander-romenskii/30min';
 
 const legalLinks = [
   { label: 'Privacy Policy', to: '/en/privacy' },

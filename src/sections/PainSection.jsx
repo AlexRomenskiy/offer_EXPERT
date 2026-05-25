@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import useOneAtATimeSwipe from '../hooks/useOneAtATimeSwipe';
 
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
@@ -51,35 +51,8 @@ const cards = [
 const CARD_COUNT = cards.length;
 
 export default function PainSection() {
-  const carouselRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const el = carouselRef.current;
-    if (!el) return;
-
-    const onScroll = () => {
-      const first = el.firstElementChild;
-      if (!first) return;
-      const step = first.offsetWidth + 16;
-      if (step <= 0) return;
-      const idx = Math.round(el.scrollLeft / step);
-      setActiveIndex(Math.max(0, Math.min(idx, CARD_COUNT - 1)));
-    };
-
-    onScroll();
-    el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const scrollToIndex = (i) => {
-    const el = carouselRef.current;
-    if (!el) return;
-    const card = el.children[i];
-    if (card) {
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-    }
-  };
+  const { activeIndex, goTo, onTouchStart, onTouchEnd, trackRef, trackStyle } =
+    useOneAtATimeSwipe(CARD_COUNT);
 
   return (
     <section
@@ -144,17 +117,23 @@ export default function PainSection() {
           </div>
 
           {/* =====================================================
-              RIGHT — carousel (mobile) / stack (desktop)
+              RIGHT — controlled one-step swipe (mobile) / vertical stack (desktop)
               ===================================================== */}
           <div className="lg:col-span-7">
             <div
-              ref={carouselRef}
-              className="anim-trigger flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 scroll-pl-6 sm:mx-0 sm:px-0 sm:scroll-pl-0 lg:flex-col lg:gap-6 lg:overflow-visible lg:snap-none [&::-webkit-scrollbar]:hidden"
-              style={{ scrollbarWidth: 'none' }}
+              className="anim-trigger overflow-hidden -mx-6 sm:mx-0 lg:overflow-visible"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
             >
-              {cards.map((card, i) => (
-                <PainCard key={card.id} card={card} delay={`${0.05 + i * 0.05}s`} />
-              ))}
+              <div
+                ref={trackRef}
+                className="flex gap-4 px-6 sm:px-0 lg:flex-col lg:gap-6 lg:px-0"
+                style={trackStyle}
+              >
+                {cards.map((card, i) => (
+                  <PainCard key={card.id} card={card} delay={`${0.05 + i * 0.05}s`} />
+                ))}
+              </div>
             </div>
 
             {/* Mobile-only dot pagination — sits below the carousel on light page bg */}
@@ -163,7 +142,7 @@ export default function PainSection() {
                 <button
                   key={i}
                   type="button"
-                  onClick={() => scrollToIndex(i)}
+                  onClick={() => goTo(i)}
                   aria-label={`Перейти до картки ${i + 1}`}
                   className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
                     i === activeIndex
@@ -189,7 +168,7 @@ export default function PainSection() {
 function PainCard({ card, delay }) {
   return (
     <div
-      className="group relative rounded-[28px] overflow-hidden bg-slate-950 shadow-none lg:shadow-[0_14px_36px_rgba(15,23,42,0.10)] anim-fade-up snap-start shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[4/3] lg:aspect-video"
+      className="group relative rounded-[28px] overflow-hidden bg-slate-950 shadow-none lg:shadow-[0_14px_36px_rgba(15,23,42,0.10)] anim-fade-up shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[4/3] lg:aspect-video"
       style={{ transitionDelay: delay }}
     >
       {/* Hyperreal background image — full-bleed */}

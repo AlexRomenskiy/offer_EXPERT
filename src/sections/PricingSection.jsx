@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { BOOKING_URL_UA } from '../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -186,11 +187,6 @@ export default function PricingSection() {
   // ============== Active tier ==============
   const [activeKey, setActiveKey] = useState('генератор');
   const active = pricing.find((p) => p.key === activeKey);
-
-  const scrollToCTA = (e) => {
-    e.preventDefault();
-    document.querySelector('#request-access')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
     <section
@@ -566,8 +562,9 @@ export default function PricingSection() {
                 {/* CTA pinned bottom */}
                 <div className="mt-auto">
                   <a
-                    href="#request-access"
-                    onClick={scrollToCTA}
+                    href={BOOKING_URL_UA}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-full text-white text-[0.92rem] font-medium transition-all hover:translate-y-[-1px] active:scale-[0.98]"
                     style={{
                       fontFamily: fontStack,
@@ -597,7 +594,6 @@ export default function PricingSection() {
             activeKey={activeKey}
             setActiveKey={setActiveKey}
             active={active}
-            onCTA={scrollToCTA}
           />
         </div>
 
@@ -609,7 +605,7 @@ export default function PricingSection() {
 /* ============================================================================
    Mobile pricing card — single light glass with tab switcher (original variant)
    ============================================================================ */
-function MobilePricingCard({ activeKey, setActiveKey, active, onCTA }) {
+function MobilePricingCard({ activeKey, setActiveKey, active }) {
   return (
     <div className="relative anim-fade-up">
       <div
@@ -733,8 +729,9 @@ function MobilePricingCard({ activeKey, setActiveKey, active, onCTA }) {
 
           {/* CTA */}
           <a
-            href="#request-access"
-            onClick={onCTA}
+            href={BOOKING_URL_UA}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full inline-flex h-12 items-center justify-center rounded-full text-white text-[0.92rem] font-medium transition-all hover:translate-y-[-1px]"
             style={{
               fontFamily: fontStack,

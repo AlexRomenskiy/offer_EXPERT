@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
 import { pricing } from './PricingSection';
+import useOneAtATimeSwipe from '../hooks/useOneAtATimeSwipe';
 
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
@@ -9,35 +9,8 @@ const monoStack = "'JetBrains Mono', monospace";
 const allTestimonials = pricing.flatMap((p) => p.testimonials);
 
 export default function TestimonialsSection() {
-  const carouselRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const el = carouselRef.current;
-    if (!el) return;
-
-    const onScroll = () => {
-      const first = el.firstElementChild;
-      if (!first) return;
-      const step = first.offsetWidth + 16; // gap-4 = 16px
-      if (step <= 0) return;
-      const idx = Math.round(el.scrollLeft / step);
-      setActiveIndex(Math.max(0, Math.min(idx, allTestimonials.length - 1)));
-    };
-
-    onScroll();
-    el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const scrollToIndex = (i) => {
-    const el = carouselRef.current;
-    if (!el) return;
-    const card = el.children[i];
-    if (card) {
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-    }
-  };
+  const { activeIndex, goTo, onTouchStart, onTouchEnd, trackRef, trackStyle } =
+    useOneAtATimeSwipe(allTestimonials.length);
 
   return (
     <section
@@ -72,19 +45,25 @@ export default function TestimonialsSection() {
           </h2>
         </div>
 
-        {/* Horizontal swipe carousel — mobile native */}
+        {/* Controlled one-step swipe carousel — mobile */}
         <div
-          ref={carouselRef}
-          className="anim-trigger flex gap-4 overflow-x-auto snap-x snap-mandatory pb-6 -mx-6 px-6 scroll-pl-6 [&::-webkit-scrollbar]:hidden"
-          style={{ scrollbarWidth: 'none' }}
+          className="anim-trigger overflow-hidden -mx-6 pb-6"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
-          {allTestimonials.map((t, i) => (
-            <TestimonialCard
-              key={i}
-              testimonial={t}
-              delay={`${0.05 + (i % 4) * 0.05}s`}
-            />
-          ))}
+          <div
+            ref={trackRef}
+            className="flex gap-4 px-6"
+            style={trackStyle}
+          >
+            {allTestimonials.map((t, i) => (
+              <TestimonialCard
+                key={i}
+                testimonial={t}
+                delay={`${0.05 + (i % 4) * 0.05}s`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Dot pagination */}
@@ -93,7 +72,7 @@ export default function TestimonialsSection() {
             <button
               key={i}
               type="button"
-              onClick={() => scrollToIndex(i)}
+              onClick={() => goTo(i)}
               aria-label={`Перейти до відгуку ${i + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
                 i === activeIndex
@@ -114,19 +93,13 @@ export default function TestimonialsSection() {
 function TestimonialCard({ testimonial, delay }) {
   return (
     <div
-      className="relative rounded-[24px] overflow-hidden bg-white/55 backdrop-blur-xl border border-white/60 anim-fade-up snap-start shrink-0 w-[85vw] sm:w-[420px] flex flex-col"
+      className="relative rounded-[24px] overflow-hidden bg-white border border-slate-200/70 anim-fade-up shrink-0 w-[85vw] sm:w-[420px] flex flex-col"
       style={{
         boxShadow: '0 20px 50px rgba(148,163,184,0.14), 0 6px 18px rgba(15,23,42,0.05)',
         transitionDelay: delay,
         minHeight: '320px',
       }}
     >
-      {/* Glass highlight */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.55),transparent_60%)] pointer-events-none rounded-[24px]"
-      />
-
       <div className="relative z-10 flex flex-col h-full p-6 sm:p-7">
         {/* Blue accent bar — visual cousin to desktop testimonials border-l */}
         <span

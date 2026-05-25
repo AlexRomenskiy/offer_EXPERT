@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BOOKING_URL_EN } from '../../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
@@ -221,11 +222,9 @@ export default function FAQSectionEN() {
           <p className="text-[0.95rem] text-slate-600">
             Didn’t find your answer?{' '}
             <a
-              href="#request-access"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#request-access')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }}
+              href={BOOKING_URL_EN}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#175ae8] font-medium hover:text-[#0e47c8] transition-colors underline decoration-[#175ae8]/30 underline-offset-4 hover:decoration-[#175ae8]"
             >
               Ask on the call

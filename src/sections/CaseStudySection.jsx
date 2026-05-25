@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BOOKING_URL_UA } from '../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -17,11 +18,6 @@ const scope = [
 
 export default function CaseStudySection() {
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const scrollToCTA = (e) => {
-    e.preventDefault();
-    document.querySelector('#request-access')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
     <section
@@ -258,8 +254,9 @@ export default function CaseStudySection() {
 
             {/* === CTA === */}
             <a
-              href="#request-access"
-              onClick={scrollToCTA}
+              href={BOOKING_URL_UA}
+              target="_blank"
+              rel="noopener noreferrer"
               className="anim-fade-up self-center lg:self-start inline-flex items-center gap-2.5 rounded-full text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] transition-all duration-300 hover:translate-y-[-1px]"
               style={{
                 transitionDelay: '0.25s',

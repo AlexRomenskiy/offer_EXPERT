@@ -17,6 +17,7 @@ import ContactsEN from './pages/legal/en/ContactsEN';
 
 import CookieConsentBanner from './components/CookieConsentBanner';
 import AnalyticsGate from './components/AnalyticsGate';
+import Preloader from './components/Preloader';
 
 function GlobalBackground() {
   return (
@@ -116,6 +117,7 @@ export default function App() {
 
         <CookieConsentBanner />
         <AnalyticsGate />
+        <Preloader />
       </div>
     </BrowserRouter>
   );

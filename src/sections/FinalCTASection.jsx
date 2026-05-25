@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
 import { reopenCookiePreferences } from '../components/CookieConsentBanner';
+import { BOOKING_URL_UA as BOOKING_URL, TELEGRAM_URL } from '../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
-
-const TELEGRAM_URL = 'https://t.me/alexander_romenskyi';
-const BOOKING_URL = 'https://calendly.com/alex-romenskii/craft-lions';
 
 const legalLinks = [
   { label: 'Privacy Policy', to: '/privacy' },

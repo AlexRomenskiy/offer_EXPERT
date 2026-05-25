@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { BOOKING_URL_UA } from '../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -110,14 +111,12 @@ export default function TransformationSection() {
           </div>
         </div>
 
-        {/* CTA — center, brand-gradient, scrolls to request-access */}
+        {/* CTA — center, brand-gradient, opens Calendly */}
         <div className="flex justify-center mt-10 lg:mt-14 anim-trigger">
           <a
-            href="#request-access"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#request-access')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}
+            href={BOOKING_URL_UA}
+            target="_blank"
+            rel="noopener noreferrer"
             className="anim-fade-up inline-flex items-center gap-2.5 rounded-full text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] transition-all duration-300 hover:translate-y-[-1px]"
             style={{
               transitionDelay: '0.20s',
