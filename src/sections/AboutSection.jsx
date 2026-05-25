@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
 
@@ -32,6 +34,8 @@ const principles = [
 ];
 
 export default function AboutSection() {
+  const [bioExpanded, setBioExpanded] = useState(false);
+
   const scrollToCTA = (e) => {
     e.preventDefault();
     document.querySelector('#request-access')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -158,16 +162,61 @@ export default function AboutSection() {
                   Спеціалізація
                 </p>
 
-                {/* Bio paragraph */}
-                <p
-                  className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
+                {/* Bio paragraphs — mobile collapsed (mask-fade after ~first sentence,
+                    before "в Україні, Грузії..." enumeration). md+ always fully visible. */}
+                <div className="relative">
+                  <div
+                    className={`overflow-hidden transition-[max-height] duration-500 ease-out md:!max-h-none ${
+                      bioExpanded ? 'max-h-[1600px]' : 'max-h-[140px] bio-mask-collapsed'
+                    }`}
+                  >
+                    <div className="space-y-4">
+                      <p
+                        className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
+                        style={{ fontFamily: fontStack }}
+                      >
+                        За 7 років у маркетингу я побудував десятки систем
+                        продажів для різних сфер бізнесу: від e-commerce до
+                        інфобізу в Україні, Грузії, Єгипті, США та Канаді.
+                      </p>
+                      <p
+                        className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
+                        style={{ fontFamily: fontStack }}
+                      >
+                        Головний інсайт для експертів, підприємців, коучів та
+                        крієйторів: ти втрачаєш свої можливості і, як результат,
+                        гроші, не тому, що не отримав ще один «диплом», який
+                        дасть дозвіл йти в масштаб. Ти втрачаєш їх через слабке
+                        позиціонування (намагаючись бути корисним усім і
+                        продавати всім), слабку систему продажів (або взагалі
+                        її відсутність), упаковку та хаос у процесах.
+                      </p>
+                      <p
+                        className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
+                        style={{ fontFamily: fontStack }}
+                      >
+                        Я застосую свій досвід та навички, щоб повністю
+                        реалізувати твій справжній потенціал.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile-only Читати далі / Згорнути */}
+                <button
+                  type="button"
+                  onClick={() => setBioExpanded(!bioExpanded)}
+                  aria-expanded={bioExpanded}
+                  className="md:hidden mt-3 inline-flex items-center gap-1.5 text-[14px] text-[#175ae8] font-medium hover:text-[#0e47c8] transition-colors"
                   style={{ fontFamily: fontStack }}
                 >
-                  За 7 років я побудував десятки екосистем: від лендінгів до
-                  складної аналітики. Головний інсайт — круті експерти втрачають
-                  гроші не через брак знань, а через слабку презентацію та
-                  хаос у процесах.
-                </p>
+                  {bioExpanded ? 'Згорнути' : 'Читати далі'}
+                  <iconify-icon
+                    icon={bioExpanded ? 'solar:alt-arrow-up-linear' : 'solar:alt-arrow-down-linear'}
+                    width="14"
+                    height="14"
+                  />
+                </button>
 
                 {/* Pull-quote — Playfair italic + brand-gradient. Pulled from bio's closing line. */}
                 <blockquote className="relative mt-5 pl-5 border-l-2 border-[#175ae8]/40">
