@@ -47,7 +47,7 @@ export default function TestimonialsSection() {
 
         {/* Controlled one-step swipe carousel — mobile */}
         <div
-          className="anim-trigger overflow-hidden -mx-6 pb-6"
+          className="anim-trigger overflow-hidden -mx-6"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -95,7 +95,6 @@ function TestimonialCard({ testimonial, delay }) {
     <div
       className="relative rounded-[24px] overflow-hidden bg-white border border-slate-200/70 anim-fade-up shrink-0 w-[85vw] sm:w-[420px] flex flex-col"
       style={{
-        boxShadow: '0 20px 50px rgba(148,163,184,0.14), 0 6px 18px rgba(15,23,42,0.05)',
         transitionDelay: delay,
         minHeight: '320px',
       }}
