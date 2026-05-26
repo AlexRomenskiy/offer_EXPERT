@@ -116,7 +116,7 @@ export default function SystemIncludesSection() {
             title="Аналітика"
             description="Прозорі цифри від першого кліку до повторних продажів."
             pillLabel="Sync"
-            mockup={<AnalyticsMockup />}
+            mockup={<ImageMockup src="/Images/4. 5 analytics - UA.png" alt="Аналітика з donut-атрибуцією по каналах" />}
             delay="0.25s"
           />
 
@@ -125,7 +125,7 @@ export default function SystemIncludesSection() {
             title="Трафік"
             description="Реклама в місцях, де є твоя аудиторія."
             pillLabel="Активна"
-            mockup={<TrafficMockup />}
+            mockup={<ImageMockup src="/Images/4. 6 Advertising - UA.png" alt="Реклама Meta Ads з живим лічильником заявок" />}
             premium
             delay="0.30s"
           />
