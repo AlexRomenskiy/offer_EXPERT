@@ -9,7 +9,7 @@ const monoStack = "'JetBrains Mono', monospace";
 const allTestimonials = pricing.flatMap((p) => p.testimonials);
 
 export default function TestimonialsSection() {
-  const { activeIndex, goTo, onTouchStart, onTouchEnd, trackRef, trackStyle } =
+  const { activeIndex, goTo, containerRef, trackRef, trackStyle } =
     useOneAtATimeSwipe(allTestimonials.length);
 
   return (
@@ -47,9 +47,8 @@ export default function TestimonialsSection() {
 
         {/* Controlled one-step swipe carousel — mobile */}
         <div
-          className="anim-trigger overflow-hidden -mx-6"
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
+          ref={containerRef}
+          className="anim-trigger overflow-hidden touch-pan-y -mx-6"
         >
           <div
             ref={trackRef}

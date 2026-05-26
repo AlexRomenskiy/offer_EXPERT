@@ -51,7 +51,7 @@ const cards = [
 const CARD_COUNT = cards.length;
 
 export default function PainSection() {
-  const { activeIndex, goTo, onTouchStart, onTouchEnd, trackRef, trackStyle } =
+  const { activeIndex, goTo, containerRef, trackRef, trackStyle } =
     useOneAtATimeSwipe(CARD_COUNT);
 
   return (
@@ -121,9 +121,8 @@ export default function PainSection() {
               ===================================================== */}
           <div className="lg:col-span-7">
             <div
-              className="anim-trigger overflow-hidden -mx-6 sm:mx-0 lg:overflow-visible"
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
+              ref={containerRef}
+              className="anim-trigger overflow-hidden touch-pan-y -mx-6 sm:mx-0 lg:overflow-visible lg:touch-auto"
             >
               <div
                 ref={trackRef}
