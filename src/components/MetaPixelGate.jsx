@@ -64,5 +64,25 @@ export default function MetaPixelGate() {
     window.fbq('track', 'PageView');
   }, [pathname]);
 
+  // Global Lead tracking on Calendly clicks. Capture phase → fires even with target="_blank".
+  // Source is auto-detected from closest [data-cta-source] or [id] ancestor.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const onClick = (e) => {
+      if (!window.fbq) return;
+      const link = e.target.closest?.('a[href*="calendly.com"]');
+      if (!link) return;
+      const srcEl = link.closest('[data-cta-source]') || link.closest('[id]');
+      const source = srcEl?.dataset?.ctaSource || srcEl?.id || 'unknown';
+      const market = link.href.includes('alex-romenskii') ? 'ua' : 'en';
+      window.fbq('track', 'Lead', {
+        content_name: `calendly_${source}`,
+        content_category: market,
+      });
+    };
+    document.addEventListener('click', onClick, { capture: true });
+    return () => document.removeEventListener('click', onClick, { capture: true });
+  }, []);
+
   return null;
 }
