@@ -61,8 +61,12 @@ export default function Preloader() {
         pointerEvents: ready ? 'none' : 'auto',
       }}
     >
+      {/* mark-on-light.svg has a transparent canvas (no background rect, unlike
+          the "on-dark" variants whose square fill IS the brand frame). We tint
+          the dark lion to soft white via filter so it reads cleanly against the
+          deep-navy preloader bg without a visible square around it. */}
       <img
-        src="/logo/mark-on-dark.png"
+        src="/logo/mark-on-light.svg"
         alt=""
         width="64"
         height="64"
@@ -70,6 +74,7 @@ export default function Preloader() {
           width: 64,
           height: 64,
           objectFit: 'contain',
+          filter: 'brightness(0) invert(1)',
           animation: 'preloaderPulse 1.6s ease-in-out infinite',
         }}
         onError={(e) => {
