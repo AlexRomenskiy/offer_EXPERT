@@ -88,7 +88,7 @@ export default function SystemIncludesSection() {
             title="Лендинг"
             description="Від однієї сторінки до повної структури під твій продукт."
             pillLabel="Mobile-ready"
-            mockup={<LandingMockup />}
+            mockup={<ImageMockup src="/Images/4. 2 Landing page - UA.png" alt="Лендинг з УТП і живою заявкою" />}
             delay="0.10s"
           />
 
@@ -97,7 +97,7 @@ export default function SystemIncludesSection() {
             title="Лід-магніт + Тріпваєр"
             description="Ловить контакт і підвищує середній чек."
             pillLabel="Вхід"
-            mockup={<LeadMagnetMockup />}
+            mockup={<ImageMockup src="/Images/4. 3 lead magnet_tripwire - UA.png" alt="Лід-магніт і тріпваєр з живою оплатою" />}
             delay="0.15s"
           />
 
@@ -107,7 +107,7 @@ export default function SystemIncludesSection() {
             description="Єдина база клієнтів, діалог 24/7 та прогрів до покупки."
             pillLabel="Live"
             pillVariant="green"
-            mockup={<ChatBotMockup />}
+            mockup={<ImageMockup src="/Images/4. 4 chatbot - UA.png" alt="Чат-бот з живою заявкою на розбір" />}
             delay="0.20s"
           />
 
