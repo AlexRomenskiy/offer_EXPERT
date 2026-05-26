@@ -59,7 +59,7 @@ export default function HeroSectionEN() {
       className="relative p-2 sm:p-5"
     >
       <div
-        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden min-h-[88vh] sm:min-h-[calc(100vh-40px)]"
+        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden sm:min-h-[calc(100vh-40px)]"
         style={{
           boxShadow: [
             '0 30px 50px rgba(15,23,42,0.35)',
@@ -159,7 +159,7 @@ export default function HeroSectionEN() {
                 </h1>
 
                 <p
-                  className="order-2 max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-6 text-slate-200/75 anim-fade-up pl-5"
+                  className="order-2 max-w-[28rem] text-[0.95rem] sm:text-[1rem] leading-[1.55] font-normal mb-6 text-slate-200/80 anim-fade-up pl-5"
                   style={{
                     transitionDelay: '0.28s',
                     fontFamily: fontStack,
@@ -168,17 +168,12 @@ export default function HeroSectionEN() {
                 >
                   I turn your expertise into an operating system: it captures leads,
                   warms them up, takes payment, and delivers the product.
-                  <span className="block mt-3 text-slate-300/55">
-                    While the system sells — you focus on the craft. No DM chaos, no burnout, no guesswork.
-                  </span>
                 </p>
 
-                {/* Mobile spacer — sits between CTA (order-3) and Channels (order-5). */}
-                <div className="order-4 flex-1 lg:hidden" />
-
-                {/* Channels — mobile: rendered LAST (order-5). Desktop: above CTA (lg:order-3). */}
+                {/* Channels — mobile: rendered LAST (order-5), right after the CTA
+                    with a tight `mt-5` gap. Desktop: above CTA (lg:order-3). */}
                 <div
-                  className="order-5 lg:order-3 lg:mb-7 anim-fade-up"
+                  className="order-5 lg:order-3 mt-5 lg:mt-0 lg:mb-7 anim-fade-up"
                   style={{ transitionDelay: '0.34s' }}
                 >
                   <p

@@ -59,10 +59,11 @@ export default function HeroSection() {
       className="relative p-2 sm:p-5"
     >
       {/* Hero card — full-width with thin symmetric light-bg frame around it (~8px mobile, ~20px sm+). Header lives INSIDE this card.
-          Mobile: card caps at 88vh so a sliver of the next section is visible
-          as a scroll cue. From sm+ it returns to (almost) full viewport. */}
+          Mobile: NO min-height — card sizes naturally to its content + padding,
+          so there's never an empty dark band below the channels strip.
+          From sm+ it pins to (almost) full viewport for desktop drama. */}
       <div
-        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden min-h-[88vh] sm:min-h-[calc(100vh-40px)]"
+        className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden sm:min-h-[calc(100vh-40px)]"
         style={{
           boxShadow: [
             '0 30px 50px rgba(15,23,42,0.35)',
@@ -170,9 +171,12 @@ export default function HeroSection() {
                     </span>
                 </h1>
 
-                {/* Subtitle with thin vertical accent line on the LEFT */}
+                {/* Subtitle with thin vertical accent line on the LEFT —
+                    single statement now (the "поки система продає…" soft line
+                    was cut to reduce noise). Slightly larger type to give the
+                    remaining sentence the weight it deserves. */}
                 <p
-                  className="order-2 max-w-[28rem] text-[0.8rem] sm:text-[0.95rem] leading-[1.5] font-normal mb-6 text-slate-200/75 anim-fade-up pl-5"
+                  className="order-2 max-w-[28rem] text-[0.95rem] sm:text-[1rem] leading-[1.55] font-normal mb-6 text-slate-200/80 anim-fade-up pl-5"
                   style={{
                     transitionDelay: '0.28s',
                     fontFamily: fontStack,
@@ -181,21 +185,14 @@ export default function HeroSection() {
                 >
                   Упаковую твою експертизу та продукт у систему,
                   яка залучає клієнтів і генерує продажі.
-                  <span className="block mt-3 text-slate-300/55">
-                    Поки система продає — ти займаєшся експертизою. Без вигорання, без хаосу в DM.
-                  </span>
                 </p>
 
-                {/* Mobile spacer — sits between CTA (order-3) and Channels (order-5).
-                    `flex-1` eats remaining vertical room so Channels stick to the
-                    bottom of the card. Hidden on lg+ where layout is content-flow. */}
-                <div className="order-4 flex-1 lg:hidden" />
-
-                {/* Channels — on mobile rendered LAST (order-5), as a supporting
-                    "we meet you everywhere" footer. On desktop reverts to its
-                    original position above the CTA (lg:order-3). */}
+                {/* Channels — on mobile rendered LAST (order-5), right after the CTA
+                    with a tight `mt-5` gap (no flex spacer — card height is now
+                    content-driven). On desktop reverts to its original position
+                    above the CTA (lg:order-3) with the normal lg:mb-7. */}
                 <div
-                  className="order-5 lg:order-3 lg:mb-7 anim-fade-up"
+                  className="order-5 lg:order-3 mt-5 lg:mt-0 lg:mb-7 anim-fade-up"
                   style={{ transitionDelay: '0.34s' }}
                 >
                   <p
