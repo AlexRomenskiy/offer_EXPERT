@@ -31,3 +31,10 @@ Thumbs.db
 
 # Vercel
 .vercel/
+
+# Large source media — kept locally as backup, never committed.
+# Compressed/optimized versions live in public/videos/ and are tracked.
+public/CRAFTLIONS-Widget.mp4
+public/Testimonial from Tanya - UA.MOV
+*.MOV
+
