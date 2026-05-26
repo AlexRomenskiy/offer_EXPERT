@@ -3,11 +3,9 @@
 
 User-agent: *
 Allow: /
-Disallow: /Testimonial%20from%20Tanya%20-%20UA.MOV
-Disallow: /tania-testimonial-ENG.mp4
 
-# Backup originals (uncompressed) — keep out of search.
-# The compressed versions (tania-testimonial.mp4, tania-testimonial-en.mp4)
+# Compressed videos (tania-testimonial.mp4, tania-testimonial-en.mp4)
 # remain indexable as part of /case and /en pages.
+# Uncompressed source originals are no longer in the repo.
 
 Sitemap: https://www.craftlions.ca/sitemap.xml
