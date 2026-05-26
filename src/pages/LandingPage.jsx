@@ -8,6 +8,7 @@ import PricingSection from '../sections/PricingSection';
 import AboutSection from '../sections/AboutSection';
 import FAQSection from '../sections/FAQSection';
 import FinalCTASection from '../sections/FinalCTASection';
+import VideoWidget from '../components/VideoWidget';
 
 export default function LandingPage() {
   return (
@@ -22,6 +23,7 @@ export default function LandingPage() {
       <div className="scroll-focus anim-trigger"><AboutSection /></div>
       <div className="scroll-focus anim-trigger"><FAQSection /></div>
       <div className="scroll-focus anim-trigger"><FinalCTASection /></div>
+      <VideoWidget src="/videos/craftlions-widget.mp4" />
     </>
   );
 }

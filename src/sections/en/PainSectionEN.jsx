@@ -4,10 +4,13 @@ const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
 
 /* ============================================================
-   EN-adapted pain framing per project_unified_synthesis_2026-05-17:
-   - Drop UA-trauma phrasing (тону в DM, etc.) — keep universal pains
-   - Add operator/metrics tone (+30%) — pills lean on concrete numbers
-   - Trim bruise (-30%) — less piling, sharper observations
+   EN-adapted pain framing (image-based, mirrors UA architecture):
+     PNT-01  Audience  → /Images/2. Pain - Audience - ENG.png
+     PNT-02  Client    → /Images/2. Pain - Client weight - ENG.png
+     PNT-03  Time      → /Images/2. Pain - Time.png           (universal — shared with UA)
+     PNT-04  Stack     → /Images/2. Pain - Technical stack.png (universal — shared with UA)
+     PNT-05  Revenue   → /Images/2. Pain - Revenue block - UKR.png (UKR placeholder until ENG ships)
+   Copy keeps EN tone (operator/metrics +30%, trim bruise -30%).
    ============================================================ */
 
 const cards = [
@@ -15,48 +18,38 @@ const cards = [
     id: 'PNT-01',
     title: 'Audience grows. Sales don’t.',
     slogan: 'Leads die somewhere between the DM and the checkout.',
-    pill: { label: 'Conv. 5%', tone: 'blue', dot: true },
-    accent: 'rgba(96,165,250,0.22)',
-    accent2: 'rgba(147,197,253,0.16)',
+    img: '/Images/2. Pain - Audience - ENG.png',
   },
   {
     id: 'PNT-02',
     title: 'Every customer eats your day.',
     slogan: 'One client = three hours of you on a call.',
-    pill: { label: '12 unread', tone: 'blue', dot: true, pulse: true },
-    accent: 'rgba(125,140,255,0.20)',
-    accent2: 'rgba(96,165,250,0.14)',
+    img: '/Images/2. Pain - Client weight - ENG.png',
   },
   {
     id: 'PNT-03',
     title: 'Step away — sales stop.',
     slogan: 'Take a day off, and revenue takes it with you.',
-    pill: { label: '23:47 · Offline', tone: 'slate', dot: false },
-    accent: 'rgba(100,116,180,0.22)',
-    accent2: 'rgba(148,163,184,0.14)',
+    img: '/Images/2. Pain - Time.png',
   },
   {
     id: 'PNT-04',
     title: 'Stitching the stack is its own job.',
     slogan: 'Five subscriptions, no one to wire them together.',
-    pill: { label: 'Stack 5+', tone: 'blue', dot: false },
-    accent: 'rgba(139,92,246,0.18)',
-    accent2: 'rgba(96,165,250,0.14)',
+    img: '/Images/2. Pain - Technical stack.png',
   },
   {
     id: 'PNT-05',
     title: 'Revenue hits a hard ceiling.',
     slogan: 'More clients = less of you for each one.',
-    pill: { label: 'Plateau', tone: 'blue', dot: true },
-    accent: 'rgba(96,165,250,0.20)',
-    accent2: 'rgba(147,197,253,0.12)',
+    img: '/Images/2. Pain - Revenue block - UKR.png',
   },
 ];
 
 const CARD_COUNT = cards.length;
 
 export default function PainSectionEN() {
-  const { activeIndex, goTo, onTouchStart, onTouchEnd, trackRef, trackStyle } =
+  const { activeIndex, goTo, containerRef, trackRef, trackStyle } =
     useOneAtATimeSwipe(CARD_COUNT);
 
   return (
@@ -121,9 +114,8 @@ export default function PainSectionEN() {
           {/* ===================================================== RIGHT — controlled one-step swipe (mobile) / vertical stack (desktop) ===================================================== */}
           <div className="lg:col-span-7">
             <div
-              className="anim-trigger overflow-hidden -mx-6 pb-6 sm:mx-0 lg:overflow-visible lg:pb-0"
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
+              ref={containerRef}
+              className="anim-trigger overflow-hidden touch-pan-y -mx-6 pb-6 sm:mx-0 lg:overflow-visible lg:pb-0 lg:touch-auto"
             >
               <div
                 ref={trackRef}
@@ -159,81 +151,43 @@ export default function PainSectionEN() {
   );
 }
 
-/* ============================================================ PainCard — same as UA, just locale-agnostic copy ============================================================ */
+/* ============================================================
+   PainCard — image-based (mirrors UA). Full-bleed hyperreal image
+   + bottom dark vignette for white text legibility.
+   ============================================================ */
 function PainCard({ card, delay }) {
-  const pillStyles = {
-    blue: 'border-blue-200/70 bg-white/65 text-blue-700',
-    slate: 'border-slate-200/70 bg-white/65 text-slate-700',
-  };
-  const dotColor = {
-    blue: 'bg-[#175ae8]',
-    slate: 'bg-slate-500',
-  };
-
   return (
     <div
-      className="group relative rounded-[28px] overflow-hidden bg-white/35 backdrop-blur-xl border border-white/55 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] anim-fade-up shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[3/4] lg:aspect-video"
+      className="group relative rounded-[28px] overflow-hidden bg-slate-950 shadow-none lg:shadow-[0_14px_36px_rgba(15,23,42,0.10)] anim-fade-up shrink-0 w-[88vw] sm:w-[68%] lg:w-auto lg:shrink aspect-[4/3] lg:aspect-video"
       style={{ transitionDelay: delay }}
     >
-      <div
+      <img
+        src={card.img}
+        alt=""
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at 72% 28%, ${card.accent}, transparent 48%), radial-gradient(circle at 22% 78%, ${card.accent2}, transparent 45%)`,
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_55%)] pointer-events-none"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(15,23,42,0.5) 1px, transparent 0)',
-          backgroundSize: '14px 14px',
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/85 via-white/45 to-transparent pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="relative z-10 p-6 lg:p-7 h-full flex flex-col justify-between">
-        <div className="flex items-center justify-between gap-3">
-          <span
-            className="text-[10.5px] uppercase tracking-[0.18em] text-slate-500"
-            style={{ fontFamily: monoStack }}
-          >
-            {card.id}
-          </span>
-          <span
-            className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.16em] ${pillStyles[card.pill.tone]}`}
-            style={{ fontFamily: monoStack }}
-          >
-            {card.pill.dot && (
-              <span
-                className={`w-1.5 h-1.5 rounded-full ${dotColor[card.pill.tone]} ${card.pill.pulse ? 'animate-pulse' : ''}`}
-              />
-            )}
-            {card.pill.label}
-          </span>
-        </div>
+      {/* Bottom dark vignette — guarantees white-text contrast over any image */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-[#020f2d]/95 via-[#020f2d]/55 to-transparent pointer-events-none"
+      />
 
-        <div className="mt-auto pt-10">
-          <h3
-            className="text-[1.3rem] lg:text-[1.45rem] leading-[1.15] tracking-[-0.02em] text-slate-950 mb-2 font-medium"
-            style={{ fontFamily: fontStack }}
-          >
-            {card.title}
-          </h3>
-          <p
-            className="text-[0.95rem] leading-[1.55] text-slate-700 max-w-[32ch]"
-            style={{ fontFamily: fontStack }}
-          >
-            {card.slogan}
-          </p>
-        </div>
+      {/* Content — slogan group, bottom-anchored */}
+      <div className="relative z-10 p-6 lg:p-7 h-full flex flex-col justify-end">
+        <h3
+          className="text-[1.3rem] lg:text-[1.45rem] leading-[1.15] tracking-[-0.02em] text-white mb-2 font-medium"
+          style={{ fontFamily: fontStack, textWrap: 'balance' }}
+        >
+          {card.title}
+        </h3>
+        <p
+          className="text-[0.95rem] leading-[1.55] text-slate-200/95 max-w-[55ch]"
+          style={{ fontFamily: fontStack, textWrap: 'balance' }}
+        >
+          {card.slogan}
+        </p>
       </div>
     </div>
   );

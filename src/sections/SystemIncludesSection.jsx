@@ -79,7 +79,7 @@ export default function SystemIncludesSection() {
             title="Стратегія і позиціонування"
             description="Хто ти, кому продаєш та чому саме до тебе."
             pillLabel="Брифінг"
-            mockup={<ImageMockup src="/Images/4. 1 audit.png" alt="Стратегічна сесія: позиціонування експерта" />}
+            mockup={<ImageMockup src="/Images/4. 1 audit - UA.png" alt="Стратегічна сесія: позиціонування експерта" />}
             delay="0.05s"
           />
 

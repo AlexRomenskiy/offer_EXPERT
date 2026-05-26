@@ -3,6 +3,21 @@ import { BOOKING_URL_EN } from '../../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
 
+/* ============================================================
+   ASSET PIPELINE — EN locale, image-based (mirrors UA architecture).
+   iPhone mockup (mobile) uses PORTRAIT, iPad mockup (tablet+desktop) uses LANDSCAPE.
+   ============================================================ */
+const ASSETS = {
+  portrait: {
+    manual: '/Images/3. manual-portrait-EN.png',
+    auto: '/Images/3. auto-portrait-EN.png',
+  },
+  landscape: {
+    manual: '/Images/3. manual-landscape-EN.png',
+    auto: '/Images/3. auto-landscape-EN.png',
+  },
+};
+
 export default function TransformationSectionEN() {
   const [mode, setMode] = useState('manual');
   const userTookOverRef = useRef(false);
@@ -62,15 +77,22 @@ export default function TransformationSectionEN() {
         </div>
 
         <div className="anim-trigger">
-          <div className="md:hidden flex justify-center anim-fade-up" style={{ transitionDelay: '0.10s' }}>
+          {/* ===================================================
+              iPhone mockup — phone only (< md, < 768px)
+              =================================================== */}
+          <div className="md:hidden flex justify-center anim-fade-up pt-8" style={{ transitionDelay: '0.10s' }}>
             <IPhoneMockup mode={mode} setMode={handleSetMode} />
           </div>
 
-          <div className="hidden md:flex justify-center anim-fade-up" style={{ transitionDelay: '0.10s' }}>
+          {/* ===================================================
+              iPad mockup — tablet + desktop (>= md, >= 768px)
+              =================================================== */}
+          <div className="hidden md:flex justify-center anim-fade-up pt-10 lg:pt-12" style={{ transitionDelay: '0.10s' }}>
             <IPadMockup mode={mode} setMode={handleSetMode} />
           </div>
         </div>
 
+        {/* CTA — center, brand-gradient, opens Calendly */}
         <div className="flex justify-center mt-10 lg:mt-14 anim-trigger">
           <a
             href={BOOKING_URL_EN}
@@ -95,7 +117,7 @@ export default function TransformationSectionEN() {
 }
 
 /* ============================================================================
-   iPhone mockup (portrait orientation)
+   iPhone mockup (portrait orientation) — mirrors UA structure exactly.
    ============================================================================ */
 function IPhoneMockup({ mode, setMode }) {
   return (
@@ -103,14 +125,36 @@ function IPhoneMockup({ mode, setMode }) {
       className="relative w-[290px] sm:w-[320px]"
       style={{ aspectRatio: '0.49' }}
     >
+      {/* Side buttons */}
       <div className="absolute -left-[5px] top-[18%] w-[5px] h-[6%] bg-slate-300 rounded-l-md z-0" />
       <div className="absolute -left-[5px] top-[26%] w-[5px] h-[10%] bg-slate-300 rounded-l-md z-0" />
       <div className="absolute -right-[5px] top-[24%] w-[5px] h-[12%] bg-slate-300 rounded-r-md z-0" />
 
+      {/* Phone body */}
       <div className="absolute inset-0 bg-slate-200 rounded-[3rem] shadow-[0_18px_45px_rgba(15,23,42,0.08)] border-[3px] border-slate-100 z-0" />
 
-      <div className="absolute inset-[7px] bg-[#f8fafc] rounded-[2.75rem] overflow-hidden flex flex-col z-10 shadow-[inset_0_0_14px_rgba(15,23,42,0.03)] border border-slate-200/70">
+      {/* Screen */}
+      <div className="absolute inset-[7px] bg-[#f8fafc] rounded-[2.75rem] overflow-hidden z-10 shadow-[inset_0_0_14px_rgba(15,23,42,0.03)] border border-slate-200/70">
 
+        {/* Content area — full-bleed image bg with opacity-crossfade between manual/auto */}
+        <div className="absolute inset-0">
+          <img
+            src={ASSETS.portrait.manual}
+            alt="Demo of the manual mode"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              mode === 'manual' ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+          <img
+            src={ASSETS.portrait.auto}
+            alt="Demo of the automated mode"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              mode === 'auto' ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        </div>
+
+        {/* Dynamic Island */}
         <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-slate-950 rounded-full z-50 flex items-center justify-between px-2">
           <div className="w-2 h-2 bg-slate-800 rounded-full" />
           <div
@@ -120,7 +164,8 @@ function IPhoneMockup({ mode, setMode }) {
           />
         </div>
 
-        <div className="h-11 pt-3 px-5 flex justify-between items-center text-[10px] font-semibold text-slate-800 z-40">
+        {/* Status bar */}
+        <div className="absolute top-0 inset-x-0 h-11 pt-3 px-5 flex justify-between items-center text-[10px] font-semibold text-slate-800 z-40">
           <span className="ml-1 tracking-tight" style={{ fontFamily: fontStack }}>9:41</span>
           <div className="flex gap-1 items-center opacity-75 mr-1">
             <iconify-icon icon="solar:wifi-minimalistic-linear" width="12" height="12" />
@@ -128,42 +173,18 @@ function IPhoneMockup({ mode, setMode }) {
           </div>
         </div>
 
-        <div className="flex justify-center mt-1 mb-3">
-          <ToggleTwo mode={mode} setMode={setMode} />
-        </div>
-
-        <div className="flex-1 px-4 pt-2 relative">
-
-          <div
-            className={`absolute inset-x-4 transition-all duration-500 ${
-              mode === 'manual'
-                ? 'opacity-100 translate-y-0 pointer-events-auto'
-                : 'opacity-0 translate-y-2 pointer-events-none'
-            }`}
-          >
-            <PortraitManualPlaceholder />
-          </div>
-
-          <div
-            className={`absolute inset-x-4 transition-all duration-500 ${
-              mode === 'auto'
-                ? 'opacity-100 translate-y-0 pointer-events-auto'
-                : 'opacity-0 translate-y-2 pointer-events-none'
-            }`}
-          >
-            <PortraitAutoPlaceholder />
-          </div>
-
-        </div>
-
+        {/* Home indicator */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] h-[3px] bg-slate-950/15 rounded-full z-40" />
       </div>
+
+      {/* Tab strip — sits above the iPhone bezel, attached to top edge like browser tabs */}
+      <DeviceTabs mode={mode} setMode={setMode} compact className="absolute bottom-full left-1/2 -translate-x-1/2 z-30" />
     </div>
   );
 }
 
 /* ============================================================================
-   iPad mockup (landscape orientation)
+   iPad mockup (landscape orientation) — mirrors UA structure exactly.
    ============================================================================ */
 function IPadMockup({ mode, setMode }) {
   return (
@@ -171,86 +192,86 @@ function IPadMockup({ mode, setMode }) {
       className="relative w-[640px] lg:w-[820px] xl:w-[940px]"
       style={{ aspectRatio: '16/9' }}
     >
+      {/* iPad body */}
       <div className="absolute inset-0 bg-slate-200 rounded-[2rem] shadow-[0_20px_55px_rgba(15,23,42,0.08)] border-[2px] border-slate-100 z-0" />
 
-      <div className="absolute inset-[10px] bg-[#f8fafc] rounded-[1.7rem] overflow-hidden flex flex-col z-10 shadow-[inset_0_0_14px_rgba(15,23,42,0.03)] border border-slate-200/70">
+      {/* Screen */}
+      <div className="absolute inset-[10px] bg-[#f8fafc] rounded-[1.7rem] overflow-hidden z-10 shadow-[inset_0_0_14px_rgba(15,23,42,0.03)] border border-slate-200/70">
 
+        <div className="absolute inset-0">
+          <img
+            src={ASSETS.landscape.manual}
+            alt="Demo of the manual mode"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              mode === 'manual' ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+          <img
+            src={ASSETS.landscape.auto}
+            alt="Demo of the automated mode"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              mode === 'auto' ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        </div>
+
+        {/* Front camera (landscape — long left edge centered) */}
         <div className="absolute left-2.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-700 rounded-full z-50" />
 
-        <div className="pt-4 pb-3 px-6 flex items-center justify-center">
-          <ToggleTwo mode={mode} setMode={setMode} />
-        </div>
-
-        <div className="flex-1 px-6 pb-8 relative">
-
-          <div
-            className={`absolute inset-x-6 inset-y-0 pb-8 transition-all duration-500 ${
-              mode === 'manual'
-                ? 'opacity-100 translate-y-0 pointer-events-auto'
-                : 'opacity-0 translate-y-2 pointer-events-none'
-            }`}
-          >
-            <LandscapeManualPlaceholder />
-          </div>
-
-          <div
-            className={`absolute inset-x-6 inset-y-0 pb-8 transition-all duration-500 ${
-              mode === 'auto'
-                ? 'opacity-100 translate-y-0 pointer-events-auto'
-                : 'opacity-0 translate-y-2 pointer-events-none'
-            }`}
-          >
-            <LandscapeAutoPlaceholder />
-          </div>
-
-        </div>
-
+        {/* Home indicator */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[3px] bg-slate-950/15 rounded-full z-40" />
       </div>
+
+      {/* Tab strip — sits above the iPad bezel, attached to top edge like browser tabs */}
+      <DeviceTabs mode={mode} setMode={setMode} className="absolute bottom-full left-1/2 -translate-x-1/2 z-30" />
     </div>
   );
 }
 
 /* ============================================================================
-   Shared toggle (used in both mockups)
+   Device tab strip — two rounded-top «browser tabs» that sit on the top edge
+   of the device bezel. Same canon as UA — only labels differ.
    ============================================================================ */
-function ToggleTwo({ mode, setMode, className = '' }) {
+function DeviceTabs({ mode, setMode, compact = false, className = '' }) {
   return (
-    <div
-      className={`relative z-30 isolate inline-flex p-0.5 rounded-full bg-slate-100 border border-slate-200 ${className}`}
-      style={{ pointerEvents: 'auto' }}
-    >
-      <button
-        type="button"
-        onClick={() => setMode('manual')}
-        className={`cursor-pointer touch-manipulation px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[12px] sm:text-[13px] font-medium transition-all duration-300 ${
-          mode === 'manual'
-            ? 'bg-gradient-to-r from-[#020f2d] to-[#175ae8] text-white shadow-sm'
-            : 'text-slate-500 hover:text-slate-700'
-        }`}
-        style={{ fontFamily: fontStack }}
-      >
+    <div className={`flex items-end gap-0.5 ${className}`} style={{ pointerEvents: 'auto' }}>
+      <ChromeTab active={mode === 'manual'} onClick={() => setMode('manual')} compact={compact}>
         Manual
-      </button>
-      <button
-        type="button"
-        onClick={() => setMode('auto')}
-        className={`cursor-pointer touch-manipulation px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[12px] sm:text-[13px] font-medium transition-all duration-300 ${
-          mode === 'auto'
-            ? 'bg-gradient-to-r from-[#020f2d] to-[#175ae8] text-white shadow-sm'
-            : 'text-slate-500 hover:text-slate-700'
-        }`}
-        style={{ fontFamily: fontStack }}
-      >
+      </ChromeTab>
+      <ChromeTab active={mode === 'auto'} onClick={() => setMode('auto')} compact={compact}>
         Automated
-      </button>
+      </ChromeTab>
     </div>
   );
 }
 
+function ChromeTab({ active, onClick, compact, children }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative cursor-pointer touch-manipulation rounded-t-[10px] font-medium transition-all duration-300 ${
+        compact ? 'px-3.5 py-1.5 text-[11px]' : 'px-5 py-2 text-[12px]'
+      } ${
+        active
+          ? 'text-white'
+          : 'bg-slate-100/85 text-slate-500 hover:text-slate-700 hover:bg-slate-100'
+      }`}
+      style={{
+        fontFamily: fontStack,
+        background: active ? 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)' : undefined,
+        boxShadow: active
+          ? '0 -4px 14px rgba(23,90,232,0.22), inset 0 1px 0 rgba(255,255,255,0.20)'
+          : undefined,
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 /* ============================================================================
-   Atmospheric background — VARIANT 5 (Soft Atmosphere)
-   Identical to UA version, no copy inside.
+   Atmospheric background — VARIANT 5 (Soft Atmosphere) — identical to UA.
    ============================================================================ */
 function TransformationBackground() {
   return (
@@ -400,229 +421,3 @@ const V5_PARTICLES = [
   { x: 72, y: 76, s: 2 },
   { x: 88, y: 72, s: 1 },
 ];
-
-/* ============================================================================
-   PORTRAIT placeholders (iPhone) — EN content
-   ============================================================================ */
-function PortraitManualPlaceholder() {
-  return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-3.5 shadow-sm">
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
-            <iconify-icon icon="solar:chat-round-line-linear" width="14" height="14" style={{ color: '#64748b' }} />
-          </div>
-          <span className="text-[11px] text-slate-700 font-medium" style={{ fontFamily: fontStack }}>Inbox</span>
-        </div>
-        <span className="text-[9px] text-rose-600 bg-rose-50 border border-rose-200 px-1.5 py-0.5 rounded-full font-medium" style={{ fontFamily: fontStack }}>
-          12 new
-        </span>
-      </div>
-
-      <div className="flex flex-col gap-1.5">
-        {[
-          { name: '@alex_n', text: 'How much is it?', time: '15 m' },
-          { name: '@sarah_m', text: 'Hi, interested in the course', time: '38 m' },
-          { name: '@evan_b', text: 'Can I sign up?', time: '1 h' },
-        ].map((msg, i) => (
-          <div key={i} className="bg-slate-50 rounded-lg p-2 border border-slate-100">
-            <p className="text-[10px] text-slate-600 leading-tight" style={{ fontFamily: fontStack }}>
-              {msg.name}: {msg.text}
-            </p>
-            <span className="text-[9px] text-slate-400 mt-0.5 inline-block" style={{ fontFamily: fontStack }}>{msg.time}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center gap-1.5 text-rose-500">
-        <iconify-icon icon="solar:clock-circle-linear" width="12" height="12" />
-        <span className="text-[10px] font-medium" style={{ fontFamily: fontStack }}>Waiting on reply</span>
-      </div>
-    </div>
-  );
-}
-
-function PortraitAutoPlaceholder() {
-  return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-3.5 shadow-sm">
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-[#175ae8]/10 border border-[#175ae8]/25 flex items-center justify-center">
-            <iconify-icon icon="solar:wallet-linear" width="14" height="14" style={{ color: '#175ae8' }} />
-          </div>
-          <span className="text-[11px] text-slate-900 font-medium" style={{ fontFamily: fontStack }}>New payment</span>
-        </div>
-        <span className="text-[9px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-full font-medium" style={{ fontFamily: fontStack }}>
-          Success
-        </span>
-      </div>
-
-      <div className="mb-3 pb-3 border-b border-slate-100">
-        <div className="text-[1.7rem] text-slate-950 font-semibold tracking-tight leading-none mb-1" style={{ fontFamily: fontStack }}>
-          $497
-        </div>
-        <div className="text-[10px] text-slate-500" style={{ fontFamily: fontStack }}>
-          Expert-Systems Course
-        </div>
-      </div>
-
-      <div className="flex items-center gap-2 mb-3">
-        <iconify-icon icon="solar:user-rounded-linear" width="12" height="12" style={{ color: '#94a3b8' }} />
-        <span className="text-[10px] text-slate-600" style={{ fontFamily: fontStack }}>Sarah M. · via bot</span>
-      </div>
-
-      <div className="flex items-center gap-1.5 text-[#175ae8] pt-2.5 border-t border-slate-100">
-        <iconify-icon icon="solar:check-circle-linear" width="12" height="12" />
-        <span className="text-[10px] font-medium" style={{ fontFamily: fontStack }}>Access granted automatically</span>
-      </div>
-    </div>
-  );
-}
-
-/* ============================================================================
-   LANDSCAPE placeholders (iPad) — EN content
-   ============================================================================ */
-function LandscapeManualPlaceholder() {
-  return (
-    <div className="bg-white border border-slate-200 rounded-2xl h-full p-4 shadow-sm flex gap-4">
-      <div className="w-[44%] flex flex-col">
-        <div className="flex items-center justify-between mb-3 pb-3 border-b border-slate-100">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
-              <iconify-icon icon="solar:chat-round-line-linear" width="16" height="16" style={{ color: '#64748b' }} />
-            </div>
-            <span className="text-[12px] text-slate-800 font-medium" style={{ fontFamily: fontStack }}>Inbox</span>
-          </div>
-          <span className="text-[10px] text-rose-600 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full font-medium" style={{ fontFamily: fontStack }}>
-            12 new
-          </span>
-        </div>
-
-        <div className="flex flex-col gap-2 flex-1">
-          {[
-            { name: '@alex_n', text: 'How much is it?', time: '15 m' },
-            { name: '@sarah_m', text: 'Interested in the course', time: '38 m' },
-            { name: '@evan_b', text: 'Can I sign up?', time: '1 h' },
-            { name: '@olivia_r', text: 'Any payment plan?', time: '2 h' },
-          ].map((msg, i) => (
-            <div key={i} className="bg-slate-50 rounded-lg p-2 border border-slate-100">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] text-slate-800 font-medium" style={{ fontFamily: fontStack }}>{msg.name}</span>
-                <span className="text-[9px] text-slate-400" style={{ fontFamily: fontStack }}>{msg.time}</span>
-              </div>
-              <p className="text-[10px] text-slate-600 leading-tight mt-0.5" style={{ fontFamily: fontStack }}>{msg.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex-1 flex flex-col">
-        <div className="flex items-center gap-2 mb-3 pb-3 border-b border-slate-100">
-          <div className="w-8 h-8 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center">
-            <span className="text-[11px] font-medium text-rose-600" style={{ fontFamily: fontStack }}>A</span>
-          </div>
-          <span className="text-[12px] text-slate-800 font-medium" style={{ fontFamily: fontStack }}>@alex_n</span>
-          <span className="text-[10px] text-rose-500 ml-auto" style={{ fontFamily: fontStack }}>just now</span>
-        </div>
-
-        <div className="flex flex-col gap-2 flex-1 justify-end pb-2">
-          <div className="bg-slate-100 rounded-2xl rounded-tl-sm px-3 py-2 self-start max-w-[80%]">
-            <p className="text-[11px] text-slate-700" style={{ fontFamily: fontStack }}>How much is it?</p>
-          </div>
-          <div className="bg-slate-100 rounded-2xl rounded-tl-sm px-3 py-2 self-start w-fit">
-            <div className="flex gap-1 items-center">
-              <div className="w-1 h-1 bg-slate-400 rounded-full animate-bounce" />
-              <div className="w-1 h-1 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-              <div className="w-1 h-1 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-2.5 border-t border-slate-100 flex items-center gap-1.5 text-rose-500">
-          <iconify-icon icon="solar:clock-circle-linear" width="12" height="12" />
-          <span className="text-[10px] font-medium" style={{ fontFamily: fontStack }}>Waiting on reply — 15 min</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LandscapeAutoPlaceholder() {
-  const txs = [
-    { name: 'Sarah M.', sum: '$497', product: 'Expert-Systems Course', time: '2:23 pm' },
-    { name: 'Mark D.', sum: '$297', product: 'Monthly subscription', time: '1:45 pm' },
-    { name: 'Anna B.', sum: '$147', product: 'Archive access', time: '12:18 pm' },
-  ];
-
-  return (
-    <div className="bg-white border border-slate-200 rounded-2xl h-full p-4 shadow-sm flex gap-4">
-      <div className="w-[44%] flex flex-col">
-        <div className="flex items-center justify-between mb-3 pb-3 border-b border-slate-100">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#175ae8]/10 border border-[#175ae8]/25 flex items-center justify-center">
-              <iconify-icon icon="solar:chart-square-linear" width="16" height="16" style={{ color: '#175ae8' }} />
-            </div>
-            <span className="text-[12px] text-slate-900 font-medium" style={{ fontFamily: fontStack }}>Today</span>
-          </div>
-          <span className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-medium" style={{ fontFamily: fontStack }}>
-            Active
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2 mb-2">
-          <div className="bg-[#175ae8]/[0.05] rounded-lg p-2.5 border border-[#175ae8]/15">
-            <div className="text-[10px] text-slate-500" style={{ fontFamily: fontStack }}>Leads</div>
-            <div className="text-[1.3rem] text-slate-950 font-semibold tracking-tight leading-tight" style={{ fontFamily: fontStack }}>12</div>
-          </div>
-          <div className="bg-[#175ae8]/[0.05] rounded-lg p-2.5 border border-[#175ae8]/15">
-            <div className="text-[10px] text-slate-500" style={{ fontFamily: fontStack }}>Sales</div>
-            <div className="text-[1.3rem] text-slate-950 font-semibold tracking-tight leading-tight" style={{ fontFamily: fontStack }}>3</div>
-          </div>
-        </div>
-
-        <div className="bg-[#175ae8]/[0.08] rounded-lg p-2.5 border border-[#175ae8]/20 flex-1 flex flex-col justify-center">
-          <div className="text-[10px] text-slate-500" style={{ fontFamily: fontStack }}>Revenue today</div>
-          <div className="text-[1.6rem] text-slate-950 font-semibold tracking-tight leading-tight" style={{ fontFamily: fontStack }}>$891</div>
-        </div>
-      </div>
-
-      <div className="flex-1 flex flex-col">
-        <div className="flex items-center gap-2 mb-3 pb-3 border-b border-slate-100">
-          <div className="w-8 h-8 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center">
-            <iconify-icon icon="solar:bolt-linear" width="14" height="14" style={{ color: '#10b981' }} />
-          </div>
-          <span className="text-[12px] text-slate-900 font-medium" style={{ fontFamily: fontStack }}>Live · Auto-flow</span>
-          <span className="text-[10px] text-emerald-600 ml-auto flex items-center gap-1" style={{ fontFamily: fontStack }}>
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-            Online
-          </span>
-        </div>
-
-        <div className="flex flex-col gap-1.5 flex-1">
-          {txs.map((tx, i) => (
-            <div key={i} className="bg-emerald-50/40 rounded-lg p-2 border border-emerald-100/70 flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                <iconify-icon icon="solar:check-circle-linear" width="12" height="12" style={{ color: '#10b981' }} />
-              </div>
-              <div className="flex-1 flex justify-between items-center min-w-0">
-                <div className="min-w-0 mr-2">
-                  <div className="text-[11px] text-slate-800 font-medium" style={{ fontFamily: fontStack }}>{tx.name}</div>
-                  <div className="text-[9px] text-slate-500 truncate" style={{ fontFamily: fontStack }}>{tx.product}</div>
-                </div>
-                <div className="text-right shrink-0">
-                  <div className="text-[12px] text-slate-950 font-semibold tabular-nums" style={{ fontFamily: fontStack }}>{tx.sum}</div>
-                  <div className="text-[9px] text-slate-400" style={{ fontFamily: fontStack }}>{tx.time}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-2 pt-2.5 border-t border-slate-100 flex items-center gap-1.5 text-[#175ae8]">
-          <iconify-icon icon="solar:check-circle-linear" width="12" height="12" />
-          <span className="text-[10px] font-medium" style={{ fontFamily: fontStack }}>Access granted automatically</span>
-        </div>
-      </div>
-    </div>
-  );
-}
