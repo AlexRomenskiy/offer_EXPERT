@@ -24,7 +24,7 @@ const navItemsByLocale = {
 
 const ctaTextByLocale = {
   ua: 'Записатися',
-  en: 'Book a call',
+  en: 'Book Call',
 };
 
 export default function Header() {

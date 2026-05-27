@@ -13,7 +13,8 @@ import PricingSectionEN from '../sections/en/PricingSectionEN';
 import AboutSectionEN from '../sections/en/AboutSectionEN';
 import FAQSectionEN from '../sections/en/FAQSectionEN';
 import FinalCTASectionEN from '../sections/en/FinalCTASectionEN';
-import VideoWidget from '../components/VideoWidget';
+
+// VideoWidget intentionally NOT mounted on EN until an EN-audio video is recorded.
 
 export default function EnLandingPage() {
   return (
@@ -28,7 +29,6 @@ export default function EnLandingPage() {
       <div className="scroll-focus anim-trigger"><AboutSectionEN /></div>
       <div className="scroll-focus anim-trigger"><FAQSectionEN /></div>
       <div className="scroll-focus anim-trigger"><FinalCTASectionEN /></div>
-      <VideoWidget src="/videos/craftlions-widget.mp4" />
     </>
   );
 }
