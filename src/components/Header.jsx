@@ -3,15 +3,19 @@ import { useLocale } from '../hooks/useLocale';
 import LanguageSwitcher from './LanguageSwitcher';
 import { BOOKING_URL_UA, BOOKING_URL_EN } from '../config/booking';
 
+// `desktopOnly: true` hides the item in the tablet nav strip (md–lg, 768–1023px)
+// and shows it only on lg+ (≥1024px). It still appears in the mobile hamburger menu.
+// Rationale: 4 anchors squeeze on tablet — Pain is the section users hit naturally
+// right after Hero, so it's the cheapest nav item to drop on smaller screens.
 const navItemsByLocale = {
   ua: [
-    { label: 'Для кого', href: '#pain' },
+    { label: 'Для кого', href: '#pain', desktopOnly: true },
     { label: 'Кейс', href: '#case' },
     { label: 'Тарифи', href: '#pricing' },
     { label: 'FAQ', href: '#faq' },
   ],
   en: [
-    { label: "Who it's for", href: '#pain' },
+    { label: "Who it's for", href: '#pain', desktopOnly: true },
     { label: 'Case study', href: '#case' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'FAQ', href: '#faq' },
@@ -85,7 +89,10 @@ export default function Header() {
             {/* Desktop nav */}
             <ul className="hidden md:flex items-center gap-1 text-[13px] font-medium text-white/65">
               {navItems.map((it) => (
-                <li key={it.href}>
+                <li
+                  key={it.href}
+                  className={it.desktopOnly ? 'hidden lg:block' : undefined}
+                >
                   <a
                     href={it.href}
                     onClick={(e) => {
