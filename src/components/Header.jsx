@@ -14,7 +14,6 @@ const navItemsByLocale = {
     { label: "Who it's for", href: '#pain' },
     { label: 'Case study', href: '#case' },
     { label: 'Pricing', href: '#pricing' },
-    { label: 'Guarantee', href: '#guarantees' },
     { label: 'FAQ', href: '#faq' },
   ],
 };

@@ -4,33 +4,26 @@ import { BOOKING_URL_EN } from '../../config/booking';
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
 
-/* ============================================================
-   EN-adapted FAQs per project_unified_synthesis_2026-05-17:
-   - FAQ #1: drop UA producer-villain framing → universal
-     anti-rev-share positioning (works for NA + EU consumers)
-   - FAQ #5: support prices scaled ×2.5 to match EN package pricing
-   - All other FAQs: native English, peer-voice
-   ============================================================ */
 const faqs = [
   {
-    q: 'Why a flat fee instead of revenue share?',
-    a: 'Rev-share looks like alignment but works like a trap — you pay forever for work that was done once. We charge a fixed fee for the build, and you own all files and campaigns from day one. No backend access into your accounts, no clawbacks, no «we’ll help you scale» percentage. You pay for the system; from then on it works only for you.',
+    q: 'How are you different from an agency that takes a cut of revenue? Why a flat fee?',
+    a: 'We’re not producers. A fixed price, full ownership of files and campaigns, zero % of revenue. You don’t have to share the growth you’re holding yourself. You pay for the system — from then on it works only for you.',
   },
   {
-    q: 'I already tried a funnel and burned my budget. How are you different?',
-    a: 'Honestly — half of «turnkey funnels» from freelancers fail because there’s no strategy and no support after launch. We use three guardrails: a fixed timeline written into the contract, full ownership of files and campaigns from day one, and 30 days of post-launch support. On Premium — an ad guarantee: if after 7 days of testing we haven’t hit the target CPL, we rebuild the creatives on our dime, not yours.',
+    q: 'I already tried an automated funnel and burned my budget. Any guarantees?',
+    a: 'Three criteria: a fixed timeline in the contract, full ownership of files and campaigns from day 1, 30 days of post-launch support. In the Premium package — an ad guarantee: if within 7 days we don’t hit the target cost per lead, I redo the creatives at my own expense.',
   },
   {
     q: 'What if I don’t have a large audience yet?',
-    a: 'Foundation ($1,247) exists exactly for this — an entry point you can test with a few hundred followers. Don’t scale an empty room: first the structure, then real numbers, then upgrade to Generator when the base is ready.',
+    a: 'Foundation at $1,247 is exactly for this — an entry point for testing even with a few hundred followers. Don’t scale empty space: first the structure, then real numbers, then an upgrade to Generator.',
   },
   {
-    q: 'I’m not technical. What does my role look like?',
-    a: 'You bring the substance: offer, prices, program content, your audience. I handle the tech: landing page, bot, payments, integrations across the channels your buyers actually use. After launch — documentation so you’re not chained to me daily. What I DON’T do: course content, content plans, lesson copy — that’s your expertise. Need a copywriter — I can refer one.',
+    q: 'I’m not a technical person. How do I manage this?',
+    a: 'After launch — instructions so you don’t depend on me daily, plus 30 days of tech support from me. What I DON’T do: course content, content plans, lesson copy — that’s your expertise. Need a copywriter — I’ll recommend one.',
   },
   {
-    q: 'What about support and ongoing costs after launch?',
-    a: 'First 30 days of support are included in every package — edits, tech support, answers. After that: $399/mo for Foundation, $625/mo for Generator and Premium. Ads beyond Premium: setup $750–$1,250, ongoing management from $500/mo or 10–15% of ad spend (whichever is higher).',
+    q: 'What about support and costs after launch?',
+    a: 'The first 30 days of support are included in every package: edits, tech support, answers. After that — $375/mo for Foundation, $625/mo for Generator and $875/mo for Premium. If you separately need an ad campaign — we’ll discuss it personally based on your needs.',
   },
 ];
 

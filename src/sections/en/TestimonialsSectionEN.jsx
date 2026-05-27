@@ -36,7 +36,7 @@ export default function TestimonialsSectionEN() {
             style={{ fontFamily: fontStack, lineHeight: 1.2 }}
           >
             <span className="anim-italic font-medium" style={{ transitionDelay: '0.10s' }}>
-              Voices of people it
+              Voices of those it already
               <span className="italic-accent" style={{ marginLeft: '0.20em' }}>
                 worked for
               </span>

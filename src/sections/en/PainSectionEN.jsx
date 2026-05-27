@@ -16,32 +16,32 @@ const monoStack = "'JetBrains Mono', monospace";
 const cards = [
   {
     id: 'PNT-01',
-    title: 'Audience grows. Sales don’t.',
-    slogan: 'Leads die somewhere between the DM and the checkout.',
+    title: 'You have an audience — but few sales',
+    slogan: 'A lead (a potential client) gets lost somewhere between a DM and the checkout.',
     img: '/Images/2. Pain - Audience - ENG.png',
   },
   {
     id: 'PNT-02',
-    title: 'Every customer eats your day.',
-    slogan: 'One client = three hours of you on a call.',
+    title: 'Every client sits on your shoulders',
+    slogan: 'One client = hours of your time.',
     img: '/Images/2. Pain - Client weight - ENG.png',
   },
   {
     id: 'PNT-03',
-    title: 'Step away — sales stop.',
-    slogan: 'Take a day off, and revenue takes it with you.',
+    title: 'Without you, the system stops',
+    slogan: 'You sleep — the till sleeps too.',
     img: '/Images/2. Pain - Time.png',
   },
   {
     id: 'PNT-04',
-    title: 'Stitching the stack is its own job.',
-    slogan: 'Five subscriptions, no one to wire them together.',
+    title: 'Wiring it together is a job of its own',
+    slogan: 'The tools are there — the connections between them aren’t.',
     img: '/Images/2. Pain - Technical stack.png',
   },
   {
     id: 'PNT-05',
-    title: 'Revenue hits a hard ceiling.',
-    slogan: 'More clients = less of you for each one.',
+    title: 'Income hits a ceiling',
+    slogan: 'Your physical capacity is limited.',
     img: '/Images/2. Pain - Revenue block - UKR.png',
   },
 ];
@@ -79,13 +79,12 @@ export default function PainSectionEN() {
             >
               <span className="block anim-wrap">
                 <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
-                  How much of this
+                  Where are you
                 </span>
               </span>
               <span className="block anim-italic" style={{ transitionDelay: '0.20s' }}>
-                sounds
-                <span className="italic-accent" style={{ marginLeft: '0.20em' }}>
-                  familiar?
+                <span className="italic-accent">
+                  losing time?
                 </span>
               </span>
             </h2>
@@ -97,7 +96,7 @@ export default function PainSectionEN() {
                 fontFamily: fontStack,
               }}
             >
-              Five places experts get stuck the moment their business depends on doing everything by hand.
+              The 5 main traps experts get stuck in.
             </p>
 
             {/* progress counter */}

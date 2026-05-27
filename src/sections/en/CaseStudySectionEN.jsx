@@ -35,7 +35,7 @@ export default function CaseStudySectionEN() {
             style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0.05s' }}
           >
             <span className="h-px w-6 bg-slate-300" />
-            Case study · 7 days
+            Case study · 5 days
             <span className="h-px w-6 bg-slate-300" />
           </div>
 
@@ -51,16 +51,6 @@ export default function CaseStudySectionEN() {
             </span>
           </h2>
 
-          <p
-            className="max-w-2xl text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up subtitle-hairline"
-            style={{
-              transitionDelay: '0.30s',
-              fontFamily: fontStack,
-            }}
-          >
-            One real run of the system — where the funnel sits, how fast it
-            starts paying, and what it changes for the expert.
-          </p>
         </div>
 
         {/* 2-col layout — stretch on lg so right column matches 9:16 left card height */}
@@ -136,10 +126,10 @@ export default function CaseStudySectionEN() {
               <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
                 <div className="flex items-baseline gap-2">
                   <span className="text-[1.05rem] text-slate-950 font-medium" style={{ fontFamily: fontStack }}>
-                    Shipped in 7 days
+                    Shipped in 5 days
                   </span>
                   <span className="text-[0.85rem] text-slate-500" style={{ fontFamily: fontStack }}>
-                    · vs 14-day standard
+                    · standard 14
                   </span>
                 </div>
                 <a
@@ -172,22 +162,22 @@ export default function CaseStudySectionEN() {
               <div className="h-px bg-gradient-to-r from-transparent via-slate-300/60 to-transparent mb-5 lg:mb-6" />
 
               <div className="text-[0.85rem] text-slate-500 mb-4" style={{ fontFamily: fontStack }}>
-                2–3 weeks after launch
+                3 weeks after launch
               </div>
 
               {/* Mobile: stacked rows (number left, label right). sm+: 3-col grid */}
               <div className="flex flex-col gap-4 sm:hidden">
                 <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-slate-200/50">
-                  <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
-                    18
+                  <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none whitespace-nowrap" style={{ fontFamily: fontStack }}>
+                    38
                   </span>
                   <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
-                    clients into intensive
+                    clients into the intensive
                   </span>
                 </div>
                 <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-slate-200/50">
                   <span className="text-[2.4rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
-                    4
+                    5
                   </span>
                   <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
                     into 1-on-1
@@ -204,26 +194,26 @@ export default function CaseStudySectionEN() {
                       backgroundClip: 'text',
                     }}
                   >
-                    1–1.5
+                    $990
                   </span>
                   <span className="text-[0.85rem] text-slate-600 text-right leading-tight" style={{ fontFamily: fontStack }}>
-                    months to payback
+                    investment paid back<br />in 1 month
                   </span>
                 </div>
               </div>
 
               <div className="hidden sm:grid sm:grid-cols-3 sm:gap-5 lg:gap-6">
                 <div>
-                  <div className="text-[2.4rem] lg:text-[2.8rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
-                    18
+                  <div className="text-[2.4rem] lg:text-[2.8rem] text-slate-950 font-medium tracking-[-0.04em] leading-none whitespace-nowrap" style={{ fontFamily: fontStack }}>
+                    38
                   </div>
                   <div className="text-[0.85rem] text-slate-600 mt-1.5 leading-tight" style={{ fontFamily: fontStack }}>
-                    clients into intensive
+                    clients into the intensive
                   </div>
                 </div>
                 <div>
                   <div className="text-[2.4rem] lg:text-[2.8rem] text-slate-950 font-medium tracking-[-0.04em] leading-none" style={{ fontFamily: fontStack }}>
-                    4
+                    5
                   </div>
                   <div className="text-[0.85rem] text-slate-600 mt-1.5 leading-tight" style={{ fontFamily: fontStack }}>
                     into 1-on-1
@@ -240,37 +230,14 @@ export default function CaseStudySectionEN() {
                       backgroundClip: 'text',
                     }}
                   >
-                    1–1.5
+                    $990
                   </div>
                   <div className="text-[0.85rem] text-slate-600 mt-1.5 leading-tight" style={{ fontFamily: fontStack }}>
-                    months to payback
+                    investment paid back in 1 month
                   </div>
                 </div>
               </div>
 
-              {/* Honest caveat */}
-              <div
-                className="mt-6 lg:mt-7 pt-5 border-t border-slate-200/50 text-[0.82rem] text-slate-500 leading-[1.55]"
-                style={{ fontFamily: fontStack }}
-              >
-                <span className="text-slate-700 font-medium">Honest:</span>{' '}
-                this result isn’t «typical». Tania had a 10K+ audience and
-                existing trust — that’s a speed driver. A different starting
-                point gives different numbers.
-              </div>
-            </div>
-
-            {/* === Quote (no icon — text starts at card top edge) === */}
-            <div
-              className="relative rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)] p-6 lg:p-7 anim-fade-up"
-              style={{ transitionDelay: '0.20s' }}
-            >
-              <blockquote className="text-[1.05rem] lg:text-[1.15rem] leading-[1.55] text-slate-800 font-medium tracking-[-0.01em]" style={{ fontFamily: fontStack }}>
-                «I love when money makes sense. Same with subscribers — I love
-                that the system takes care of everyone, and just routes me the
-                ones who actually want to work. For me, running a business, the
-                best wardrobe upgrade is product packaging.»
-              </blockquote>
             </div>
 
             {/* === CTA === */}
@@ -286,7 +253,7 @@ export default function CaseStudySectionEN() {
                 boxShadow: '0 14px 38px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)',
               }}
             >
-              Get me a system like this
+              I want a result like this
               <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" />
             </a>
           </div>

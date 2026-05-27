@@ -15,7 +15,7 @@ const channels = [
 
 const fontStack = "'Manrope', sans-serif";
 
-const heroTypewriterPhrases = ['creators', 'experts', 'coaches'];
+const heroTypewriterPhrases = ['experts', 'entrepreneurs'];
 
 export default function HeroSectionEN() {
   const [typedWord, setTypedWord] = useState('');
@@ -166,8 +166,8 @@ export default function HeroSectionEN() {
                     borderLeft: '1px solid rgba(255,255,255,0.20)',
                   }}
                 >
-                  I turn your expertise into an operating system: it captures leads,
-                  warms them up, takes payment, and delivers the product.
+                  I package your expertise and product into a system
+                  that attracts clients and generates sales.
                 </p>
 
                 {/* Channels — mobile: rendered LAST (order-5), right after the CTA
@@ -180,7 +180,7 @@ export default function HeroSectionEN() {
                     className="text-[0.78rem] text-slate-300/65 mb-2 tracking-[0.02em]"
                     style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
-                    Captures leads wherever your audience already is:
+                    Picks up clients wherever you already are:
                   </p>
                   <div className="flex items-center gap-4 flex-wrap">
                     {channels.map((ch) => (

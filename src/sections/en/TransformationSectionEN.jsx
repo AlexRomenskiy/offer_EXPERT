@@ -72,7 +72,7 @@ export default function TransformationSectionEN() {
             className="text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up mx-auto max-w-[42ch] subtitle-hairline-mobile-only"
             style={{ transitionDelay: '0.30s', fontFamily: fontStack }}
           >
-            One moment — two modes. Toggle and see the difference.
+            One situation — two modes. Switch and see.
           </p>
         </div>
 
@@ -106,7 +106,7 @@ export default function TransformationSectionEN() {
               boxShadow: '0 14px 38px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)',
             }}
           >
-            Build this for me
+            I want a system like this
             <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" />
           </a>
         </div>

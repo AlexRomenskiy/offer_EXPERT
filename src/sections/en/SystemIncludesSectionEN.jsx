@@ -76,8 +76,8 @@ export default function SystemIncludesSectionEN() {
             className="max-w-[46ch] text-[1rem] sm:text-[1.06rem] leading-[1.6] text-slate-600 anim-fade-up subtitle-hairline"
             style={{ transitionDelay: '0.30s', fontFamily: fontStack }}
           >
-            Six elements, one flow — from sharp positioning to repeat sales.
-            No moving parts you have to wire yourself.
+            Six elements — one flow: from clear positioning
+            to repeat sales.
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function SystemIncludesSectionEN() {
           <Panel
             icon="solar:target-linear"
             title="Strategy & positioning"
-            description="Who you are, who you sell to, why you. Defined so it lands in 10 seconds."
+            description="Who you are, who you sell to, why you."
             pillLabel="Briefing"
             mockup={<StrategyMockup />}
             delay="0.05s"
@@ -95,8 +95,8 @@ export default function SystemIncludesSectionEN() {
 
           <Panel
             icon="solar:document-linear"
-            title="Landing"
-            description="From a single-page site to a full product structure — built for conversion."
+            title="Landing page"
+            description="From a single page to a full structure built around your product."
             pillLabel="Mobile-ready"
             mockup={<LandingMockup />}
             delay="0.10s"
@@ -104,8 +104,8 @@ export default function SystemIncludesSectionEN() {
 
           <Panel
             icon="solar:magnet-linear"
-            title="Magnet + tripwire"
-            description="Captures the contact, raises average order value, primes for the main offer."
+            title="Lead magnet + tripwire"
+            description="Captures the contact and lifts the average order."
             pillLabel="Entry"
             mockup={<LeadMagnetMockup />}
             delay="0.15s"
@@ -114,7 +114,7 @@ export default function SystemIncludesSectionEN() {
           <Panel
             icon="solar:chat-round-dots-linear"
             title="Chatbot"
-            description="One unified inbox, 24/7 conversation, warm-up logic that walks leads to purchase."
+            description="One client base, 24/7 conversation, warm-up to purchase."
             pillLabel="Live"
             pillVariant="green"
             mockup={<ChatBotMockup />}
@@ -124,7 +124,7 @@ export default function SystemIncludesSectionEN() {
           <Panel
             icon="solar:chart-2-linear"
             title="Analytics"
-            description="Clean numbers from first click to repeat sale. You see what each customer costs."
+            description="Clear numbers from the first click to repeat sales."
             pillLabel="Sync"
             mockup={<AnalyticsMockup />}
             delay="0.25s"
@@ -133,7 +133,7 @@ export default function SystemIncludesSectionEN() {
           <Panel
             icon="solar:rocket-2-linear"
             title="Paid traffic"
-            description="Performance ads on the channels where your audience actually spends time."
+            description="Ads in the places where your audience already is."
             pillLabel="Active"
             mockup={<TrafficMockup />}
             premium

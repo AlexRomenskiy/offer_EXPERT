@@ -11,7 +11,6 @@ import CaseStudySectionEN from '../sections/en/CaseStudySectionEN';
 import TestimonialsSectionEN from '../sections/en/TestimonialsSectionEN';
 import PricingSectionEN from '../sections/en/PricingSectionEN';
 import AboutSectionEN from '../sections/en/AboutSectionEN';
-import GuaranteeSectionEN from '../sections/en/GuaranteeSectionEN';
 import FAQSectionEN from '../sections/en/FAQSectionEN';
 import FinalCTASectionEN from '../sections/en/FinalCTASectionEN';
 import VideoWidget from '../components/VideoWidget';
@@ -27,7 +26,6 @@ export default function EnLandingPage() {
       <div className="scroll-focus anim-trigger"><TestimonialsSectionEN /></div>
       <div className="scroll-focus anim-trigger"><PricingSectionEN /></div>
       <div className="scroll-focus anim-trigger"><AboutSectionEN /></div>
-      <div className="scroll-focus anim-trigger"><GuaranteeSectionEN /></div>
       <div className="scroll-focus anim-trigger"><FAQSectionEN /></div>
       <div className="scroll-focus anim-trigger"><FinalCTASectionEN /></div>
       <VideoWidget src="/videos/craftlions-widget.mp4" />

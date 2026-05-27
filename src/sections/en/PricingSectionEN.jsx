@@ -14,40 +14,40 @@ export const pricingEN = [
     timeline: '5–7 days',
     timelineShort: '5–7 days',
     supportDays: 30,
-    tagline: 'Your first step to a system: clear offer and professional online presence.',
+    tagline: 'The first step to a system and a clear offer.',
     forWhom:
-      'If you have real expertise but you’re invisible online — no clear positioning, no consistent presence, no funnel in place.',
+      'If you have expertise but no clear positioning and no proper online presence.',
     metrics: { days: '5–7', ads: '—' },
     features: [
-      { label: 'Strategy & positioning', tip: 'Who you are, who you sell to, why you. We define your market position so it lands in 10 seconds.' },
-      { label: 'One-page landing', tip: 'A focused single-page site for your service or product. Mobile-ready, conversion-built.' },
-      { label: 'Lead magnet', tip: 'A free asset in exchange for a contact — PDF, checklist, quiz, or short video.' },
-      { label: 'Lead-capture chatbot', tip: 'Delivers the magnet on Instagram / WhatsApp / Messenger — wherever your audience already messages. Builds your subscriber list automatically.' },
+      { label: 'Strategy & positioning', tip: 'Who you are, who you sell to, why you. We define your position in the market.' },
+      { label: 'Landing page', tip: 'A single landing page for your service or product. Mobile-ready.' },
+      { label: 'Lead magnet', tip: 'Free material in exchange for a contact. PDF, checklist, quiz or short video.' },
+      { label: 'Chatbot in a messenger', tip: 'Delivers the magnet on Instagram, WhatsApp, Messenger — wherever the client prefers. The person stays in your subscriber base.' },
     ],
     outcome:
-      'A clear offer and professional online presence — the foundation any future system needs.',
-    note: 'Entry into the system',
+      'A clear offer and professional online presence — ready ground for the system.',
+    note: 'Entry point into the system',
     cta: 'Book a call',
     testimonials: [
       {
         quote:
-          'I wrote “for everyone who wants to lose weight” for three years and didn’t believe it myself. Now I have a real brief — and women say “oh, this is literally about me.” Strange new feeling.',
-        attribution: 'Olena K. · Nutritionist',
+          'Olexandr, thank you. For 2 years I wrote posts «for everyone who wants to lose weight» and couldn’t understand why there were no clients — the problem is popular enough. Now I have clear positioning and an understanding of my audience, and clients say «oh, it’s like you’re writing about me». A great feeling to be useful, to get feedback that inspires, and, of course, to earn from it.',
+        attribution: 'Olena · Nutritionist',
       },
       {
         quote:
-          'You wrote about my service better than I do. Seriously — I used to spend 40 minutes explaining what I do on every call. Now I just send the landing, and the call starts at the point.',
-        attribution: 'Andrew L. · Business coach',
+          'Sasha, you managed to write about my service better than I do. Seriously — I used to spend 40 minutes on every client explaining what I do. Now I just send the landing page, everything is clear, and we just discuss the details.',
+        attribution: 'Andriy · Business coach for entrepreneurs',
       },
       {
         quote:
-          'Honestly didn’t believe in these magnet-bot things. But now my Instagram is quietly collecting people who actually care about the topic. I don’t spend Sundays remembering what I promised whom.',
-        attribution: 'Yuri P. · B2B sales expert',
+          'Honestly, I didn’t really believe in these magnets and bots. But now there’s a base of people on Instagram who are clearly interested in the topic. By the end of the week, when I’m planning, I’m not sitting and trying to remember what I promised whom. Great, recommend it.',
+        attribution: 'Yuriy · B2B sales expert',
       },
       {
         quote:
-          'Came in feeling “everyone needs a therapist.” Left understanding who actually needs me — and who doesn’t. Oddly, this felt more about me than about marketing.',
-        attribution: 'Julia S. · Psychotherapist',
+          'Came in with the feeling «well, everyone needs a therapist». Came out understanding who exactly needs me — and who doesn’t. Strange, but this is more about me than about marketing. Closed my own gestalt))))',
+        attribution: 'Julia · Psychotherapist',
       },
     ],
   },
@@ -59,42 +59,42 @@ export const pricingEN = [
     timeline: '14 days',
     timelineShort: '14 days',
     supportDays: 30,
-    tagline: 'The full funnel — from first touch to repeat sale.',
+    tagline: 'The whole system — from the first step to repeat sales.',
     forWhom:
-      'If you want an automated sales system that replaces a small team — warms up leads and walks them to a purchase without your involvement.',
+      'If you want an automated sales system that replaces the work of a big team — warms up leads and walks them to a purchase without your involvement.',
     metrics: { days: '14', ads: '—' },
     features: [
       { label: 'Everything in Foundation', tip: null },
-      { label: 'Full product packaging (course / intensive structure)', tip: 'Not just one landing — a complete structure: sales page, delivery, separate touchpoints. Built to monetize, not just describe.' },
-      { label: 'Lead magnet + tripwire at the top', tip: 'Magnet captures contact for free. Tripwire = a low-priced paid product that raises average order value and gives the first paid experience with you.' },
-      { label: 'Warm-up bot with custom logic', tip: 'A warm-up sequence built for your main offer or tripwire. Reminders, deadlines, conditional logic — designed around your funnel, not a template.' },
-      { label: 'Payments, auto-delivery, funnel analytics', tip: 'Take payment, deliver the product instantly after purchase, see clean numbers across the whole funnel.' },
+      { label: 'Full product packaging (course or intensive structure)', tip: 'Not one business-card page but a full structure: sales, material delivery, separate touchpoints to collect contacts.' },
+      { label: 'Lead magnet + tripwire', tip: 'The lead magnet catches the contact for free. The tripwire — a low-cost paid product that lifts the average order and gives the first paid experience with you.' },
+      { label: 'Warm-up bot with custom logic', tip: 'A warm-up sequence for the main product or the tripwire. Reminders about events and deadlines. The logic is designed around your funnel.' },
+      { label: 'Payments, auto-delivery, funnel analytics', tip: 'Payment processing, instant access to the product after purchase, clear numbers across the whole funnel.' },
     ],
     outcome:
-      'An automated sales system ready to scale. Converts interested visitors into customers, raises average order value, runs without you.',
-    note: 'For founders building a real business',
+      'An automated sales system ready to scale. Converts the interested into clients, lifts the average order and works without you.',
+    note: 'For those building a systemic business',
     cta: 'Book a call',
     highlight: true,
     testimonials: [
       {
         quote:
-          'I love when money makes sense. Same with subscribers — I love that the system takes care of everyone, and just routes me the ones who actually want to work. For me, running a business, the best wardrobe upgrade is product packaging.',
-        attribution: 'Tania Lav · On-camera brand for experts',
+          'I love when money makes sense. Same with subscribers: I’m happy the system takes care of everyone, and routes me directly to the ones who want to work. For me, as a girl with a business project, the best wardrobe upgrade is product packaging.',
+        attribution: 'Tania · On-camera coach for experts',
       },
       {
         quote:
-          'Alex, sorry I didn’t thank you right away. First time I saw a payment come in at 3 AM I just stood there with a coffee staring at the phone. Had to process the fact it works without me.',
-        attribution: 'Marina S. · Therapist, online-course author',
+          'Olexandr, sorry I didn’t thank you right away. The first time I saw a payment at 7 AM I just sat with my coffee and stared at the phone. Had to digest that it works without me.',
+        attribution: 'Maryna · Therapist, online-course author',
       },
       {
         quote:
-          'You talked me into the tripwire even though I was against it. “Who’s going to pay $19, just sell the main thing”… turns out — plenty of people. And those same people buy the main program later, no extra friction. Thanks for pushing.',
-        attribution: 'Ihor T. · Real-estate sales mentor',
+          'You talked me into that tripwire even though I was against it and didn’t fully understand what it was. «Well, who’s going to pay $19, let’s just go straight to the main thing»… Turned out — plenty of people. And those same people then take the main program, no extra questions. Thanks for being persistent.',
+        attribution: 'Igor · Sales mentor',
       },
       {
         quote:
-          'The strangest part — I didn’t talk to anyone but you. I expected “find yourself a designer, a copywriter, we just coordinate.” Instead I just answered your questions, and a whole product got born.',
-        attribution: 'Kate B. · Dietitian, intensive author',
+          'The strangest part — I didn’t talk to anyone except you. I thought it would be «find yourself a designer, a copywriter, we just coordinate». And it turned out I just answered your questions — and gradually a whole product was born. THANK YOU, WILL RECOMMEND TO FRIENDS AND BEYOND',
+        attribution: 'Kateryna · Nutritionist, intensive author',
       },
     ],
   },
@@ -106,40 +106,39 @@ export const pricingEN = [
     timeline: '14–21 days',
     timelineShort: '14–21 days',
     supportDays: 30,
-    tagline: 'Funnel + paid traffic that brings customers in — pays back per click.',
-    forWhom:
-      'If you want a finished system AND scale — not just packaging, but performance traffic that pays back.',
+    tagline: 'A custom system + ads that bring in clients.',
+    forWhom: 'If you want not just product packaging but scaling on top of it.',
     metrics: { days: '14–21', ads: '✓' },
     features: [
       { label: 'Everything in Generator', tip: null },
-      { label: 'Paid ads — full campaign (creatives, copy, launch)', tip: 'Image and video creatives, ad copy, and live launch. We run on the channel your audience uses most — Meta, Google, YouTube, or TikTok.' },
-      { label: 'Precise audience targeting (test narrow segments)', tip: 'We test narrow segments instead of blasting wide. What converts — we scale. What doesn’t — we cut. Your budget goes to actual buyers, not to “everyone interested.”' },
-      { label: 'End-to-end analytics — from first click to repeat sale', tip: 'Full customer journey: first click → funnel → payment → repeat purchase. You see what each customer costs, and what they bring back.' },
+      { label: 'Paid ads — full campaign (creatives, copy, launch)', tip: 'Creating images, video and copy. Running campaigns on the channels suited to your audience — Meta, Google, YouTube, TikTok.' },
+      { label: 'Precise targeting on your audience', tip: 'We test narrow audience segments: what reacts — we scale; what doesn’t — we turn off. The ads run to your buyers, not to «everyone who might be interested».' },
+      { label: 'End-to-end analytics — from the first click to repeat sales', tip: 'The whole client journey: first click → funnel → payment → repeat purchase. You understand how much a client costs and how much they bring you.' },
     ],
     outcome:
-      'A scalable sales system. Raise the ad budget — sales rise proportionally. No more “my month is good or bad depending on Instagram’s mood.”',
-    note: 'Done-for-you with paid traffic — no team-building required',
+      'A scalable sales system. Increase the ad budget — sales grow proportionally.',
+    note: 'Ready solution with ads — no team to assemble',
     cta: 'Book a call',
     testimonials: [
       {
         quote:
-          'Alex, thanks for the game. I tried different ads for two years — different agencies, different freelancers — budget kept burning and I didn’t know why. Turns out the problem wasn’t the ads, it was where they led. Now I have a funnel + traffic on it — and I finally see payback.',
-        attribution: 'Dmytro Kravtsov · Finance advisor',
+          'Alex, thanks for the game. For two years I tried different ads — sometimes a media buyer, sometimes an agency — the budget kept burning and I didn’t understand why. Turned out the problem wasn’t the ads but where they led. Now I have a built funnel plus traffic on it — I finally see the payback.',
+        attribution: 'Steve · Finance advisor',
       },
       {
         quote:
-          'I already had my program but no idea how to grow it. Now: landing, bot, payments, analytics, plus ads driving it all. I check the report once a week. First time in a long while I have weekends.',
-        attribution: 'Inna Melnyk · Fitness coach, course author',
+          'I already had my own program but I had no idea how to promote it. Now — landing page, bot, payments, analytics, and on top of that ads that drive all of it. I just check the report once a week. For the first time in a long while I have weekends. Pleased.',
+        attribution: 'Albina · Fitness coach, course author',
       },
       {
         quote:
-          'Everything was running on referrals and my LinkedIn activity. Chaos — 8 inquiries one week, zero the next month. Now I have a funnel + ads running it daily — I can plan a year, not a single month.',
-        attribution: 'Alex L. · Mentor for IT experts',
+          'Before, everything ran on word-of-mouth and my LinkedIn activity. Chaos: 8 inquiries one week, zero the next month. Now I have a funnel plus ads running it every day — I can finally plan a year, not just a month.',
+        attribution: 'Nazar · Mentor for IT experts',
       },
       {
         quote:
-          'What hit me most: we built the funnel first, ads came later. I’d been pouring money into Facebook for years not getting why it worked for others and not for me. Now I have both halves, and it finally works.',
-        attribution: 'Sofia M. · Aesthetic-medicine doctor',
+          'Sasha, awesome! Everything works. Thank you! Leaving a review: what struck me most is that we first built the funnel, and the ads came after. For years I poured money into Facebook and couldn’t understand why it worked for others and not for me. Now I have both parts, and there’s finally a system that works. And I do what I love.',
+        attribution: 'Sofia · Aesthetic-medicine doctor',
       },
     ],
   },

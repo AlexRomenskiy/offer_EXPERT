@@ -2,17 +2,26 @@ import { useState } from 'react';
 import { BOOKING_URL_EN } from '../../config/booking';
 
 const fontStack = "'Manrope', sans-serif";
-
-const stats = [
-  { icon: 'solar:case-minimalistic-linear', text: '7+ years in funnels' },
-  { icon: 'solar:globe-linear', text: '5 countries · UA · US · CA · EG · GE' },
-  { icon: 'solar:users-group-rounded-linear', text: 'Coaches · B2B · e-commerce' },
-];
+const monoStack = "'JetBrains Mono', monospace";
 
 const socialLinks = [
   { label: 'LinkedIn', icon: 'simple-icons:linkedin', url: 'https://www.linkedin.com/in/alex-romenskyi/' },
-  { label: 'Instagram', icon: 'simple-icons:instagram', url: 'https://www.instagram.com/romensky.pro/' },
   { label: 'Facebook', icon: 'simple-icons:facebook', url: 'https://www.facebook.com/Alex.Romenskyi' },
+];
+
+const principles = [
+  {
+    title: 'Packaging sells the expertise',
+    description: 'Clients don’t buy your diploma — they buy how you present yourself.',
+  },
+  {
+    title: 'One system, not chaos',
+    description: 'Landing page, bot and payments work as one mechanism, not a set of patches.',
+  },
+  {
+    title: 'Scale without burnout',
+    description: 'Sales run automatically. You don’t have to carry every routine on your shoulders.',
+  },
 ];
 
 export default function AboutSectionEN() {
@@ -31,10 +40,10 @@ export default function AboutSectionEN() {
 
           <div
             className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] text-slate-500 mb-6 anim-fade-up"
-            style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0.05s' }}
+            style={{ fontFamily: monoStack, transitionDelay: '0.05s' }}
           >
             <span className="h-px w-6 bg-slate-300" />
-            Founder · Funnel architect
+            Author · Funnel architect
             <span className="h-px w-6 bg-slate-300" />
           </div>
 
@@ -61,16 +70,16 @@ export default function AboutSectionEN() {
               fontFamily: fontStack,
             }}
           >
-            Built the system for myself first. Now I build it for experts hitting the same ceiling.
+            Marketing architect · 7+ years
           </p>
         </div>
 
         {/* 2-col layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 anim-trigger">
 
-          {/* =========================================== LEFT — Photo card =========================================== */}
-          <div className="lg:col-span-5 lg:h-[540px] anim-fade-up" style={{ transitionDelay: '0.10s' }}>
-            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full max-h-[540px] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
+          {/* =========================================== LEFT — Photo card (sticky, mirrors UA) =========================================== */}
+          <div className="lg:col-span-5 lg:self-start lg:sticky lg:top-24 anim-fade-up" style={{ transitionDelay: '0.10s' }}>
+            <div className="relative aspect-[4/5] rounded-[28px] overflow-hidden bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_18px_50px_rgba(148,163,184,0.12),0_6px_18px_rgba(15,23,42,0.04)]">
 
               {/* Portrait — same asset as UA AboutSection, object position
                   keeps eyes in upper third on the EN card's adjusted aspect. */}
@@ -105,99 +114,128 @@ export default function AboutSectionEN() {
                 </div>
               </div>
 
-              {/* Bottom identity overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 bg-gradient-to-t from-white/90 via-white/50 to-transparent backdrop-blur-sm">
-                <div
-                  className="text-[1.3rem] lg:text-[1.45rem] text-slate-950 font-medium tracking-[-0.02em] leading-tight"
-                  style={{ fontFamily: fontStack }}
-                >
-                  Alex Romenskyi
-                </div>
-                <div
-                  className="text-[0.9rem] text-slate-600 mt-0.5"
-                  style={{ fontFamily: fontStack }}
-                >
-                  Funnel architect · 7+ years
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* =========================================== RIGHT — Bio + chips + socials + CTA =========================================== */}
-          <div className="lg:col-span-7 lg:h-[540px] flex flex-col gap-6 lg:gap-7">
+          {/* =========================================== RIGHT — Bio glass card + socials + CTA (mirrors UA) =========================================== */}
+          <div className="lg:col-span-7 flex flex-col gap-5 lg:gap-6">
 
-            {/* Bio */}
-            <div className="relative">
-              <div
-                className={`overflow-hidden transition-[max-height] duration-500 ease-out md:!max-h-none ${
-                  bioExpanded ? 'max-h-[1200px]' : 'max-h-[180px] bio-mask-collapsed'
-                }`}
-              >
-                <div className="space-y-4 anim-fade-up" style={{ transitionDelay: '0.15s' }}>
-                  <p
-                    className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
-                    style={{ fontFamily: fontStack }}
-                  >
-                    My training is theater. Directing interested me more than acting —
-                    unpacking motivation, reading the room, noticing what a person
-                    actually needs. In marketing that turns out to be a quiet
-                    superpower.
-                  </p>
-                  <p
-                    className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
-                    style={{ fontFamily: fontStack }}
-                  >
-                    You can be a strong expert and still grind in place. Without
-                    packaging, ads, a funnel — clients show up by accident, never
-                    as a stream. I lived this for years before I built my own
-                    system. Now I build the same for experts who hit that same
-                    wall.
-                  </p>
-                  <p
-                    className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
-                    style={{ fontFamily: fontStack }}
-                  >
-                    Seven years building funnels — landing pages, bots, payments,
-                    analytics. AI doesn’t replace the craft for me, it sharpens
-                    it: every step faster, every decision tighter. Strong experts
-                    don’t get stuck on expertise. They get stuck on packaging.
-                    I build that bridge.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile-only Read more / Collapse */}
-            <button
-              type="button"
-              onClick={() => setBioExpanded(!bioExpanded)}
-              aria-expanded={bioExpanded}
-              className="md:hidden self-center inline-flex items-center gap-1.5 text-[14px] text-[#175ae8] font-medium hover:text-[#0e47c8] transition-colors -mt-2"
-              style={{ fontFamily: fontStack }}
-            >
-              {bioExpanded ? 'Collapse' : 'Read more'}
-              <iconify-icon
-                icon={bioExpanded ? 'solar:alt-arrow-up-linear' : 'solar:alt-arrow-down-linear'}
-                width="14"
-                height="14"
-              />
-            </button>
-
-            {/* Stats chips */}
+            {/* About glass card — eyebrow + bio + separator + principles */}
             <div
-              className="flex flex-wrap gap-2 justify-center md:justify-start anim-fade-up"
-              style={{ transitionDelay: '0.22s' }}
+              className="relative rounded-[28px] bg-white/40 backdrop-blur-xl border border-white/60 p-6 lg:p-7 anim-fade-up overflow-hidden"
+              style={{
+                transitionDelay: '0.15s',
+                boxShadow: '0 18px 50px rgba(148,163,184,0.12), 0 6px 18px rgba(15,23,42,0.04)',
+              }}
             >
-              {stats.map((s) => (
-                <span
-                  key={s.text}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/55 backdrop-blur-md border border-white/60 px-3.5 py-1.5 text-[12px] text-slate-700"
+              {/* Glass highlight — canon */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.55),transparent_55%)] pointer-events-none rounded-[28px]"
+              />
+
+              <div className="relative z-10">
+                {/* Eyebrow — Specialization */}
+                <p
+                  className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-3"
+                  style={{ fontFamily: monoStack }}
+                >
+                  Specialization
+                </p>
+
+                {/* Bio paragraphs — mobile collapsed (mask-fade), md+ always full. */}
+                <div className="relative">
+                  <div
+                    className={`overflow-hidden transition-[max-height] duration-500 ease-out md:!max-h-none ${
+                      bioExpanded ? 'max-h-[1600px]' : 'max-h-[140px] bio-mask-collapsed'
+                    }`}
+                  >
+                    <div className="space-y-4">
+                      <p
+                        className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
+                        style={{ fontFamily: fontStack }}
+                      >
+                        In 7 years of marketing I’ve built dozens of sales
+                        systems for very different fields: from e-commerce to
+                        expert businesses in Ukraine, Georgia, Egypt, the
+                        US and Canada.
+                      </p>
+                      <p
+                        className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
+                        style={{ fontFamily: fontStack }}
+                      >
+                        The main insight for experts, entrepreneurs, coaches
+                        and creators: you lose opportunities — and, as a
+                        result, money — not because you’re missing one more
+                        «diploma» that gives you permission to scale.
+                        You lose them because of weak positioning (trying to
+                        be useful to everyone and sell to everyone), a weak
+                        sales system (or no system at all), poor packaging
+                        and chaos in your processes.
+                      </p>
+                      <p
+                        className="text-[1rem] lg:text-[1.05rem] leading-[1.6] text-slate-700"
+                        style={{ fontFamily: fontStack }}
+                      >
+                        I’ll bring my experience and skills to fully unlock
+                        what you’re actually capable of.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile-only Read more / Collapse */}
+                <button
+                  type="button"
+                  onClick={() => setBioExpanded(!bioExpanded)}
+                  aria-expanded={bioExpanded}
+                  className="md:hidden mt-3 inline-flex items-center gap-1.5 text-[14px] text-[#175ae8] font-medium hover:text-[#0e47c8] transition-colors"
                   style={{ fontFamily: fontStack }}
                 >
-                  <iconify-icon icon={s.icon} width="14" height="14" style={{ color: '#175ae8' }} />
-                  {s.text}
-                </span>
-              ))}
+                  {bioExpanded ? 'Collapse' : 'Read more'}
+                  <iconify-icon
+                    icon={bioExpanded ? 'solar:alt-arrow-up-linear' : 'solar:alt-arrow-down-linear'}
+                    width="14"
+                    height="14"
+                  />
+                </button>
+
+                {/* Separator — hairline gradient (site canon) */}
+                <div className="h-px bg-gradient-to-r from-transparent via-slate-300/60 to-transparent my-6" />
+
+                {/* Principles */}
+                <p
+                  className="text-[10px] uppercase tracking-[0.22em] text-slate-400 mb-3"
+                  style={{ fontFamily: monoStack }}
+                >
+                  Principles
+                </p>
+
+                <ul className="space-y-3">
+                  {principles.map((p) => (
+                    <li key={p.title} className="flex items-start gap-3">
+                      <span
+                        className="inline-block w-1.5 h-1.5 rounded-full bg-[#175ae8] shrink-0"
+                        style={{ marginTop: '0.6em', boxShadow: '0 0 6px rgba(23,90,232,0.45)' }}
+                      />
+                      <div className="flex-1 leading-[1.5]">
+                        <span
+                          className="text-[0.95rem] text-slate-900 font-medium"
+                          style={{ fontFamily: fontStack }}
+                        >
+                          {p.title}
+                        </span>
+                        <span
+                          className="text-[0.9rem] text-slate-600"
+                          style={{ fontFamily: fontStack }}
+                        >
+                          {' '}— {p.description}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Social links */}
@@ -236,7 +274,7 @@ export default function AboutSectionEN() {
               href={BOOKING_URL_EN}
               target="_blank"
               rel="noopener noreferrer"
-              className="self-center lg:self-start lg:mt-auto inline-flex items-center gap-2.5 rounded-full text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] transition-all duration-300 hover:translate-y-[-1px] anim-fade-up"
+              className="self-center lg:self-start inline-flex items-center gap-2.5 rounded-full text-white px-7 py-3.5 text-[0.95rem] font-medium tracking-[-0.01em] transition-all duration-300 hover:translate-y-[-1px] anim-fade-up"
               style={{
                 transitionDelay: '0.35s',
                 fontFamily: fontStack,

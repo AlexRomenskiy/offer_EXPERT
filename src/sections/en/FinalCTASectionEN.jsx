@@ -73,12 +73,12 @@ export default function FinalCTASectionEN() {
               </div>
 
               <h2
-                className="text-[1.65rem] sm:text-[2.3rem] lg:text-[3.2rem] tracking-[-0.02em] text-slate-950 font-light max-w-[20ch] mx-auto lg:mx-0"
+                className="text-[1.65rem] sm:text-[2.3rem] lg:text-[3.2rem] tracking-[-0.02em] text-slate-950 font-light max-w-[16ch] mx-auto lg:mx-0"
                 style={{ fontFamily: fontStack, lineHeight: 1.2 }}
               >
                 <span className="anim-wrap" style={{ display: 'block' }}>
                   <span className="anim-line font-medium" style={{ transitionDelay: '0.10s' }}>
-                    How much longer
+                    Step up to a new
                   </span>
                 </span>
                 <span
@@ -86,7 +86,7 @@ export default function FinalCTASectionEN() {
                   style={{ display: 'block', transitionDelay: '0.20s' }}
                 >
                   <span className="italic-accent">
-                    will you sell by hand?
+                    level of sales
                   </span>
                 </span>
               </h2>
@@ -98,7 +98,7 @@ export default function FinalCTASectionEN() {
                   fontFamily: fontStack,
                 }}
               >
-                One free strategy call — and you’ll know the next step.
+                30 minutes on a call — and you have a clear action plan.
               </p>
 
             </div>
@@ -126,7 +126,7 @@ export default function FinalCTASectionEN() {
                     boxShadow: '0 14px 38px rgba(23,90,232,0.30), inset 0 1px 0 rgba(255,255,255,0.20)',
                   }}
                 >
-                  Book free call
+                  Free strategy call
                   <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center">
                     <iconify-icon icon="solar:arrow-right-up-linear" width="13" height="13" />
                   </span>
