@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { UBRAND_DISCOUNT_PCT, UBRAND_DEADLINE, isDiscountActive } from '../../config/ubrand';
+import { useUBrandForm } from './UBrandFormModal';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -39,6 +40,7 @@ function Unit({ value, label }) {
 }
 
 export default function UBrandUrgencySection() {
+  const { open } = useUBrandForm();
   const [remaining, setRemaining] = useState(getRemaining());
 
   useEffect(() => {
@@ -83,7 +85,7 @@ export default function UBrandUrgencySection() {
                 className="text-[11px] tracking-[0.10em] uppercase text-orange-200"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                Decide today
+                Make a decision
               </span>
             </div>
 
@@ -92,7 +94,7 @@ export default function UBrandUrgencySection() {
               style={{ fontFamily: fontStack, lineHeight: 1.2 }}
             >
               <span className="font-medium">−{UBRAND_DISCOUNT_PCT}% on any package</span>{' '}
-              <span className="text-white/70">— if you decide today</span>
+              <span className="text-white/70">— if you make a decision</span>
             </h2>
             <p
               className="max-w-[34rem] text-[0.95rem] leading-[1.6] text-slate-300/85 mb-7"
@@ -115,8 +117,9 @@ export default function UBrandUrgencySection() {
               </p>
             )}
 
-            <a
-              href="#book"
+            <button
+              type="button"
+              onClick={open}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full px-8 text-white text-[0.95rem] font-medium transition-all hover:translate-y-[-1px] active:scale-[0.98]"
               style={{
                 fontFamily: fontStack,
@@ -126,7 +129,7 @@ export default function UBrandUrgencySection() {
             >
               Lock my −{UBRAND_DISCOUNT_PCT}%
               <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" />
-            </a>
+            </button>
           </div>
         </div>
       </div>

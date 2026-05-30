@@ -5,6 +5,7 @@ import {
   UBRAND_DISCOUNT_PCT,
   isDiscountActive,
 } from '../../config/ubrand';
+import { useUBrandForm } from './UBrandFormModal';
 
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
@@ -27,6 +28,7 @@ const pricingUBrand = [
     timeline: '5–7 days',
     supportDays: 30,
     tagline: 'Your first confident presence and a clear offer.',
+    taniaSessions: 2,
     forWhom: 'You have the expertise but freeze on camera and have no real online presence yet.',
     onCamera: [
       { label: 'On-camera positioning & presence', tip: 'We define how you come across on camera — who you are and who you help — so you look like the expert you already are.' },
@@ -53,6 +55,7 @@ const pricingUBrand = [
     timeline: '14 days',
     supportDays: 30,
     tagline: 'The whole system — from first hello to repeat sales.',
+    taniaSessions: 2,
     forWhom: 'You want a personal brand plus an automated funnel that sells without your constant presence.',
     onCamera: [
       { label: 'A repeatable on-camera content routine', tip: 'Presence that builds trust — we shape the scripts you bring and coach your delivery so you can show up consistently without the dread.' },
@@ -79,6 +82,7 @@ const pricingUBrand = [
     timeline: '14–21 days',
     supportDays: 90,
     tagline: 'Private, done-with-you — and built to actively bring you clients.',
+    taniaSessions: 4,
     forWhom: 'For those who want the most professional, hands-on build — bespoke and private, with both founders directly in it.',
     onCamera: [
       { label: 'Full on-camera coaching — lead your brand like a pro', tip: 'Private 1:1 sessions with Tania: she directs your delivery and refines the scripts you bring until you carry your brand — on camera and on stage — like a pro.' },
@@ -100,50 +104,56 @@ const pricingUBrand = [
   },
 ];
 
+// Click-to-expand explanation — inline (no overlay), so it never overlaps or
+// sticks on touch. Re-tap closes; the chevron signals it's expandable.
 function FeatureItem({ feature }) {
   const [open, setOpen] = useState(false);
   const hasTip = !!feature.tip;
   return (
-    <li className="relative group">
-      <div className="flex items-start gap-2.5">
+    <li>
+      <button
+        type="button"
+        onClick={() => hasTip && setOpen((o) => !o)}
+        aria-expanded={hasTip ? open : undefined}
+        className={`w-full flex items-start gap-2.5 text-left ${hasTip ? '' : 'cursor-default'}`}
+      >
         <span
           className="inline-block w-1.5 h-1.5 rounded-full bg-[#175ae8] shrink-0"
-          style={{ marginTop: '0.5em', boxShadow: '0 0 6px rgba(23,90,232,0.45)' }}
+          style={{ marginTop: '0.55em', boxShadow: '0 0 6px rgba(23,90,232,0.45)' }}
         />
-        <button
-          type="button"
-          onClick={() => hasTip && setOpen((o) => !o)}
-          className={`text-left text-[0.88rem] text-slate-800 leading-[1.45] ${
-            hasTip ? 'border-b border-dashed border-slate-300 group-hover:border-[#175ae8]/60 cursor-help' : 'cursor-default'
-          }`}
+        <span className="flex-1 text-[0.88rem] text-slate-800 leading-[1.45]" style={{ fontFamily: fontStack }}>
+          {feature.label}
+        </span>
+        {hasTip && (
+          <iconify-icon
+            icon="solar:alt-arrow-down-linear"
+            width="15"
+            height="15"
+            class="shrink-0 transition-transform duration-200"
+            style={{ color: '#94a3b8', marginTop: '0.35em', transform: open ? 'rotate(180deg)' : 'none' }}
+          />
+        )}
+      </button>
+      {hasTip && open && (
+        <p
+          className="mt-1.5 ml-[18px] pl-2.5 border-l-2 border-[#175ae8]/30 text-[0.8rem] text-slate-600 leading-[1.5]"
           style={{ fontFamily: fontStack }}
         >
-          {feature.label}
-        </button>
-      </div>
-      {hasTip && (
-        <div
-          className={`absolute z-50 left-6 right-0 top-full mt-1.5 max-w-[300px] p-3 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/70 transition-all duration-200 pointer-events-none ${
-            open ? 'opacity-100 visible' : 'opacity-0 invisible'
-          } group-hover:opacity-100 group-hover:visible`}
-          style={{ boxShadow: '0 20px 50px rgba(15,23,42,0.12), 0 4px 14px rgba(15,23,42,0.06)' }}
-        >
-          <p className="text-[0.8rem] text-slate-700 leading-[1.5]" style={{ fontFamily: fontStack }}>
-            {feature.tip}
-          </p>
-        </div>
+          {feature.tip}
+        </p>
       )}
     </li>
   );
 }
 
-function PartList({ label, name, icon, items }) {
+function PartList({ label, name, icon, items, meta }) {
   return (
     <div className="mb-4">
       <div className="flex items-center gap-2 mb-2">
         <iconify-icon icon={icon} width="16" height="16" style={{ color: '#175ae8' }} />
         <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500" style={{ fontFamily: monoStack }}>
           {label} · <span className="text-brand-gradient">{name}</span>
+          {meta && <span className="text-slate-400"> · {meta}</span>}
         </p>
       </div>
       <ul className="space-y-1.5">
@@ -156,6 +166,7 @@ function PartList({ label, name, icon, items }) {
 }
 
 function PackageCard({ p, discount }) {
+  const { open } = useUBrandForm();
   return (
     <div
       className={`relative flex flex-col p-6 lg:p-7 rounded-[28px] bg-white/55 backdrop-blur-xl anim-fade-up h-full ${
@@ -202,7 +213,7 @@ function PackageCard({ p, discount }) {
               </span>
             </div>
             <div className="text-[10px] tracking-[0.14em] uppercase text-orange-500 mt-1.5 font-semibold" style={{ fontFamily: monoStack }}>
-              −{UBRAND_DISCOUNT_PCT}% if you decide today
+              −{UBRAND_DISCOUNT_PCT}% if you make a decision
             </div>
           </>
         ) : (
@@ -229,7 +240,7 @@ function PackageCard({ p, discount }) {
         </div>
 
         {/* The two halves */}
-        <PartList label="On camera" name={TANIA_NAME} icon="solar:videocamera-record-linear" items={p.onCamera} />
+        <PartList label="On camera" name={TANIA_NAME} icon="solar:videocamera-record-linear" items={p.onCamera} meta={`${p.taniaSessions} live sessions`} />
         <PartList label="The system" name={OLEXANDR_NAME} icon="solar:layers-minimalistic-linear" items={p.system} />
 
         {p.note && (
@@ -249,8 +260,9 @@ function PackageCard({ p, discount }) {
         </div>
 
         {/* CTA → in-page lead form */}
-        <a
-          href="#book"
+        <button
+          type="button"
+          onClick={open}
           className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-full text-white text-[0.9rem] font-medium transition-all hover:translate-y-[-1px] active:scale-[0.98]"
           style={{
             fontFamily: fontStack,
@@ -260,7 +272,7 @@ function PackageCard({ p, discount }) {
         >
           Reserve your spot
           <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" />
-        </a>
+        </button>
 
         {/* Team-voiced testimonial */}
         <blockquote className="mt-6 pt-5 border-t border-slate-200/70">

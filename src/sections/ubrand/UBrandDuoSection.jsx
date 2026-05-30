@@ -10,8 +10,8 @@ import {
 const fontStack = "'Manrope', sans-serif";
 
 const taniaPoints = [
-  'Befriend the camera — film from the first take, no tension',
-  'Become the face & voice of your brand — on screen or on stage',
+  'Befriend the camera — film yourself and enjoy. No tension',
+  'Become the face & voice of your brand — screen, stage, life',
   'Confident delivery — body, voice and presence that sells',
 ];
 

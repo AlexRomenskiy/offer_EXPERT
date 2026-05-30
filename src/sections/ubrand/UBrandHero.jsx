@@ -7,6 +7,7 @@ import {
   OLEXANDR_NAME,
   isDiscountActive,
 } from '../../config/ubrand';
+import { useUBrandForm } from './UBrandFormModal';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -82,6 +83,7 @@ function IntroVideo() {
 
 export default function UBrandHero() {
   const discount = isDiscountActive();
+  const { open } = useUBrandForm();
   return (
     <section id="ubrand-hero" className="relative p-2 sm:p-5">
       <div
@@ -147,7 +149,7 @@ export default function UBrandHero() {
                 className="text-[11px] sm:text-[12px] tracking-[0.10em] uppercase text-orange-200"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                Live-event bonus · −{UBRAND_DISCOUNT_PCT}% if you decide today
+                Live-event bonus · −{UBRAND_DISCOUNT_PCT}% if you make a decision
               </span>
             </div>
           )}
@@ -210,15 +212,11 @@ export default function UBrandHero() {
             <em>booked</em>. And you don’t have to do it alone.
           </p>
 
-          {/* Horizontal video — centered centerpiece */}
-          <div className="w-full flex justify-center mb-9 anim-fade-up" style={{ transitionDelay: '0.26s' }}>
-            <IntroVideo />
-          </div>
-
-          {/* CTA */}
-          <div className="anim-fade-up" style={{ transitionDelay: '0.32s' }}>
-            <a
-              href="#book"
+          {/* CTA — kept ABOVE the video so it's visible without scrolling (desktop + mobile) */}
+          <div className="anim-fade-up" style={{ transitionDelay: '0.26s' }}>
+            <button
+              type="button"
+              onClick={open}
               className="group inline-flex overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(234,88,12,0.5)] focus:outline-none text-sm font-medium text-white tracking-wide rounded-full px-10 relative items-center justify-center"
               style={{ fontFamily: fontStack, height: '60px' }}
             >
@@ -243,15 +241,20 @@ export default function UBrandHero() {
                 class="relative z-10 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                 style={{ color: '#fff' }}
               />
-            </a>
+            </button>
             <p
               className="text-[11px] text-slate-300/70 mt-3 tracking-[0.02em]"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               {discount
-                ? `Just reserve your spot — no payment today. Booking now locks your −${UBRAND_DISCOUNT_PCT}%.`
+                ? `Just reserve your spot — no payment now. Booking now locks your −${UBRAND_DISCOUNT_PCT}%.`
                 : 'Just reserve your spot — no payment, we’ll reach out.'}
             </p>
+          </div>
+
+          {/* Horizontal video — the "second moment", below the CTA */}
+          <div className="w-full flex justify-center mt-10 anim-fade-up" style={{ transitionDelay: '0.32s' }}>
+            <IntroVideo />
           </div>
         </div>
       </div>

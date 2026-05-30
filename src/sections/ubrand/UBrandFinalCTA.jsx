@@ -1,9 +1,11 @@
 import { UBRAND_DISCOUNT_PCT, isDiscountActive } from '../../config/ubrand';
+import { useUBrandForm } from './UBrandFormModal';
 
 const fontStack = "'Manrope', sans-serif";
 
 export default function UBrandFinalCTA() {
   const discount = isDiscountActive();
+  const { open } = useUBrandForm();
   return (
     <section className="relative py-20 lg:py-28 px-6 md:px-8 lg:px-12">
       <div className="relative z-10 max-w-[760px] mx-auto text-center anim-trigger">
@@ -34,8 +36,9 @@ export default function UBrandFinalCTA() {
         </p>
 
         <div className="anim-fade-up" style={{ transitionDelay: '0.2s' }}>
-          <a
-            href="#book"
+          <button
+            type="button"
+            onClick={open}
             className="inline-flex h-[58px] items-center justify-center gap-2 rounded-full px-10 text-white text-[0.98rem] font-medium transition-all hover:translate-y-[-1px] active:scale-[0.98]"
             style={{
               fontFamily: fontStack,
@@ -45,11 +48,7 @@ export default function UBrandFinalCTA() {
           >
             Reserve your spot
             <iconify-icon icon="solar:arrow-right-linear" width="18" height="18" />
-          </a>
-        </div>
-
-        <div className="flex items-center justify-center mt-10">
-          <img src="/logo/horizontal-on-light.svg" alt="Craft Lions" className="h-7 w-auto opacity-70" />
+          </button>
         </div>
       </div>
     </section>
