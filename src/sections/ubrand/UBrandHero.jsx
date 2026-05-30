@@ -146,7 +146,7 @@ export default function UBrandHero() {
             >
               <iconify-icon icon="solar:gift-linear" width="15" height="15" style={{ color: '#fb923c' }} />
               <span
-                className="text-[11px] sm:text-[12px] tracking-[0.10em] uppercase text-orange-200"
+                className="text-[9.5px] sm:text-[12px] tracking-[0.05em] sm:tracking-[0.10em] uppercase text-orange-200"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 Live-event bonus · −{UBRAND_DISCOUNT_PCT}% if you make a decision
@@ -156,7 +156,7 @@ export default function UBrandHero() {
 
           {/* Eyebrow — team framing (co-founders) */}
           <p
-            className="text-[11px] tracking-[0.24em] uppercase text-[#7fb0ff] mb-4 anim-fade-up"
+            className="text-[9.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.24em] uppercase text-[#7fb0ff] mb-4 anim-fade-up"
             style={{ fontFamily: "'JetBrains Mono', monospace", transitionDelay: '0.10s' }}
           >
             {TANIA_NAME} &amp; {OLEXANDR_NAME} · Co-founders of Craft Lions

@@ -12,7 +12,7 @@ const FIELDS = [
   { name: 'name', label: 'Your name', type: 'text', placeholder: 'Jane Doe', required: true },
   { name: 'occupation', label: 'What you do', type: 'text', placeholder: 'Nutritionist · coach · founder…', required: true },
   { name: 'phone', label: 'Phone', type: 'tel', placeholder: '+1 555 123 4567', required: true },
-  { name: 'link', label: 'Website or social page', type: 'text', placeholder: 'instagram.com/you', required: false },
+  { name: 'link', label: 'Website or social', type: 'text', placeholder: '@yourhandle or yoursite.com', required: false },
 ];
 
 const EMPTY = { name: '', occupation: '', phone: '', link: '', company: '' };
