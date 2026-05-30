@@ -46,8 +46,7 @@ export default async function handler(req, res) {
     `*Name:* ${esc(name)}\n` +
     `*Does:* ${esc(occupation) || '—'}\n` +
     `*Phone:* ${esc(phone)}\n` +
-    `*Link:* ${esc(link) || '—'}\n` +
-    `*From:* ${esc(page) || 'u-brand'}`;
+    `*Link:* ${esc(link) || '—'}`;
 
   try {
     const results = await Promise.all(
