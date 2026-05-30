@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BOOKING_URL_EN } from '../../config/booking';
-import { UBRAND_DISCOUNT_PCT, UBRAND_DEADLINE, UBRAND_DEADLINE_LABEL, isDiscountActive } from '../../config/ubrand';
+import { UBRAND_DISCOUNT_PCT, UBRAND_DEADLINE, isDiscountActive } from '../../config/ubrand';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -84,7 +83,7 @@ export default function UBrandUrgencySection() {
                 className="text-[11px] tracking-[0.10em] uppercase text-orange-200"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                Today’s room only
+                Decide today
               </span>
             </div>
 
@@ -93,14 +92,14 @@ export default function UBrandUrgencySection() {
               style={{ fontFamily: fontStack, lineHeight: 1.2 }}
             >
               <span className="font-medium">−{UBRAND_DISCOUNT_PCT}% on any package</span>{' '}
-              <span className="text-white/70">— if you decide fast</span>
+              <span className="text-white/70">— if you decide today</span>
             </h2>
             <p
               className="max-w-[34rem] text-[0.95rem] leading-[1.6] text-slate-300/85 mb-7"
               style={{ fontFamily: fontStack }}
             >
-              Everyone from today’s talk gets {UBRAND_DISCOUNT_PCT}% off — but only if
-              you book your call before {UBRAND_DEADLINE_LABEL}. After that, standard pricing.
+              Reserve your spot today — no payment now, just your contact. Your −{UBRAND_DISCOUNT_PCT}%
+              is held for 48 hours.
             </p>
 
             {remaining ? (
@@ -117,9 +116,7 @@ export default function UBrandUrgencySection() {
             )}
 
             <a
-              href={BOOKING_URL_EN}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#book"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full px-8 text-white text-[0.95rem] font-medium transition-all hover:translate-y-[-1px] active:scale-[0.98]"
               style={{
                 fontFamily: fontStack,

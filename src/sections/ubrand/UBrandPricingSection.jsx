@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { BOOKING_URL_EN } from '../../config/booking';
 import {
   TANIA_NAME,
   OLEXANDR_NAME,
   UBRAND_DISCOUNT_PCT,
-  UBRAND_DEADLINE_LABEL,
   isDiscountActive,
 } from '../../config/ubrand';
 
@@ -15,7 +13,11 @@ const formatUSD = (n) => '$' + n.toLocaleString('en-US');
 const discountedPrice = (n) => Math.round(n * (1 - UBRAND_DISCOUNT_PCT / 100));
 
 // Each U-Brand package bundles BOTH halves: Tania's on-camera work + Olexandr's
-// system. Testimonials are team-voiced (they credit both, not one founder).
+// system. Features carry a `tip` (hover on desktop, tap on mobile) so cold
+// visitors understand jargon (lead magnet, tripwire…). Testimonials are
+// team-voiced. Note on scripts: the client brings their own script; Tania
+// refines it and directs delivery — she doesn't write it for them, and we never
+// frame script-writing as a deliverable.
 const pricingUBrand = [
   {
     key: 'foundation',
@@ -27,13 +29,13 @@ const pricingUBrand = [
     tagline: 'Your first confident presence and a clear offer.',
     forWhom: 'You have the expertise but freeze on camera and have no real online presence yet.',
     onCamera: [
-      'Find your on-camera voice — positioning & presence',
-      'Your first confident videos: script → delivery',
+      { label: 'On-camera positioning & presence', tip: 'We define how you come across on camera — who you are and who you help — so you look like the expert you already are.' },
+      { label: 'Confident delivery on your first videos', tip: 'You bring your script; Tania refines it with you and directs your delivery so your first videos feel natural, not stiff.' },
     ],
     system: [
-      'Strategy & positioning',
-      'Landing page (mobile-ready)',
-      'Lead magnet + messenger chatbot',
+      { label: 'Strategy & positioning', tip: 'Who you are, who you sell to, why you — we pin down your position in the market.' },
+      { label: 'Landing page (mobile-ready)', tip: 'A single landing page for your service or product, built to work on phones.' },
+      { label: 'Lead magnet + messenger chatbot', tip: 'A free material (PDF, checklist, quiz or short video) given in exchange for a contact. A bot delivers it on Instagram / WhatsApp / Messenger and keeps the person in your base.' },
     ],
     outcome: 'You show up with confidence and a clear offer — ready ground for the system.',
     testimonial: {
@@ -53,14 +55,14 @@ const pricingUBrand = [
     tagline: 'The whole system — from first hello to repeat sales.',
     forWhom: 'You want a personal brand plus an automated funnel that sells without your constant presence.',
     onCamera: [
-      'Personal-brand content system — presence that builds trust',
-      'On-camera scripts that feed the funnel',
+      { label: 'A repeatable on-camera content routine', tip: 'Presence that builds trust — we shape the scripts you bring and coach your delivery so you can show up consistently without the dread.' },
+      { label: 'On-camera content that feeds the funnel', tip: 'Your videos are tied to the funnel below, so attention turns into leads — not just views.' },
     ],
     system: [
-      'Everything in Foundation',
-      'Full product packaging (course / intensive structure)',
-      'Lead magnet + tripwire',
-      'Warm-up bot, payments, funnel analytics',
+      { label: 'Everything in Foundation', tip: 'Positioning, landing page, lead magnet and chatbot — all included as the base.' },
+      { label: 'Full product packaging', tip: 'Not one business-card page but a full structure: sales, material delivery, and separate touchpoints to collect contacts.' },
+      { label: 'Lead magnet + tripwire', tip: 'The lead magnet catches the contact for free. The tripwire is a low-cost paid product that lifts the average order and gives the first paid experience with you.' },
+      { label: 'Warm-up bot, payments, funnel analytics', tip: 'An automated warm-up sequence, payment processing with instant access after purchase, and clear numbers across the whole funnel.' },
     ],
     outcome: 'An automated sales system that converts attention into clients — and works without you.',
     testimonial: {
@@ -72,22 +74,24 @@ const pricingUBrand = [
   {
     key: 'premium',
     title: 'Premium',
-    badge: 'WITH TRAFFIC',
+    badge: 'VIP · PRIVATE',
     priceNum: 4247,
     timeline: '14–21 days',
-    supportDays: 30,
-    tagline: 'A custom system + ads that bring the clients.',
-    forWhom: 'You want not just packaging but scale — paid traffic on top of a system that converts.',
+    supportDays: 90,
+    tagline: 'Private, done-with-you — and built to actively bring you clients.',
+    forWhom: 'For those who want the most professional, hands-on build — bespoke and private, with both founders directly in it.',
     onCamera: [
-      'Full on-camera coaching — become the magnetic face of your brand',
-      'Content & ad-creative direction, with you on camera',
+      { label: 'Full on-camera coaching — lead your brand like a pro', tip: 'Private 1:1 sessions with Tania: she directs your delivery and refines the scripts you bring until you carry your brand — on camera and on stage — like a pro.' },
+      { label: 'Personal content day — a bank of ready assets', tip: 'A focused shoot that stocks weeks of content, so you’re never staring at a blank camera.' },
     ],
     system: [
-      'Everything in Generator',
-      'Paid ads — full campaign (creative, copy, launch)',
-      'Precise targeting + end-to-end analytics',
+      { label: 'Everything in Generator', tip: 'The full packaged funnel — packaging, tripwire, bot, payments, analytics.' },
+      { label: 'Active client-finding — paid ads: creative, launch & management', tip: 'We create the images, video and copy and go find your buyers across Meta, Google, YouTube and TikTok — the focus is real potential clients, not vanity reach. The first month’s ad budget is included.' },
+      { label: 'Full-funnel analytics — first touch to repeat sale', tip: 'Live reporting across the entire funnel: which channels, creatives and steps actually produce clients — so every dollar goes where it works.' },
+      { label: 'Bespoke strategy, run 1:1 by both founders', tip: 'A private, custom build led personally by Tania and Olexandr — with priority delivery and a 90-day optimization window after launch.' },
     ],
-    outcome: 'A scalable system — increase the ad budget, and sales grow with it.',
+    note: 'First month’s ad budget is included — you only fund ad spend from month 2.',
+    outcome: 'A premium brand that actively brings in clients — you lead on camera, the system finds and converts buyers behind you.',
     testimonial: {
       quote:
         'For two years my ad budget burned and I couldn’t see why. The problem wasn’t the ads — it was how I showed up and where they led. Tania fixed the on-camera part, Olexandr built the funnel and the traffic. Now I finally see the payback.',
@@ -95,6 +99,43 @@ const pricingUBrand = [
     },
   },
 ];
+
+function FeatureItem({ feature }) {
+  const [open, setOpen] = useState(false);
+  const hasTip = !!feature.tip;
+  return (
+    <li className="relative group">
+      <div className="flex items-start gap-2.5">
+        <span
+          className="inline-block w-1.5 h-1.5 rounded-full bg-[#175ae8] shrink-0"
+          style={{ marginTop: '0.5em', boxShadow: '0 0 6px rgba(23,90,232,0.45)' }}
+        />
+        <button
+          type="button"
+          onClick={() => hasTip && setOpen((o) => !o)}
+          className={`text-left text-[0.88rem] text-slate-800 leading-[1.45] ${
+            hasTip ? 'border-b border-dashed border-slate-300 group-hover:border-[#175ae8]/60 cursor-help' : 'cursor-default'
+          }`}
+          style={{ fontFamily: fontStack }}
+        >
+          {feature.label}
+        </button>
+      </div>
+      {hasTip && (
+        <div
+          className={`absolute z-50 left-6 right-0 top-full mt-1.5 max-w-[300px] p-3 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/70 transition-all duration-200 pointer-events-none ${
+            open ? 'opacity-100 visible' : 'opacity-0 invisible'
+          } group-hover:opacity-100 group-hover:visible`}
+          style={{ boxShadow: '0 20px 50px rgba(15,23,42,0.12), 0 4px 14px rgba(15,23,42,0.06)' }}
+        >
+          <p className="text-[0.8rem] text-slate-700 leading-[1.5]" style={{ fontFamily: fontStack }}>
+            {feature.tip}
+          </p>
+        </div>
+      )}
+    </li>
+  );
+}
 
 function PartList({ label, name, icon, items }) {
   return (
@@ -107,15 +148,7 @@ function PartList({ label, name, icon, items }) {
       </div>
       <ul className="space-y-1.5">
         {items.map((it, i) => (
-          <li key={i} className="flex items-start gap-2.5">
-            <span
-              className="inline-block w-1.5 h-1.5 rounded-full bg-[#175ae8] shrink-0"
-              style={{ marginTop: '0.5em', boxShadow: '0 0 6px rgba(23,90,232,0.45)' }}
-            />
-            <span className="text-[0.88rem] text-slate-800 leading-[1.45]" style={{ fontFamily: fontStack }}>
-              {it}
-            </span>
-          </li>
+          <FeatureItem key={i} feature={it} />
         ))}
       </ul>
     </div>
@@ -169,7 +202,7 @@ function PackageCard({ p, discount }) {
               </span>
             </div>
             <div className="text-[10px] tracking-[0.14em] uppercase text-orange-500 mt-1.5 font-semibold" style={{ fontFamily: monoStack }}>
-              −{UBRAND_DISCOUNT_PCT}% until {UBRAND_DEADLINE_LABEL}
+              −{UBRAND_DISCOUNT_PCT}% if you decide today
             </div>
           </>
         ) : (
@@ -199,6 +232,12 @@ function PackageCard({ p, discount }) {
         <PartList label="On camera" name={TANIA_NAME} icon="solar:videocamera-record-linear" items={p.onCamera} />
         <PartList label="The system" name={OLEXANDR_NAME} icon="solar:layers-minimalistic-linear" items={p.system} />
 
+        {p.note && (
+          <p className="text-[11px] text-slate-500 italic leading-[1.45] mb-4" style={{ fontFamily: fontStack }}>
+            {p.note}
+          </p>
+        )}
+
         {/* Outcome */}
         <div className="mb-5 p-3 rounded-2xl border border-[#175ae8]/15 bg-[#175ae8]/[0.05]">
           <p className="text-brand-gradient text-[10px] uppercase tracking-[0.2em] mb-0.5" style={{ fontFamily: monoStack }}>
@@ -209,11 +248,9 @@ function PackageCard({ p, discount }) {
           </p>
         </div>
 
-        {/* CTA */}
+        {/* CTA → in-page lead form */}
         <a
-          href={BOOKING_URL_EN}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#book"
           className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-full text-white text-[0.9rem] font-medium transition-all hover:translate-y-[-1px] active:scale-[0.98]"
           style={{
             fontFamily: fontStack,
@@ -221,7 +258,7 @@ function PackageCard({ p, discount }) {
             boxShadow: '0 14px 38px rgba(23,90,232,0.28), inset 0 1px 0 rgba(255,255,255,0.20)',
           }}
         >
-          Book a call
+          Reserve your spot
           <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" />
         </a>
 
@@ -254,7 +291,7 @@ export default function UBrandPricingSection() {
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         {/* Header */}
-        <div className="relative text-center mb-12 lg:mb-16 anim-trigger">
+        <div className="relative text-center mb-10 lg:mb-14 anim-trigger">
           <span aria-hidden="true" className="header-decor-dots header-decor-dots--center" />
           <div
             className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] text-slate-500 mb-5 anim-fade-up"
@@ -277,6 +314,13 @@ export default function UBrandPricingSection() {
           >
             {TANIA_NAME}’s on-camera work and {OLEXANDR_NAME}’s system come bundled in
             every tier — one team, one price, from being seen to being booked.
+          </p>
+          <p
+            className="inline-flex items-center gap-2 mt-5 text-[12px] text-slate-500 anim-fade-up"
+            style={{ fontFamily: fontStack, transitionDelay: '0.18s' }}
+          >
+            <iconify-icon icon="solar:check-circle-line-duotone" width="16" height="16" style={{ color: '#175ae8' }} />
+            A direct line to both founders is included in every package.
           </p>
         </div>
 

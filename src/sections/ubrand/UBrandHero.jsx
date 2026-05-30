@@ -1,8 +1,6 @@
 import { useRef, useState } from 'react';
-import { BOOKING_URL_EN } from '../../config/booking';
 import {
   UBRAND_DISCOUNT_PCT,
-  UBRAND_DEADLINE_LABEL,
   UBRAND_INTRO_VIDEO,
   UBRAND_INTRO_POSTER,
   TANIA_NAME,
@@ -149,7 +147,7 @@ export default function UBrandHero() {
                 className="text-[11px] sm:text-[12px] tracking-[0.10em] uppercase text-orange-200"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                Live-event bonus · −{UBRAND_DISCOUNT_PCT}% until {UBRAND_DEADLINE_LABEL}
+                Live-event bonus · −{UBRAND_DISCOUNT_PCT}% if you decide today
               </span>
             </div>
           )}
@@ -220,9 +218,7 @@ export default function UBrandHero() {
           {/* CTA */}
           <div className="anim-fade-up" style={{ transitionDelay: '0.32s' }}>
             <a
-              href={BOOKING_URL_EN}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#book"
               className="group inline-flex overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(234,88,12,0.5)] focus:outline-none text-sm font-medium text-white tracking-wide rounded-full px-10 relative items-center justify-center"
               style={{ fontFamily: fontStack, height: '60px' }}
             >
@@ -238,7 +234,7 @@ export default function UBrandHero() {
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-orange-500/30 blur-2xl rounded-full transition-colors duration-500 group-hover:bg-orange-400/55" />
               </div>
               <span className="relative z-10 text-white/90 transition-colors group-hover:text-white">
-                Book your strategy call
+                Reserve your spot
               </span>
               <iconify-icon
                 icon="solar:arrow-right-linear"
@@ -253,8 +249,8 @@ export default function UBrandHero() {
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               {discount
-                ? `Free 30-min call · mention today’s talk to lock your −${UBRAND_DISCOUNT_PCT}%`
-                : 'Free 30-min call · pick a time that suits you'}
+                ? `Just reserve your spot — no payment today. Booking now locks your −${UBRAND_DISCOUNT_PCT}%.`
+                : 'Just reserve your spot — no payment, we’ll reach out.'}
             </p>
           </div>
         </div>
