@@ -42,11 +42,11 @@ export default async function handler(req, res) {
   }
 
   const text =
-    `🦁 *New U-Brand lead*\n\n` +
-    `*Name:* ${esc(name)}\n` +
-    `*Does:* ${esc(occupation) || '—'}\n` +
-    `*Phone:* ${esc(phone)}\n` +
-    `*Link:* ${esc(link) || '—'}`;
+    `🦁 <b>New U-Brand lead</b>\n\n` +
+    `<b>Name:</b> ${esc(name)}\n` +
+    `<b>Does:</b> ${esc(occupation) || '—'}\n` +
+    `<b>Phone:</b> ${esc(phone)}\n` +
+    `<b>Link:</b> ${esc(link) || '—'}`;
 
   try {
     const results = await Promise.all(
@@ -54,7 +54,13 @@ export default async function handler(req, res) {
         fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id, text, parse_mode: 'Markdown' }),
+          body: JSON.stringify({
+            chat_id,
+            text,
+            parse_mode: 'HTML',
+            // Don't turn the link into a clickable preview — show it verbatim.
+            disable_web_page_preview: true,
+          }),
         }).then((r) => r.ok)
       )
     );
@@ -74,7 +80,13 @@ function safeParse(s) {
   }
 }
 
-// Strip characters that would break Telegram Markdown parsing.
+// HTML-escape for Telegram parse_mode:'HTML'. Only & < > are special there,
+// so the user's input (underscores, dots, slashes, @-handles) is preserved
+// character-for-character — exactly as they typed it.
 function esc(s) {
-  return String(s).replace(/[*_`[\]]/g, '').trim();
+  return String(s)
+    .trim()
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
