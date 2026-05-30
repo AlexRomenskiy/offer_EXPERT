@@ -8,7 +8,9 @@ import path from 'node:path';
 import QRCode from 'qrcode';
 import PDFDocument from 'pdfkit';
 
-const TARGET_URL = 'https://craftlions.ca/u-brand';
+// Canonical host is www (apex 307-redirects to www) — encode www so a printed
+// QR resolves in one hop. Displayed text below stays the shorter apex form.
+const TARGET_URL = 'https://www.craftlions.ca/u-brand';
 const OUT = path.resolve('U-Brand-QR.pdf');
 const LOGO = path.resolve('public/logo/stacked-on-light.png');
 
