@@ -1,4 +1,11 @@
-import { TANIA_NAME, TANIA_TAGLINE, OLEXANDR_NAME, OLEXANDR_TAGLINE } from '../../config/ubrand';
+import {
+  TANIA_NAME,
+  TANIA_TAGLINE,
+  TANIA_PHOTO,
+  OLEXANDR_NAME,
+  OLEXANDR_TAGLINE,
+  OLEXANDR_PHOTO,
+} from '../../config/ubrand';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -14,7 +21,7 @@ const olexandrPoints = [
   'Traffic & analytics — ads that scale what works',
 ];
 
-function DuoCard({ tag, name, tagline, icon, points, accent }) {
+function DuoCard({ tag, name, tagline, icon, photo, points, accent }) {
   return (
     <div
       className="relative p-7 lg:p-8 rounded-[28px] bg-white/55 backdrop-blur-xl border border-white/60 anim-fade-up h-full"
@@ -26,15 +33,24 @@ function DuoCard({ tag, name, tagline, icon, points, accent }) {
       />
       <div className="relative z-10">
         <div className="flex items-center gap-3 mb-5">
-          <div
-            className="w-12 h-12 rounded-2xl flex items-center justify-center"
-            style={{
-              background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
-              boxShadow: '0 12px 30px rgba(23,90,232,0.28), inset 0 1px 0 rgba(255,255,255,0.20)',
-            }}
-          >
-            <iconify-icon icon={icon} width="22" height="22" style={{ color: '#fff' }} />
-          </div>
+          {photo ? (
+            <img
+              src={photo}
+              alt={name}
+              className="w-14 h-14 rounded-full object-cover border border-white/70 shrink-0"
+              style={{ boxShadow: '0 10px 24px rgba(15,23,42,0.18)' }}
+            />
+          ) : (
+            <div
+              className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+              style={{
+                background: 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)',
+                boxShadow: '0 12px 30px rgba(23,90,232,0.28), inset 0 1px 0 rgba(255,255,255,0.20)',
+              }}
+            >
+              <iconify-icon icon={icon} width="22" height="22" style={{ color: '#fff' }} />
+            </div>
+          )}
           <div>
             <p
               className="text-[10px] uppercase tracking-[0.22em] mb-0.5"
@@ -110,6 +126,7 @@ export default function UBrandDuoSection() {
             name={TANIA_NAME}
             tagline={TANIA_TAGLINE}
             icon="solar:videocamera-record-linear"
+            photo={TANIA_PHOTO}
             points={taniaPoints}
             accent="#175ae8"
           />
@@ -118,6 +135,7 @@ export default function UBrandDuoSection() {
             name={OLEXANDR_NAME}
             tagline={OLEXANDR_TAGLINE}
             icon="solar:layers-minimalistic-linear"
+            photo={OLEXANDR_PHOTO}
             points={olexandrPoints}
             accent="#175ae8"
           />
