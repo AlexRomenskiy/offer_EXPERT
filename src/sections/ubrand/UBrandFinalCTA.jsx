@@ -28,9 +28,9 @@ export default function UBrandFinalCTA() {
           className="max-w-[32rem] mx-auto text-[1rem] leading-[1.6] text-slate-600 mb-8 anim-fade-up"
           style={{ fontFamily: fontStack, transitionDelay: '0.14s' }}
         >
-          One free 30-minute call with {TANIA_NAME} and me. We’ll map your fastest
-          path from expertise to booked clients — and lock your −{UBRAND_DISCOUNT_PCT}%
-          if you’re in by {UBRAND_DEADLINE_LABEL}.
+          You don’t have to do it alone. One free 30-minute call with {TANIA_NAME} and
+          me — we’ll map your fastest path from showing up to getting booked, and lock
+          your −{UBRAND_DISCOUNT_PCT}% if you’re in by {UBRAND_DEADLINE_LABEL}.
         </p>
 
         <div className="anim-fade-up" style={{ transitionDelay: '0.2s' }}>

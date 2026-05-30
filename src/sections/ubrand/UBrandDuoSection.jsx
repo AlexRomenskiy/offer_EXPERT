@@ -98,8 +98,8 @@ export default function UBrandDuoSection() {
             className="max-w-[34rem] mx-auto mt-5 text-[0.98rem] leading-[1.6] text-slate-600 anim-fade-up subtitle-hairline-mobile-only"
             style={{ fontFamily: fontStack, transitionDelay: '0.14s' }}
           >
-            Most experts master one half and stall — visible but unsold, or built
-            but unseen. U-Brand is both, under one roof.
+            You can be brilliant in real life and still invisible online. The camera is
+            the bridge — but a bridge needs something on the other side. U-Brand builds both.
           </p>
         </div>
 

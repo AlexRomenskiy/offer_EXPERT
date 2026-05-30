@@ -153,11 +153,11 @@ export default function UBrandHero() {
               </p>
 
               <h1
-                className="font-light mb-5 text-white anim-fade-up"
+                className="font-light mb-5 text-white anim-fade-up max-w-[34rem]"
                 style={{ fontFamily: fontStack, lineHeight: 1.16, transitionDelay: '0.14s' }}
               >
                 <span className="block font-medium text-[2rem] sm:text-[3rem] lg:text-[3.6rem] tracking-[0.01em]">
-                  From being{' '}
+                  You{' '}
                   <span
                     style={{
                       fontFamily: "'Playfair Display', serif",
@@ -169,11 +169,12 @@ export default function UBrandHero() {
                       backgroundClip: 'text',
                     }}
                   >
-                    seen
+                    showed up
                   </span>
+                  .
                 </span>
                 <span className="block font-medium text-[2rem] sm:text-[3rem] lg:text-[3.6rem] tracking-[0.01em]">
-                  to being{' '}
+                  Let’s build the{' '}
                   <span
                     style={{
                       fontFamily: "'Playfair Display', serif",
@@ -185,8 +186,9 @@ export default function UBrandHero() {
                       backgroundClip: 'text',
                     }}
                   >
-                    booked
+                    brand behind it
                   </span>
+                  .
                 </span>
               </h1>
 
@@ -198,9 +200,10 @@ export default function UBrandHero() {
                   transitionDelay: '0.20s',
                 }}
               >
-                {TANIA_NAME} puts you in front of the camera — presence, personal
-                brand, content people trust. I build the system behind it: packaging,
-                landing, funnel, automation. Together — a personal brand that actually sells.
+                {TANIA_NAME} got you in front of the camera. The system behind it —
+                your brand, your product, the funnel that turns attention into clients —
+                that’s what I build. From being seen to being booked. And you don’t have
+                to do it alone.
               </p>
 
               <div className="anim-fade-up" style={{ transitionDelay: '0.28s' }}>
