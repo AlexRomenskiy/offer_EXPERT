@@ -8,6 +8,10 @@ export const UBRAND_DISCOUNT_PCT = 20; // TODO confirm with Olexandr
 export const UBRAND_DEADLINE = '2026-06-02T23:59:59';
 export const UBRAND_DEADLINE_LABEL = 'June 2'; // human-readable, used in copy
 
+// Discount is live only until the deadline. After it, the page auto-reverts to
+// full prices and the ribbon/urgency/strikethrough disappear — no manual edit.
+export const isDiscountActive = () => new Date() < new Date(UBRAND_DEADLINE);
+
 // ── Intro video (Tania recap, shown at the top of the page) ───────────────────
 // Placeholder = existing EN testimonial clip. Swap for the recorded recap video.
 export const UBRAND_INTRO_VIDEO = '/tania-testimonial-en.mp4'; // TODO swap for recap

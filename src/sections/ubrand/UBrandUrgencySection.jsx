@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BOOKING_URL_EN } from '../../config/booking';
-import { UBRAND_DISCOUNT_PCT, UBRAND_DEADLINE, UBRAND_DEADLINE_LABEL } from '../../config/ubrand';
+import { UBRAND_DISCOUNT_PCT, UBRAND_DEADLINE, UBRAND_DEADLINE_LABEL, isDiscountActive } from '../../config/ubrand';
 
 const fontStack = "'Manrope', sans-serif";
 
@@ -46,6 +46,9 @@ export default function UBrandUrgencySection() {
     const id = setInterval(() => setRemaining(getRemaining()), 1000);
     return () => clearInterval(id);
   }, []);
+
+  // After the deadline the whole urgency block disappears — no manual edit.
+  if (!isDiscountActive()) return null;
 
   return (
     <section className="relative py-12 lg:py-16 px-6 md:px-8 lg:px-12">

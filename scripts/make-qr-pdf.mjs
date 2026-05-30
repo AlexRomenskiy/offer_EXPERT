@@ -1,6 +1,7 @@
 // One-off generator for the printable QR sheet Tania holds up after her talk.
 // Run: node scripts/make-qr-pdf.mjs
-// Output: U-Brand-QR.pdf (A4) at repo root. Needs qrcode + pdfkit (installed --no-save).
+// Output: U-Brand-QR.pdf (A4, repo root) + public/U-Brand-QR.html (browser preview).
+// Needs qrcode + pdfkit (installed --no-save).
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -9,11 +10,10 @@ import PDFDocument from 'pdfkit';
 
 const TARGET_URL = 'https://craftlions.ca/u-brand';
 const OUT = path.resolve('U-Brand-QR.pdf');
-const MARK = path.resolve('public/logo/mark-on-dark.png');
+const LOGO = path.resolve('public/logo/stacked-on-light.png');
 
 const navy = '#020f2d';
 const blue = '#175ae8';
-const blueLight = '#60a5fa';
 const slate = '#64748b';
 
 const qrBuffer = await QRCode.toBuffer(TARGET_URL, {
@@ -30,25 +30,21 @@ doc.pipe(stream);
 
 const W = doc.page.width; // 595.28
 const cx = W / 2;
-const m = 45;
 
-// Header band
-doc.roundedRect(m, 45, W - 2 * m, 72, 16).fill(navy);
-if (fs.existsSync(MARK)) {
+// Centered logo (no background)
+const logoW = 150;
+if (fs.existsSync(LOGO)) {
   try {
-    doc.image(MARK, m + 22, 61, { height: 40 });
+    doc.image(LOGO, cx - logoW / 2, 46, { width: logoW });
   } catch {}
 }
-doc.font('Helvetica-Bold').fontSize(19);
-doc.fillColor('#ffffff').text('CRAFT', m + 80, 71, { continued: true });
-doc.fillColor(blueLight).text(' LIONS');
 
 // Eyebrow
 doc
   .font('Helvetica')
   .fontSize(10)
   .fillColor(slate)
-  .text('U-BRAND    ·    TANIA LAV  &  OLEXANDR', 0, 178, {
+  .text('U-BRAND    ·    TANIA LAV  &  OLEXANDR', 0, 214, {
     align: 'center',
     characterSpacing: 3,
   });
@@ -58,7 +54,7 @@ doc
   .font('Helvetica-Bold')
   .fontSize(34)
   .fillColor(navy)
-  .text('From being seen', 0, 206, { align: 'center' })
+  .text('From being seen', 0, 242, { align: 'center' })
   .text('to being booked', { align: 'center' });
 
 // Subtitle
@@ -66,7 +62,7 @@ doc
   .font('Helvetica')
   .fontSize(13)
   .fillColor(slate)
-  .text('Scan to continue what Tania just shared on stage.', 0, 302, {
+  .text('Scan to continue what Tania just shared on stage.', 0, 336, {
     align: 'center',
   });
 
@@ -74,21 +70,21 @@ doc
 const qrSize = 250;
 doc.lineWidth(1);
 doc
-  .roundedRect(cx - qrSize / 2 - 14, 345, qrSize + 28, qrSize + 28, 18)
+  .roundedRect(cx - qrSize / 2 - 14, 372, qrSize + 28, qrSize + 28, 18)
   .fillAndStroke('#ffffff', '#e2e8f0');
-doc.image(qrBuffer, cx - qrSize / 2, 359, { width: qrSize });
+doc.image(qrBuffer, cx - qrSize / 2, 386, { width: qrSize });
 
 // URL
 doc
   .font('Courier-Bold')
   .fontSize(15)
   .fillColor(blue)
-  .text('craftlions.ca/u-brand', 0, 638, { align: 'center' });
+  .text('craftlions.ca/u-brand', 0, 665, { align: 'center' });
 
 // Discount pill
 const pillW = 392;
 const pillH = 38;
-const pillY = 672;
+const pillY = 700;
 doc.roundedRect(cx - pillW / 2, pillY, pillW, pillH, 19).fill('#f97316');
 doc
   .font('Helvetica-Bold')
@@ -104,7 +100,7 @@ doc
   .font('Helvetica')
   .fontSize(10)
   .fillColor(slate)
-  .text('Tania Lav  &  Olexandr — Co-founders, Craft Lions', 0, 792, {
+  .text('Tania Lav  &  Olexandr — Co-founders, Craft Lions', 0, 795, {
     align: 'center',
   });
 
@@ -128,12 +124,8 @@ const html = `<!doctype html>
   body { font-family: Arial, Helvetica, sans-serif; background: #eef4fa; }
   .sheet { width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff;
     padding: 16mm 18mm; display: flex; flex-direction: column; align-items: center; }
-  .bar { width: 100%; background: ${navy}; border-radius: 16px; height: 64px;
-    display: flex; align-items: center; gap: 12px; padding: 0 22px; }
-  .bar img { height: 38px; }
-  .bar b { font-size: 19px; color: #fff; letter-spacing: .3px; }
-  .bar b span { color: ${blueLight}; }
-  .eyebrow { margin-top: 30px; font-size: 11px; letter-spacing: 3px; color: ${slate}; }
+  .logo { width: 150px; height: auto; }
+  .eyebrow { margin-top: 18px; font-size: 11px; letter-spacing: 3px; color: ${slate}; }
   h1 { margin-top: 14px; font-size: 38px; line-height: 1.15; color: ${navy}; text-align: center; }
   .sub { margin-top: 14px; font-size: 14px; color: ${slate}; text-align: center; }
   .qr { margin-top: 24px; width: 270px; height: 270px; padding: 12px; border: 1px solid #e2e8f0;
@@ -147,7 +139,7 @@ const html = `<!doctype html>
 </style></head>
 <body>
   <div class="sheet">
-    <div class="bar"><img src="logo/mark-on-dark.png" alt="" /><b>CRAFT<span> LIONS</span></b></div>
+    <img class="logo" src="logo/stacked-on-light.png" alt="Craft Lions" />
     <div class="eyebrow">U-BRAND&nbsp;&nbsp;·&nbsp;&nbsp;TANIA LAV &amp; OLEXANDR</div>
     <h1>From being seen<br/>to being booked</h1>
     <div class="sub">Scan to continue what Tania just shared on stage.</div>

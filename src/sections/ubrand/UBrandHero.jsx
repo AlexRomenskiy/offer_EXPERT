@@ -7,6 +7,7 @@ import {
   UBRAND_INTRO_POSTER,
   TANIA_NAME,
   OLEXANDR_NAME,
+  isDiscountActive,
 } from '../../config/ubrand';
 
 const fontStack = "'Manrope', sans-serif";
@@ -82,6 +83,7 @@ function IntroVideo() {
 }
 
 export default function UBrandHero() {
+  const discount = isDiscountActive();
   return (
     <section id="ubrand-hero" className="relative p-2 sm:p-5">
       <div
@@ -132,23 +134,25 @@ export default function UBrandHero() {
         {/* Centered hero column */}
         <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-8 pt-10 pb-12 lg:pt-12 lg:pb-16 flex flex-col items-center text-center anim-trigger is-visible">
 
-          {/* Event discount ribbon */}
-          <div
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 anim-fade-up"
-            style={{
-              background: 'rgba(251,146,60,0.12)',
-              border: '1px solid rgba(251,146,60,0.40)',
-              transitionDelay: '0.05s',
-            }}
-          >
-            <iconify-icon icon="solar:gift-linear" width="15" height="15" style={{ color: '#fb923c' }} />
-            <span
-              className="text-[11px] sm:text-[12px] tracking-[0.10em] uppercase text-orange-200"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          {/* Event discount ribbon — auto-hides after the deadline */}
+          {discount && (
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 anim-fade-up"
+              style={{
+                background: 'rgba(251,146,60,0.12)',
+                border: '1px solid rgba(251,146,60,0.40)',
+                transitionDelay: '0.05s',
+              }}
             >
-              Live-event bonus · −{UBRAND_DISCOUNT_PCT}% until {UBRAND_DEADLINE_LABEL}
-            </span>
-          </div>
+              <iconify-icon icon="solar:gift-linear" width="15" height="15" style={{ color: '#fb923c' }} />
+              <span
+                className="text-[11px] sm:text-[12px] tracking-[0.10em] uppercase text-orange-200"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                Live-event bonus · −{UBRAND_DISCOUNT_PCT}% until {UBRAND_DEADLINE_LABEL}
+              </span>
+            </div>
+          )}
 
           {/* Eyebrow — team framing (co-founders) */}
           <p
@@ -248,7 +252,9 @@ export default function UBrandHero() {
               className="text-[11px] text-slate-300/70 mt-3 tracking-[0.02em]"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              Free 30-min call · mention today’s talk to lock your −{UBRAND_DISCOUNT_PCT}%
+              {discount
+                ? `Free 30-min call · mention today’s talk to lock your −${UBRAND_DISCOUNT_PCT}%`
+                : 'Free 30-min call · pick a time that suits you'}
             </p>
           </div>
         </div>

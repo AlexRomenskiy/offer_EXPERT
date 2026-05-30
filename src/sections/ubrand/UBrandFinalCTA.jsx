@@ -1,9 +1,10 @@
 import { BOOKING_URL_EN } from '../../config/booking';
-import { UBRAND_DISCOUNT_PCT, UBRAND_DEADLINE_LABEL } from '../../config/ubrand';
+import { UBRAND_DISCOUNT_PCT, UBRAND_DEADLINE_LABEL, isDiscountActive } from '../../config/ubrand';
 
 const fontStack = "'Manrope', sans-serif";
 
 export default function UBrandFinalCTA() {
+  const discount = isDiscountActive();
   return (
     <section className="relative py-20 lg:py-28 px-6 md:px-8 lg:px-12">
       <div className="relative z-10 max-w-[760px] mx-auto text-center anim-trigger">
@@ -29,8 +30,8 @@ export default function UBrandFinalCTA() {
           style={{ fontFamily: fontStack, transitionDelay: '0.14s' }}
         >
           You don’t have to do it alone. One free 30-minute strategy call — we’ll map
-          your fastest path from showing up to getting booked, and lock your
-          −{UBRAND_DISCOUNT_PCT}% if you’re in by {UBRAND_DEADLINE_LABEL}.
+          your fastest path from showing up to getting booked
+          {discount ? `, and lock your −${UBRAND_DISCOUNT_PCT}% if you’re in by ${UBRAND_DEADLINE_LABEL}.` : '.'}
         </p>
 
         <div className="anim-fade-up" style={{ transitionDelay: '0.2s' }}>

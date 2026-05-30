@@ -1,8 +1,18 @@
+import { useState } from 'react';
 import { BOOKING_URL_EN } from '../../config/booking';
-import { TANIA_NAME, OLEXANDR_NAME } from '../../config/ubrand';
+import {
+  TANIA_NAME,
+  OLEXANDR_NAME,
+  UBRAND_DISCOUNT_PCT,
+  UBRAND_DEADLINE_LABEL,
+  isDiscountActive,
+} from '../../config/ubrand';
 
 const fontStack = "'Manrope', sans-serif";
 const monoStack = "'JetBrains Mono', monospace";
+
+const formatUSD = (n) => '$' + n.toLocaleString('en-US');
+const discountedPrice = (n) => Math.round(n * (1 - UBRAND_DISCOUNT_PCT / 100));
 
 // Each U-Brand package bundles BOTH halves: Tania's on-camera work + Olexandr's
 // system. Testimonials are team-voiced (they credit both, not one founder).
@@ -11,7 +21,7 @@ const pricingUBrand = [
     key: 'foundation',
     title: 'Foundation',
     badge: 'START',
-    price: '$1,247',
+    priceNum: 1247,
     timeline: '5–7 days',
     supportDays: 30,
     tagline: 'Your first confident presence and a clear offer.',
@@ -37,7 +47,7 @@ const pricingUBrand = [
     title: 'Generator',
     badge: 'OPTIMAL',
     highlight: true,
-    price: '$2,490',
+    priceNum: 2490,
     timeline: '14 days',
     supportDays: 30,
     tagline: 'The whole system — from first hello to repeat sales.',
@@ -63,7 +73,7 @@ const pricingUBrand = [
     key: 'premium',
     title: 'Premium',
     badge: 'WITH TRAFFIC',
-    price: '$4,247',
+    priceNum: 4247,
     timeline: '14–21 days',
     supportDays: 30,
     tagline: 'A custom system + ads that bring the clients.',
@@ -112,7 +122,7 @@ function PartList({ label, name, icon, items }) {
   );
 }
 
-function PackageCard({ p }) {
+function PackageCard({ p, discount }) {
   return (
     <div
       className={`relative flex flex-col p-6 lg:p-7 rounded-[28px] bg-white/55 backdrop-blur-xl anim-fade-up h-full ${
@@ -142,16 +152,33 @@ function PackageCard({ p }) {
           {p.badge}
         </div>
 
-        {/* Title + price */}
-        <h3 className="text-[1.4rem] text-slate-900 font-semibold leading-tight mb-1" style={{ fontFamily: fontStack }}>
+        {/* Title */}
+        <h3 className="text-[1.4rem] text-slate-900 font-semibold leading-tight mb-2" style={{ fontFamily: fontStack }}>
           {p.title}
         </h3>
-        <div className="flex items-baseline gap-2 mb-1">
+
+        {/* Price (strikethrough full + discounted while the offer is live) */}
+        {discount ? (
+          <>
+            <div className="flex items-baseline gap-2.5">
+              <span className="text-[1.25rem] text-slate-400 line-through font-light" style={{ fontFamily: fontStack }}>
+                {formatUSD(p.priceNum)}
+              </span>
+              <span className="text-[2.2rem] tracking-[-0.03em] text-slate-950 font-light leading-none" style={{ fontFamily: fontStack }}>
+                {formatUSD(discountedPrice(p.priceNum))}
+              </span>
+            </div>
+            <div className="text-[10px] tracking-[0.14em] uppercase text-orange-500 mt-1.5 font-semibold" style={{ fontFamily: monoStack }}>
+              −{UBRAND_DISCOUNT_PCT}% until {UBRAND_DEADLINE_LABEL}
+            </div>
+          </>
+        ) : (
           <span className="text-[2.2rem] tracking-[-0.03em] text-slate-950 font-light leading-none" style={{ fontFamily: fontStack }}>
-            {p.price}
+            {formatUSD(p.priceNum)}
           </span>
-        </div>
-        <div className="text-[10px] tracking-[0.16em] uppercase text-slate-500 mb-4" style={{ fontFamily: monoStack }}>
+        )}
+
+        <div className="text-[10px] tracking-[0.16em] uppercase text-slate-500 mt-2 mb-4" style={{ fontFamily: monoStack }}>
           {p.timeline} delivery · {p.supportDays} days support
         </div>
 
@@ -213,6 +240,10 @@ function PackageCard({ p }) {
 }
 
 export default function UBrandPricingSection() {
+  const discount = isDiscountActive();
+  const [activeKey, setActiveKey] = useState('generator');
+  const active = pricingUBrand.find((p) => p.key === activeKey);
+
   return (
     <section id="pricing" className="relative py-20 lg:py-24 px-6 md:px-8 lg:px-12 scroll-mt-24 overflow-hidden">
       <div
@@ -230,7 +261,7 @@ export default function UBrandPricingSection() {
             style={{ fontFamily: monoStack }}
           >
             <span className="h-px w-6 bg-slate-300" />
-            Packages · from $1,247
+            Packages · from {formatUSD(discount ? discountedPrice(1247) : 1247)}
             <span className="h-px w-6 bg-slate-300" />
           </div>
           <h2
@@ -249,11 +280,34 @@ export default function UBrandPricingSection() {
           </p>
         </div>
 
-        {/* 3 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7 items-stretch anim-trigger">
+        {/* Desktop: 3 cards side by side */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6 lg:gap-7 items-stretch anim-trigger">
           {pricingUBrand.map((p) => (
-            <PackageCard key={p.key} p={p} />
+            <PackageCard key={p.key} p={p} discount={discount} />
           ))}
+        </div>
+
+        {/* Mobile: tabbed single card (switch package to see its details) */}
+        <div className="lg:hidden anim-trigger">
+          <div className="inline-flex p-1 rounded-full bg-white/60 border border-white/70 shadow-sm w-full gap-1 mb-7 backdrop-blur-md">
+            {pricingUBrand.map((p) => (
+              <button
+                key={p.key}
+                type="button"
+                onClick={() => setActiveKey(p.key)}
+                className={`flex-1 px-2 py-2.5 rounded-full text-[12px] font-semibold tracking-[-0.01em] transition-all ${
+                  activeKey === p.key ? 'text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                }`}
+                style={{
+                  fontFamily: fontStack,
+                  background: activeKey === p.key ? 'linear-gradient(135deg, #020f2d 0%, #175ae8 100%)' : undefined,
+                }}
+              >
+                {p.title}
+              </button>
+            ))}
+          </div>
+          <PackageCard p={active} discount={discount} />
         </div>
       </div>
     </section>
