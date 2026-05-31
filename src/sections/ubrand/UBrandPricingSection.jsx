@@ -78,10 +78,11 @@ const pricingUBrand = [
     key: 'premium',
     title: 'Premium',
     badge: 'VIP · PRIVATE',
+    scarcity: 'Only 2 Premium builds open each month',
     priceNum: 4247,
     timeline: '14–21 days',
     supportDays: 90,
-    tagline: 'Private, done-with-you — and built to actively bring you clients.',
+    tagline: 'Private and done-with-you. You lead on camera — the system finds and converts buyers behind you.',
     taniaSessions: 4,
     forWhom: 'For those who want the most professional, hands-on build — bespoke and private, with both founders directly in it.',
     onCamera: [
@@ -95,6 +96,8 @@ const pricingUBrand = [
       { label: 'Bespoke strategy, run 1:1 by both founders', tip: 'A private, custom build led personally by Tania and Olexandr — with priority delivery and a 90-day optimization window after launch.' },
     ],
     note: 'First month’s ad budget is included — you only fund ad spend from month 2.',
+    guarantee:
+      'If your system isn’t live and taking test traffic by day 21, you don’t pay the balance. The build risk is on us, not you.',
     outcome: 'A premium brand that actively brings in clients — you lead on camera, the system finds and converts buyers behind you.',
     testimonial: {
       quote:
@@ -201,6 +204,19 @@ function PackageCard({ p, discount }) {
           {p.title}
         </h3>
 
+        {/* Scarcity (Premium only) — real capacity limit, not a discount clock */}
+        {p.scarcity && (
+          <div
+            className="inline-flex self-start items-center gap-1.5 px-2.5 py-1 rounded-full mb-2.5"
+            style={{ background: 'rgba(251,146,60,0.10)', border: '1px solid rgba(251,146,60,0.35)' }}
+          >
+            <iconify-icon icon="solar:lock-keyhole-minimalistic-linear" width="13" height="13" style={{ color: '#ea580c' }} />
+            <span className="text-[10px] tracking-[0.1em] uppercase text-orange-700 font-semibold" style={{ fontFamily: monoStack }}>
+              {p.scarcity}
+            </span>
+          </div>
+        )}
+
         {/* Price (strikethrough full + discounted while the offer is live) */}
         {discount ? (
           <>
@@ -258,6 +274,27 @@ function PackageCard({ p, discount }) {
             {p.outcome}
           </p>
         </div>
+
+        {/* Launch guarantee (Premium only) — risk reversal, navy block for weight */}
+        {p.guarantee && (
+          <div
+            className="mb-5 p-3.5 rounded-2xl"
+            style={{
+              background: 'linear-gradient(135deg, #020f2d 0%, #0c2a6b 100%)',
+              boxShadow: '0 14px 34px rgba(2,15,45,0.22)',
+            }}
+          >
+            <div className="flex items-center gap-2 mb-1.5">
+              <iconify-icon icon="solar:shield-check-bold" width="16" height="16" style={{ color: '#60a5fa' }} />
+              <p className="text-[10px] uppercase tracking-[0.2em] text-[#7fb0ff]" style={{ fontFamily: monoStack }}>
+                Launch guarantee
+              </p>
+            </div>
+            <p className="text-[0.84rem] text-white/90 leading-[1.5]" style={{ fontFamily: fontStack }}>
+              {p.guarantee}
+            </p>
+          </div>
+        )}
 
         {/* CTA → in-page lead form */}
         <button
