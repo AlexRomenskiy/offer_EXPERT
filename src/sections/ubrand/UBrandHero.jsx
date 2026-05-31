@@ -23,7 +23,12 @@ function IntroVideo() {
     const v = videoRef.current;
     if (!v) return;
     v.muted = !v.muted;
-    if (!v.muted) v.play().catch(() => {});
+    // Turning sound ON = the viewer wants to actually watch it → restart from
+    // the top so they get the full message in context, not mid-sentence.
+    if (!v.muted) {
+      v.currentTime = 0;
+      v.play().catch(() => {});
+    }
     setMuted(v.muted);
   };
 
