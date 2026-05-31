@@ -95,6 +95,11 @@ const pricingUBrand = [
       { label: 'Full-funnel analytics — first touch to repeat sale', tip: 'Live reporting across the entire funnel: which channels, creatives and steps actually produce clients — so every dollar goes where it works.' },
       { label: 'Bespoke strategy, run 1:1 by both founders', tip: 'A private, custom build led personally by Tania and Olexandr — with priority delivery and a 90-day optimization window after launch.' },
     ],
+    perks: [
+      { label: 'Quarterly brand & funnel review', tip: 'Every 90 days we re-read your numbers together and tune positioning, creatives and funnel — so the system keeps compounding instead of going stale.' },
+      { label: 'Client CRM set up for you', tip: 'A simple system to track every lead and client from first touch to repeat sale, so no opportunity slips through the cracks.' },
+      { label: 'Founding-client status', tip: 'Locked founding pricing and first access to everything we build next — you grow as the brand grows.' },
+    ],
     note: 'First month’s ad budget is included — you only fund ad spend from month 2.',
     guarantee:
       'If your system isn’t live and taking test traffic by day 21, you don’t pay the balance. The build risk is on us, not you.',
@@ -258,6 +263,23 @@ function PackageCard({ p, discount }) {
         {/* The two halves */}
         <PartList label="On camera" name={TANIA_NAME} icon="solar:videocamera-record-linear" items={p.onCamera} meta={`${p.taniaSessions} live sessions`} />
         <PartList label="The system" name={OLEXANDR_NAME} icon="solar:layers-minimalistic-linear" items={p.system} />
+
+        {/* VIP perks (Premium only) */}
+        {p.perks && (
+          <div className="mb-4">
+            <div className="flex items-center gap-2 mb-2">
+              <iconify-icon icon="solar:crown-minimalistic-linear" width="16" height="16" style={{ color: '#175ae8' }} />
+              <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500" style={{ fontFamily: monoStack }}>
+                VIP perks
+              </p>
+            </div>
+            <ul className="space-y-1.5">
+              {p.perks.map((it, i) => (
+                <FeatureItem key={i} feature={it} />
+              ))}
+            </ul>
+          </div>
+        )}
 
         {p.note && (
           <p className="text-[11px] text-slate-500 italic leading-[1.45] mb-4" style={{ fontFamily: fontStack }}>

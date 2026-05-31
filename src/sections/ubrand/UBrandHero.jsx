@@ -58,7 +58,7 @@ function IntroVideo() {
             className="text-[10px] tracking-[0.18em] uppercase text-white/90"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
-            {TANIA_NAME} · 1 min
+            {TANIA_NAME}
           </span>
         </div>
       )}
