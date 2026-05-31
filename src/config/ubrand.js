@@ -13,9 +13,10 @@ export const UBRAND_DEADLINE_LABEL = 'June 1'; // human-readable, used in copy
 export const isDiscountActive = () => new Date() < new Date(UBRAND_DEADLINE);
 
 // ── Intro video (Tania recap, shown at the top of the page) ───────────────────
-// Placeholder = existing EN testimonial clip. Swap for the recorded recap video.
-export const UBRAND_INTRO_VIDEO = '/tania-testimonial-en.mp4'; // TODO swap for recap
-export const UBRAND_INTRO_POSTER = '/tania-lav.jpg'; // her headshot as the still frame
+// Recorded recap clip. Source "For the website U-brand.mp4" (4:3, 45MB) was
+// compressed + baked to a centered 16:9 crop → public/ubrand-intro.mp4 (~7MB).
+export const UBRAND_INTRO_VIDEO = '/ubrand-intro.mp4';
+export const UBRAND_INTRO_POSTER = '/ubrand-intro-poster.jpg'; // still from the clip
 
 // ── People ────────────────────────────────────────────────────────────────────
 export const TANIA_NAME = 'Tania Lav';
