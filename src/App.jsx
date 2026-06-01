@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import EnLandingPage from './pages/EnLandingPage';
 import UBrandPage from './pages/UBrandPage';
+import TestDesignPage from './pages/TestDesignPage';
 import PrivacyPolicy from './pages/legal/PrivacyPolicy';
 import CookiesPolicy from './pages/legal/CookiesPolicy';
 import TermsOfService from './pages/legal/TermsOfService';
@@ -90,6 +91,8 @@ export default function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/en" element={<EnLandingPage />} />
           <Route path="/u-brand" element={<UBrandPage />} />
+          <Route path="/test-design" element={<TestDesignPage />} />
+          <Route path="/test_design" element={<TestDesignPage />} />
 
           {/* UA legal */}
           <Route path="/privacy" element={<PrivacyPolicy />} />
