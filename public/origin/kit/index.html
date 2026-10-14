@@ -58,7 +58,7 @@ h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
 /* top */
 .top{position:absolute;z-index:5;left:0;right:0;top:0}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 0}
-.top img{height:28px;width:auto}
+.brand{display:inline-flex;align-items:center;gap:.6rem;font-size:.95rem;font-weight:600;letter-spacing:.02em;color:#fff}.brand img{width:34px;height:34px;object-fit:contain}.brand b{font-weight:600}.brand i{font-style:normal;color:#60a5fa}
 .top a.back{font-size:.78rem;color:rgba(255,255,255,.7);display:inline-flex;gap:.5rem;align-items:center}
 .top a.back:hover{color:#fff}
 
@@ -170,7 +170,7 @@ h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
 .who ul{list-style:none;margin-top:1.2rem;display:grid;gap:.5rem;font-size:.86rem;color:rgba(255,255,255,.75)}
 .who li::before{content:"·";color:var(--blue-soft);margin-right:.5rem;font-weight:700}
 .foot{margin-top:4rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-size:.76rem;color:rgba(255,255,255,.45)}
-.foot img{height:22px;width:auto;opacity:.85}
+.foot .brand{font-size:.8rem}.foot .brand img{width:24px;height:24px}
 
 @media (min-width:900px){
   .hero{padding:10rem 0 8rem}
@@ -194,7 +194,7 @@ h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
 
 <header class="top">
   <div class="wrap">
-    <a href="https://www.craftlions.ca/en" aria-label="Craft Lions"><img src="/logo/horizontal-on-dark.svg" alt="Craft Lions"></a>
+    <a href="https://www.craftlions.ca/en" aria-label="Craft Lions"><span class="brand"><img src="/logo/mark-on-light.png" alt=""><span><b>CRAFT</b> <i>LIONS</i></span></span></a>
     <a class="back" href="/origin/">← Back to the Origin concept</a>
   </div>
 </header>
@@ -386,7 +386,7 @@ h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
       </aside>
     </div>
     <div class="foot">
-      <img src="/logo/horizontal-on-dark.svg" alt="Craft Lions">
+      <span class="brand"><img src="/logo/mark-on-light.png" alt=""><span><b>CRAFT</b> <i>LIONS</i></span></span>
       <span>Concept work prepared as a gift. Not affiliated with or endorsed by Origin at The Beachlands or its developers.</span>
     </div>
   </div>
