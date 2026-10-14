@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Origin for Families · Concept by Craft Lions</title>
+<meta name="description" content="A concept film and landing page for families buying together at Origin at The Beachlands, Colwood. Prepared by Craft Lions as a gift for the Origin team.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Origin for Families · a concept by Craft Lions">
+<meta property="og:description" content="One day, three generations, two homes a short walk apart. A concept film and page for Origin at The Beachlands.">
+<meta property="og:image" content="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/a8c07eb4-7199-4f85-95f2-c7a271104055.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b2238">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --shell:#f4f4f1;
+  --mist:#dce6ea;
+  --ink:#0d1b28;
+  --ink-soft:rgba(13,27,40,.6);
+  --ocean:#12324f;
+  --ocean-deep:#0b2238;
+  --tide:#4d84a6;
+  --sky:#a9cfe2;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --w:min(91.5vw,1440px);
+  --nav:4.5rem;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--shell);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--ocean);color:#fff}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--tide);outline-offset:3px;border-radius:6px}
+.wrap{width:var(--w);margin:0 auto}
+.serif{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.01em}
+.kicker{display:flex;align-items:center;gap:.75rem;font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1.5rem}
+.kicker::before{content:"";width:1.25rem;height:1px;background:currentColor}
+h2{font-size:clamp(2.6rem,6vw,5.4rem);font-weight:500;line-height:.95;letter-spacing:-.055em}
+.lead{max-width:30rem;font-size:.95rem;line-height:1.65;color:var(--ink-soft)}
+.grain{position:relative;isolation:isolate}
+.grain::before{content:"";position:absolute;inset:0;z-index:-1;background-image:var(--grain);opacity:.06;mix-blend-mode:soft-light;pointer-events:none}
+
+/* pill button */
+.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:.9rem;border-radius:999px;padding:.4rem .4rem .4rem 1.4rem;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:transform .35s var(--ease)}
+.pill:hover{transform:translateY(-2px)}
+.pill .dot{width:2.1rem;height:2.1rem;border-radius:50%;display:grid;place-items:center;transition:transform .35s var(--ease)}
+.pill:hover .dot{transform:rotate(45deg)}
+.pill svg{width:16px;height:16px}
+.pill-dark{background:var(--ink);color:#fff}.pill-dark .dot{background:#fff;color:var(--ink)}
+.pill-light{background:#fff;color:var(--ink)}.pill-light .dot{background:var(--ink);color:#fff}
+.pill-ghost{border:1px solid rgba(13,27,40,.2);padding:.85rem 1.4rem}
+.pill-ghost .play{width:.6rem;height:.7rem;background:currentColor;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-.3rem}
+
+/* concept ribbon */
+.ribbon{position:relative;z-index:60;background:var(--ocean-deep);color:#b9cad6;font-size:.72rem;text-align:center;padding:.45rem 1rem;letter-spacing:.03em}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;height:var(--nav);transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(244,244,241,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:rgba(13,27,40,.08)}
+.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand svg{width:30px;height:30px}
+.brand span{font-family:var(--serif);font-size:1.35rem;letter-spacing:.02em}
+.brand small{font-family:var(--sans);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border:1px solid rgba(13,27,40,.18);border-radius:999px;padding:.15rem .55rem}
+.nav-links{display:none;gap:2.2rem}
+.nav-links a{font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);transition:color .3s}
+.nav-links a:hover{color:var(--ink)}
+.nav .pill{font-size:.7rem}
+.nav .pill .dot{width:1.8rem;height:1.8rem}
+
+/* hero */
+.hero{position:relative;min-height:calc(100svh - var(--nav));overflow:hidden;padding-top:9vh}
+.hero-copy{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero h1{font-size:clamp(3.3rem,8.4vw,8.6rem);font-weight:600;line-height:.86;letter-spacing:-.075em}
+.hero h1 .serif{font-weight:400;letter-spacing:-.03em;display:block}
+.hero p{margin-top:1.7rem;max-width:31rem;font-size:.98rem;line-height:1.65;color:var(--ink-soft)}
+.hero .actions{margin-top:1.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.hero-media{position:relative;z-index:1;margin-top:2vh;width:100%;height:74vh}
+.hero-media picture,.hero-media img{position:absolute;inset:0;width:100%;height:100%}
+.hero-media img{object-fit:cover;object-position:50% 100%;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.35) 14%,#000 32%,#000 80%,rgba(0,0,0,.4) 92%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.35) 14%,#000 32%,#000 80%,rgba(0,0,0,.4) 92%,transparent 100%)}
+.ring{position:absolute;border-radius:50%;border:clamp(10px,1.4vw,22px) solid rgba(255,255,255,.4);pointer-events:none}
+.hero-media .ring{width:min(46vh,70vw);aspect-ratio:1;top:14%;left:50%;transform:translateX(-50%);border-color:rgba(255,255,255,.5);box-shadow:0 0 60px rgba(255,255,255,.18),inset 0 0 60px rgba(255,255,255,.12);filter:blur(.4px);-webkit-mask-image:linear-gradient(to bottom,#000 35%,transparent 92%);mask-image:linear-gradient(to bottom,#000 35%,transparent 92%)}
+
+/* facts row */
+.facts{padding:3rem 0 2rem}
+.facts-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(13,27,40,.12)}
+.fact{padding:1.6rem 0 1.4rem;border-bottom:1px solid rgba(13,27,40,.12)}
+.fact:nth-child(odd){padding-right:1rem}
+.fact b{display:block;font-size:clamp(1.9rem,3.4vw,3rem);font-weight:500;letter-spacing:-.06em;line-height:1}
+.fact span{display:block;margin-top:.6rem;font-size:.8rem;color:var(--ink-soft)}
+
+/* pain manifesto */
+.manifesto{position:relative;min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 5vw;background:radial-gradient(ellipse 60% 50% at center,#fff 0%,rgba(255,255,255,.5) 45%,var(--shell) 100%)}
+.manifesto p{position:relative;max-width:62rem;font-size:clamp(1.9rem,4.3vw,3.7rem);font-weight:500;line-height:1.06;letter-spacing:-.05em}
+.manifesto p .serif{font-weight:400}
+.manifesto .muted{color:rgba(13,27,40,.38)}
+
+/* film */
+.film{padding:2rem 0 9rem}
+.film-grid{display:grid;gap:3rem;align-items:center}
+.film .lead{margin-top:1.6rem}
+.film ul{list-style:none;margin-top:2rem;display:grid;gap:.6rem;font-size:.88rem;color:var(--ink-soft)}
+.film li{display:flex;gap:.8rem;align-items:baseline}
+.film li b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.15rem;color:var(--tide);min-width:3.2rem}
+.phone{position:relative;justify-self:center;width:min(100%,360px);aspect-ratio:9/16;border-radius:2rem;overflow:hidden;background:var(--ocean-deep);box-shadow:0 40px 80px -30px rgba(11,34,56,.55),0 0 0 8px #fff,0 0 0 9px rgba(13,27,40,.08)}
+.phone video{width:100%;height:100%;object-fit:cover}
+.phone .playbtn{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,rgba(11,34,56,0) 40%,rgba(11,34,56,.55));transition:opacity .4s var(--ease)}
+.phone .playbtn span{width:4.6rem;height:4.6rem;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 10px 30px rgba(11,34,56,.35);transition:transform .35s var(--ease)}
+.phone .playbtn:hover span{transform:scale(1.06)}
+.phone .playbtn i{width:1.2rem;height:1.4rem;background:var(--ink);clip-path:polygon(0 0,100% 50%,0 100%);margin-left:.25rem}
+.phone .playbtn em{position:absolute;left:0;right:0;bottom:1.4rem;text-align:center;font-style:normal;color:#fff;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.phone.playing .playbtn{opacity:0;pointer-events:none}
+
+/* the day */
+.day{color:#fff;padding:18rem 0 16rem;
+  background:
+    radial-gradient(ellipse 55% 35% at 85% 28%,rgba(77,132,166,.22),rgba(77,132,166,0) 70%),
+    radial-gradient(ellipse 50% 30% at 10% 70%,rgba(169,207,226,.10),rgba(169,207,226,0) 70%),
+    linear-gradient(180deg,#f4f4f1 0rem,#f0f2f0 1.5rem,#e6ebeb 3rem,#d5e0e5 4.5rem,#c2d2db 6rem,#abc2cf 7.5rem,#93b0c2 9rem,#789cb3 10.5rem,#5d89a5 12rem,#467594 13.5rem,#37617f 15rem,#294f6d 16.5rem,#1d405d 18rem,#133350 19.5rem,#0e2a43 21rem,#0c243b 22.5rem,#0b2238 24rem,#0f2a45 40%,#12324f 60%,#12324f calc(100% - 22rem),#133451 calc(100% - 20.62rem),#173a58 calc(100% - 19.25rem),#1d4362 calc(100% - 17.88rem),#254f6f calc(100% - 16.5rem),#2f5e7f calc(100% - 15.12rem),#3a6f91 calc(100% - 13.75rem),#4e80a1 calc(100% - 12.38rem),#6792ae calc(100% - 11rem),#80a4bb calc(100% - 9.62rem),#98b6c8 calc(100% - 8.25rem),#afc7d4 calc(100% - 6.88rem),#c5d6dd calc(100% - 5.5rem),#d8e2e5 calc(100% - 4.12rem),#e7ecec calc(100% - 2.75rem),#f1f2f0 calc(100% - 1.38rem),#f4f4f1 100%)}
+.day .kicker{color:rgba(255,255,255,.6)}
+.day-head{display:grid;gap:2rem;margin-bottom:5rem}
+.day-head .lead{color:rgba(255,255,255,.65)}
+.day-grid{display:grid;grid-template-columns:1fr;gap:0}
+.day-frame{display:none}
+.moment{padding:0 0 4.5rem}
+.moment .m-img{position:relative;aspect-ratio:4/5;border-radius:1rem;overflow:hidden;margin-bottom:1.6rem}
+.moment .m-img img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.tag{position:absolute;right:.8rem;top:.8rem;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .7rem;border-radius:999px;background:rgba(11,34,56,.35);border:1px solid rgba(255,255,255,.25);color:#fff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.time{font-family:var(--serif);font-style:italic;font-size:clamp(3rem,6vw,5.6rem);line-height:.9;color:var(--sky)}
+.moment h3{margin-top:.8rem;font-size:clamp(1.7rem,2.6vw,2.4rem);font-weight:500;letter-spacing:-.04em;line-height:1.05}
+.moment p{margin-top:.9rem;max-width:27rem;color:rgba(255,255,255,.7);font-size:.98rem;line-height:1.65}
+.day-foot{margin-top:1rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.18);display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;justify-content:space-between}
+.day-foot p{font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.1;max-width:34rem}
+
+/* homes */
+.homes{padding:8rem 0 6rem}
+.homes-head{display:grid;gap:2rem;margin-bottom:4rem}
+.home{position:relative;background:#fff;border-radius:1.25rem;overflow:hidden;display:grid;grid-template-columns:1fr;margin-bottom:1.2rem;box-shadow:0 -1px 0 rgba(13,27,40,.06)}
+.gallery{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--mist);touch-action:pan-y}
+.gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s var(--ease)}
+.gallery img.plan{object-fit:contain;background:#fff;padding:6%}
+.gallery img.on{opacity:1}
+.bars{position:absolute;z-index:3;left:1rem;right:1rem;top:.6rem;display:flex;gap:4px}
+.bars button{flex:1;height:18px;position:relative;cursor:pointer}
+.bars button::before{content:"";position:absolute;left:0;right:0;top:8px;height:2px;border-radius:2px;background:rgba(255,255,255,.45)}
+.bars button.on::before,.bars button.done::before{background:#fff}
+.gallery.on-plan .bars button::before{background:rgba(13,27,40,.18)}
+.gallery.on-plan .bars button.on::before,.gallery.on-plan .bars button.done::before{background:var(--ink)}
+.arrow{position:absolute;z-index:4;top:50%;transform:translateY(-50%);width:2.9rem;height:2.9rem;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.92);color:var(--ink);box-shadow:0 6px 20px rgba(11,34,56,.18);transition:transform .3s var(--ease),background .3s}
+.arrow svg{width:20px;height:20px}
+.arrow:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+.arrow.prev{left:1rem}.arrow.next{right:1rem}
+.gallery.on-plan .arrow{background:var(--ink);color:#fff}
+.count{position:absolute;z-index:3;right:1rem;bottom:1rem;font-size:.75rem;color:#fff;padding:.4rem .75rem;border-radius:999px;background:rgba(13,27,40,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-variant-numeric:tabular-nums}
+.caption{position:absolute;z-index:3;left:1rem;bottom:1rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:.4rem .75rem;border-radius:999px;background:rgba(13,27,40,.35);color:#fff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.gallery.on-plan .caption,.gallery.on-plan .count{background:rgba(13,27,40,.75)}
+.info{padding:1.8rem 1.5rem 2rem;display:flex;flex-direction:column}
+.info .for{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--tide)}
+.info h3{margin-top:.3rem;font-size:clamp(2rem,3.3vw,3rem);font-weight:500;letter-spacing:-.05em;line-height:1}
+.info .spec{margin-top:.6rem;font-size:.85rem;color:var(--ink-soft)}
+.info p.why{margin-top:1.4rem;font-size:.97rem;line-height:1.65;color:rgba(13,27,40,.75);max-width:30rem}
+.sizes{margin-top:1.6rem;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(13,27,40,.12)}
+.sizes div{padding:1rem .6rem 0 0}
+.sizes b{display:block;font-size:1.35rem;font-weight:500;letter-spacing:-.04em}
+.sizes span{font-size:.72rem;color:var(--ink-soft)}
+.pairs{margin-top:1.6rem;font-size:.85rem;color:var(--ink-soft)}
+.pairs b{color:var(--ink);font-weight:500}
+
+/* questions */
+.faq{padding:5rem 0 7rem}
+.faq-grid{display:grid;gap:3rem}
+.q{border-top:1px solid rgba(13,27,40,.15)}
+.q:last-child{border-bottom:1px solid rgba(13,27,40,.15)}
+.q button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.5rem 0;text-align:left;font-size:clamp(1.05rem,1.6vw,1.25rem);font-weight:500;letter-spacing:-.025em}
+.q .plus{flex:none;width:1.6rem;height:1.6rem;border-radius:50%;border:1px solid rgba(13,27,40,.35);position:relative;transition:transform .4s var(--ease)}
+.q .plus::before,.q .plus::after{content:"";position:absolute;left:50%;top:50%;width:.6rem;height:1px;background:var(--ink);transform:translate(-50%,-50%)}
+.q .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.q[data-open] .plus{transform:rotate(45deg)}
+.q .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.q[data-open] .a{grid-template-rows:1fr}
+.q .a > div{overflow:hidden}
+.q .a p{padding:0 0 1.6rem;max-width:36rem;font-size:.95rem;line-height:1.7;color:var(--ink-soft)}
+
+/* shared spaces */
+.spaces{padding:7rem 0 3rem}
+.spaces .lead{margin-top:1.6rem}
+.bento{display:grid;grid-template-columns:1fr;gap:.6rem;margin-top:3.5rem}
+.tile{position:relative;border-radius:1rem;overflow:hidden;min-height:22rem;background:var(--mist)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,34,56,.82) 0%,rgba(11,34,56,.45) 28%,rgba(11,34,56,.12) 50%,rgba(11,34,56,0) 64%)}
+.tile div{position:absolute;z-index:2;left:1.4rem;right:1.4rem;bottom:1.3rem;color:#fff}
+.tile h3{font-size:1.5rem;font-weight:500;letter-spacing:-.035em}
+.tile p{margin-top:.3rem;font-size:.88rem;color:rgba(255,255,255,.78);max-width:24rem}
+
+/* steps */
+.steps{color:#fff;padding:16rem 0 15rem;
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 45%,rgba(77,132,166,.2),rgba(77,132,166,0) 70%),
+    linear-gradient(180deg,#f4f4f1 0rem,#f0f2f0 1.38rem,#e6ebeb 2.75rem,#d5e0e5 4.12rem,#c2d2db 5.5rem,#abc2cf 6.88rem,#93b0c2 8.25rem,#789cb3 9.62rem,#5d89a5 11rem,#467594 12.38rem,#37617f 13.75rem,#294f6d 15.12rem,#1d405d 16.5rem,#133350 17.88rem,#0e2a43 19.25rem,#0c243b 20.62rem,#0b2238 22rem,#0b2238 calc(100% - 22rem),#0c243b calc(100% - 20.62rem),#0e2942 calc(100% - 19.25rem),#12314e calc(100% - 17.88rem),#193d5b calc(100% - 16.5rem),#234b6b calc(100% - 15.12rem),#2e5c7d calc(100% - 13.75rem),#3a6e90 calc(100% - 12.38rem),#4d81a1 calc(100% - 11rem),#6593b0 calc(100% - 9.62rem),#7ca5be calc(100% - 8.25rem),#91b6cb calc(100% - 6.88rem),#a5c6d7 calc(100% - 5.5rem),#b6d3e1 calc(100% - 4.12rem),#c3ddea calc(100% - 2.75rem),#cce4ef calc(100% - 1.38rem),#cfe6f1 100%)}
+.steps .kicker{color:rgba(255,255,255,.55)}
+.step{display:grid;gap:.8rem;padding:2.2rem 0;border-top:1px solid rgba(255,255,255,.15)}
+.step:last-child{border-bottom:1px solid rgba(255,255,255,.15)}
+.step .n{font-family:var(--serif);font-style:italic;font-size:2.4rem;color:rgba(255,255,255,.4);line-height:1}
+.step h3{font-size:1.8rem;font-weight:400;letter-spacing:-.04em}
+.step p{max-width:28rem;font-size:.92rem;color:rgba(255,255,255,.6);line-height:1.65}
+
+/* closing */
+.close{position:relative;width:100%;overflow:hidden;background:linear-gradient(180deg,#cfe6f1 0%,#bfdcea 50%,var(--sky) 100%);padding:2rem 0 0}
+.close-grid{position:relative;z-index:3;display:grid;gap:3rem;width:min(88%,1200px);margin:0 auto}
+.close h2{font-size:clamp(2.8rem,6.5vw,6rem)}
+.visit{margin-top:1.8rem;font-size:.92rem;line-height:1.75;color:rgba(13,27,40,.72)}
+.visit b{color:var(--ink);font-weight:500}
+form{background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:1rem;padding:1.6rem;display:grid;gap:1.1rem}
+.field{display:grid;gap:.45rem}
+.field > span,legend{font-size:.78rem;font-weight:500;color:rgba(13,27,40,.7)}
+input[type=text],input[type=email]{font:inherit;font-size:1rem;padding:.85rem 1rem;border-radius:.65rem;border:1px solid rgba(13,27,40,.15);background:#fff;color:var(--ink)}
+fieldset{border:0;display:grid;gap:.6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chips span{display:inline-block;padding:.55rem .95rem;border-radius:999px;border:1px solid rgba(13,27,40,.2);font-size:.85rem;background:#fff;transition:background .25s,color .25s}
+.chips input:checked + span{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chips input:focus-visible + span{outline:2px solid var(--tide);outline-offset:2px}
+form .pill{justify-self:start;margin-top:.4rem}
+.form-note{font-size:.75rem;color:rgba(13,27,40,.55)}
+.demo-msg{display:none;font-size:.85rem;line-height:1.6;padding:.9rem 1rem;border-radius:.65rem;background:#fff;border-left:3px solid var(--tide)}
+.demo-msg.show{display:block}
+.horizon{position:relative;z-index:1;margin:5rem auto 0;width:130%;left:-15%;height:46vh;border-radius:50% 50% 0 0/100% 100% 0 0;overflow:hidden}
+.horizon img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.horizon::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,34,56,0) 45%,rgba(11,34,56,.35) 70%,rgba(11,34,56,.8) 88%,var(--ocean-deep) 100%)}
+
+/* made by */
+.maker{background:var(--ocean-deep);color:#fff;padding:6rem 0 2rem}
+.maker-grid{display:grid;gap:2.5rem}
+.maker .kicker{color:rgba(255,255,255,.5)}
+.maker h2{font-size:clamp(2.2rem,4.6vw,4rem)}
+.maker p{margin-top:1.4rem;max-width:34rem;font-size:.98rem;line-height:1.7;color:rgba(255,255,255,.7)}
+.maker .actions{margin-top:2rem;display:flex;gap:.6rem;flex-wrap:wrap}
+.maker .pill-ghost{border-color:rgba(255,255,255,.3);color:#fff}
+.maker-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;align-content:start}
+.maker-photos figure{position:relative;border-radius:1rem;overflow:hidden;aspect-ratio:9/16;background:#12324f}
+.maker-photos figure:nth-child(2){transform:translateY(1.5rem)}
+.maker-photos img{width:100%;height:100%;object-fit:cover}
+.maker-photos figcaption{position:absolute;left:.5rem;right:.5rem;bottom:.6rem;width:max-content;max-width:calc(100% - 1rem);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .7rem;border-radius:999px;background:rgba(11,34,56,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+footer{background:var(--ocean-deep);color:rgba(255,255,255,.6);padding:4rem 0 2.5rem;font-size:.8rem;line-height:1.7;text-align:center}
+footer .wrap{display:grid;gap:2rem;justify-items:center}
+footer .big{font-family:var(--serif);font-style:italic;font-size:clamp(2.4rem,9vw,8rem);line-height:.9;color:transparent;background:linear-gradient(180deg,#fff,rgba(255,255,255,0));-webkit-background-clip:text;background-clip:text;padding-bottom:.1em}
+footer .notes{display:grid;gap:.6rem;max-width:44rem;margin:0 auto}
+footer .coords{letter-spacing:.08em;font-size:.72rem;color:rgba(255,255,255,.4)}
+
+.sticky-cta{position:fixed;z-index:40;left:1rem;right:1rem;bottom:1rem;justify-content:space-between;box-shadow:0 12px 30px rgba(11,34,56,.3);transform:translateY(160%);transition:transform .5s var(--ease)}
+.sticky-cta.show{transform:none}
+
+@media (max-width:520px){
+  .brand small{display:none}
+  .nav .pill{padding-left:1rem;font-size:.66rem;gap:.6rem}
+}
+@media (min-width:900px){
+  .nav-links{display:flex}
+  .hero{padding-top:12vh}
+  .hero-media{height:72vh}
+  .facts-grid{grid-template-columns:repeat(4,1fr)}
+  .fact,.fact:nth-child(odd){padding:1.8rem 1.5rem 1.6rem 0}
+  .fact+.fact{padding-left:1.5rem;border-left:1px solid rgba(13,27,40,.12)}
+  .film-grid{grid-template-columns:1fr 1fr;gap:6vw}
+  .phone{justify-self:end}
+  .day-head{grid-template-columns:1.4fr 1fr;align-items:end}
+  .day-head .lead{justify-self:end}
+  .day-grid{grid-template-columns:1fr 1fr;gap:6vw}
+  .day-frame{display:block;align-self:start;position:sticky;top:calc(var(--nav) + 4vh);height:calc(100vh - var(--nav) - 8vh);border-radius:1.25rem;overflow:hidden}
+  .day-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;opacity:0;transform:scale(1.04);transition:opacity .8s var(--ease),transform 1.4s var(--ease)}
+  .day-frame img.on{opacity:1;transform:none}
+  .day-frame .ring{width:62%;aspect-ratio:1;left:-14%;bottom:-12%;border-color:rgba(255,255,255,.3)}
+  .moment{min-height:74vh;display:flex;flex-direction:column;justify-content:center;padding:0;opacity:.35;transition:opacity .6s var(--ease)}
+  .moment.on{opacity:1}
+  .moment .m-img{display:none}
+  .homes-head{grid-template-columns:1.2fr 1fr;align-items:end}
+  .homes-head .lead{justify-self:end}
+  .home{position:sticky;grid-template-columns:1.55fr 1fr;height:min(calc(100svh - var(--nav) - 7rem),700px);margin-bottom:10vh;box-shadow:0 -14px 40px -18px rgba(11,34,56,.22)}
+  .home:nth-of-type(1){top:calc(var(--nav) + 1.25rem)}
+  .home:nth-of-type(2){top:calc(var(--nav) + 2rem)}
+  .home:nth-of-type(3){top:calc(var(--nav) + 2.75rem)}
+  .home:nth-of-type(4){top:calc(var(--nav) + 3.5rem);margin-bottom:0}
+  .gallery{aspect-ratio:auto;height:100%;cursor:default}
+  .info{padding:2.6rem 2.4rem;justify-content:center}
+  .faq-grid{grid-template-columns:.8fr 1.2fr;gap:6vw}
+  .bento{grid-template-columns:repeat(6,1fr);grid-auto-rows:20rem}
+  .tile{min-height:0}
+  .t1{grid-column:span 4;grid-row:span 2}
+  .t2,.t3,.t4,.t5,.t6{grid-column:span 2}
+  .step{grid-template-columns:.4fr 1fr 1fr;align-items:baseline}
+  .close-grid{grid-template-columns:1fr 1fr;gap:6vw;align-items:start}
+  .horizon{width:110%;left:-5%;height:52vh}
+  .maker-grid{grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+  .sticky-cta{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Concept preview prepared for the Origin team by Craft Lions. Not an official Origin page.</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <svg viewBox="0 0 235 235" aria-hidden="true"><path d="M189.338 44.6501C182.843 28.3144 172.447 16.6787 157.597 8.84536C146.891 3.18253 132.432-.0323927 117.499.000246123C102.583-.0323927 88.1077 3.18253 77.4021 8.84536C62.5512 16.6787 52.1556 28.3144 45.6604 44.6501C51.1438 43.2304 55.6643 41.8269 60.2828 40.8967C79.2625 37.0943 98.3728 35.5766 117.499 35.7397C136.626 35.5766 155.736 37.0943 174.716 40.8967C179.334 41.8269 183.855 43.2304 189.338 44.6501Z" fill="#185A7D"/><path d="M45.6604 190.35C51.1438 191.77 55.6643 193.173 60.2828 194.104C79.2625 197.906 98.3728 199.424 117.499 199.26C136.626 199.424 155.736 197.906 174.716 194.104C179.334 193.173 183.855 191.77 189.338 190.35C182.843 206.686 172.447 218.322 157.597 226.155C146.891 231.801 132.415 235.016 117.499 235C102.583 235.033 88.1077 231.818 77.4021 226.155C62.5512 218.322 52.1556 206.686 45.6604 190.35Z" fill="#185A7D"/><path d="M190.35 189.338C191.77 183.854 193.173 179.334 194.103 174.715C197.906 155.736 199.424 136.626 199.26 117.5C199.424 98.3733 197.906 79.2633 194.103 60.2838C193.173 55.6654 191.77 51.1449 190.35 45.6616C206.686 52.1567 218.322 62.5522 226.155 77.4029C231.802 88.1084 235.017 102.584 235 117.5C235.033 132.416 231.818 146.891 226.155 157.596C218.322 172.447 206.686 182.843 190.35 189.338Z" fill="#185A7D"/><path d="M44.6502 45.6616C43.2304 51.1449 41.8269 55.6654 40.8967 60.2838C37.0942 79.2633 35.5765 98.3733 35.7397 117.5C35.5765 136.626 37.0942 155.736 40.8967 174.715C41.8269 179.334 43.2304 183.854 44.6502 189.338C28.3143 182.843 16.6784 172.447 8.84501 157.596C3.18211 146.891-.0328508 132.416-.000211638 117.5C-.0328508 102.584 3.18211 88.1084 8.84501 77.4029C16.6784 62.5522 28.3143 52.1567 44.6502 45.6616Z" fill="#185A7D"/></svg>
+      <span>Origin</span>
+      <small>For families</small>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#film">The film</a>
+      <a href="#day">The day</a>
+      <a href="#homes">Homes</a>
+      <a href="#questions">Questions</a>
+    </nav>
+    <a class="pill pill-dark" href="#tour">Book a tour<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-copy">
+      <h1>Your family,<span class="serif">a short walk away.</span></h1>
+      <p>Parents right-size. Grown kids buy their first home. Both at Origin, steps from 1.4&nbsp;km of Colwood coastline. Close enough for Sunday dinner, with your own front door.</p>
+      <div class="actions">
+        <a class="pill pill-dark" href="#film">Watch the film<span class="dot"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></a>
+        <a class="pill pill-ghost" href="#homes">Compare homes</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <picture>
+        <source media="(max-width:700px)" srcset="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/61b90eaf-3912-450e-8d41-84c5ff9d41db.png">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/ea27746b-99fe-45c6-abb3-44cbcb36e65f.png" alt="Origin at The Beachlands on the Colwood waterfront, rendering">
+      </picture>
+      <span class="ring" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section class="facts">
+    <div class="wrap facts-grid">
+      <div class="fact"><b>1.4 km</b><span>of coastline at The Beachlands</span></div>
+      <div class="fact"><b>50 acres</b><span>of parks, playgrounds and gathering places</span></div>
+      <div class="fact"><b>20,000 sf</b><span>of private amenity space at Origin</span></div>
+      <div class="fact"><b>16</b><span>three-bedroom townhomes, plus 1 and 2 bedroom homes</span></div>
+    </div>
+  </section>
+
+  <section class="manifesto">
+    <p>The house got too big. <span class="muted">The kids can't find a first home they can afford.</span> And the people you love most are a long drive away. <span class="serif">What if they lived one building over?</span></p>
+  </section>
+
+  <section class="film" id="film">
+    <div class="wrap film-grid">
+      <div>
+        <div class="kicker">The film · 43 seconds</div>
+        <h2>One day.<br><span class="serif">Three generations.</span></h2>
+        <p class="lead">The same family you'll meet below, cut as a vertical film for Reels, Stories and ads. Sound on.</p>
+        <ul>
+          <li><b>6:40</b>Tai Chi on the beach</li>
+          <li><b>8:30</b>Drop-off at Grandma's, one building over</li>
+          <li><b>18:00</b>Dad finally hands over the tongs</li>
+          <li><b>20:45</b>Tea on the balcony</li>
+        </ul>
+      </div>
+      <div class="phone" id="phone">
+        <video id="film-video" playsinline preload="none" poster="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_074456_7032894c-bd9d-4de4-896e-0661b50828ce_min.webp" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/1881d53d-6bca-4a9f-b777-132a4c173092.mp4"></video>
+        <button class="playbtn" id="playbtn" type="button" aria-label="Play the film with sound"><span><i></i></span><em>Play with sound</em></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="day grain" id="day">
+    <div class="wrap">
+      <div class="day-head">
+        <div>
+          <div class="kicker">A day at Origin</div>
+          <h2>Wake up to the water.<br><span class="serif">End it with family.</span></h2>
+        </div>
+        <p class="lead">One ordinary Tuesday for three generations, from Tai Chi on the beach to tea on the balcony. Scroll through it.</p>
+      </div>
+
+      <div class="day-grid">
+        <div class="day-frame" aria-hidden="true">
+          <img class="on" data-step="0" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_074457_01858b6d-0898-4bf6-a8a4-d202366f031a_min.webp" alt="">
+          <img data-step="1" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073742_6765d906-52ed-4f57-8144-2dd2b0d13025_min.webp" alt="" loading="lazy">
+          <img data-step="2" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073745_b2bd97a5-99fe-4db7-b0cf-07d6977c9e70_min.webp" alt="" loading="lazy">
+          <img data-step="3" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073745_a8d8205f-c297-46d7-89cc-bf60cb80260b_min.webp" alt="" loading="lazy">
+          <img data-step="4" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_074455_b019c915-8f87-4ff1-97b0-9eea9f905b33_min.webp" alt="" loading="lazy">
+          <img data-step="5" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073743_9ef0a3ce-711b-4ebe-9159-d11bb3c1310a_min.webp" alt="" loading="lazy">
+          <img data-step="6" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_074456_7032894c-bd9d-4de4-896e-0661b50828ce_min.webp" alt="" loading="lazy">
+          <img data-step="7" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073806_957bb65e-8e05-4f23-8b97-f9b23f13ca69_min.webp" alt="" loading="lazy">
+          <span class="ring"></span>
+          <span class="tag">Illustrative scene</span>
+        </div>
+
+        <div class="moments">
+          <article class="moment" data-step="0">
+            <div class="m-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_074457_01858b6d-0898-4bf6-a8a4-d202366f031a_min.webp" alt="A grandmother at a Tai Chi class on the beach at dawn"><span class="tag">Illustrative scene</span></div>
+            <div class="time">6:40</div>
+            <h3>Tai Chi on the beach, before breakfast.</h3>
+            <p>Walking paths lead from sunny slopes down to the shoreline, so Grandma's morning class meets right by the water. Neighbours she knows by name, the mountains across the strait.</p>
+          </article>
+          <article class="moment" data-step="1">
+            <div class="m-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073742_6765d906-52ed-4f57-8144-2dd2b0d13025_min.webp" alt="A grandfather running with his dog on a waterfront trail"><span class="tag">Illustrative scene</span></div>
+            <div class="time">7:00</div>
+            <h3>He runs because he wants to.</h3>
+            <p>Decades of early starts on job sites. Now the early start is his own choice: the trail along the bluffs, the dog, a few neighbours on the same loop.</p>
+          </article>
+          <article class="moment" data-step="2">
+            <div class="m-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073745_b2bd97a5-99fe-4db7-b0cf-07d6977c9e70_min.webp" alt="A couple working out together in a residents' gym"><span class="tag">Illustrative scene</span></div>
+            <div class="time">7:20</div>
+            <h3>A workout, no commute.</h3>
+            <p>The kids train together in the residents' fitness centre, part of 20,000 square feet of private amenity space, with an indoor and outdoor yoga studio and a cedar sauna for after.</p>
+          </article>
+          <article class="moment" data-step="3">
+            <div class="m-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073745_a8d8205f-c297-46d7-89cc-bf60cb80260b_min.webp" alt="A boy waving goodbye to his mother from his grandmother's kitchen"><span class="tag">Illustrative scene</span></div>
+            <div class="time">8:30</div>
+            <h3>Drop-off is one building over.</h3>
+            <p>Mom heads to work. He waves, then turns back to Grandma and the crane he's building. Her notebook is open too: the next chapter can wait until he's done.</p>
+          </article>
+          <article class="moment" data-step="4">
+            <div class="m-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_074455_b019c915-8f87-4ff1-97b0-9eea9f905b33_min.webp" alt="An interior designer with fabric samples in a coworking lounge"><span class="tag">Illustrative scene</span></div>
+            <div class="time">10:00</div>
+            <h3>Her best ideas happen close to home.</h3>
+            <p>She's an interior designer, and the sun-drenched coworking lounge, with its kitchenette and garden views, is her studio most days. Neighbours on calls, a coffee, then the idea clicks.</p>
+          </article>
+          <article class="moment" data-step="5">
+            <div class="m-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073743_9ef0a3ce-711b-4ebe-9159-d11bb3c1310a_min.webp" alt="A father handing grill tongs to his son-in-law on a rooftop"><span class="tag">Illustrative scene</span></div>
+            <div class="time">18:00</div>
+            <h3>Dad finally hands over the tongs.</h3>
+            <p>He built a company by doing everything himself. Tonight his son-in-law, the architect, runs the grill at the rooftop's fully equipped outdoor kitchen.</p>
+          </article>
+          <article class="moment" data-step="6">
+            <div class="m-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_074456_7032894c-bd9d-4de4-896e-0661b50828ce_min.webp" alt="Three generations at a rooftop dinner table at golden hour"><span class="tag">Illustrative scene</span></div>
+            <div class="time">18:30</div>
+            <h3>Three generations, one table.</h3>
+            <p>A large harvest dining table and panoramic ocean views. She tells her mom about the project she's designing. Under the table, the dog gets a bite of steak nobody saw.</p>
+          </article>
+          <article class="moment" data-step="7">
+            <div class="m-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/hf_20261014_073806_957bb65e-8e05-4f23-8b97-f9b23f13ca69_min.webp" alt="Grandparents sharing tea on their balcony at dusk"><span class="tag">Illustrative scene</span></div>
+            <div class="time">20:45</div>
+            <h3>Everyone's home.</h3>
+            <p>Tea, a bowl of nuts and dried fruit, the last light on the water. Their own home, a short walk from the kids'.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="day-foot">
+        <p>Tomorrow looks a lot like today. That's the point.</p>
+        <a class="pill pill-light" href="#homes">Find your two homes<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="homes" id="homes">
+    <div class="wrap">
+      <div class="homes-head">
+        <div>
+          <div class="kicker">Homes for each generation</div>
+          <h2>Pick one for you.<br><span class="serif">One for them.</span></h2>
+        </div>
+        <p class="lead">Four homes that families could pair. Use the arrows to look around, or swipe on your phone. Plans and sizes come from the Origin floor plans.</p>
+      </div>
+
+      <article class="home">
+        <div class="gallery" data-gallery>
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/0beabf49-9c08-492f-8201-cb44b89f737b.png" alt="Living room" data-cap="Living room">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/f1c9a703-f9b9-4ab3-b35b-bdd6387af0ec.png" alt="Kitchen in the Stone palette" data-cap="Kitchen, Stone palette" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/8f0ce8e0-b8ea-483d-9d4d-9511c43b505b.png" alt="Bedroom with a view" data-cap="Bedroom" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/ccd8632b-1567-410b-bcef-22762857f88e.png" alt="Balcony" data-cap="Balcony" loading="lazy">
+          <img class="plan" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/28d747b1-69b7-4fc3-b562-6550d7f5b03e.png" alt="Floor plan A1" data-cap="Plan A1" loading="lazy">
+        </div>
+        <div class="info">
+          <div class="for">For the first home</div>
+          <h3>1 bedroom</h3>
+          <div class="spec">1 bath, plan A1, South building</div>
+          <p class="why">A real first step into ownership, brand new and by the water, a short walk from mom and dad. Easy to keep, easy to love.</p>
+          <div class="sizes">
+            <div><b>566</b><span>sf interior</span></div>
+            <div><b>78-137</b><span>sf outdoor</span></div>
+            <div><b>644-703</b><span>sf total</span></div>
+          </div>
+          <div class="pairs">Pairs with: <b>2 bedroom for the parents</b></div>
+        </div>
+      </article>
+
+      <article class="home">
+        <div class="gallery" data-gallery>
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/1760e392-3c90-4fb9-98ed-d7836244c5f3.png" alt="Living area" data-cap="Living area" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/823d1d0d-b16e-45de-989a-4bc514cefdff.png" alt="Kitchen detail" data-cap="Kitchen" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/23eca40e-5472-4adf-96ed-521f2edac5af.png" alt="Coworking lounge" data-cap="Coworking lounge" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/0e7f521f-2f37-4db0-bf66-2895c91b4208.png" alt="Bathroom in the Stone palette" data-cap="Bathroom" loading="lazy">
+          <img class="plan" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/1eda187b-53a6-4a72-8cd9-bcdccf8cba84.png" alt="Floor plan B1" data-cap="Plan B1" loading="lazy">
+        </div>
+        <div class="info">
+          <div class="for">For working from home</div>
+          <h3>1 bedroom + den</h3>
+          <div class="spec">1 bath, plan B1, South building</div>
+          <p class="why">The den is the office, the coworking lounge is the meeting room. Good for a grown child who works remotely, or a parent who isn't done working yet.</p>
+          <div class="sizes">
+            <div><b>611</b><span>sf interior</span></div>
+            <div><b>74-96</b><span>sf outdoor</span></div>
+            <div><b>685-707</b><span>sf total</span></div>
+          </div>
+          <div class="pairs">Pairs with: <b>2 bedroom or townhome</b></div>
+        </div>
+      </article>
+
+      <article class="home">
+        <div class="gallery" data-gallery>
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/2497f6f5-ec4c-4d6e-a3e8-e4ad31b7478d.png" alt="Living and dining" data-cap="Living and dining" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/40f34de1-763d-4dce-b394-e092ab9af4da.png" alt="Kitchen" data-cap="Kitchen" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/8f0ce8e0-b8ea-483d-9d4d-9511c43b505b.png" alt="Primary bedroom" data-cap="Primary bedroom" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/ccd8632b-1567-410b-bcef-22762857f88e.png" alt="Balcony" data-cap="Balcony" loading="lazy">
+          <img class="plan" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/84eeed06-eb93-4357-bb98-187816226f78.png" alt="Floor plan C1" data-cap="Plan C1" loading="lazy">
+        </div>
+        <div class="info">
+          <div class="for">For right-sizing</div>
+          <h3>2 bedroom</h3>
+          <div class="spec">2 bath, plan C1, South building</div>
+          <p class="why">All the room you actually use, none of the yard work. A guest room for the grandkids, a big outdoor space, central air and over-height ceilings.</p>
+          <div class="sizes">
+            <div><b>761</b><span>sf interior</span></div>
+            <div><b>140-359</b><span>sf outdoor</span></div>
+            <div><b>901-1,120</b><span>sf total</span></div>
+          </div>
+          <div class="pairs">Pairs with: <b>1 bedroom or 1 bedroom + den</b></div>
+        </div>
+      </article>
+
+      <article class="home">
+        <div class="gallery" data-gallery>
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/2119bf1a-e246-4f22-a449-cb46947145ea.png" alt="Townhome exterior" data-cap="Townhome" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/47590d34-2a76-454d-a04d-3264d730cefc.png" alt="Townhome kitchen" data-cap="Townhome kitchen" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/3d75d2a4-9b44-486a-b376-3dda0bbf1178.png" alt="Townhome rooftop" data-cap="Townhome rooftop" loading="lazy">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/1ac4292a-ca43-4da1-8fdf-bf62a3be56e9.png" alt="Courtyard play area" data-cap="Courtyard play area" loading="lazy">
+          <img class="plan" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/563ce06b-cd67-45ff-98b2-b67f015aa1e7.png" alt="Townhome floor plan A1" data-cap="Townhome plan A1" loading="lazy">
+        </div>
+        <div class="info">
+          <div class="for">For the young family</div>
+          <h3>3 bedroom townhome</h3>
+          <div class="spec">3.5 bath, townhome plan A1</div>
+          <p class="why">Room for kids, with the play area in the courtyard and grandparents close enough to help with pickup. One of only 16 townhomes at Origin.</p>
+          <div class="sizes">
+            <div><b>1,406</b><span>sf interior</span></div>
+            <div><b>154</b><span>sf outdoor</span></div>
+            <div><b>1,560</b><span>sf total</span></div>
+          </div>
+          <div class="pairs">Pairs with: <b>1 or 2 bedroom for the grandparents</b></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="faq" id="questions">
+    <div class="wrap faq-grid">
+      <div>
+        <div class="kicker">Before you visit</div>
+        <h2>Fair questions.</h2>
+      </div>
+      <div>
+        <div class="q" data-open>
+          <button aria-expanded="true">Can our family really afford two homes?<span class="plus" aria-hidden="true"></span></button>
+          <div class="a"><div><p>It doesn't have to be two of the same. A common plan: parents right-size from the family house into a 2 bedroom, and the kids start with a 1 bedroom or a 1 bedroom + den. The sales team can walk each household through its own numbers, and your mortgage advisor can confirm what applies to you.</p></div></div>
+        </div>
+        <div class="q">
+          <button aria-expanded="false">Won't we be in each other's way?<span class="plus" aria-hidden="true"></span></button>
+          <div class="a"><div><p>Separate homes, separate doors, separate keys. You decide how close: the same building, the same floor or a short walk apart, depending on what's available when you buy.</p></div></div>
+        </div>
+        <div class="q">
+          <button aria-expanded="false">When can we move in?<span class="plus" aria-hidden="true"></span></button>
+          <div class="a"><div><p>Ask the Experience Centre for the current construction timeline. Choosing early usually means more plans, floors and views to pick from, and time to sell the family house without rushing.</p></div></div>
+        </div>
+        <div class="q">
+          <button aria-expanded="false">Isn't Colwood far from everything?<span class="plus" aria-hidden="true"></span></button>
+          <div class="a"><div><p>Less than you'd think. Royal Bay next door has schools, parks and shops, Langford has the major retailers, and Colwood adds three full-service supermarkets and over 50 restaurants and cafes. Most days, the gym, sauna, coworking lounge, rooftop and beach are already part of home.</p></div></div>
+        </div>
+        <div class="q">
+          <button aria-expanded="false">Is it just for retirees?<span class="plus" aria-hidden="true"></span></button>
+          <div class="a"><div><p>No. Origin mixes 1 and 2 bedroom homes with 16 three-bedroom townhomes, plus a kids' play area in the courtyard and a coworking lounge for people who work from home. That mix is exactly why families can buy here together.</p></div></div>
+        </div>
+        <div class="q">
+          <button aria-expanded="false">What does it cost each month to own?<span class="plus" aria-hidden="true"></span></button>
+          <div class="a"><div><p>Strata fees depend on the size of the home. Ask the sales team for the exact figure on each home you're considering, so both households can plan with real numbers.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spaces">
+    <div class="wrap">
+      <div class="kicker">Shared by everyone, owned by no one</div>
+      <h2>Room for the whole family,<br><span class="serif">without a bigger mortgage.</span></h2>
+      <p class="lead">20,000 square feet of private amenity space extends every home at Origin.</p>
+      <div class="bento">
+        <div class="tile t1"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/48254fb5-0061-46bd-bd96-3fb903194a57.png" alt="Rooftop lounge with ocean view"><div><h3>Rooftop lounge</h3><p>Panoramic ocean views, a fully equipped outdoor kitchen with BBQ and a large harvest dining table.</p></div></div>
+        <div class="tile t2"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/8d57359e-06b0-442b-8e44-92a07ec65a2d.png" alt="Entertainment lounge"><div><h3>Entertainment lounge</h3><p>Kitchen, dining area and living room opening to a spacious terrace.</p></div></div>
+        <div class="tile t3"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/1ac4292a-ca43-4da1-8fdf-bf62a3be56e9.png" alt="Courtyard play area"><div><h3>Courtyard play area</h3><p>Natural play spaces for little ones, with seating for the grown-ups.</p></div></div>
+        <div class="tile t4"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/2c794037-1321-47f9-bbc7-19539fdcd3a6.png" alt="Fitness studio"><div><h3>Fitness and yoga</h3><p>Fully equipped fitness centre with an indoor and outdoor yoga studio.</p></div></div>
+        <div class="tile t5"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/a7dc6bcb-6e30-467d-8b17-d0d5fc1b3e6c.png" alt="Cedar sauna"><div><h3>Cedar sauna</h3><p>After the run, before breakfast.</p></div></div>
+        <div class="tile t6"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/c13d236f-727b-4ef9-82e6-ad96e1493882.png" alt="Bluffs Lookout"><div><h3>Bluffs Lookout</h3><p>Walking paths lead from sunny slopes down to the shoreline.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps grain">
+    <div class="wrap">
+      <div class="kicker">How families buy together</div>
+      <h2 style="margin-bottom:3.5rem">Three steps,<br><span class="serif">two sets of keys.</span></h2>
+      <div class="step"><span class="n">01</span><h3>Visit together</h3><p>Book one tour of the Experience Centre for everyone who's part of the decision.</p></div>
+      <div class="step"><span class="n">02</span><h3>Choose your pair</h3><p>Compare plans side by side and see which homes are available close to each other.</p></div>
+      <div class="step"><span class="n">03</span><h3>Reserve each home</h3><p>Each household gets its own purchase, its own deposit schedule and its own keys.</p></div>
+    </div>
+  </section>
+
+  <section class="close" id="tour">
+    <div class="close-grid">
+      <div>
+        <div class="kicker">Family tour</div>
+        <h2>Come see it<br><span class="serif">together.</span></h2>
+        <div class="visit">
+          <b>Experience Centre</b><br>
+          298 Beachlands Boulevard, Victoria, BC<br>
+          Saturday to Tuesday, 11am to 4pm<br>
+          Wednesday to Friday by appointment<br>
+          778.445.3311
+        </div>
+      </div>
+      <form id="tourForm" novalidate>
+        <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="off"></label>
+        <label class="field"><span>Email</span><input type="email" name="email" autocomplete="off"></label>
+        <fieldset>
+          <legend>Who's buying?</legend>
+          <div class="chips">
+            <label><input type="radio" name="who" value="parents"><span>Parents</span></label>
+            <label><input type="radio" name="who" value="kids"><span>Adult children</span></label>
+            <label><input type="radio" name="who" value="both" checked><span>Both, together</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Homes you're looking at</legend>
+          <div class="chips">
+            <label><input type="checkbox" value="1bed"><span>1 bedroom</span></label>
+            <label><input type="checkbox" value="1den"><span>1 bed + den</span></label>
+            <label><input type="checkbox" value="2bed"><span>2 bedroom</span></label>
+            <label><input type="checkbox" value="th"><span>Townhome</span></label>
+          </div>
+        </fieldset>
+        <button class="pill pill-dark" type="submit">Request a family tour<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+        <p class="form-note">Concept demo: nothing you type here is sent or stored.</p>
+        <div class="demo-msg" id="demoMsg" role="status">In a live version, this request would go straight to the sales team's CRM tagged "family purchase", with both households' interests attached, so the team can prepare paired plans before the visit.</div>
+      </form>
+    </div>
+    <div class="horizon"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3AmGMQGTTgKVebTVlRJ3y9cKf5n/ce7d89fd-1dc6-4fbf-8dd6-fa0ff1d653fd.png" alt="Aerial view of the Colwood shoreline"></div>
+  </section>
+
+  <section class="maker grain" id="maker">
+    <div class="wrap maker-grid">
+      <div>
+        <div class="kicker">About this concept</div>
+        <h2>Made by someone who's <span class="serif">already worked on Origin.</span></h2>
+        <p>I'm Oleksandr (Alex) Romenskyi. I was on the crew that installed the siding on Origin's second building. I also run Craft Lions, a small studio that builds marketing systems for builders and developers: films, landing pages, ads and the CRM behind them.</p>
+        <p>Families buying together felt like a story Origin could own, so I made this as a gift. No strings attached. If it's useful, I'd love to hear what you think.</p>
+        <div class="actions">
+          <a class="pill pill-light" href="/origin/kit/">How this becomes a launch kit<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+          <a class="pill pill-ghost" href="mailto:alex.romenskii@gmail.com?subject=Origin%20families%20concept">alex.romenskii@gmail.com</a>
+        </div>
+      </div>
+      <div class="maker-photos" id="makerPhotos">
+        <figure><img loading="lazy" src="/origin/img/siding-texture.jpg" alt="Siding on Origin's second building"><figcaption>Building 2 siding</figcaption></figure>
+        <figure><img loading="lazy" src="/origin/img/siding-reflection.jpg" alt="Alex reflected in a balcony window on site" style="object-position:50% 35%"><figcaption>Me, in the window</figcaption></figure>
+        <figure><img loading="lazy" src="/origin/img/siding-balcony.jpg" alt="A balcony on Origin's second building during construction" style="object-position:50% 40%"><figcaption>Work in progress</figcaption></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big">Two homes. One shoreline.</div>
+    <div class="notes">
+      <p>Concept page prepared by Oleksandr Romenskyi, Craft Lions, as a gift for the Origin at The Beachlands team. Not affiliated with or endorsed by the developers or their marketing team. Renderings, plans and photos of Origin belong to their owners. The film and scenes marked "Illustrative scene" were created with AI to show the lifestyle and do not depict actual homes or residents.</p>
+      <p>Facts and home sizes are from origin.thebeachlands.com, October 2026. Confirm current availability and details with the sales team.</p>
+    </div>
+    <div class="coords">48.41° N, 123.49° W</div>
+  </div>
+</footer>
+
+<a class="pill pill-dark sticky-cta" id="stickyCta" href="#tour">Book a family tour<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var desktop = window.matchMedia('(min-width:900px)');
+
+  // nav state + mobile sticky CTA
+  var nav = document.getElementById('nav'), cta = document.getElementById('stickyCta'), tour = document.getElementById('tour');
+  function onScroll(){
+    var y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 20);
+    var tourTop = tour.getBoundingClientRect().top;
+    cta.classList.toggle('show', y > window.innerHeight * .9 && tourTop > window.innerHeight * .6);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // film: play with sound on tap, pause when scrolled away
+  var phone = document.getElementById('phone'), vid = document.getElementById('film-video'), pb = document.getElementById('playbtn');
+  pb.addEventListener('click', function(){ vid.muted = false; vid.controls = true; phone.classList.add('playing'); vid.play(); });
+  vid.addEventListener('ended', function(){ phone.classList.remove('playing'); vid.controls = false; vid.load(); });
+  new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting && !vid.paused) vid.pause(); }); }, {threshold:0}).observe(phone);
+
+  // ideal day: crossfade the sticky frame as moments pass the middle of the screen
+  var frameImgs = document.querySelectorAll('.day-frame img');
+  var moments = document.querySelectorAll('.moment');
+  var dayObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var s = e.target.getAttribute('data-step');
+      moments.forEach(function(m){ m.classList.toggle('on', m === e.target); });
+      frameImgs.forEach(function(img){ img.classList.toggle('on', img.getAttribute('data-step') === s); });
+    });
+  }, {rootMargin:'-45% 0px -45% 0px'});
+  moments.forEach(function(m){ dayObs.observe(m); });
+  if(moments[0]) moments[0].classList.add('on');
+
+  // home galleries: arrows, keyboard, swipe, auto-play on phones until the first interaction
+  var arrowSvg = {
+    prev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg>',
+    next:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg>'
+  };
+  document.querySelectorAll('[data-gallery]').forEach(function(g){
+    var imgs = g.querySelectorAll('img');
+    var n = imgs.length, idx = 0, timer = null, touched = false;
+    var bars = document.createElement('div'); bars.className = 'bars';
+    for(var i=0;i<n;i++){ var bt=document.createElement('button'); bt.type='button'; bt.setAttribute('aria-label','Photo '+(i+1)); bt.dataset.k=i; bars.appendChild(bt); }
+    var cap = document.createElement('span'); cap.className = 'caption';
+    var count = document.createElement('span'); count.className = 'count';
+    var prev = document.createElement('button'); prev.type='button'; prev.className='arrow prev'; prev.setAttribute('aria-label','Previous photo'); prev.innerHTML=arrowSvg.prev;
+    var next = document.createElement('button'); next.type='button'; next.className='arrow next'; next.setAttribute('aria-label','Next photo'); next.innerHTML=arrowSvg.next;
+    [bars,cap,count,prev,next].forEach(function(el){ g.appendChild(el); });
+    var barEls = bars.querySelectorAll('button');
+    g.setAttribute('tabindex','0'); g.setAttribute('aria-roledescription','photo gallery');
+
+    function show(k){
+      idx = (k + n) % n;
+      imgs.forEach(function(im,j){ im.classList.toggle('on', j === idx); if(j === (idx+1)%n) im.loading = 'eager'; });
+      barEls.forEach(function(bt,j){ bt.className = j < idx ? 'done' : (j === idx ? 'on' : ''); });
+      cap.textContent = imgs[idx].getAttribute('data-cap') || '';
+      count.textContent = (idx+1) + ' / ' + n;
+      g.classList.toggle('on-plan', imgs[idx].classList.contains('plan'));
+    }
+    function user(k){ touched = true; stop(); show(k); }
+    show(0);
+
+    prev.addEventListener('click', function(e){ e.stopPropagation(); user(idx - 1); });
+    next.addEventListener('click', function(e){ e.stopPropagation(); user(idx + 1); });
+    bars.addEventListener('click', function(e){ var k=e.target.dataset && e.target.dataset.k; if(k!==undefined) user(+k); });
+    g.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'){ e.preventDefault(); user(idx + 1); }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); user(idx - 1); }
+    });
+    var sx = null;
+    g.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+    g.addEventListener('touchend', function(e){
+      if(sx===null) return; var dx = e.changedTouches[0].clientX - sx; sx = null;
+      if(Math.abs(dx) > 40) user(idx + (dx < 0 ? 1 : -1));
+    });
+
+    function start(){ if(reduce || timer || touched) return; timer = setInterval(function(){ show(idx + 1); }, 1900); }
+    function stop(){ clearInterval(timer); timer = null; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(desktop.matches) { stop(); return; }
+        if(e.intersectionRatio >= .85) start(); else stop();
+      });
+    }, {threshold:[0,.85,1]});
+    io.observe(g);
+  });
+
+  // questions accordion
+  document.querySelectorAll('.q button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var q = b.parentElement, open = q.hasAttribute('data-open');
+      document.querySelectorAll('.q').forEach(function(x){ x.removeAttribute('data-open'); x.querySelector('button').setAttribute('aria-expanded','false'); });
+      if(!open){ q.setAttribute('data-open',''); b.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  // demo form: never sends anything
+  document.getElementById('tourForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('demoMsg').classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>
